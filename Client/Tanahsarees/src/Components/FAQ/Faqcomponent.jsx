@@ -4,27 +4,48 @@ const Faqcomponent = () => {
   const data = {
     rows: [
       {
-        title: "Lorem ipsum dolor sit amet,",
-        content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed tempor sem. Aenean vel turpis feugiat,
-                    ultricies metus at, consequat velit. Curabitur est nibh, varius in tellus nec, mattis pulvinar metus.
-                    In maximus cursus lorem, nec laoreet velit eleifend vel. Ut aliquet mauris tortor, sed egestas libero interdum vitae.
-                    Fusce sed commodo purus, at tempus turpis.`,
-      },
-      {
-        title: "Nunc maximus, magna at ultricies elementum",
-        content:
-          "Nunc maximus, magna at ultricies elementum, risus turpis vulputate quam, vitae convallis ex tortor sed dolor.",
-      },
-      {
-        title: "Curabitur laoreet, mauris vel blandit fringilla",
-        content: `Curabitur laoreet, mauris vel blandit fringilla, leo elit rhoncus nunc, ac sagittis leo elit vel lorem.
-                  Fusce tempor lacus ut libero posuere viverra. Nunc velit dolor, tincidunt at varius vel, laoreet vel quam.
-                  Sed dolor urna, lobortis in arcu auctor, tincidunt mattis ante. Vivamus venenatis ultricies nibh in volutpat.
-                  Cras eu metus quis leo vestibulum feugiat nec sagittis lacus.Mauris vulputate arcu sed massa euismod dignissim. `,
-      },
-      {
         title: "What is the package version",
         content: <p>current version is 1.2.1</p>,
+      },
+      {
+        title: "Introduction to JavaScript",
+        content:
+          "JavaScript is a versatile programming language used for web development.",
+      },
+      {
+        title: "React.js Basics",
+        content:
+          "React is a popular JavaScript library for building user interfaces.",
+      },
+      {
+        title: "Node.js Overview",
+        content:
+          "Node.js allows JavaScript to run on the server-side, enabling backend development.",
+      },
+      {
+        title: "MongoDB Fundamentals",
+        content:
+          "MongoDB is a NoSQL database that stores data in JSON-like documents.",
+      },
+      {
+        title: "TypeScript Advantages",
+        content:
+          "TypeScript adds static typing to JavaScript, improving code quality and maintainability.",
+      },
+      {
+        title: "Understanding Redux",
+        content:
+          "Redux is a state management library often used with React applications.",
+      },
+      {
+        title: "AWS for Beginners",
+        content:
+          "Amazon Web Services (AWS) provides scalable cloud computing solutions.",
+      },
+      {
+        title: "Version Control with Git",
+        content:
+          "Git is a distributed version control system for tracking changes in code.",
       },
     ],
   };
@@ -36,7 +57,18 @@ const Faqcomponent = () => {
     rowContentColor: "grey",
     titleTextSize: "3.5vmin",
     titleTextAlign: "center",
-    // arrowColor: "red",
+    rowTitleTextSize: "18px",
+    rowContentTextSize: "15px",
+  };
+
+  const stylesLarge = {
+    titleTextColor: "grey",
+    rowTitleColor: "#c97366",
+    rowContentColor: "grey",
+    titleTextSize: "3.5vmin",
+    titleTextAlign: "center",
+    rowTitleTextSize: "25px",
+    rowContentTextSize: "24px",
   };
 
   const config = {
@@ -47,15 +79,31 @@ const Faqcomponent = () => {
 
   return (
     <div className="flex justify-center flex-col items-center p-[10vmin]">
-      <p className="text-center font-poppins text-[grey] font-extralight  text-xs lg:text-sm">
-        Home / Frequently Asked Questions - India
-      </p>
-      <p className="text-center font-poppins text-[grey] font-medium text-2xl lg:text-3xl mt-5 ">
-        Frequently Asked Questions
-      </p>
-      <div className="w-[90vw] lg:w-[65vw] mt-15 ">
-        <Faq data={data} styles={styles} config={config} />
-      </div>
+      {(screen.width < 2048 && (
+        <>
+          <p className="text-center font-poppins text-[grey] font-extralight  text-xs lg:text-sm">
+            Home / Frequently Asked Questions - India
+          </p>
+          <p className="text-center font-poppins text-[grey] font-medium text-2xl lg:text-3xl mt-2 lg:mt-5 ">
+            Frequently Asked Questions
+          </p>
+          <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-15  ">
+            <Faq data={data} styles={styles} config={config} />
+          </div>
+        </>
+      )) || (
+        <>
+          <p className="text-center font-poppins text-[grey] font-extralight  text-xl">
+            Home / Frequently Asked Questions - India
+          </p>
+          <p className="text-center font-poppins text-[grey] font-medium text-2xl lg:text-5xl mt-2 lg:mt-5 ">
+            Frequently Asked Questions
+          </p>
+          <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-20  ">
+            <Faq data={data} styles={stylesLarge} config={config} />
+          </div>
+        </>
+      )}
     </div>
   );
 };

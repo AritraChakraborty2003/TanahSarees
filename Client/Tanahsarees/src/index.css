@@ -8,9 +8,10 @@
 :root {
   --side-color: #f7d9cb;
   --side-text-color: #bd8c84;
-  ---side-dark: #c97366;
-  ---white: "#fff";
-  ---black: "#000000";
+  --side-dark: #883022;
+  --grey-color: #d5d5d5;
+  --white: #fff;
+  --black: #000000;
   --font-primary: "Poppins", sans-serif;
   --font-secondary: "Roboto", sans-serif;
   --font-Inter: "Inter", "sans-serif";
@@ -37,11 +38,11 @@
   font-family: var(--font-Lato);
 }
 
-.font-Roboto {
+.fontRoboto {
   font-family: var(--font-Roboto);
 }
 
-.font-Lora {
+.fontLora {
   font-family: var(--font-Lora);
 }
 
@@ -50,10 +51,15 @@
 }
 
 .primaryBgColor {
-  color: var(--side-text-color);
+  background-color: var(--side-text-color);
 }
 
 .primarytextColor {
+  color: var(--side-dark);
+}
+
+.primaryLightColor {
+  background-color: var(--side-color);
   color: var(--side-dark);
 }
 
@@ -61,6 +67,15 @@
   color: var(--white);
 }
 
+.darktext {
+  color: var(--side-dark);
+}
+
+.grey {
+  color: var(--grey-color);
+
+  border-bottom: 0.1px solid var(--grey-color);
+}
 .black {
   color: var(--black);
 }

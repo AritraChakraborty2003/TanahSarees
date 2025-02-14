@@ -7,11 +7,17 @@ const Loader = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsloading(false);
-    }, 2500);
+    }, 3100);
   });
   return (
-    <div className=" h-[100vh] w-[100vw] flex justify-center items-center ">
-      {isLoading ? <HashLoader size={100} color="#c97366" /> : <Main />}
+    <div>
+      {isLoading ? (
+        <div className=" h-[100vh] w-[100vw] flex justify-center items-center bg-[#f7d9cb] ">
+          <HashLoader size={72} color="#c97366" />
+        </div>
+      ) : (
+        <Main />
+      )}
     </div>
   );
 };
