@@ -1,16 +1,25 @@
 import "remixicon/fonts/remixicon.css";
+import { Link } from "react-router-dom";
 const Smallheader = () => {
   return (
     <div className="w-[100vw] p-[4px] pl-12 grey flex pt-3">
       <div className="textHolder w-[70%] flex gap-x-6 text-[1.55vmin] 2xl:text-[1.4vmin] pt-[1.5px] mt-[3px] darktext ">
         <p>DOWNLOAD THE APP</p>
         <p>SIZE CHART</p>
-        <p>SHIPPING & DELIVERY</p>
-        <p>TRACK YOUR ORDER</p>
+        <p>
+          <Link to="/shipping">SHIPPING & DELIVERY</Link>
+        </p>
+        <p>
+          <Link to="/trackorder">TRACK YOUR ORDER</Link>
+        </p>
         <p>CUSTOMER REVIEWS</p>
         <p>RETURNS</p>
-        <p>CONTACT US</p>
-        <p>FAQ&apos;s</p>
+        <p>
+          <Link to="/contactus">CONTACT US</Link>
+        </p>
+        <p>
+          <Link to="/faq">FAQ&apos;s</Link>
+        </p>
       </div>
       <div className="w-[30%] pt-[1.5px] flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
         <a className="mt-[-0.65vmin] ">
