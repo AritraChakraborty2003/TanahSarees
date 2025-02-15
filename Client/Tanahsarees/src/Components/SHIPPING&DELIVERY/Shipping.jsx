@@ -19,7 +19,13 @@ const Shipping = () => {
     },
   ];
   return (
-    <div className="w-[100vw]  flex flex-col items-center ">
+    <div
+      className="w-[100vw]  flex flex-col items-center "
+      style={{
+        marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+        zIndex: 10, // Keep content below the header
+      }}
+    >
       {/* First Internal Div - Breadcrumbs */}
       <div className="flex flex-col items-center text-gray-600 mt-10 p-1 ">
         <p className="text-sm mb-3 font-Montserrat">Home / Shipping</p>
@@ -38,7 +44,7 @@ const Shipping = () => {
       </div>
 
       {/* Third Internal Div - FAQ */}
-      <div className=" w-[95vw] lg:w-[100vw] mt-[-10vmin]">
+      <div className=" w-[95vw] lg:w-[100vw] mt-[-50vmin]">
         <Faqcomponent data={faqs} type={"not_faq"} />
       </div>
     </div>

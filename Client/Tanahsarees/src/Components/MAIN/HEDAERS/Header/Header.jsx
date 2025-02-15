@@ -1,15 +1,19 @@
+import { Link } from "react-router-dom";
 import Search from "./Search";
 
 const Header = () => {
   return (
     <>
       {(screen.width > 1000 && (
-        <div className="mainHolder flex w-[100vw]">
+        <div className="mainHolder flex w-[100vw] pb-3">
           <div className="searchHolder w-[33.3%]  flex justify-center items-center">
             <Search />
           </div>
           <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
-            <img src="logo.png" height={200} width={220} />
+            <Link to="/main">
+              {" "}
+              <img src="logo.png" height={200} width={220} />{" "}
+            </Link>
           </div>
           <div className="purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-20 pr-12 mt-6">
             <a className="mt-[-0.65vmin] darktext  text-[3.75vmin] font-extralight">
@@ -33,7 +37,10 @@ const Header = () => {
               </a>
             </div>
             <div className="logoHolder  flex justify-center items-center w-[49.5%]  mt-3 ml-[-0.35vmin] ">
-              <img src="logo.png" height={120} width={180} />
+              <Link to="/main">
+                {" "}
+                <img src="logo.png" height={120} width={180} />
+              </Link>
             </div>
             <div className="purchaseOptHolder w-[27%]  flex justify-end items-center  gap-x-5 pr-2 2xl:gap-x-20 mt-3">
               <a className="mt-[-0.65vmin] darktext  text-[7.75vmin] font-extralight">

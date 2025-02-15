@@ -24,18 +24,27 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="pb-15">
-      <div className="max-w-lg mx-auto p-6 bg-white shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15">
-        <h2 className="text-3xl font-bold text-center text-gray-800">
+    <div
+      className="pb-15"
+      style={{
+        marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+        zIndex: 10, // Keep content below the header
+      }}
+    >
+      <div className="w-[96vw] lg:max-w-lg mx-auto p-6 bg-white shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15 font-Montserrat">
+        <h2 className="text-4xl lg:text-5xl font-medium text-center text-gray-500 overflow-hidden">
           Contact Us
         </h2>
+        <p className="text-sm lg:text-md text-center mt-2  text-gray-500">
+          (Please feel free to contact)
+        </p>
         {success ? (
           <p className="text-green-500 text-center mt-4">
             Message sent successfully!
           </p>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-4">
-            <div>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-6">
+            <div className="font-poppins">
               <label className="block text-gray-700 font-semibold">Name</label>
               <input
                 type="text"

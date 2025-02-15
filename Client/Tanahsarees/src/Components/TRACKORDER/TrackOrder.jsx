@@ -6,7 +6,13 @@ const TrackOrder = () => {
 
   return (
     <>
-      <div className="w-[100vw] h-[50vh] flex justify-center items-center ">
+      <div
+        className="w-[100vw] h-[50vh] flex justify-center items-center "
+        style={{
+          marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+          zIndex: 10, // Keep content below the header
+        }}
+      >
         <div className="bg-[#eee4e42c] p-6 rounded-lg shadow-md w-[90vw] lg:w-[45%] flex flex-col space-y-4 ">
           {/* First internal div (Search By section) */}
           <div className="flex flex-col">

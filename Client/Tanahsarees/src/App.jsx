@@ -6,6 +6,7 @@ import MainHeader from "./Components/MAIN/HEDAERS/MAIN/MainHeader";
 import TrackOrder from "./Components/TRACKORDER/TrackOrder";
 import Shipping from "./Components/SHIPPING&DELIVERY/Shipping";
 import ContactForm from "./Components/CONTACTUS/ContactForm";
+import Main from "./Components/MAIN/Main";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         <Faqcomponent />
       </>
     ),
+  },
+  {
+    path: "/main",
+    element: <Main />,
   },
   {
     path: "/header",

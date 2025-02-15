@@ -80,7 +80,13 @@ const Faqcomponent = (props) => {
 
   return (
     <>
-      <div className="flex justify-center flex-col items-center p-[10vmin]">
+      <div
+        className="flex justify-center flex-col items-center p-[10vmin]"
+        style={{
+          marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+          zIndex: 10, // Keep content below the header
+        }}
+      >
         {(screen.width < 2048 && (
           <>
             {!props?.type && (
