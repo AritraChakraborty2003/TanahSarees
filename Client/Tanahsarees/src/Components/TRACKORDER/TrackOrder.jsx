@@ -13,7 +13,7 @@ const TrackOrder = () => {
           zIndex: 10, // Keep content below the header
         }}
       >
-        <div className="bg-[#eee4e42c] p-6 rounded-lg shadow-md w-[90vw] lg:w-[45%] flex flex-col space-y-4 ">
+        <div className="bg-[#eee4e42c] p-6 rounded-lg shadow-md w-[93vw] lg:w-[45%] flex flex-col space-y-4 ">
           {/* First internal div (Search By section) */}
           <div className="flex flex-col">
             <label className="text-lg font-medium mb-1">Search By:</label>

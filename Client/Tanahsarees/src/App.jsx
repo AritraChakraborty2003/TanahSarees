@@ -7,6 +7,7 @@ import TrackOrder from "./Components/TRACKORDER/TrackOrder";
 import Shipping from "./Components/SHIPPING&DELIVERY/Shipping";
 import ContactForm from "./Components/CONTACTUS/ContactForm";
 import Main from "./Components/MAIN/Main";
+import Footer from "./Components/FOOTER/Footer";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       <>
         <MainHeader />
         <Faqcomponent />
+        <Footer />
       </>
     ),
   },
@@ -36,6 +38,7 @@ const router = createBrowserRouter([
       <>
         <MainHeader />
         <TrackOrder />
+        <Footer />
       </>
     ),
   },
@@ -45,6 +48,7 @@ const router = createBrowserRouter([
       <>
         <MainHeader />
         <Shipping />
+        <Footer />
       </>
     ),
   },
@@ -54,6 +58,7 @@ const router = createBrowserRouter([
       <>
         <MainHeader />
         <ContactForm />
+        <Footer />
       </>
     ),
   },
