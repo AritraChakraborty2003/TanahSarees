@@ -1,19 +1,19 @@
 import Search from "./Search";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 const OptionsBar = () => {
   const [isVisible, setIsVisible] = useState(true);
-  let lastScrollY = 0;
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
+      if (window.scrollY > lastScrollY.current) {
         // Scrolling Down → Hide the div
         setIsVisible(false);
       } else {
         // Scrolling Up → Show the div
         setIsVisible(true);
       }
-      lastScrollY = window.scrollY;
+      lastScrollY.current = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
