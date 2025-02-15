@@ -9,7 +9,7 @@ const Header = () => {
             <Search />
           </div>
           <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
-            <img src="LogoOriginal.png" height={150} width={190} />
+            <img src="logo.png" height={200} width={220} />
           </div>
           <div className="purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-20 pr-12 mt-6">
             <a className="mt-[-0.65vmin] darktext  text-[3.75vmin] font-extralight">
@@ -28,12 +28,12 @@ const Header = () => {
         <>
           <div className="flex w-[100vw]">
             <div className="logoHolder  flex  w-[24%]  mt-3 ">
-              <a className="mt-[-0.65vmin] darktext  text-[7.75vmin] font-extralight pl-3">
+              <a className="mt-[3vmin] darktext  text-[7.75vmin] font-extralight pl-3">
                 <i className="ri-menu-line"></i>
               </a>
             </div>
-            <div className="logoHolder  flex justify-center items-center w-[49.5%]  mt-3 ml-[-3.45vmin] ">
-              <img src="LogoOriginal.png" height={150} width={150} />
+            <div className="logoHolder  flex justify-center items-center w-[49.5%]  mt-3 ml-[-0.35vmin] ">
+              <img src="logo.png" height={120} width={180} />
             </div>
             <div className="purchaseOptHolder w-[27%]  flex justify-end items-center  gap-x-5 pr-2 2xl:gap-x-20 mt-3">
               <a className="mt-[-0.65vmin] darktext  text-[7.75vmin] font-extralight">

@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import Faq from "react-faq-component";
 
-const Faqcomponent = () => {
+const Faqcomponent = (props) => {
   const data = {
     rows: [
       {
@@ -78,33 +79,43 @@ const Faqcomponent = () => {
   };
 
   return (
-    <div className="flex justify-center flex-col items-center p-[10vmin]">
-      {(screen.width < 2048 && (
-        <>
-          <p className="text-center font-poppins text-[grey] font-extralight  text-xs lg:text-sm">
-            Home / Frequently Asked Questions - India
-          </p>
-          <p className="text-center font-poppins text-[grey] font-medium text-2xl lg:text-3xl mt-2 lg:mt-5 ">
-            Frequently Asked Questions
-          </p>
-          <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-15  ">
-            <Faq data={data} styles={styles} config={config} />
-          </div>
-        </>
-      )) || (
-        <>
-          <p className="text-center font-poppins text-[grey] font-extralight  text-xl">
-            Home / Frequently Asked Questions - India
-          </p>
-          <p className="text-center font-poppins text-[grey] font-medium text-2xl lg:text-5xl mt-2 lg:mt-5 ">
-            Frequently Asked Questions
-          </p>
-          <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-20  ">
-            <Faq data={data} styles={stylesLarge} config={config} />
-          </div>
-        </>
-      )}
-    </div>
+    <>
+      <div className="flex justify-center flex-col items-center p-[10vmin]">
+        {(screen.width < 2048 && (
+          <>
+            {!props?.type && (
+              <>
+                <p className="text-center font-Montserrat text-gray-600 font-extralight  text-xs lg:text-sm">
+                  Home / Frequently Asked Questions - India
+                </p>
+                <p className="text-center font-Montserrat text-gray-600 font-medium text-2xl overflow-hidden lg:text-4xl mt-2 lg:mt-5 ">
+                  Frequently Asked Questions
+                </p>
+              </>
+            )}
+            <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-15  ">
+              <Faq data={data} styles={styles} config={config} />
+            </div>
+          </>
+        )) || (
+          <>
+            {!props?.type && (
+              <>
+                <p className="text-center font-Montserrat text-gray-600 font-extralight  text-xl">
+                  Home / Frequently Asked Questions - India
+                </p>
+                <p className="text-center font-Montserrat text-gray-600 overflow-hidden  font-medium text-2xl lg:text-4xl mt-2 lg:mt-5 ">
+                  Frequently Asked Questions
+                </p>
+              </>
+            )}
+            <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-20  ">
+              <Faq data={data} styles={stylesLarge} config={config} />
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
