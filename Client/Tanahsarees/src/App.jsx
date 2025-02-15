@@ -8,6 +8,7 @@ import Shipping from "./Components/SHIPPING&DELIVERY/Shipping";
 import ContactForm from "./Components/CONTACTUS/ContactForm";
 import Main from "./Components/MAIN/Main";
 import Footer from "./Components/FOOTER/Footer";
+import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
         <MainHeader />
         <ContactForm />
         <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/testCMS",
+    element: (
+      <>
+        <TestUpload />
       </>
     ),
   },
