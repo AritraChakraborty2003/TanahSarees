@@ -26,7 +26,7 @@ const CardObj = (props) => {
             </Tilt>
             {/* Text Content Section */}
             <div className="p-4 text-center">
-              <p className="text-md text-gray-600">{item.text}</p>
+              <p className="text-md text-gray-600">{item.title}</p>
             </div>
           </div>
         ))}

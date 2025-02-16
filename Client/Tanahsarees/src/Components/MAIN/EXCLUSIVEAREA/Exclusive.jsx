@@ -24,8 +24,13 @@ const Exclusive = () => {
 
   return (
     <>
-      <div className="mt-6">
-        <CardObj data={data} />
+      <div>
+        <p className="text-center mt-15 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
+          EXCLUSIVE OFFERS FOR YOU
+        </p>
+        <div className="mt-12">
+          <CardObj data={data} />
+        </div>
       </div>
     </>
   );
