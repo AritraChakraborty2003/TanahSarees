@@ -7,12 +7,12 @@ import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
-  { id: 1, title: "Item 1", img: "/Sarees/saree1.jpg" },
-  { id: 2, title: "Item 2", img: "/Sarees/saree2.jpg" },
-  { id: 3, title: "Item 3", img: "/Sarees/saree3.jpg" },
-  { id: 4, title: "Item 4", img: "/Sarees/saree4.jpg" },
-  { id: 5, title: "Item 5", img: "/Sarees/saree5.jpg" },
-  { id: 6, title: "Item 6", img: "/Sarees/saree6.jpg" },
+  { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
+  { id: 2, title: "Silk Saree", img: "/Sarees/saree2.jpg" },
+  { id: 3, title: "Siffon saree", img: "/Sarees/saree3.jpg" },
+  { id: 4, title: "silk saree", img: "/Sarees/saree4.jpg" },
+  { id: 5, title: "Cotton saree", img: "/Sarees/saree5.jpg" },
+  { id: 6, title: "Chikon saree", img: "/Sarees/saree6.jpg" },
 ];
 
 const SliderComponent = () => {
@@ -80,6 +80,10 @@ const SliderComponent = () => {
                         backgroundRepeat: "no-repeat", // Prevents tiling
                       }}
                     ></div>
+
+                    <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
+                      {item.title}
+                    </p>
                   </div>
                 </div>
               </>
@@ -137,7 +141,9 @@ const SliderComponent = () => {
                           // Assuming each `item` has an `image` property
                         }}
                       ></div>
-                      <p className="font-Montserrat">Sarees</p>
+                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                        {item.title}
+                      </p>
                     </div>
                   </div>
                 </>
@@ -162,7 +168,9 @@ const SliderComponent = () => {
                           // Assuming each `item` has an `image` property
                         }}
                       ></div>
-                      <p className="">Sarees</p>
+                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                        {item.title}
+                      </p>
                     </div>
                   </div>
                 </>

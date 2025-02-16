@@ -49,7 +49,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className="w-[50vw] p-[6vmin] flex flex-col gap-y-5 mt-3 p-3 pl-6">
+            <div className="w-[50vw] p-[6vmin] flex flex-col gap-y-5 mt-3 p-3 pl-6 justify-end 2xl:ml-[10vmin]">
               <div className="1 ml-4">
                 <p className="font-extralight text-sm">Sign up and save</p>
               </div>
@@ -68,7 +68,7 @@ const Footer = () => {
               </div>
               <div className="4 ml-4">
                 {" "}
-                <div className="w-[30%] pt-[1.5px] flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
+                <div className="w-[35%] pt-[1.5px] mt-3 flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
                   <a className="mt-[-0.65vmin] ">
                     <i className="ri-instagram-line darktext text-[3.75vmin]"></i>
                   </a>
