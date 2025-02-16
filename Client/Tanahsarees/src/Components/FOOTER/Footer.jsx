@@ -49,7 +49,7 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <div className="w-[50vw] p-[6vmin] flex flex-col gap-y-5 mt-3 p-3 pl-6 justify-end 2xl:ml-[10vmin]">
+            <div className="w-[50vw] p-[6vmin] flex flex-col gap-y-5 mt-3 p-3 pl-6 justify-end 2xl:ml-[24vmin]">
               <div className="1 ml-4">
                 <p className="font-extralight text-sm">Sign up and save</p>
               </div>
@@ -262,8 +262,10 @@ const Footer = () => {
             </div>
           </div>
           <div className="w-[100vw] flex flex-col font-light justify-center items-center pb-6">
-            <p className="text-xs">© Tanah Sarees 2024. All Rights Reserved.</p>
-            <p className="text-xs mt-1">Powered By Codemap.</p>
+            <p className="text-xs overflow-hidden">
+              © Tanah Sarees 2024. All Rights Reserved.
+            </p>
+            <p className="text-xs mt-1 overflow-hidden">Powered By Codemap.</p>
           </div>
         </>
       )}
