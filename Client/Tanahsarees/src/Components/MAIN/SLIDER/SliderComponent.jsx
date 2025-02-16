@@ -8,12 +8,12 @@ import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
-  { id: 1, title: "Item 1", img: "logo.png" },
-  { id: 2, title: "Item 2", img: "https://via.placeholder.com/100" },
-  { id: 3, title: "Item 3", img: "https://via.placeholder.com/100" },
-  { id: 4, title: "Item 4", img: "https://via.placeholder.com/100" },
-  { id: 5, title: "Item 5", img: "https://via.placeholder.com/100" },
-  { id: 6, title: "Item 6", img: "https://via.placeholder.com/100" },
+  { id: 1, title: "Item 1", img: "/Sarees/saree1.png" },
+  { id: 2, title: "Item 2", img: "/Sarees/saree2.png" },
+  { id: 3, title: "Item 3", img: "/Sarees/saree3.png" },
+  { id: 4, title: "Item 4", img: "/Sarees/saree4.png" },
+  { id: 5, title: "Item 5", img: "/Sarees/saree5.png" },
+  { id: 6, title: "Item 6", img: "/Sarees/saree6.png" },
 ];
 
 const SliderComponent = () => {
@@ -70,7 +70,19 @@ const SliderComponent = () => {
           >
             {items.map((item) => (
               <>
-                <div className="w-[30vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+                <div className="">
+                  <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
+                    <div
+                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[2px]"
+                      style={{
+                        backgroundImage: `url(${item.img})`,
+                        backgroundSize: "cover", // Ensures image fills the div
+                        backgroundPosition: "center", // Centers the image
+                        backgroundRepeat: "no-repeat", // Prevents tiling
+                      }}
+                    ></div>
+                  </div>
+                </div>
               </>
             ))}
           </Slider>
@@ -115,7 +127,20 @@ const SliderComponent = () => {
             >
               {items.map((item) => (
                 <>
-                  <div className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+                  <div className="ml-[-6vmin]">
+                    <div className="flex flex-col gap-y-4 justify-center items-center">
+                      <div
+                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url(${item.img})`,
+                          backgroundPosition: "center",
+
+                          // Assuming each `item` has an `image` property
+                        }}
+                      ></div>
+                      <p className="">Sarees</p>/
+                    </div>
+                  </div>
                 </>
               ))}
             </Slider>
@@ -127,7 +152,20 @@ const SliderComponent = () => {
             >
               {items.map((item) => (
                 <>
-                  <div className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+                  <div className="ml-[-6vmin]">
+                    <div className="flex flex-col gap-y-4 justify-center items-center">
+                      <div
+                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                        style={{
+                          backgroundImage: `url(${item.img})`,
+                          backgroundPosition: "center",
+
+                          // Assuming each `item` has an `image` property
+                        }}
+                      ></div>
+                      <p className="">Sarees</p>
+                    </div>
+                  </div>
                 </>
               ))}
             </Slider>
