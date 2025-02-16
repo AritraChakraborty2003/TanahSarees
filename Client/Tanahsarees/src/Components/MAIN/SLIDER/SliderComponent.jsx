@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,12 +7,12 @@ import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
-  { id: 1, title: "Item 1", img: "/Sarees/saree1.png" },
-  { id: 2, title: "Item 2", img: "/Sarees/saree2.png" },
-  { id: 3, title: "Item 3", img: "/Sarees/saree3.png" },
-  { id: 4, title: "Item 4", img: "/Sarees/saree4.png" },
-  { id: 5, title: "Item 5", img: "/Sarees/saree5.png" },
-  { id: 6, title: "Item 6", img: "/Sarees/saree6.png" },
+  { id: 1, title: "Item 1", img: "/Sarees/saree1.jpg" },
+  { id: 2, title: "Item 2", img: "/Sarees/saree2.jpg" },
+  { id: 3, title: "Item 3", img: "/Sarees/saree3.jpg" },
+  { id: 4, title: "Item 4", img: "/Sarees/saree4.jpg" },
+  { id: 5, title: "Item 5", img: "/Sarees/saree5.jpg" },
+  { id: 6, title: "Item 6", img: "/Sarees/saree6.jpg" },
 ];
 
 const SliderComponent = () => {
@@ -113,7 +112,7 @@ const SliderComponent = () => {
           {/* Left Button */}
           <button
             onClick={() => sliderRef.current.slickPrev()}
-            className="absolute  left-1 lg:left-3  top-[40%] lg:top-[23%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+            className="absolute  left-1 lg:left-1  top-[40%] lg:top-[20%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
           >
             <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
           </button>
@@ -138,7 +137,7 @@ const SliderComponent = () => {
                           // Assuming each `item` has an `image` property
                         }}
                       ></div>
-                      <p className="">Sarees</p>/
+                      <p className="font-Montserrat">Sarees</p>
                     </div>
                   </div>
                 </>
@@ -174,7 +173,7 @@ const SliderComponent = () => {
           {/* Right Button */}
           <button
             onClick={() => sliderRef.current.slickNext()}
-            className="absolute right-1 lg:right-3 top-[40%] lg:top-[23%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+            className="absolute right-1 lg:right-1 top-[40%] lg:top-[20%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
           >
             <ChevronRight size={screen.width > 1000 ? 24 : 14} />
           </button>
