@@ -1,8 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import axios from "axios";
-
+import { useContext } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 export default function ContactForm() {
+  const { change } = useContext(AppContext);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const {
@@ -27,7 +29,15 @@ export default function ContactForm() {
     <div
       className="pb-15"
       style={{
-        marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+        marginTop: `${
+          !change
+            ? screen.width > 1000
+              ? "20%"
+              : ""
+            : screen.width > 1000
+            ? "12%"
+            : ""
+        }`, // Adjust based on header height
         zIndex: 10, // Keep content below the header
       }}
     >

@@ -47,7 +47,7 @@ const SliderComponent = () => {
           style={{
             paddingTop: `${
               !change
-                ? document.getElementById("mainHeader")?.offsetHeight || "180px"
+                ? document.getElementById("mainHeader")?.offsetHeight || "190px"
                 : "160px"
             }`,
 

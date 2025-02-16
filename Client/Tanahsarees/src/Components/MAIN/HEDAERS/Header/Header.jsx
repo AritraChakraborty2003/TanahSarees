@@ -9,7 +9,7 @@ const Header = (props) => {
         <div
           className={`mainHolder flex w-[100vw] pb-3 bg-white ${
             props?.type === "scrollHead"
-              ? "z-[1000] fixed top-0 left-0"
+              ? "z-[1000] fixed top-0 left-0 border-[#d5d5d5] border-b-[1px] p-4"
               : "z-10"
           }`}
         >
@@ -22,7 +22,7 @@ const Header = (props) => {
               <img src="logo.png" height={200} width={220} />{" "}
             </Link>
           </div>
-          <div className="purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-20 pr-12 mt-6">
+          <div className="purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
             <a className="mt-[-0.65vmin] darktext  text-[3.75vmin] font-extralight">
               <i className="ri-heart-line"></i>
             </a>

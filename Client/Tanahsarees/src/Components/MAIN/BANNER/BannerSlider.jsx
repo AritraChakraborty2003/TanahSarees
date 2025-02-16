@@ -65,10 +65,10 @@ const BannerSlider = () => {
 
   return (
     <div
-      className="w-screen h-[90vh] lg:mt-10 mb-6 overflow-hidden relative"
+      className="w-screen   lg:mt-10 mb-6 overflow-hidden relative"
       style={{
         zIndex: 10,
-        marginTop: "3vmin",
+        marginTop: "4vmin",
         // marginTop: `${!change ? "320px" : "250px"}`,
       }}
     >
@@ -76,7 +76,7 @@ const BannerSlider = () => {
         {images.map((img, index) => (
           <div
             key={index}
-            className="w-full h-[90vh] flex justify-center items-center "
+            className="w-full h-[60vh] lg:h-[90vh] flex justify-center items-center "
           >
             <img
               src={img}

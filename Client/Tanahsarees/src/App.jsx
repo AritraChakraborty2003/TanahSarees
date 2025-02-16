@@ -38,7 +38,7 @@ const router = createBrowserRouter([
     path: "/trackorder",
     element: (
       <>
-        <MainHeader />
+        <MainHeader scrollValue="30" />
         <TrackOrder />
         <Footer />
       </>
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     path: "/shipping",
     element: (
       <>
-        <MainHeader />
+        <MainHeader scrollValue="30" />
         <Shipping />
         <Footer />
       </>
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
     path: "/contactus",
     element: (
       <>
-        <MainHeader />
+        <MainHeader scrollValue="30" />
         <ContactForm />
         <Footer />
       </>

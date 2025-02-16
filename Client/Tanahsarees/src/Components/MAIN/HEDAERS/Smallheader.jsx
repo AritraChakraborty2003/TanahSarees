@@ -33,7 +33,7 @@ const Smallheader = () => {
           <i className="ri-youtube-fill"></i>
         </a>
 
-        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.55vmin]">
+        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.55vmin] mr-[2vmin]">
           <i className="ri-pinterest-fill"></i>
         </a>
       </div>

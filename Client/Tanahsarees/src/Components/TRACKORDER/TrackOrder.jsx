@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 
 const TrackOrder = () => {
+  const { change } = useContext(AppContext);
   const [searchBy, setSearchBy] = useState("orderId");
   const [orderId, setOrderId] = useState("");
 
@@ -9,7 +11,15 @@ const TrackOrder = () => {
       <div
         className="w-[100vw] h-[50vh] flex justify-center items-center "
         style={{
-          marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
+          marginTop: `${
+            !change
+              ? screen.width > 1000
+                ? "20%"
+                : ""
+              : screen.width > 1000
+              ? "10%"
+              : ""
+          }`, // Adjust based on header height
           zIndex: 10, // Keep content below the header
         }}
       >
