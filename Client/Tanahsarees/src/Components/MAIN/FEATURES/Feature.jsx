@@ -41,39 +41,41 @@ const Feature = () => {
         </>
       )) || (
         <>
-          <div className="pt-1 pb-3">
-            <button
-              onClick={() => sliderRef.current.slickPrev()}
-              className="absolute top-[57%]  left-0 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
-            >
-              <ChevronLeft size={screen.width > 1000 ? 24 : 18} />
-            </button>
-            <Slider ref={sliderRef} {...settings}>
-              {data.map((item) => (
-                <>
-                  <div className="w-[27vw] ml-[5vmin] flex flex-col justify-center items-center">
-                    <div
-                      className="w-[20vw] h-[20vh]   flex justify-center items-center  rounded-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-110"
-                      key={item.id}
-                    >
-                      <img
-                        src={item.url}
-                        alt={item.text}
-                        className="max-w-full max-h-full object-contain flex justify-center items-center"
-                      />
+          {screen.width > 320 ? (
+            <div className="pt-1 pb-3">
+              <button
+                onClick={() => sliderRef.current.slickPrev()}
+                className="absolute top-[42.5%]  left-1 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+              >
+                <ChevronLeft size={screen.width > 1000 ? 24 : 18} />
+              </button>
+              <Slider ref={sliderRef} {...settings}>
+                {data.map((item) => (
+                  <>
+                    <div className="w-[27vw] ml-[5vmin] flex flex-col justify-center items-center mt-[3vmin]">
+                      <div
+                        className="w-[20vw] h-[24vh]   flex justify-center items-center  rounded-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-110"
+                        key={item.id}
+                      >
+                        <img
+                          src={item.url}
+                          alt={item.text}
+                          className="max-w-full max-h-full object-contain flex justify-center items-center"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
-            </Slider>
+                  </>
+                ))}
+              </Slider>
 
-            <button
-              onClick={() => sliderRef.current.slickNext()}
-              className="absolute top-[57%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
-            >
-              <ChevronRight size={screen.width > 1000 ? 24 : 18} />
-            </button>
-          </div>
+              <button
+                onClick={() => sliderRef.current.slickNext()}
+                className="absolute top-[42.5%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+              >
+                <ChevronRight size={screen.width > 1000 ? 24 : 18} />
+              </button>
+            </div>
+          ) : null}
         </>
       )}
     </div>

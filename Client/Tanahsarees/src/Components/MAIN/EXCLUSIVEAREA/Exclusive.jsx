@@ -25,10 +25,10 @@ const Exclusive = () => {
   return (
     <>
       <div>
-        <p className="text-center mt-15 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
+        <p className="text-center mt-5 lg:mt-15 font-Montserrat text-gray-500 font-medium text-[4.65vmin] md:text-[3.5vmin]">
           EXCLUSIVE OFFERS FOR YOU
         </p>
-        <div className="mt-12">
+        <div className="mt-6 md:mt-12">
           <CardObj data={data} />
         </div>
       </div>

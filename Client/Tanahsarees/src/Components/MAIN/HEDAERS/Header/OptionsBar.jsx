@@ -6,7 +6,7 @@ const OptionsBar = (props) => {
     <div>
       {(screen.width > 1000 && (
         <div
-          className={`mainHolder flex w-[100vw] pb-1 bg-white ${
+          className={`mainHolder flex w-[100vw] pb-0  bg-white ${
             props.isSticky === "true" ? "z-[1000] fixed top-25 left-0" : "z-10"
           }`}
         >

@@ -65,7 +65,7 @@ const BannerSlider = () => {
 
   return (
     <div
-      className="w-screen mt-[-1.5vmin]   lg:mt-10 mb-6 overflow-hidden relative"
+      className="w-screen mt-[-1.5vmin]   lg:mt-10  overflow-hidden relative"
       style={{
         zIndex: 10,
         marginTop: "4vmin",
