@@ -3,7 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { useContext } from "react";
+import { AppContext } from "../../../AppContext/AppContext";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
   { id: 1, title: "Item 1", img: "logo.png" },
@@ -15,6 +16,7 @@ const items = [
 ];
 
 const SliderComponent = () => {
+  const { change } = useContext(AppContext);
   const sliderRef = React.useRef(null);
 
   // Slick Slider Settings
@@ -22,7 +24,7 @@ const SliderComponent = () => {
     dots: false,
     infinite: true,
     speed: 100,
-    slidesToShow: 5, // Shows 4 cards at a time
+    slidesToShow: 4, // Shows 4 cards at a time
     slidesToScroll: 1, // Scrolls 1 at a time
     responsive: [
       {
@@ -30,55 +32,116 @@ const SliderComponent = () => {
         settings: { slidesToShow: 3 },
       },
       {
-        breakpoint: 768, // For mobile
-        settings: { slidesToShow: 2 },
+        breakpoint: 600, // For mobile
+        settings: { slidesToShow: 3 },
       },
     ],
   };
 
   return (
-    <div className="w-[100vw] mt-7 h-[37vh] overflow-hidden">
-      {/* Left Button */}
-      <button
-        onClick={() => sliderRef.current.slickPrev()}
-        className="absolute left-5 top-[55vh] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-3 rounded-full shadow-md"
-      >
-        <ChevronLeft size={24} />
-      </button>
+    <>
+      {screen.width < 600 && (
+        <div
+          className="w-[100vw] pt-5 pb-1 mt-[2vmin] lg:p-5 lg:pt-[calc(100px)]" // Adjust based on actual header height
+          style={{
+            paddingTop: `${
+              !change
+                ? document.getElementById("mainHeader")?.offsetHeight || "180px"
+                : "160px"
+            }`,
 
-      {/* Slider */}
-      <Slider
-        ref={sliderRef}
-        {...settings}
-        className="px-8  w-[100vw] h-[45vh]"
-      >
-        {items.map((item) => (
-          <>
-            <div key={item.id} className="">
-              <div className="w-[18vw] h-[33vh] flex flex-col items-center justify-center  rounded-[100%] border-[#F7D9CB] border-[3px] bg-white">
-                <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-[100px] h-[100px] rounded-full object-cover"
-                />
-                <p className="text-sm mt-2">{item.title}</p>
-              </div>
-            </div>
-            <div className="flex justify-center mr-7">
-              <p>{item.title}</p>
-            </div>
-          </>
-        ))}
-      </Slider>
+            zIndex: 900,
+          }}
+        >
+          {/* Left Button */}
+          {/* <button
+            onClick={() => sliderRef.current.slickPrev()}
+            className="absolute  left-3 lg:left-3  top-[17%] lg:top-[68%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+          >
+            <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+          </button> */}
 
-      {/* Right Button */}
-      <button
-        onClick={() => sliderRef.current.slickNext()}
-        className="absolute right-4 top-[55vh] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-3 rounded-full shadow-md"
-      >
-        <ChevronRight size={24} />
-      </button>
-    </div>
+          {/* Slider */}
+          <Slider
+            ref={sliderRef}
+            {...settings}
+            className="  w-[100vw] mt-[-40vmin] gap-x-6 ml-[1.2vmin]"
+          >
+            {items.map((item) => (
+              <>
+                <div className="w-[30vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+              </>
+            ))}
+          </Slider>
+
+          {/* Right Button */}
+          {/* <button
+            onClick={() => sliderRef.current.slickNext()}
+            className="absolute right-1 lg:right-3 top-[17%]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+          >
+            <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+          </button> */}
+        </div>
+      )}
+
+      {screen.width > 1000 && screen.width < 1700 && (
+        <div
+          className="w-[100vw] p-5 pt-[calc(100px)]" // Adjust based on actual header height
+          style={{
+            paddingTop: `${
+              !change
+                ? document.getElementById("mainHeader")?.offsetHeight || "696px"
+                : "380px"
+            }`,
+
+            zIndex: 900,
+          }}
+        >
+          {/* Left Button */}
+          <button
+            onClick={() => sliderRef.current.slickPrev()}
+            className="absolute  left-1 lg:left-3  top-[40%] lg:top-[23%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+          >
+            <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+          </button>
+
+          {/* Slider */}
+          {screen.width >= 1440 && screen.height > 820 ? (
+            <Slider
+              ref={sliderRef}
+              {...settings}
+              className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-38vmin] ml-[1.35vmin] "
+            >
+              {items.map((item) => (
+                <>
+                  <div className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+                </>
+              ))}
+            </Slider>
+          ) : (
+            <Slider
+              ref={sliderRef}
+              {...settings}
+              className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-46vmin] ml-[1.35vmin] "
+            >
+              {items.map((item) => (
+                <>
+                  <div className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2"></div>
+                </>
+              ))}
+            </Slider>
+          )}
+
+          {/* Right Button */}
+          <button
+            onClick={() => sliderRef.current.slickNext()}
+            className="absolute right-1 lg:right-3 top-[40%] lg:top-[23%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+          >
+            <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+          </button>
+        </div>
+      )}
+    </>
   );
 };
 

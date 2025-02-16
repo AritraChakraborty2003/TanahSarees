@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Faqcomponent from "./Components/FAQ/Faqcomponent";
-
+import { useState } from "react";
 import Loader from "./Components/MAIN/Loader";
 import MainHeader from "./Components/MAIN/HEDAERS/MAIN/MainHeader";
 import TrackOrder from "./Components/TRACKORDER/TrackOrder";
@@ -9,6 +9,7 @@ import ContactForm from "./Components/CONTACTUS/ContactForm";
 import Main from "./Components/MAIN/Main";
 import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
+import { AppContext } from "./AppContext/AppContext";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     path: "/faq",
     element: (
       <>
-        <MainHeader />
+        <MainHeader scrollValue="100" />
         <Faqcomponent />
         <Footer />
       </>
@@ -74,9 +75,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const [change, setChange] = useState(false);
   return (
     <>
-      <RouterProvider router={router} />
+      <AppContext.Provider value={{ change, setChange }}>
+        <RouterProvider router={router} />
+      </AppContext.Provider>
     </>
   );
 };

@@ -1,17 +1,18 @@
+/* eslint-disable react/jsx-no-undef */
 import BannerSlider from "./BANNER/BannerSlider";
 import MainHeader from "./HEDAERS/MAIN/MainHeader";
-import Footer from "../FOOTER/Footer";
-import SliderArea from "../SliderArea/SliderArea";
 import SliderComponent from "./SLIDER/SliderComponent";
+import Footer from "../FOOTER/Footer";
 
 const Main = () => {
   return (
     <>
-      <MainHeader />
-      <SliderArea />
-      <Footer />
-      <SliderComponent />
-      <BannerSlider />
+      <div className="relative">
+        <MainHeader />
+        <SliderComponent />
+        <BannerSlider />
+        <Footer />
+      </div>
     </>
   );
 };

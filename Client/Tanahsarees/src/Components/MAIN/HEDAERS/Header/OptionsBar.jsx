@@ -1,31 +1,13 @@
+/* eslint-disable react/prop-types */
 import Search from "./Search";
-import { useState, useEffect, useRef } from "react";
-const OptionsBar = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > lastScrollY.current) {
-        // Scrolling Down → Hide the div
-        setIsVisible(false);
-      } else {
-        // Scrolling Up → Show the div
-        setIsVisible(true);
-      }
-      lastScrollY.current = window.scrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+const OptionsBar = (props) => {
   return (
     <div>
       {(screen.width > 1000 && (
         <div
-          className={`fixed  bg-white duration-100 ${
-            isVisible ? "opacity-100" : "opacity-0"
+          className={`mainHolder flex w-[100vw] pb-3 bg-white ${
+            props.isSticky === "true" ? "z-[1000] fixed top-25 left-0" : "z-10"
           }`}
         >
           <div className="border-[#d5d5d5]  border-b-[0.15px] lg:border-[0.15px] flex justify-center items-center w-[100vw] pl-15 gap-4 flex-wrap p-4 mt-2 darktext font-lato">

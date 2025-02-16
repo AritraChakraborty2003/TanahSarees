@@ -1,11 +1,18 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Search from "./Search";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <>
       {(screen.width > 1000 && (
-        <div className="mainHolder flex w-[100vw] pb-3">
+        <div
+          className={`mainHolder flex w-[100vw] pb-3 bg-white ${
+            props?.type === "scrollHead"
+              ? "z-[1000] fixed top-0 left-0"
+              : "z-10"
+          }`}
+        >
           <div className="searchHolder w-[33.3%]  flex justify-center items-center">
             <Search />
           </div>
