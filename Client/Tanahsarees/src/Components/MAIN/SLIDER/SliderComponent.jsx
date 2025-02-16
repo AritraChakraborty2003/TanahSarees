@@ -72,7 +72,7 @@ const SliderComponent = () => {
                 <div className="">
                   <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
                     <div
-                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[2px]"
+                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[1px] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[1px]"
                       style={{
                         backgroundImage: `url(${item.img})`,
                         backgroundSize: "cover", // Ensures image fills the div
