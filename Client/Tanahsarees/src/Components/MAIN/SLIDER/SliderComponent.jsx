@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -106,7 +107,7 @@ const SliderComponent = () => {
           </button>
 
           {/* Slider */}
-          {screen.width >= 1440 && screen.height > 820 ? (
+          {screen.width >= 1440 && screen.height > 950 ? (
             <Slider
               ref={sliderRef}
               {...settings}
