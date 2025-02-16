@@ -1,8 +1,35 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import Modal from "react-modal";
+import { useState } from "react";
 
 const Header = (props) => {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  Modal.setAppElement("#root");
+  const modalOpen = () => {
+    setIsOpen(true);
+  };
+  const modalClose = () => {
+    setIsOpen(false);
+  };
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      zIndex: 1000, // Ensuring it's above all elements
+    },
+  };
+
+  // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+
   return (
     <>
       {(screen.width > 1000 && (
@@ -27,7 +54,7 @@ const Header = (props) => {
               <i className="ri-heart-line"></i>
             </a>
             <a className="mt-[-1vmin] darktext text-[3.75vmin] font-extralight">
-              <i className="ri-user-line"></i>
+              <i className="ri-user-line " onClick={modalOpen}></i>
             </a>
 
             <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.75vmin] font-extralight">
@@ -60,6 +87,28 @@ const Header = (props) => {
             </div>
           </div>
         </>
+      )}
+      {modalIsOpen ? (
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={modalOpen}
+          onRequestClose={modalClose}
+          style={customStyles}
+          contentLabel="Example Modal"
+          shouldCloseOnOverlayClick={false}
+        >
+          <button onClick={modalClose}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
+      ) : (
+        ""
       )}
     </>
   );
