@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Faqcomponent from "./Components/FAQ/Faqcomponent";
 import { useState } from "react";
-import Loader from "./Components/MAIN/Loader";
+import Loader from "./Components/MAIN/INDEX/Loader";
 import MainHeader from "./Components/MAIN/HEDAERS/MAIN/MainHeader";
 import TrackOrder from "./Components/TRACKORDER/TrackOrder";
 import Shipping from "./Components/SHIPPING&DELIVERY/Shipping";
 import ContactForm from "./Components/CONTACTUS/ContactForm";
-import Main from "./Components/MAIN/Main";
+import Main from "./Components/MAIN/INDEX/Main";
 import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 import { AppContext } from "./AppContext/AppContext";
