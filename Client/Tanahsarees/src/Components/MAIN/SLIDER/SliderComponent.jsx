@@ -130,7 +130,7 @@ const SliderComponent = () => {
             >
               {items.map((item) => (
                 <>
-                  <div className="ml-[-6vmin]">
+                  <div className="zoom-div ml-[-6vmin]">
                     <div className="flex flex-col gap-y-4 justify-center items-center">
                       <div
                         className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"

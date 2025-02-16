@@ -81,3 +81,6 @@
 .black {
   color: var(--black);
 }
+.zoom-div {
+  transition: transform 0.3s ease-in-out;
+}
