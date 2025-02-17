@@ -106,92 +106,100 @@ const SliderComponent = () => {
             className="w-[100vw] p-5 pt-[calc(100px)]" // Adjust based on actual header height
             style={{
               paddingTop: `${
-                screen.width > 1440
-                  ? !change
-                    ? document.getElementById("mainHeader")?.offsetHeight ||
-                      "696px"
-                    : "380px"
-                  : !change
+                !change
                   ? document.getElementById("mainHeader")?.offsetHeight ||
-                    "780px"
+                    "686px"
                   : "380px"
               }`,
 
               zIndex: 900,
             }}
           >
-            {/* Left Button */}
-            <button
-              onClick={() => sliderRef.current.slickPrev()}
-              className="absolute  left-1 lg:left-1  top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
-            >
-              <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
-            </button>
-
             {/* Slider */}
-            {screen.width >= 1440 && screen.height > 950 ? (
-              <Slider
-                ref={sliderRef}
-                {...settings}
-                className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-38vmin] ml-[1.35vmin] "
-              >
-                {items.map((item) => (
-                  <>
-                    <div className="zoom-div ml-[-6vmin]">
-                      <div className="flex flex-col gap-y-4 justify-center items-center">
-                        <div
-                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
-                          style={{
-                            backgroundImage: `url(${item.img})`,
-                            backgroundPosition: "center",
-
-                            // Assuming each `item` has an `image` property
-                          }}
-                        ></div>
-                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                          {item.title}
-                        </p>
+            {screen.width >= 1440 && screen.height > 890 ? (
+              <>
+                <button
+                  onClick={() => sliderRef.current.slickPrev()}
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                >
+                  <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                </button>
+                <Slider
+                  ref={sliderRef}
+                  {...settings}
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-38vmin] ml-[1.35vmin] "
+                >
+                  {items.map((item) => (
+                    <>
+                      <div className="zoom-div ml-[-6vmin]">
+                        <div className="flex flex-col gap-y-4 justify-center items-center">
+                          <div
+                            className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                            style={{
+                              backgroundImage: `url(${item.img})`,
+                              backgroundPosition: "center",
+                              // Assuming each item has an image property
+                            }}
+                          ></div>
+                          <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                            {item.title}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </>
-                ))}
-              </Slider>
+                    </>
+                  ))}
+                </Slider>
+                <button
+                  onClick={() => sliderRef.current.slickNext()}
+                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                >
+                  <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                </button>
+              </>
             ) : (
-              <Slider
-                ref={sliderRef}
-                {...settings}
-                className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-46vmin] ml-[1.35vmin] "
-              >
-                {items.map((item) => (
-                  <>
-                    <div className="ml-[-6vmin]">
-                      <div className="flex flex-col gap-y-4 justify-center items-center">
-                        <div
-                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                          style={{
-                            backgroundImage: `url(${item.img})`,
-                            backgroundPosition: "center",
+              <>
+                <button
+                  onClick={() => sliderRef.current.slickPrev()}
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5%] 2xl:top-[6.75%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                >
+                  <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                </button>
+                <Slider
+                  ref={sliderRef}
+                  {...settings}
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-46vmin] ml-[1.35vmin] "
+                >
+                  {items.map((item) => (
+                    <>
+                      <div className="ml-[-6vmin]">
+                        <div className="flex flex-col gap-y-4 justify-center items-center">
+                          <div
+                            className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                            style={{
+                              backgroundImage: `url(${item.img})`,
+                              backgroundPosition: "center",
 
-                            // Assuming each `item` has an `image` property
-                          }}
-                        ></div>
-                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                          {item.title}
-                        </p>
+                              // Assuming each item has an image property
+                            }}
+                          ></div>
+                          <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                            {item.title}
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </>
-                ))}
-              </Slider>
+                    </>
+                  ))}
+                </Slider>
+                <button
+                  onClick={() => sliderRef.current.slickNext()}
+                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5%] 2xl:top-[6.75%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                >
+                  <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                </button>
+              </>
             )}
 
             {/* Right Button */}
-            <button
-              onClick={() => sliderRef.current.slickNext()}
-              className="absolute right-1 lg:right-1 top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
-            >
-              <ChevronRight size={screen.width > 1000 ? 24 : 14} />
-            </button>
           </div>
         </>
       )}

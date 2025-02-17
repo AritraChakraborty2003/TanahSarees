@@ -1,12 +1,22 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AppContext } from "../../../../AppContext/AppContext";
+//import styles 👇
+import "react-modern-drawer/dist/index.css";
 
 const Header = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  Modal.setAppElement("#root");
+  const { cartIsOpen, toggleDrawer, hamIsOpen, toggleHam } =
+    useContext(AppContext);
+  console.log(hamIsOpen);
+
+  const toggle = () => {
+    console.log("toggleDrawer");
+  };
   const modalOpen = () => {
     setIsOpen(true);
   };
@@ -58,7 +68,7 @@ const Header = (props) => {
             </a>
 
             <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.75vmin] font-extralight">
-              <i className="ri-shopping-cart-line"></i>
+              <i className="ri-shopping-cart-line" onClick={toggleDrawer}></i>
             </a>
           </div>
         </div>
@@ -67,7 +77,7 @@ const Header = (props) => {
           <div className="flex w-[100vw]">
             <div className="logoHolder  flex  w-[24%]  mt-3 ">
               <a className="mt-[3vmin] darktext  text-[7.75vmin] font-extralight pl-3">
-                <i className="ri-menu-line"></i>
+                <i className="ri-menu-line" onClick={toggleHam}></i>
               </a>
             </div>
             <div className="logoHolder  flex justify-center items-center w-[49.5%]  mt-3 ml-[-0.35vmin] ">
@@ -82,7 +92,7 @@ const Header = (props) => {
               </a>
 
               <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[7.75vmin] font-extralight">
-                <i className="ri-shopping-cart-line"></i>
+                <i className="ri-shopping-cart-line" onClick={toggleDrawer}></i>
               </a>
             </div>
           </div>
