@@ -20,15 +20,19 @@ const Main = () => {
         <Feature />
         <Exclusive />
         <Selling />
-        <div className="mt-6">
+        <div className="mt-10 lg:mt-10">
           <BannerSlider />
         </div>
         <Occasion />
-        <BannerSlider />
+        <div className="mt-10 lg:mt-10">
+          <BannerSlider />
+        </div>
         <Collection />
         <Material />
         <Testimonial />
-        <Footer />
+        <div className="mt-5 lg:mt-10">
+          <Footer />
+        </div>
       </div>
     </>
   );

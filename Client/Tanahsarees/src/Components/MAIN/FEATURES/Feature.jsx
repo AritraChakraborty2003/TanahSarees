@@ -45,7 +45,7 @@ const Feature = () => {
             <div className="pt-1 pb-3">
               <button
                 onClick={() => sliderRef.current.slickPrev()}
-                className="absolute top-[14.45%]  left-1 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                className="absolute top-[14.65%]  left-1 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
               >
                 <ChevronLeft size={screen.width > 1000 ? 24 : 18} />
               </button>
@@ -54,7 +54,7 @@ const Feature = () => {
                   <>
                     <div className="w-[27vw] ml-[5vmin] flex flex-col justify-center items-center mt-[3vmin]">
                       <div
-                        className="w-[20vw] h-[24vh]   flex justify-center items-center  rounded-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-110"
+                        className="w-[20vw] h-[15vh]   flex justify-center items-center  rounded-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-110"
                         key={item.id}
                       >
                         <img
@@ -70,7 +70,7 @@ const Feature = () => {
 
               <button
                 onClick={() => sliderRef.current.slickNext()}
-                className="absolute top-[14.45%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                className="absolute top-[14.65%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
               >
                 <ChevronRight size={screen.width > 1000 ? 24 : 18} />
               </button>

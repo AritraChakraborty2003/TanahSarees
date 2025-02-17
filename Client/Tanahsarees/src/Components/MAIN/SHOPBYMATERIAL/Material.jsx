@@ -21,11 +21,14 @@ const Material = () => {
     },
   ];
   return (
-    <div className="mb-[20vh]">
-      <p className="text-center mt-15 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
-        SHOP BY MATERIAL
+    <div className="mt-5 lg:mt-15">
+      <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+        Shop By Material
       </p>
-      <div className="mt-12">
+      <p className="text-center text-sm lg:text-md  text-gray-500">
+        ( Shop your saree by Material )
+      </p>
+      <div className="mt-5 lg:mt-10">
         <CardText data={data} />
       </div>
     </div>

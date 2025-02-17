@@ -25,14 +25,14 @@ const Selling = () => {
     },
   ];
   return (
-    <div className="mt-[5vmin]">
-      <p className="text-center mt-15 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
+    <div className="mt-10 lg:mt-15 ">
+      <p className="text-center  font-Montserrat text-gray-500 font-medium text-[6vmin] lg:text-[3.5vmin]">
         SELLING FAST
       </p>
-      <div className="mt-5">
+      <div className="mt-1">
         <TimerComp days={10} />
       </div>
-      <div className="mt-12">
+      <div className="mt-5 lg:mt-10">
         <CardText data={data} />
       </div>
     </div>

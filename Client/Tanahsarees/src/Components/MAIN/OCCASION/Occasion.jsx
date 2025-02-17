@@ -21,11 +21,14 @@ const Occasion = () => {
     },
   ];
   return (
-    <div className="mb-[20vh]">
-      <p className="text-center mt-15 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
-        SELLING FAST
+    <div className="mt-5 lg:mt-15 ">
+      <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin]  lg:text-[4.75vmin]">
+        By Ocassions
       </p>
-      <div className="mt-12">
+      <p className="text-center text-sm lg:text-md text-gray-500">
+        ( Shop by ocassion )
+      </p>
+      <div className="mt-5 lg:mt-10">
         <CardText data={data} />
       </div>
     </div>

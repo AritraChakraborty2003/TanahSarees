@@ -68,7 +68,7 @@ const BannerSlider = () => {
       className="w-screen mt-[-1.5vmin]   lg:mt-10  overflow-hidden relative"
       style={{
         zIndex: 10,
-        marginTop: "4vmin",
+        // marginTop: "4vmin",
         // marginTop: `${!change ? "320px" : "250px"}`,
       }}
     >

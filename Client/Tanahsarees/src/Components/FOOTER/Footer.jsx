@@ -1,12 +1,6 @@
 const Footer = () => {
   return (
-    <div
-      className=" bottom-0 w-[100vw]   bg-[#f7d9cb] flex flex-col  font-Poppins text-black"
-      style={{
-        marginTop: `${screen.width > 1000 ? "2.5%" : ""}`, // Adjust based on header height
-        zIndex: 10, // Keep content below the header
-      }}
-    >
+    <div className=" bottom-0 w-[100vw]   bg-[#f7d9cb] flex flex-col  font-Poppins text-black">
       {(screen.width > 1000 && (
         <>
           <div className="flex w-full p-[1vmin] gap-x-3 darktext font-Poppins">

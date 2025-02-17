@@ -30,12 +30,12 @@ const CardText = (props) => {
 
   return (
     <>
-      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 lg:gap-x-10 lg:gap-y-10">
+      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-10 lg:gap-y-10">
         {data.map((item) => (
           <Tilt
-            tiltMaxAngleX={15} // Tilt angle on X-axis
-            tiltMaxAngleY={15} // Tilt angle on Y-axis
-            scale={1.03} // Image zoom on hover
+            tiltMaxAngleX={screen.width > 800 ? 15 : 0} // Tilt angle on X-axis
+            tiltMaxAngleY={screen.width > 800 ? 15 : 0} // Tilt angle on Y-axis
+            scale={screen.width > 800 ? 1.03 : 1.01} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
             className="relative w-[45vw]  lg:w-76  rounded-lg shadow-lg overflow-hidden"
           >
@@ -60,7 +60,7 @@ const CardText = (props) => {
                 ) : (
                   ""
                 )}
-                <h3 className="absolute bottom-2   w-full  text-[#BCBBBC] text-Montserrat font-normal flex justify-center text-xl p-2 rounded">
+                <h3 className="absolute bottom-2   w-full  text-[#BCBBBC] text-Montserrat font-normal flex justify-center text-xl p-2 rounded text-[3.55vmin] lg:text-[2.45vmin]">
                   {item.title}
                 </h3>
               </div>
@@ -69,10 +69,12 @@ const CardText = (props) => {
                   <div>
                     <p className="p-2 text-gray-500 text-lg">{item.name}</p>
                     <p className="p-2 text-gray-500 text-sm">
-                      {item.review.slice(0, 42) + "...."}
+                      {screen.width > 900
+                        ? item.review.slice(0, 42) + "...."
+                        : item.review.slice(0, 32) + "...."}
                     </p>
                     <p
-                      className="p-2 text-gray-500 text-sm font-medium font-Montserrat"
+                      className="p-2 text-gray-500 text-[2.45vmin] lg:text-sm font-medium font-Montserrat"
                       onClick={modalOpen}
                     >
                       Read More

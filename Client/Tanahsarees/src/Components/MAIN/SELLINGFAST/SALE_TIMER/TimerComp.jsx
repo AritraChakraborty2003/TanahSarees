@@ -12,7 +12,7 @@ const TimerComp = (props) => {
     }, 1000);
 
     return () => clearInterval(timer); // Cleanup on unmount
-  }, []); // Empty dependency array ensures it runs once
+  }); // Empty dependency array ensures it runs once
 
   const formatTime = (ms) => {
     if (ms <= 0) return "Sale ended"; // Stop countdown when time reaches zero
@@ -24,7 +24,7 @@ const TimerComp = (props) => {
   };
 
   return (
-    <div className="text-center text-md  lg:text-lg font-Montserrat text-[#FF0000]">
+    <div className="text-center text-sm  lg:text-lg font-Montserrat text-[#FF0000]">
       {formatTime(timeLeft)}
     </div>
   );

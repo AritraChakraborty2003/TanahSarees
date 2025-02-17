@@ -63,18 +63,21 @@ const Testimonial = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
   };
 
   return (
-    <div>
-      <p className="text-center mt-1 font-Montserrat text-gray-500 font-medium text-[3.5vmin]">
-        TANAHSAREES HAPPY CUSTOMERS
+    <div className="mt-5 lg:mt-15">
+      <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+        Our happy customers
       </p>
-      <div className="mt-15 mb-15 ">
+      <p className="text-center text-sm lg:text-md text-gray-500 mt-1">
+        ( Our Testimonials from clients )
+      </p>
+      <div className=" mt-5 lg:mt-10">
         {data && data.length > 4 ? (
           <Slider className="overflow-hidden" {...settings}>
             {data.map((item, index) => (
@@ -82,7 +85,7 @@ const Testimonial = () => {
             ))}
           </Slider>
         ) : (
-          <div className="flex justify-center gap-5">
+          <div className="flex justify-center gap-3">
             {data.map((item, index) => (
               <CardText key={index} data={[item]} />
             ))}
