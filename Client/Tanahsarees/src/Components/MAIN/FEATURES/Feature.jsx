@@ -9,7 +9,7 @@ const Feature = () => {
   const data = [
     { url: "fast-delivery.png", text: "Fast Delivery" },
     { url: "quality.png", text: "Best Quality" },
-    { url: "credit-card.png", text: "Secure Payment" },
+    { url: "card1.png", text: "Secure Payment" },
     { url: "price.png", text: "Best Price" },
     { url: "online-purchase.png", text: "100% Purchase protection" },
   ];
@@ -45,7 +45,7 @@ const Feature = () => {
             <div className="pt-1 pb-3">
               <button
                 onClick={() => sliderRef.current.slickPrev()}
-                className="absolute top-[14.65%]  left-1 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                className="absolute top-[14.85%]  left-1 lg:left-[1px]  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
               >
                 <ChevronLeft size={screen.width > 1000 ? 24 : 18} />
               </button>
@@ -70,7 +70,7 @@ const Feature = () => {
 
               <button
                 onClick={() => sliderRef.current.slickNext()}
-                className="absolute top-[14.65%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                className="absolute top-[14.85%] right-[1px] lg:right-1  transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
               >
                 <ChevronRight size={screen.width > 1000 ? 24 : 18} />
               </button>
