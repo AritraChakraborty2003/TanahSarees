@@ -90,7 +90,7 @@ export default function MainHeader(props) {
       document.body.style.bottom = "";
       document.body.style.overflow = "";
     };
-  }, [cartIsOpen]);
+  }, [cartIsOpen, loginOpen]);
 
   return (
     <>
@@ -236,7 +236,7 @@ export default function MainHeader(props) {
             <div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
-                  SALE
+                  <Link to="/main"> SALE</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
@@ -246,12 +246,12 @@ export default function MainHeader(props) {
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
-                  PRODUCTS
+                  <Link to="/products"> PRODUCTS </Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
-                  FAQ
+                  <Link to="/faq"> FAQ</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
@@ -261,7 +261,7 @@ export default function MainHeader(props) {
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
-                  TRACK ORDER
+                  <Link to="/tackorder"> TRACK ORDER</Link>
                 </div>
               </div>
               {!isLoggedIn ? (
