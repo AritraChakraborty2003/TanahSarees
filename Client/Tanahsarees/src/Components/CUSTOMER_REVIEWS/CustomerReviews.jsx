@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import CardText from "../CARDS/CardText";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
