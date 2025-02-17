@@ -145,11 +145,17 @@ export default function MainHeader(props) {
           </div>
           <div
             className={`absolute flex flex-col justify-center items-center ${
-              contentCart <= 2 ? "bottom-2" : ""
+              screen.width > 1000
+                ? contentCart <= 2
+                  ? "bottom-2"
+                  : ""
+                : contentCart <= 2
+                ? "bottom-10"
+                : ""
             }`}
           >
             <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%]  ">
-              <div className="flex subtotalArea w-[100%] p-3">
+              <div className="flex subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
                 <p className="font-Montserrat text-xs text-[#883022] tracking-[2.35px]">
                   SUBTOTAL
                 </p>
