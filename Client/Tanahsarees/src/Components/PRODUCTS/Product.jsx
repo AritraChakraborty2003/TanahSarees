@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-key */
 import ProductCard from "../CARDS/ProductCard";
-
+import { useContext } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 const Product = () => {
+  const { change } = useContext(AppContext);
   const Prodname = "Silk raw Mango";
   const data = [
     {
@@ -41,9 +43,16 @@ const Product = () => {
     },
   ];
   return (
-    <div className="lg:mt-100">
+    <div>
       <>
-        <div className="flex flex-col text-center ">
+        <div
+          className="flex flex-col text-center "
+          style={{
+            paddingTop: `${!change ? "23%" : "14%"}`,
+
+            zIndex: 900,
+          }}
+        >
           <p className="text-sm text-gray-500">Home/{Prodname}</p>
           <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
             {Prodname}

@@ -131,7 +131,7 @@ const SliderComponent = () => {
                 <Slider
                   ref={sliderRef}
                   {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-48vmin] ml-[1.35vmin] "
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-42vmin] ml-[1.35vmin] "
                 >
                   {items.map((item) => (
                     <>
@@ -171,7 +171,7 @@ const SliderComponent = () => {
                 <Slider
                   ref={sliderRef}
                   {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-38vmin] ml-[1.35vmin] "
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-46vmin] ml-[1.35vmin] "
                 >
                   {items.map((item) => (
                     <>

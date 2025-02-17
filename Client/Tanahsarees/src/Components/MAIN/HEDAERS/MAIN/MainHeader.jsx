@@ -121,7 +121,9 @@ export default function MainHeader(props) {
                 <p className="darktext font-Space-Grotesk font-semibold text-[4vmin] p-2 letter-spacing-[3px]">
                   Cart
                 </p>
-                <p>( View Cart )</p>
+                <p className="text-[3vmin] lg:text-[2.95vmin] darktext ml-2">
+                  ( View Cart )
+                </p>
               </div>
 
               <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 mt-1">
@@ -151,8 +153,8 @@ export default function MainHeader(props) {
                 <p className="font-Montserrat text-xs text-[#883022] tracking-[2.35px]">
                   SUBTOTAL
                 </p>
-                <div className="flex subtotalArea w-[26vw] p-1 justify-end">
-                  <p className="text-end mt-[-1vmin]  darktext font-Montserrat font-normal tracking-[2.35px]">
+                <div className="flex subtotalArea  w-[50vw] lg:w-[26vw] p-1 justify-end mt-[-1.35vmin] lg:mt-[-1vmin] ">
+                  <p className="text-end  darktext font-Montserrat font-normal tracking-[2.35px]">
                     ₹2579
                   </p>
                 </div>
@@ -160,7 +162,7 @@ export default function MainHeader(props) {
             </div>
 
             <div className="sloganText">
-              <p className="text-sm darktext font-light mt-[-0.15vmin]">
+              <p className="text-[3vmin] pl-2 md:text-sm darktext font-light mt-[-0.15vmin]">
                 Shipping, taxes, and discount codes calculated at checkout.
               </p>
             </div>
