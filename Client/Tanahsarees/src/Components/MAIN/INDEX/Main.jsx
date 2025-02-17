@@ -16,7 +16,9 @@ const Main = () => {
       <div className="relative">
         <MainHeader />
         <SliderComponent />
-        <BannerSlider />
+        <div className="mt-10 lg:mt-10">
+          <BannerSlider />
+        </div>
         <Feature />
         <Exclusive />
         <Selling />
