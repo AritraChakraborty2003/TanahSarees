@@ -40,13 +40,13 @@ const Shipping = () => {
       {/* First Internal Div - Breadcrumbs */}
       <div className="flex flex-col items-center text-gray-600 mt-10 p-1 ">
         <p className="text-sm mb-3 font-Montserrat">Home / Shipping</p>
-        <p className="text-7xl font-medium overflow-hidden p-1 font-Montserrat">
+        <p className="text-5xl lg:text-7xl font-medium overflow-hidden p-1 font-Montserrat">
           DELIVERY
         </p>
       </div>
 
       {/* Second Internal Div - Image */}
-      <div className="w-[95vw] lg:w-[80vw] h-[63vh] mt-10 flex justify-center items-center">
+      <div className="w-[95vw] w-[90vw] h-[28vh] lg:w-[80vw] lg:h-[63vh] flex justify-center items-center mt-4">
         <img
           src="https://t4.ftcdn.net/jpg/05/11/73/83/240_F_511738334_ece4QeAUMMN6Pf7UxUax0y24Xh2SyuFu.jpg"
           alt="Shipping"
@@ -55,7 +55,7 @@ const Shipping = () => {
       </div>
 
       {/* Third Internal Div - FAQ */}
-      <div className=" w-[95vw] lg:w-[100vw] mt-[-50vmin]">
+      <div className=" w-[95vw] lg:w-[100vw] mt-[-21vmin] lg:mt-[-50vmin]">
         <Faqcomponent data={faqs} type={"not_faq"} />
       </div>
     </div>

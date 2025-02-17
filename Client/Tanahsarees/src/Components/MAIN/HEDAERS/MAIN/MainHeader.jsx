@@ -10,6 +10,7 @@ import Drawer from "react-modern-drawer";
 import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
+import { Link } from "react-router-dom";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, isLoggedIn, setIsLoggedIn } =
@@ -65,7 +66,7 @@ export default function MainHeader(props) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []); // Re
   useEffect(() => {
-    if (cartIsOpen || hamIsOpen || loginOpen) {
+    if (cartIsOpen || loginOpen) {
       document.body.style.position = "fixed";
       document.body.style.top = "0";
       document.body.style.left = "0";
@@ -255,7 +256,7 @@ export default function MainHeader(props) {
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
-                  SHIPPING
+                  <Link to="/shipping">SHIPPING</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
