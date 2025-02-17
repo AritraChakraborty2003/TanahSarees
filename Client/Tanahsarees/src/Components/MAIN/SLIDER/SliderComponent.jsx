@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
+// import Product from "../../PRODUCTS/Product";
+// import { Link, useNavigate } from "react-router-dom";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
   { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
@@ -18,6 +20,7 @@ const items = [
 const SliderComponent = () => {
   const { change } = useContext(AppContext);
   const sliderRef = React.useRef(null);
+  // const navigate = useNavigate();
 
   // Slick Slider Settings
   const settings = {
@@ -52,6 +55,7 @@ const SliderComponent = () => {
 
             zIndex: 900,
           }}
+          // onClick={() => navigate("/Products")}
         >
           {/* Left Button */}
           {/* <button
