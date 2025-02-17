@@ -37,7 +37,9 @@ const Feature = () => {
     <div>
       {(screen.width > 1000 && (
         <>
-          <FeatureCard data={data} />
+          <div className="lg:mt-3">
+            <FeatureCard data={data} />
+          </div>
         </>
       )) || (
         <>
