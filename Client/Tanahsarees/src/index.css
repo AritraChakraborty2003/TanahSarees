@@ -26,6 +26,10 @@
   --font-Space-Grotesk: "Space Grotesk", serif;
   --font-vibes: "Great Vibes", cursive;
 }
+body.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
 
 .font-Poppins {
   font-family: var(--font-primary);

@@ -100,9 +100,26 @@ const router = createBrowserRouter([
 
 const App = () => {
   const [change, setChange] = useState(false);
+  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [hamIsOpen, setHamIsOpen] = useState(false);
+  const toggleDrawer = () => setCartIsOpen(!cartIsOpen);
+  const toggleHam = () => setHamIsOpen(!hamIsOpen);
+  const [contentCart, getContentCart] = useState(true);
   return (
     <>
-      <AppContext.Provider value={{ change, setChange }}>
+      <AppContext.Provider
+        value={{
+          change,
+          setChange,
+          cartIsOpen,
+          toggleDrawer,
+          hamIsOpen,
+          setHamIsOpen,
+          toggleHam,
+          contentCart,
+          getContentCart,
+        }}
+      >
         <RouterProvider router={router} />
       </AppContext.Provider>
     </>
