@@ -3,20 +3,20 @@ import CardText from "../../CARDS/CardText";
 const Occasion = () => {
   const data = [
     {
-      image: "Sarees/yellow.png",
+      image: "Sarees/saree7.jpg",
       title: "HALDI RASAM",
     },
 
     {
-      image: "/Sarees/cocktail.png",
+      image: "/Sarees/saree8.jpg",
       title: "SANGEET",
     },
     {
-      image: "/Sarees/pink.png",
+      image: "/Sarees/saree9.jpg",
       title: "BRIDAL LOOK",
     },
     {
-      image: "/Sarees/reception.png",
+      image: "/Sarees/saree10.jpg",
       title: "SHAHI RECEPTION",
     },
   ];

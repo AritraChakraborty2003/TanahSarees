@@ -10,6 +10,7 @@ import Main from "./Components/MAIN/INDEX/Main";
 import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 import { AppContext } from "./AppContext/AppContext";
+import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,16 @@ const router = createBrowserRouter([
     element: (
       <>
         <TestUpload />
+      </>
+    ),
+  },
+  {
+    path: "/reviews",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <CustomerReviews />
+        <Footer />
       </>
     ),
   },

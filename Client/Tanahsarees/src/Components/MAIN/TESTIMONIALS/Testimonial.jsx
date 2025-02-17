@@ -7,32 +7,32 @@ const Testimonial = () => {
   const data = [
     {
       image: "/Sarees/saree1.jpg",
-      title: "Ananya Mehta ⭐⭐⭐⭐⭐",
-      description:
+      name: "Ananya Mehta ⭐⭐⭐⭐⭐",
+      review:
         "Absolutely loved the silk saree I purchased from TanahSarees! The fabric is so soft, and the intricate zari work is stunning. Perfect for festive occasions. Highly recommend!",
     },
     {
       image: "/Sarees/saree2.jpg",
-      title: "Priya Sharma ⭐⭐⭐⭐",
-      description:
+      name: "Priya Sharma ⭐⭐⭐⭐",
+      review:
         "I am thrilled to say that I have received a beautiful silk saree from TanahSarees. The fabric is soft and the design is intricate. Highly recommend this brand!",
     },
     {
       image: "/Sarees/saree3.jpg",
-      title: "Radhika Iyer ⭐⭐⭐⭐",
-      description:
+      name: "Radhika Iyer ⭐⭐⭐⭐",
+      review:
         "The fabric is soft, and the design is intricate. I would highly recommend this brand to anyone looking for a beautiful silk saree.",
     },
     {
       image: "/Sarees/saree4.jpg",
-      title: "Neha Kapoor ⭐⭐⭐⭐⭐",
-      description:
+      name: "Neha Kapoor ⭐⭐⭐⭐⭐",
+      review:
         "Fast delivery and premium quality! The silk saree feels luxurious, and the embroidery is exquisite. Worth every penny.",
     },
     {
       image: "/Sarees/saree5.jpg",
-      title: "Meera Nair ⭐⭐⭐⭐⭐",
-      description:
+      name: "Meera Nair ⭐⭐⭐⭐⭐",
+      review:
         "One of the best silk sarees I have ever owned! The detailing is just amazing.",
     },
   ];

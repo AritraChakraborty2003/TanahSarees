@@ -1,20 +1,43 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 import Tilt from "react-parallax-tilt";
-
+import Modal from "react-modal";
+import { useState } from "react";
 const CardText = (props) => {
   const { data } = props;
+  const [modalIsOpen, setIsOpen] = useState(false);
+  Modal.setAppElement("#root");
+  const modalOpen = () => {
+    setIsOpen(true);
+  };
+  const modalClose = () => {
+    setIsOpen(false);
+  };
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      zIndex: 1000, // Ensuring it's above all elements
+    },
+  };
 
   return (
     <>
-      <div className="flex justify-center items-center overflow-hidden cursor-pointer gap-x-5">
+      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 lg:gap-x-10 lg:gap-y-10">
         {data.map((item) => (
           <Tilt
             tiltMaxAngleX={15} // Tilt angle on X-axis
             tiltMaxAngleY={15} // Tilt angle on Y-axis
             scale={1.03} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
-            className="relative w-80 h-[60vvmin] bg-white rounded-lg shadow-lg overflow-hidden"
+            className="relative w-[45vw]  lg:w-76  rounded-lg shadow-lg overflow-hidden"
           >
             <div className="flex flex-col  overflow-hidden gap-y-3">
               {/* Image Section */}
@@ -27,7 +50,7 @@ const CardText = (props) => {
                 {/* Black vignete */}
                 <div className="absolute inset-x-[-100px] bottom-0 h-1/1 bg-gradient-to-t from-black/100 via-transparent"></div>
                 {/* Text Content Section */}
-                <h2 className="absolute w-full bottom-10 text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
+                <h2 className="absolute w-full bottom-10 text-lg lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
                   {item.maintitle}
                 </h2>
                 {item.description ? (
@@ -41,10 +64,48 @@ const CardText = (props) => {
                   {item.title}
                 </h3>
               </div>
+              {item.name ? (
+                <>
+                  <div>
+                    <p className="p-2 text-gray-500 text-lg">{item.name}</p>
+                    <p className="p-2 text-gray-500 text-sm">
+                      {item.review.slice(0, 42) + "...."}
+                    </p>
+                    <p
+                      className="p-2 text-gray-500 text-sm font-medium font-Montserrat"
+                      onClick={modalOpen}
+                    >
+                      Read More
+                    </p>
+                  </div>
+                </>
+              ) : null}
             </div>
           </Tilt>
         ))}
       </div>
+
+      {modalIsOpen ? (
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={modalOpen}
+          onRequestClose={modalClose}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+          <button onClick={modalClose}>close</button>
+          <div>I am a modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
+      ) : (
+        ""
+      )}
     </>
   );
 };

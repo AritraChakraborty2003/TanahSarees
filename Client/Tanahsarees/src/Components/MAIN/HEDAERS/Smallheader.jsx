@@ -12,7 +12,9 @@ const Smallheader = () => {
         <p>
           <Link to="/trackorder">TRACK YOUR ORDER</Link>
         </p>
-        <p>CUSTOMER REVIEWS</p>
+        <p>
+          <Link to="/reviews">CUSTOMER REVIEWS</Link>
+        </p>
         <p>RETURNS</p>
         <p>
           <Link to="/contactus">CONTACT US</Link>

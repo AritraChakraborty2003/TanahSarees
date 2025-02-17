@@ -5,7 +5,7 @@ const CardObj = (props) => {
   const { data } = props;
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-5">
+      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-7">
         {data.map((item) => (
           <div className="flex  flex-col gap-y-2 lg:gap-y-3">
             <Tilt
@@ -13,7 +13,7 @@ const CardObj = (props) => {
               tiltMaxAngleY={15} // Tilt angle on Y-axis
               scale={1.03} // Image zoom on hover
               transitionSpeed={500} // Smooth transition
-              className="relative lg:ml-0 w-[45vw]  lg:w-80 bg-white rounded-lg shadow-lg overflow-hidden"
+              className="relative lg:ml-0  w-[45vw]  lg:w-80  bg-white rounded-lg shadow-lg overflow-hidden"
             >
               {/* Image Section */}
               <div className="relative overflow-hidden w-full h-2/3">

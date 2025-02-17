@@ -3,7 +3,7 @@ import CardText from "../../CARDS/CardText";
 const Material = () => {
   const data = [
     {
-      image: "Sarees/yellow.png",
+      image: "Sarees/saree3.jpg",
       title: "ORGANZA SILK",
     },
 
@@ -12,11 +12,11 @@ const Material = () => {
       title: "TISSUE SILK",
     },
     {
-      image: "/Sarees/15.3 (1).png",
+      image: "/Sarees/saree5.jpg",
       title: "SOFT SILK",
     },
     {
-      image: "/Sarees/pink.png",
+      image: "/Sarees/saree8.jpg",
       title: "RAW MANGO",
     },
   ];

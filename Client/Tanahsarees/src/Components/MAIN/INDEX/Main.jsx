@@ -20,7 +20,9 @@ const Main = () => {
         <Feature />
         <Exclusive />
         <Selling />
-        <BannerSlider />
+        <div className="mt-6">
+          <BannerSlider />
+        </div>
         <Occasion />
         <BannerSlider />
         <Collection />

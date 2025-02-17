@@ -3,7 +3,7 @@ import CardText from "../../CARDS/CardText";
 const Collection = () => {
   const data = [
     {
-      image: "Sarees/Black.png",
+      image: "Sarees/saree1.jpg",
       title: "PARTY BASH",
     },
 
@@ -12,11 +12,11 @@ const Collection = () => {
       title: "FUNCTION SPECIAL",
     },
     {
-      image: "/Sarees/10.4  (3).png",
+      image: "/Sarees/saree3.jpg",
       title: "BANARASI BEAUTY",
     },
     {
-      image: "/Sarees/saree6.jpg",
+      image: "/Sarees/saree4.jpg",
       title: "PERFECT PASTEL",
     },
   ];
