@@ -12,32 +12,32 @@ const Product = () => {
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree2.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree8.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree7.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree9.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree3.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree4.jpg",
       name: "Silk raw mango",
       price: "3000",
     },
