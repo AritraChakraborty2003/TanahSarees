@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
+// import Product from "../../PRODUCTS/Product";
+// import { Link, useNavigate } from "react-router-dom";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
   { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
@@ -18,6 +20,7 @@ const items = [
 const SliderComponent = () => {
   const { change } = useContext(AppContext);
   const sliderRef = React.useRef(null);
+  // const navigate = useNavigate();
 
   // Slick Slider Settings
   const settings = {
@@ -52,6 +55,7 @@ const SliderComponent = () => {
 
             zIndex: 900,
           }}
+          // onClick={() => navigate("/Products")}
         >
           {/* Left Button */}
           {/* <button
@@ -120,14 +124,14 @@ const SliderComponent = () => {
               <>
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[6.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                 </button>
                 <Slider
                   ref={sliderRef}
                   {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-38vmin] ml-[1.35vmin] "
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-48vmin] ml-[1.35vmin] "
                 >
                   {items.map((item) => (
                     <>
@@ -151,7 +155,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[7%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[6.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>

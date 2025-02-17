@@ -11,6 +11,9 @@ import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 import { AppContext } from "./AppContext/AppContext";
 import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
+// import Product from "./Components/PRODUCTS/Product";
+
+import Product from "./Components/PRODUCTS/Product";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +82,16 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <CustomerReviews />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/products",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Product />
         <Footer />
       </>
     ),
