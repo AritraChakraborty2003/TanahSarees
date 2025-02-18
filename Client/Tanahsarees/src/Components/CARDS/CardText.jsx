@@ -37,7 +37,7 @@ const CardText = (props) => {
             tiltMaxAngleY={screen.width > 800 ? 15 : 0} // Tilt angle on Y-axis
             scale={screen.width > 800 ? 1.03 : 1.01} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
-            className="relative w-[45vw]  lg:w-76  rounded-lg shadow-lg overflow-hidden"
+            className="relative w-[45vw]  lg:w-76 2xl:w-[44vmin]  rounded-lg shadow-lg overflow-hidden"
           >
             <div className="flex flex-col  overflow-hidden gap-y-3">
               {/* Image Section */}
