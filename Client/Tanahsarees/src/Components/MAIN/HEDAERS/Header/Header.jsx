@@ -25,6 +25,7 @@ const Header = (props) => {
   };
   const customStyles = {
     content: {
+      position: "fixed",
       top: "50%",
       left: "50%",
       right: "auto",

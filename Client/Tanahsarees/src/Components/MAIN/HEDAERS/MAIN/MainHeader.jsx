@@ -11,6 +11,7 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
+import AuthModal from "./AuthModal";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, isLoggedIn, setIsLoggedIn } =
@@ -194,13 +195,13 @@ export default function MainHeader(props) {
               </div>
 
               <div className="sloganText">
-                <p className="text-[3vmin] pl-2 md:text-sm darktext font-light mt-[-0.15vmin]">
+                <p className="text-[2.75vmin] pl-[1px] lg:pl-2 md:text-sm darktext font-light ml-[-1vmin] mt-[-0.15vmin]">
                   Shipping, taxes, and discount codes calculated at checkout.
                 </p>
               </div>
 
               <div className="w-[100%] buttonHolder flex justify-start items-center ml-[18px]">
-                <button className="w-[80%] bg-[#f58b76] text-white text-center mt-3  p-1 lg:p-2">
+                <button className="w-[80%] bg-[#f58b76] text-white text-center mt-3  p-1 pl-2 lg:p-2">
                   PLACE ORDER
                 </button>
               </div>
@@ -227,7 +228,7 @@ export default function MainHeader(props) {
             lockBackgroundScroll
           >
             <div className="cross-holder flex justify-end mr-4 mt-3">
-              <div className="imagHolder">
+              <div className="imageHolder">
                 <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 mt-1 p-1">
                   <i className="ri-close-line" onClick={toggleHam}></i>
                 </a>
@@ -235,38 +236,59 @@ export default function MainHeader(props) {
             </div>
             <div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   <Link to="/main"> SALE</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   SAREES
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   <Link to="/products"> PRODUCTS </Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   <Link to="/faq"> FAQ</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   <Link to="/shipping">SHIPPING</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium">
+                <div
+                  onClick={toggleHam}
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                >
                   <Link to="/tackorder"> TRACK ORDER</Link>
                 </div>
               </div>
               {!isLoggedIn ? (
                 <div className="optionsHolder w-[75vw] flex justify-start items-center mt-9 pl-2">
-                  <div className="btnHolder flex gap-x-3 w-[100%] ">
+                  <div
+                    onClick={toggleHam}
+                    className="btnHolder flex gap-x-3 w-[100%] "
+                  >
                     <button
                       className="btn p-2 border-[#F28C28] border-[1px] bg-[#f69a7c]  text-white rounded-[11px] w-[50%] "
                       onClick={modalOpen}
@@ -302,18 +324,21 @@ export default function MainHeader(props) {
             onAfterOpen={modalOpen}
             onRequestClose={modalClose}
             style={customStyles}
-            contentLabel="Example Modal"
+            contentLabel="Small Login Modal"
             shouldCloseOnOverlayClick={false}
           >
-            <button onClick={modalClose}>close</button>
-            <div>I am a modal</div>
-            <form>
-              <input />
-              <button>tab navigation</button>
-              <button>stays</button>
-              <button>inside</button>
-              <button>the modal</button>
-            </form>
+            <div className="imageHolder">
+              <a className=" flex justify-end text-2xl font-light font-Lato darktext mr-1 mt-1 p-1">
+                <i className="ri-close-line" onClick={modalClose}></i>
+              </a>
+            </div>
+            <div className="pb-3 pt-3">
+              <AuthModal
+                isOpen={loginOpen}
+                isLogin={false}
+                onClose={() => setLoginOpen(false)}
+              />
+            </div>
           </Modal>
         ) : (
           ""
