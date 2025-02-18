@@ -29,13 +29,19 @@ const Header = (props) => {
       top: "50%",
       left: "50%",
       right: "auto",
+      width: "65vw",
+      height: "56vh",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      backgroundColor: "transparent",
+      border: "none",
+      boxShadow: "none",
     },
     overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      zIndex: 1000, // Ensuring it's above all elements
+      zIndex: 1600, // Ensuring it's above all elements
+      backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
+      backdropFilter: "blur(1.5px)", // Optional blur effect
     },
   };
 
@@ -108,15 +114,10 @@ const Header = (props) => {
           contentLabel="Example Modal"
           shouldCloseOnOverlayClick={false}
         >
-          <button onClick={modalClose}>close</button>
-          <div>I am a modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+          <div className="w-[100%] h-[100%] flex bgpink">
+            <div className="left w-[60%] border-[1px]"></div>
+            <div className="right w-[40%] border-[1px]"></div>
+          </div>
         </Modal>
       ) : (
         ""

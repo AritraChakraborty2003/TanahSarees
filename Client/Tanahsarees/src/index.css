@@ -14,6 +14,7 @@
   --side-text-color: #bd8c84;
   --side-dark: #883022;
   --grey-color: #d5d5d5;
+  --pink-color: #f9cec7;
   --white: #fff;
   --black: #000000;
   --font-primary: "Poppins", sans-serif;
@@ -26,11 +27,18 @@
   --font-Space-Grotesk: "Space Grotesk", serif;
   --font-vibes: "Great Vibes", cursive;
 }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
 body.no-scroll {
   overflow: hidden;
   height: 100%;
 }
-
+.bgpink {
+  background-color: var(--pink-color);
+}
 .font-Poppins {
   font-family: var(--font-primary);
 }

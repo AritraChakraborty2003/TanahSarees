@@ -12,7 +12,7 @@ const CartsCard = (props) => {
   return (
     <>
       <>
-        <div className="flex h-[28vmin] w-[80vw] lg:w-[35vw] pl-3">
+        <div className="flex h-[40vmin] lg:h-[28vmin] w-[80vw] lg:w-[35vw] pl-3">
           <div className=" p-1 w-[30%]">
             <img
               src={image}
@@ -21,7 +21,7 @@ const CartsCard = (props) => {
             />
           </div>
           <div className="flex flex-col items-center h-[100%] w-[70%]">
-            <div className="info  w-[100%] h-[30%]  flex items-center font-Montserrat text-gray-500">
+            <div className="info text-[4vmin] lg:text-[2.27vmin] w-[100%] h-[30%]  flex items-center font-Montserrat text-gray-500">
               <p className="ml-2">{name}</p>
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
@@ -43,7 +43,7 @@ const CartsCard = (props) => {
               </p>
             </div>
             <div className="info w-[100%] h-[25%] flex items-center">
-              <div className="main w-[45%] ml-2 border-[#883022] border-1  h-[80%] flex items-center">
+              <div className="main w-[55%] mt-2 lg:mt-1 lg:w-[45%] ml-4 lg:ml-2 border-[#883022] border-1 h-[65%]  lg:h-[80%] flex items-center">
                 <div
                   className="decrement border-r-1 border-[#883022] w-[25%] h-full flex justify-center items-center overflow-hidden "
                   id={`decr${id}`}
