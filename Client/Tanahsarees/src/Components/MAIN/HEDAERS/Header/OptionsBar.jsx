@@ -42,7 +42,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat underline-offset-5 font-medium">
                   SALE
                 </span>
                 {isOpen && (
@@ -67,7 +67,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-5  font-medium">
                   OFFERS
                 </span>
                 {isOpen && (
@@ -91,7 +91,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-5  font-medium">
                   OCASSIONS
                 </span>
                 {isOpen && (
@@ -115,7 +115,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-5  font-medium">
                   TYPE
                 </span>
                 {isOpen && (
@@ -139,7 +139,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat underline-offset-5  font-medium">
                   NEW ARRIVALS
                 </span>
                 {isOpen && (
@@ -163,7 +163,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-5  font-medium">
                   OTHERS
                 </span>
                 {isOpen && (
