@@ -185,8 +185,8 @@ export default function MainHeader(props) {
                   : ""
               }`}
             >
-              <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%]  ">
-                <div className="flex subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
+              <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%] flex flex-col pl-3 ">
+                <div className="flex  subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
                   <p className="font-Montserrat text-xs text-[#883022] tracking-[2.35px]">
                     SUBTOTAL
                   </p>
@@ -196,18 +196,17 @@ export default function MainHeader(props) {
                     </p>
                   </div>
                 </div>
-              </div>
+                <div className="sloganText">
+                  <p className="text-[2.95vmin] pl-[1px] pl-3 md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
+                    Shipping, taxes, and discount codes calculated at checkout.
+                  </p>
+                </div>
 
-              <div className="sloganText">
-                <p className="text-[2.95vmin] pl-[1px] lg:pl-2 md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
-                  Shipping, taxes, and discount codes calculated at checkout.
-                </p>
-              </div>
-
-              <div className="w-[100%] buttonHolder flex justify-center items-center ml-[18px]">
-                <button className="w-[80%] bg-[#f58b76] text-white text-center lg:mt-3 p-2">
-                  PLACE ORDER
-                </button>
+                <div className="w-[100%] buttonHolder flex justify-center items-center mt-4">
+                  <button className="w-[80%] bg-[#f58b76] text-white text-center lg:mt-3 p-2">
+                    PLACE ORDER
+                  </button>
+                </div>
               </div>
             </div>
           </Drawer>
