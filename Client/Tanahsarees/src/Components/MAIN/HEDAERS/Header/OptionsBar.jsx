@@ -5,7 +5,6 @@ import Search from "./Search";
 const OptionsBar = () => {
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
-
   const handleMouseEnter = (menu) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current); // Prevent flickering
