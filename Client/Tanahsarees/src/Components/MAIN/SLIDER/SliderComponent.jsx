@@ -107,7 +107,7 @@ const SliderComponent = () => {
       {screen.width > 1000 && screen.width < 1700 && (
         <>
           <div
-            className="w-[100vw] p-5 pt-[calc(100px)]" // Adjust based on actual header height
+            className="w-[100vw] pl-5" // Adjust based on actual header height
             style={{
               paddingTop: `${
                 !change
