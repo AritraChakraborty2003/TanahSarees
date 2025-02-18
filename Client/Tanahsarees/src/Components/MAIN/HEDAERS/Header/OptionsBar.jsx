@@ -13,7 +13,7 @@ const OptionsBar = (props) => {
   const handleMouseLeave = () => {
     setTimeout(() => {
       setOpenMenu(null);
-    }, 300);
+    }, 500);
   };
 
   return (
@@ -51,7 +51,7 @@ const OptionsBar = (props) => {
                       onMouseLeave={handleMouseLeave}
                     >
                       <ul
-                        className="p-6 gap-10 flex text-lg font-medium"
+                        className="p-6 gap-10 text-lg font-medium"
                         onMouseEnter={() => setOpenMenu(menu)}
                       >
                         <div>
