@@ -12,6 +12,8 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
+import CartsCard from "../CartsCard";
+import AuthModal from "../AuthModal";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
