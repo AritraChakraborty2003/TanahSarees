@@ -12,8 +12,8 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
-import CartsCard from "../CartsCard";
-import AuthModal from "../AuthModal";
+import CartsCard from "../../../CARDS/CartsCard";
+import AuthModal from "./AuthModal";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
@@ -191,7 +191,7 @@ export default function MainHeader(props) {
                   <p className="darktext font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-2 letter-spacing-[3px]">
                     Cart
                   </p>
-                  <p className="text-[3vmin] lg:text-[2.95vmin] darktext ml-2">
+                  <p className="text-[3vmin] lg:text-[1.95vmin] darktext ml-2">
                     ( View Cart )
                   </p>
                 </div>

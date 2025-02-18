@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+
 /* eslint-disable react/prop-types */
 const CartsCard = (props) => {
   const { image, name, price, size, type } = props.data;
   const { id } = props;
+  const [count, setCount] = useState(0);
   console.log(props.data);
   console.log("hi");
 
@@ -54,6 +58,9 @@ const CartsCard = (props) => {
                     document.getElementById(`decr${id}`).style.backgroundColor =
                       "#fff";
                   }}
+                  onClick={() => {
+                    count > 0 ? setCount(count - 1) : null;
+                  }}
                 >
                   <p
                     className="darktext text-2xl cursor-pointer"
@@ -63,7 +70,16 @@ const CartsCard = (props) => {
                   </p>
                 </div>
                 <div className="value  w-[50%] h-full flex justify-center items-center ">
-                  15
+                  <motion.h1
+                    key={count}
+                    initial={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.45 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="text-md font-bold"
+                  >
+                    {count}
+                  </motion.h1>
                 </div>
                 <div
                   className="increment border-[#883022] border-l-1  w-[25%] h-full  flex justify-center items-center overflow-hidden"
@@ -78,6 +94,9 @@ const CartsCard = (props) => {
                       "#883022";
                     document.getElementById(`incr${id}`).style.backgroundColor =
                       "#fff";
+                  }}
+                  onClick={() => {
+                    setCount(count + 1);
                   }}
                 >
                   <p
