@@ -171,7 +171,7 @@ const SliderComponent = () => {
                 <Slider
                   ref={sliderRef}
                   {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-50vmin] ml-[1.35vmin] "
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
                 >
                   {items.map((item) => (
                     <>
@@ -196,7 +196,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5%] 2xl:top-[6.75%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[6.5%] 2xl:top-[6.75%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>

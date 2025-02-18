@@ -34,16 +34,17 @@ const OptionsBar = (props) => {
         //     ))}
         //   </div>
         // </div>
-        <nav className="relative w-full bg-white shadow-md">
-          <div className="flex justify-between items-center px-6 py-4">
-            <h1 className="text-xl font-bold">Brand</h1>
-            <ul className="flex gap-6">
+        <nav className="relative w-full bg-white shadow-md border-[#d5d5d5] border-t-[1px]">
+          <div className="flex justify-center items-center px-3 py-4">
+            <ul className="flex gap-x-20">
               <li
                 className="relative group cursor-pointer"
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline">Shop</span>
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  SALE
+                </span>
                 {isOpen && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -52,7 +53,7 @@ const OptionsBar = (props) => {
                     transition={{ duration: 0.3 }}
                     className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
                   >
-                    <ul className="p-4">
+                    <ul className="p-3">
                       <li className="p-2 hover:underline">Category 1</li>
                       <li className="p-2 hover:underline">Category 2</li>
                       <li className="p-2 hover:underline">Category 3</li>
@@ -60,8 +61,127 @@ const OptionsBar = (props) => {
                   </motion.div>
                 )}
               </li>
-              <li className="hover:underline cursor-pointer">About</li>
-              <li className="hover:underline cursor-pointer">Contact</li>
+
+              <li
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              >
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  OFFERS
+                </span>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
+                  >
+                    <ul className="p-3">
+                      <li className="p-2 hover:underline">Category 1</li>
+                      <li className="p-2 hover:underline">Category 2</li>
+                      <li className="p-2 hover:underline">Category 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </li>
+              <li
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              >
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  OCASSIONS
+                </span>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
+                  >
+                    <ul className="p-3">
+                      <li className="p-2 hover:underline">Category 1</li>
+                      <li className="p-2 hover:underline">Category 2</li>
+                      <li className="p-2 hover:underline">Category 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </li>
+              <li
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              >
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  TYPE
+                </span>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
+                  >
+                    <ul className="p-3">
+                      <li className="p-2 hover:underline">Category 1</li>
+                      <li className="p-2 hover:underline">Category 2</li>
+                      <li className="p-2 hover:underline">Category 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </li>
+              <li
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              >
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  NEW ARRIVALS
+                </span>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
+                  >
+                    <ul className="p-3">
+                      <li className="p-2 hover:underline">Category 1</li>
+                      <li className="p-2 hover:underline">Category 2</li>
+                      <li className="p-2 hover:underline">Category 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </li>
+              <li
+                className="relative group cursor-pointer"
+                onMouseEnter={() => setIsOpen(true)}
+                onMouseLeave={() => setIsOpen(false)}
+              >
+                <span className="hover:underline darktext text-md font-Montserrat font-medium">
+                  OTHERS
+                </span>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed left-0 top-[260px] w-screen bg-white shadow-lg border border-gray-200"
+                  >
+                    <ul className="p-3">
+                      <li className="p-2 hover:underline">Category 1</li>
+                      <li className="p-2 hover:underline">Category 2</li>
+                      <li className="p-2 hover:underline">Category 3</li>
+                    </ul>
+                  </motion.div>
+                )}
+              </li>
             </ul>
           </div>
         </nav>
