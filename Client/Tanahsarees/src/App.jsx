@@ -16,6 +16,7 @@ import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
 import Product from "./Components/PRODUCTS/Product";
 import Favourite from "./Components/FAVOURITES/Favourite";
 import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
+import ScrollComp from "./Components/TESTComp/ScrollComp";
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
         <AnimatedCounter />
       </>
     ),
+  },
+  {
+    path: "/scrollcomp",
+    element: <ScrollComp />,
   },
 ]);
 
