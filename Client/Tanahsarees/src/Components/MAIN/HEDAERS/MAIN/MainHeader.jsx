@@ -39,13 +39,17 @@ export default function MainHeader(props) {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      width: "90vw",
+      width: "96vw",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
+      backgroundColor: "transparent",
+      border: "none",
+      boxShadow: "none",
     },
     overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
       zIndex: 1600, // Ensuring it's above all elements
+      backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
+      backdropFilter: "blur(1.5px)", // Optional blur effect
     },
   };
   useEffect(() => {
@@ -174,7 +178,7 @@ export default function MainHeader(props) {
               className={`absolute flex flex-col justify-center items-center ${
                 screen.width > 800
                   ? contentCart <= 2
-                    ? "bottom-2"
+                    ? "bottom-3"
                     : ""
                   : contentCart <= 2
                   ? "bottom-[17vmin]"
@@ -195,13 +199,13 @@ export default function MainHeader(props) {
               </div>
 
               <div className="sloganText">
-                <p className="text-[2.75vmin] pl-[1px] lg:pl-2 md:text-sm darktext font-light ml-[-1vmin] mt-[-0.15vmin]">
+                <p className="text-[2.95vmin] pl-[1px] lg:pl-2 md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
                   Shipping, taxes, and discount codes calculated at checkout.
                 </p>
               </div>
 
-              <div className="w-[100%] buttonHolder flex justify-start items-center ml-[18px]">
-                <button className="w-[80%] bg-[#f58b76] text-white text-center mt-3  p-1 pl-2 lg:p-2">
+              <div className="w-[100%] buttonHolder flex justify-center items-center ml-[18px]">
+                <button className="w-[80%] bg-[#f58b76] text-white text-center lg:mt-3 p-2">
                   PLACE ORDER
                 </button>
               </div>
@@ -327,17 +331,17 @@ export default function MainHeader(props) {
             contentLabel="Small Login Modal"
             shouldCloseOnOverlayClick={false}
           >
-            <div className="imageHolder">
-              <a className=" flex justify-end text-2xl font-light font-Lato darktext mr-1 mt-1 p-1">
+            <div className="relative ">
+              <a className="absolute w-[80vw] flex justify-end text-3xl font-light font-Lato darktext  mt-1 p-2">
                 <i className="ri-close-line" onClick={modalClose}></i>
               </a>
-            </div>
-            <div className="pb-3 pt-3">
-              <AuthModal
-                isOpen={loginOpen}
-                isLogin={false}
-                onClose={() => setLoginOpen(false)}
-              />
+              <div className="mt">
+                <AuthModal
+                  isOpen={loginOpen}
+                  isLogin={false}
+                  onClose={() => setLoginOpen(false)}
+                />
+              </div>
             </div>
           </Modal>
         ) : (
