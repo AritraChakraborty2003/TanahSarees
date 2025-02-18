@@ -116,6 +116,7 @@ const App = () => {
   const toggleDrawer = () => setCartIsOpen(!cartIsOpen);
   const toggleHam = () => setHamIsOpen(!hamIsOpen);
   const [contentCart, setContentCart] = useState(0);
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <>
       <AppContext.Provider
@@ -129,6 +130,8 @@ const App = () => {
           toggleHam,
           contentCart,
           setContentCart,
+          isLogin,
+          setIsLogin,
         }}
       >
         <RouterProvider router={router} />

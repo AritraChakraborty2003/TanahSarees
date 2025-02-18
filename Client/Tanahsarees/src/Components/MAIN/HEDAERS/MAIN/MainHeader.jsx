@@ -12,8 +12,8 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
-import CartsCard from "../CartsCard";
-import AuthModal from "../AuthModal";
+import CartsCard from "../../../CARDS/CartsCard";
+import AuthModal from "./AuthModal";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
@@ -22,35 +22,35 @@ export default function MainHeader(props) {
   const data = [
     {
       image: "/Sarees/saree6.jpg",
-      name: "Silk raw mango raw pes pesus with optional currency",
+      name: "Silk raw mango raw pes pesus and hugs and currency",
       price: "3000",
       size: "xl",
       type: "Raw mango",
     },
     {
       image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango raw pes pesus with optional currency",
+      name: "Silk raw mango raw pes pesus  and hugs and currency ",
       price: "3000",
       size: "xl",
       type: "Raw mango",
     },
     {
       image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango raw pes pesus with optional currency",
+      name: "Silk raw mango raw pes pesus  and hugs and currency",
       price: "3000",
       size: "xl",
       type: "Raw mango",
     },
     {
       image: "/Sarees/saree3.jpg",
-      name: "Silk raw mango raw pes pesus with optional currency",
+      name: "Silk raw mango raw pes pesus  and hugs and currency",
       price: "3000",
       size: "xl",
       type: "Raw mango",
     },
     {
       image: "/Sarees/saree4.jpg",
-      name: "Silk raw mango raw pes pesus with optional currency",
+      name: "Silk raw mango raw pes pesus ",
       price: "3000",
       size: "xl",
       type: "Raw mango",
