@@ -163,7 +163,7 @@ const OptionsBar = (props) => {
                 onMouseEnter={() => setIsOpen(true)}
                 onMouseLeave={() => setIsOpen(false)}
               >
-                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-5  font-medium">
+                <span className="hover:underline darktext text-md font-Montserrat  underline-offset-4  font-medium">
                   OTHERS
                 </span>
                 {isOpen && (
