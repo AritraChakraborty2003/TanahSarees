@@ -15,6 +15,7 @@ import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
 
 import Product from "./Components/PRODUCTS/Product";
 import Favourite from "./Components/FAVOURITES/Favourite";
+import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +105,14 @@ const router = createBrowserRouter([
         <MainHeader scrollValue="30" />
         <Favourite />
         <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/counter",
+    element: (
+      <>
+        <AnimatedCounter />
       </>
     ),
   },

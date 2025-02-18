@@ -191,7 +191,7 @@ export default function MainHeader(props) {
                   <p className="darktext font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-2 letter-spacing-[3px]">
                     Cart
                   </p>
-                  <p className="text-[3vmin] lg:text-[2.95vmin] darktext ml-2">
+                  <p className="text-[3vmin] lg:text-[1.95vmin] darktext ml-2">
                     ( View Cart )
                   </p>
                 </div>
@@ -243,7 +243,7 @@ export default function MainHeader(props) {
                   </div>
                 </div>
                 <div className="sloganText">
-                  <p className="text-[2.95vmin] pl-[1px] pl-3 md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
+                  <p className="text-[2.95vmin] pl-[1px]  md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
                     Shipping, taxes, and discount codes calculated at checkout.
                   </p>
                 </div>

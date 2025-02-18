@@ -21,55 +21,25 @@ const Favourite = () => {
       name: "Silk raw mango",
       price: "3000",
     },
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
+    // {
+    //   image: "/Sarees/saree1.jpg",
+    //   name: "Silk raw mango",
+    //   price: "3000",
+    // },
+    // {
+    //   image: "/Sarees/saree2.jpg",
+    //   name: "Silk raw mango",
+    //   price: "3000",
+    // },
+    // {
+    //   image: "/Sarees/saree8.jpg",
+    //   name: "Silk raw mango",
+    //   price: "3000",
+    // },
   ];
   return (
     <div
-      className="mt-100"
+      className="mt-100 pb-10"
       style={{
         marginTop: `${
           !change
@@ -90,7 +60,7 @@ const Favourite = () => {
             FAVOURITES
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-6 justify-center items-center mt-10">
+        <div className="flex flex-wrap gap-x-10 gap-y-8 justify-center items-center mt-10">
           {data.map((item) => (
             <ProductCard data={item} type={"favourite"} />
           ))}
