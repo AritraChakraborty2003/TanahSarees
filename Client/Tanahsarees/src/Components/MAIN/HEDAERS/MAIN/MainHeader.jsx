@@ -243,7 +243,7 @@ export default function MainHeader(props) {
                   </div>
                 </div>
                 <div className="sloganText">
-                  <p className="text-[2.95vmin] pl-[1px] pl-3 md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
+                  <p className="text-[2.95vmin] pl-[1px]  md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
                     Shipping, taxes, and discount codes calculated at checkout.
                   </p>
                 </div>
