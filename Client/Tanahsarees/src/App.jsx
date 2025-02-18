@@ -14,6 +14,7 @@ import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
 // import Product from "./Components/PRODUCTS/Product";
 
 import Product from "./Components/PRODUCTS/Product";
+import Favourite from "./Components/FAVOURITES/Favourite";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,16 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/favourites",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Favourite />
+        <Footer />
+      </>
+    ),
+  },
 ]);
 
 const App = () => {
@@ -104,7 +115,7 @@ const App = () => {
   const [hamIsOpen, setHamIsOpen] = useState(false);
   const toggleDrawer = () => setCartIsOpen(!cartIsOpen);
   const toggleHam = () => setHamIsOpen(!hamIsOpen);
-  const [contentCart, getContentCart] = useState(true);
+  const [contentCart, setContentCart] = useState(0);
   return (
     <>
       <AppContext.Provider
@@ -117,7 +128,7 @@ const App = () => {
           setHamIsOpen,
           toggleHam,
           contentCart,
-          getContentCart,
+          setContentCart,
         }}
       >
         <RouterProvider router={router} />
