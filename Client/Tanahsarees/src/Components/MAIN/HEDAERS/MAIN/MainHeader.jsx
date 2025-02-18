@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
@@ -11,13 +12,49 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
-import AuthModal from "./AuthModal";
 
 export default function MainHeader(props) {
-  const { setChange, contentCart, isLoggedIn, setIsLoggedIn } =
+  const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
     useContext(AppContext);
   const [loginOpen, setLoginOpen] = useState(false);
-
+  const data = [
+    {
+      image: "/Sarees/saree6.jpg",
+      name: "Silk raw mango raw pes pesus with optional currency",
+      price: "3000",
+      size: "xl",
+      type: "Raw mango",
+    },
+    {
+      image: "/Sarees/saree1.jpg",
+      name: "Silk raw mango raw pes pesus with optional currency",
+      price: "3000",
+      size: "xl",
+      type: "Raw mango",
+    },
+    {
+      image: "/Sarees/saree2.jpg",
+      name: "Silk raw mango raw pes pesus with optional currency",
+      price: "3000",
+      size: "xl",
+      type: "Raw mango",
+    },
+    {
+      image: "/Sarees/saree3.jpg",
+      name: "Silk raw mango raw pes pesus with optional currency",
+      price: "3000",
+      size: "xl",
+      type: "Raw mango",
+    },
+    {
+      image: "/Sarees/saree4.jpg",
+      name: "Silk raw mango raw pes pesus with optional currency",
+      price: "3000",
+      size: "xl",
+      type: "Raw mango",
+    },
+  ];
+  setContentCart(data.length);
   const { cartIsOpen, toggleDrawer, hamIsOpen, toggleHam } =
     useContext(AppContext);
   const { scrollValue } = props;
@@ -166,9 +203,16 @@ export default function MainHeader(props) {
                 id="displayArea"
                 style={{
                   overflowY: "auto",
-                  maxHeight: "100vh",
+                  // maxHeight: "100vh",
                 }}
-              ></div>
+              >
+                <div className="flex flex-col gap-y-6 pb-1 mt-4  w-full">
+                  {data.map((item, index) => (
+                    <CartsCard data={item} id={index} />
+                  ))}
+                  ;
+                </div>
+              </div>
             </div>
             <div
               className={`absolute flex flex-col justify-center items-center ${
