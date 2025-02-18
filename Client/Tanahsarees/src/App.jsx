@@ -14,6 +14,7 @@ import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
 // import Product from "./Components/PRODUCTS/Product";
 
 import Product from "./Components/PRODUCTS/Product";
+import Favourite from "./Components/FAVOURITES/Favourite";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,16 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <Product />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/favourites",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Favourite />
         <Footer />
       </>
     ),
