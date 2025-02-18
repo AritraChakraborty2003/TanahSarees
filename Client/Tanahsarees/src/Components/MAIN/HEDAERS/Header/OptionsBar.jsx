@@ -1,24 +1,36 @@
-/* eslint-disable no-unused-vars */
-import Search from "./Search";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Search from "./Search";
 
-const OptionsBar = (props) => {
+const OptionsBar = () => {
   const [openMenu, setOpenMenu] = useState(null);
+  const timeoutRef = useRef(null);
 
   const handleMouseEnter = (menu) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current); // Prevent flickering
+    }
     setOpenMenu(menu);
   };
 
   const handleMouseLeave = () => {
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setOpenMenu(null);
-    }, 500);
+    }, 500); // Delay helps prevent accidental closing
   };
+
+  // Cleanup timeout on component unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div>
-      {screen.width > 1000 ? (
+      {typeof window !== "undefined" && window.innerWidth > 1000 ? (
         <nav className="relative w-full bg-white shadow-md border-t border-gray-300">
           <div className="flex justify-center items-center px-3 py-4">
             <ul className="flex gap-x-20">
@@ -34,6 +46,7 @@ const OptionsBar = (props) => {
                   key={index}
                   className="relative group cursor-pointer"
                   onMouseEnter={() => handleMouseEnter(menu)}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <span className="hover:underline darktext text-md font-Montserrat underline-offset-5 font-medium">
                     {menu}
@@ -46,25 +59,24 @@ const OptionsBar = (props) => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="fixed top-[255px] left-0 w-screen bg-white shadow-lg border border-gray-200 z-50"
-                      onMouseEnter={() => setOpenMenu(menu)}
-                      onMouseLeave={handleMouseLeave}
+                      className="fixed top-[258px] left-0 w-screen bg-white shadow-lg border border-gray-200 z-50"
+                      onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
+                      onMouseLeave={handleMouseLeave} // Close only if mouse leaves
                     >
-                      <ul
-                        className="p-6 gap-10 text-lg font-medium"
-                        onMouseEnter={() => setOpenMenu(menu)}
-                      >
-                        <div>
-                          <li className="p-3 hover:underline">Category 1</li>
-                          <li className="p-3 hover:underline">Category 2</li>
-                          <li className="p-3 hover:underline">Category 3</li>
-                        </div>
-                        <div>
-                          <li className="p-3 hover:underline">Category 1</li>
-                          <li className="p-3 hover:underline">Category 2</li>
-                          <li className="p-3 hover:underline">Category 3</li>
-                        </div>
-                      </ul>
+                      <div>
+                        <ul className="p-6 gap-10 flex text-lg font-medium">
+                          <div>
+                            <li className="p-3 hover:underline">Category 1</li>
+                            <li className="p-3 hover:underline">Category 2</li>
+                            <li className="p-3 hover:underline">Category 3</li>
+                          </div>
+                          <div>
+                            <li className="p-3 hover:underline">Category 4</li>
+                            <li className="p-3 hover:underline">Category 5</li>
+                            <li className="p-3 hover:underline">Category 6</li>
+                          </div>
+                        </ul>
+                      </div>
                     </motion.div>
                   )}
                 </li>
