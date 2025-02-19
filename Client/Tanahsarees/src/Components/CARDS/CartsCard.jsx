@@ -63,7 +63,7 @@ const CartsCard = (props) => {
                       "#fff";
                   }}
                   onClick={() => {
-                    count > 1 ? setCount(count - 1) : null;
+                    count > 0 ? setCount(count - 1) : null;
                   }}
                 >
                   <p
@@ -73,7 +73,7 @@ const CartsCard = (props) => {
                     -
                   </p>
                 </div>
-                <div className="value  w-[50%] h-full flex justify-center items-center ">
+                <div className="value  w-[50%] h-full flex justify-center items-center overflow-hidden ">
                   <motion.h1
                     key={count}
                     initial={{ opacity: 0, y: -10 }}
