@@ -46,7 +46,7 @@ const Shipping = () => {
       </div>
 
       {/* Second Internal Div - Image */}
-      <div className="w-[95vw] w-[90vw] h-[28vh] lg:w-[80vw] lg:h-[63vh] flex justify-center items-center mt-4">
+      <div className="w-[95vw]  h-[28vh] lg:w-[80vw] lg:h-[63vh] flex justify-center items-center mt-4">
         <img
           src="https://t4.ftcdn.net/jpg/05/11/73/83/240_F_511738334_ece4QeAUMMN6Pf7UxUax0y24Xh2SyuFu.jpg"
           alt="Shipping"

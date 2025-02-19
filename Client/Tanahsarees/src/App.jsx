@@ -133,7 +133,13 @@ const router = createBrowserRouter([
   },
   {
     path: "/product",
-    element: <Productdescription />,
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Productdescription />
+        <Footer />
+      </>
+    ),
   },
 ]);
 
