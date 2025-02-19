@@ -13,17 +13,17 @@ const Productdescription = () => {
 
   const data = [
     {
-      image: "/Sarees/saree1.jpg",
+      image: "/Sarees/saree7.jpg",
       title: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree2.jpg",
+      image: "/Sarees/saree3.jpg",
       title: "Silk raw mango",
       price: "3000",
     },
     {
-      image: "/Sarees/saree8.jpg",
+      image: "/Sarees/saree10.jpg",
       title: "Silk raw mango",
       price: "3000",
     },
@@ -111,8 +111,8 @@ const Productdescription = () => {
             zIndex: 10, // Keep content below the header
           }}
         >
-          <div className="leftImageHolde w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
-            <div className="imageHolder w-[78%] h-[95vmin]  flex justify-end items-center">
+          <div className="leftImageHolder w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
+            <div className="imageHolder mt-[-1.75vmin] lg:mt-0 w-[75%]  h-[88vmin] lg:w-[78%] lg:h-[95vmin]  flex justify-end items-center">
               <img
                 src="Sarees/saree13.jpg"
                 alt="Product Image"

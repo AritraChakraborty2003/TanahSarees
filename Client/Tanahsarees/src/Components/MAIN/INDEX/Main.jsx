@@ -26,7 +26,7 @@ const Main = () => {
         <div className="mt-10 lg:mt-10">
           <BannerSlider />
         </div>
-        <VideoCard />
+        {screen.width > 1024 && <VideoCard />}
         <Occasion />
         <div className="mt-10 lg:mt-10">
           <BannerSlider />

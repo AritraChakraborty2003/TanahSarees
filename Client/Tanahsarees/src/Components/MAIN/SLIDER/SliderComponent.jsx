@@ -124,7 +124,7 @@ const SliderComponent = () => {
               <>
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[6.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                 </button>
@@ -155,7 +155,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[6.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[5.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>
@@ -164,7 +164,7 @@ const SliderComponent = () => {
               <>
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                 </button>
@@ -196,7 +196,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[6.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>
