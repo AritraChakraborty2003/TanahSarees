@@ -181,7 +181,7 @@ const SliderComponent = () => {
                             className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                             style={{
                               backgroundImage: `url(${item.img})`,
-                              backgroundPosition: "center",
+                              backgroundPosition: "top",
 
                               // Assuming each item has an image property
                             }}
