@@ -216,7 +216,6 @@ export default function MainHeader(props) {
                   {data.map((item, index) => (
                     <CartsCard data={item} id={index} />
                   ))}
-                  ;
                 </div>
               </div>
             </div>
@@ -248,8 +247,8 @@ export default function MainHeader(props) {
                   </p>
                 </div>
 
-                <div className="w-[100%] buttonHolder flex justify-center items-center mt-4">
-                  <button className="w-[80%] bg-[#f58b76] text-white text-center lg:mt-3 p-2">
+                <div className="w-[100%] buttonHolder pb-4 flex justify-center items-center mt-4">
+                  <button className="w-[80%]  bg-[#f58b76] text-white text-center lg:mt-3 p-2">
                     PLACE ORDER
                   </button>
                 </div>
