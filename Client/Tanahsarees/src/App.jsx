@@ -17,6 +17,7 @@ import Product from "./Components/PRODUCTS/Product";
 import Favourite from "./Components/FAVOURITES/Favourite";
 import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
 import ScrollComp from "./Components/TESTComp/ScrollComp";
+import Carts from "./Components/CARTPAGE/Carts";
 
 const router = createBrowserRouter([
   {
@@ -95,6 +96,16 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <Product />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/carts",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Carts />
         <Footer />
       </>
     ),
