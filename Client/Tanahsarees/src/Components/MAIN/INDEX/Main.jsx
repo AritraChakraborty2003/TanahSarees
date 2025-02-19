@@ -9,6 +9,7 @@ import Occasion from "../OCCASION/Occasion";
 import Collection from "../SHOPBYCOLLECTION/Collection";
 import Material from "../SHOPBYMATERIAL/Material";
 import Testimonial from "../TESTIMONIALS/Testimonial";
+import VideoCard from "../VIDEOCARD/VideoCard";
 
 const Main = () => {
   return (
@@ -25,6 +26,7 @@ const Main = () => {
         <div className="mt-10 lg:mt-10">
           <BannerSlider />
         </div>
+        <VideoCard />
         <Occasion />
         <div className="mt-10 lg:mt-10">
           <BannerSlider />
