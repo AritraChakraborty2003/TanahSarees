@@ -14,6 +14,7 @@ import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
 import CartsCard from "../../../CARDS/CartsCard";
 import AuthModal from "./AuthModal";
+import Carts from "../../../CARTPAGE/Carts";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
@@ -188,12 +189,16 @@ export default function MainHeader(props) {
             <div className="relative cartHolder flex flex-col">
               <div className="cartTextHolder flex p-3 ">
                 <div className="w-[100%]">
-                  <p className="darktext font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-2 letter-spacing-[3px]">
+                  <p className="darktext font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-1 letter-spacing-[3px]">
                     Cart
                   </p>
-                  <p className="text-[3vmin] lg:text-[1.95vmin] darktext ml-2">
-                    ( View Cart )
-                  </p>
+                  <div className="">
+                    <Link to="/carts">
+                      <button className="h-8 w-[50%] text-sm border-1 bg-[#F58B75] text-white text-Monteserrat cursor-pointer">
+                        View Cart
+                      </button>
+                    </Link>
+                  </div>
                 </div>
 
                 <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 mt-1">
@@ -216,7 +221,6 @@ export default function MainHeader(props) {
                   {data.map((item, index) => (
                     <CartsCard data={item} id={index} />
                   ))}
-                  ;
                 </div>
               </div>
             </div>
@@ -248,8 +252,8 @@ export default function MainHeader(props) {
                   </p>
                 </div>
 
-                <div className="w-[100%] buttonHolder flex justify-center items-center mt-4">
-                  <button className="w-[80%] bg-[#f58b76] text-white text-center lg:mt-3 p-2">
+                <div className="w-[100%] buttonHolder pb-4 flex justify-center items-center mt-4">
+                  <button className="w-[80%]  bg-[#f58b76] text-white text-center lg:mt-3 p-2">
                     PLACE ORDER
                   </button>
                 </div>
