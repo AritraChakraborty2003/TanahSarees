@@ -1,4 +1,4 @@
-const Productdisplay = () => {
+const Productdescription = () => {
   return (
     <>
       <div className="mainDiv w-[100vw] flex">
@@ -17,4 +17,4 @@ const Productdisplay = () => {
   );
 };
 
-export default Productdisplay;
+export default Productdescription;

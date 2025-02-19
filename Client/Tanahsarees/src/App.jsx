@@ -11,13 +11,12 @@ import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 import { AppContext } from "./AppContext/AppContext";
 import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
-// import Product from "./Components/PRODUCTS/Product";
-
 import Product from "./Components/PRODUCTS/Product";
 import Favourite from "./Components/FAVOURITES/Favourite";
 import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
 import ScrollComp from "./Components/TESTComp/ScrollComp";
 import Carts from "./Components/CARTPAGE/Carts";
+import Productdescription from "./Components/PRODUCTDESCR/Productdescription";
 
 const router = createBrowserRouter([
   {
@@ -101,7 +100,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/carts",
+    path: "/cart",
     element: (
       <>
         <MainHeader scrollValue="30" />
@@ -131,6 +130,10 @@ const router = createBrowserRouter([
   {
     path: "/scrollcomp",
     element: <ScrollComp />,
+  },
+  {
+    path: "/product",
+    element: <Productdescription />,
   },
 ]);
 
