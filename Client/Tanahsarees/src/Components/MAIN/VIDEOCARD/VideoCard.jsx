@@ -48,6 +48,7 @@ const VideoCard = () => {
     autoplay: true, // Auto-slide
     autoplaySpeed: 3000, // Slide every 3 seconds
     arrows: false, // Hide arrows
+    lazyLoad: "ondemand", // Load videos only when they appear
     responsive: [
       {
         breakpoint: 1024, // For tablets & smaller screens
