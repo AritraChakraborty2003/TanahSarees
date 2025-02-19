@@ -147,7 +147,7 @@ const Productdescription = () => {
               <div className="line w-[95%]  h-[1px] bg-[#d5d5d5] mt-2"></div>
             </div>
 
-            <div className="mt-3 ml-5  buttonHolder   w-[100%]  flex gap-x-5">
+            <div className="mt-3 ml-3 lg:ml-5  buttonHolder   w-[100%]  flex gap-x-5">
               <div className="addToCart">
                 <button className="bg-[#f58b75] rounded-xs   lg:w-[32vmin] p-3   font-Montserrat text-black text-center ">
                   <a href="" className="font-Montserrat font-medium">
