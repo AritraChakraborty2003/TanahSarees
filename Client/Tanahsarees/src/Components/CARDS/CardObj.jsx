@@ -5,9 +5,9 @@ const CardObj = (props) => {
   const { data } = props;
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-7">
+      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-7 2xl:gap-x-10">
         {data.map((item) => (
-          <div className="flex  flex-col gap-y-2 lg:gap-y-3">
+          <div className="flex  flex-col gap-y-2 lg:gap-y-1">
             <Tilt
               tiltMaxAngleX={15} // Tilt angle on X-axis
               tiltMaxAngleY={15} // Tilt angle on Y-axis
@@ -25,8 +25,10 @@ const CardObj = (props) => {
               </div>
             </Tilt>
             {/* Text Content Section */}
-            <div className="lg:p-4 text-center">
-              <p className="text-sm lg:text-md text-gray-600">{item.title}</p>
+            <div className="lg:p-1 text-center">
+              <p className="text-sm lg:text-md 2xl:text-[2vmin] text-gray-600">
+                {item.title}
+              </p>
             </div>
           </div>
         ))}

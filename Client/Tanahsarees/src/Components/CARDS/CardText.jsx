@@ -30,7 +30,7 @@ const CardText = (props) => {
 
   return (
     <>
-      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-10 lg:gap-y-10">
+      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-10 lg:gap-y-10 2xl:gap-y-3">
         {data.map((item) => (
           <Tilt
             tiltMaxAngleX={screen.width > 800 ? 15 : 0} // Tilt angle on X-axis
@@ -39,7 +39,7 @@ const CardText = (props) => {
             transitionSpeed={500} // Smooth transition
             className="relative w-[45vw]  lg:w-76 2xl:w-[44vmin]  rounded-lg shadow-lg overflow-hidden"
           >
-            <div className="flex flex-col  overflow-hidden gap-y-3">
+            <div className="flex flex-col  overflow-hidden gap-y-1">
               {/* Image Section */}
               <div className="relative overflow-hidden w-full h-2/3">
                 <img

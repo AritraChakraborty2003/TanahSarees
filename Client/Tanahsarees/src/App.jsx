@@ -132,7 +132,7 @@ const router = createBrowserRouter([
     element: <ScrollComp />,
   },
   {
-    path: "/product",
+    path: "/product_descr",
     element: (
       <>
         <MainHeader scrollValue="30" />

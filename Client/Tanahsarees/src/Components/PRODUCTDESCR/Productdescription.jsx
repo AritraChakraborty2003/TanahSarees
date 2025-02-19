@@ -2,57 +2,38 @@ import { AppContext } from "../../AppContext/AppContext";
 import { useContext, useState } from "react";
 
 import Modal from "react-modal";
+import ControlledAccordions from "../TESTComp/ControlledAccordions";
+
+import CardObj from "../CARDS/CardObj";
 const Productdescription = () => {
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);
-  const data = {
-    rows: [
-      {
-        title: "What is the package version",
-        content: <p>current version is 1.2.1</p>,
-      },
-      {
-        title: "Introduction to JavaScript",
-        content:
-          "JavaScript is a versatile programming language used for web development.",
-      },
-      {
-        title: "React.js Basics",
-        content:
-          "React is a popular JavaScript library for building user interfaces.",
-      },
-      {
-        title: "Node.js Overview",
-        content:
-          "Node.js allows JavaScript to run on the server-side, enabling backend development.",
-      },
-      {
-        title: "MongoDB Fundamentals",
-        content:
-          "MongoDB is a NoSQL database that stores data in JSON-like documents.",
-      },
-      {
-        title: "TypeScript Advantages",
-        content:
-          "TypeScript adds static typing to JavaScript, improving code quality and maintainability.",
-      },
-      {
-        title: "Understanding Redux",
-        content:
-          "Redux is a state management library often used with React applications.",
-      },
-      {
-        title: "AWS for Beginners",
-        content:
-          "Amazon Web Services (AWS) provides scalable cloud computing solutions.",
-      },
-      {
-        title: "Version Control with Git",
-        content:
-          "Git is a distributed version control system for tracking changes in code.",
-      },
-    ],
-  };
+
+  const [expandedAccordion, setExpandedAccordion] = useState(null);
+
+  const data = [
+    {
+      image: "/Sarees/saree1.jpg",
+      title: "Silk raw mango",
+      price: "3000",
+    },
+    {
+      image: "/Sarees/saree2.jpg",
+      title: "Silk raw mango",
+      price: "3000",
+    },
+    {
+      image: "/Sarees/saree8.jpg",
+      title: "Silk raw mango",
+      price: "3000",
+    },
+
+    {
+      image: "/Sarees/saree9.jpg",
+      title: "Silk raw mango",
+      price: "3000",
+    },
+  ];
 
   const productDetails = [
     "- Sea Green Semi Stitched Lehenga in Tissue fabric",
@@ -65,6 +46,19 @@ const Productdescription = () => {
     "- Excellent and 100% pure silk",
     "- Raw Mango",
     "- Dry Wash Only",
+  ];
+
+  // ✅ Function to handle accordion toggle
+  const handleAccordionChange = (panelId) => (event, isExpanded) => {
+    setExpandedAccordion(isExpanded ? panelId : null); // Only one can be open
+  };
+
+  // Sample FAQ data
+  const deatilsProductFaq = [
+    { heading: "PRODUCT SPECIFICATION", details: "100% original silk product" },
+    { heading: "MATERIAL DETAILS", details: "Made from premium raw silk" },
+    { heading: "WASH CARE", details: "Dry wash only for best results" },
+    { heading: "RETURN POLICY", details: "Easy 7-day return policy" },
   ];
 
   const IdDetails = [
@@ -101,7 +95,7 @@ const Productdescription = () => {
   };
   return (
     <>
-      <div className="flex flex-col gap-y-6">
+      <div className="flex flex-col gap-y-6 pb-15">
         <div
           className="mainDiv lg:w-[100vw] flex flex-wrap"
           style={{
@@ -117,8 +111,8 @@ const Productdescription = () => {
             zIndex: 10, // Keep content below the header
           }}
         >
-          <div className="leftImageHolde w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center border-1">
-            <div className="imageHolder w-[78%] h-[83vmin]  flex justify-end items-center">
+          <div className="leftImageHolde w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
+            <div className="imageHolder w-[78%] h-[95vmin]  flex justify-end items-center">
               <img
                 src="Sarees/saree13.jpg"
                 alt="Product Image"
@@ -131,14 +125,14 @@ const Productdescription = () => {
               />
             </div>
           </div>
-          <div className="rightTextHolder w-[98vw] lg:w-[50vw] border-1 text-[#7f7273]">
+          <div className="rightTextHolder w-[98vw] lg:w-[50vw] text-[#7f7273]">
             <div className="small_descr">
               <p className="mt-5 ml-4 text-sm  lg:text-xs font-Montserrat ">
                 Home&nbsp;&nbsp;/&nbsp;&nbsp; Sarees&nbsp;&nbsp; /
               </p>
             </div>
             <div className="saree_name">
-              <p className="mt-5 ml-4  text-3xl  lg:text-2xl font-Montserrat ">
+              <p className="mt-5 ml-4  text-xl  lg:text-2xl font-Montserrat ">
                 Sea Green Zariwork Tissue Semi Stitched Lehenga
               </p>
             </div>
@@ -155,20 +149,20 @@ const Productdescription = () => {
 
             <div className="mt-3 ml-5  buttonHolder   w-[100%]  flex gap-x-5">
               <div className="addToCart">
-                <button className="bg-[#f58b75] rounded-xs w-[32vmin] p-3  font-Montserrat text-black text-center ">
+                <button className="bg-[#f58b75] rounded-xs   lg:w-[32vmin] p-3   font-Montserrat text-black text-center ">
                   <a href="" className="font-Montserrat font-medium">
                     <i className="ri-shopping-bag-line"></i>
                   </a>{" "}
-                  <span className="ml-2">ADD TO CART</span>
+                  <span className="ml-2 text-sm lg:text-md">ADD TO CART</span>
                 </button>
               </div>
 
               <div className="wishlist">
-                <button className="bg-white rounded-xs border-[#d5d5d5d] border-[0.1px] w-[32vmin] p-3 font-Montserrat text-black text-center ">
+                <button className="bg-white rounded-xs border-[#d5d5d5] border-[0.1px]   lg:w-[32vmin] p-3 font-Montserrat text-black text-center ">
                   <a href="" className="font-Montserrat font-medium">
                     <i className="ri-heart-line"></i>
                   </a>{" "}
-                  <span className="ml-3">WISHLIST</span>
+                  <span className="ml-3 text-sm lg:text-md">ADD WISHLIST</span>
                 </button>
               </div>
             </div>
@@ -183,7 +177,7 @@ const Productdescription = () => {
               {productDetails.map((detail, index) => (
                 <p
                   key={index}
-                  className="mt-1 text-xs font-Montserrat darktext font-light"
+                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
                 >
                   {detail}
                 </p>
@@ -196,7 +190,7 @@ const Productdescription = () => {
               {materialDetails.map((detail, index) => (
                 <p
                   key={index}
-                  className="mt-1 text-xs font-Montserrat darktext font-light"
+                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
                 >
                   {detail}
                 </p>
@@ -209,18 +203,43 @@ const Productdescription = () => {
               {IdDetails.map((id, index) => (
                 <p
                   key={index}
-                  className="mt-1 text-xs font-Montserrat darktext font-light"
+                  className="mt-1  text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
                 >
                   {id}
                 </p>
               ))}
             </div>
-            <div className="FAQ_Area ml-[-3vmin] mt-3"></div>
+            <div className="FAQ_Area w-[98%] lg:w-[80%] ml-3 mt-3">
+              {deatilsProductFaq.map((item, index) => (
+                <ControlledAccordions
+                  key={index}
+                  id={index}
+                  data={item}
+                  expanded={expandedAccordion === index}
+                  onChange={handleAccordionChange(index)}
+                />
+              ))}
+            </div>
+            <div className="imageHolder w-[98vw] lg:w-[80%] ml-3 lg:ml-5 mt-6">
+              <img
+                src="https://www.koskii.com/cdn/shop/files/Trust-Badges-India-revised_1024x.jpg?v=1665424996"
+                alt="holder image"
+                className="max-w-full max-h-full object-contain"
+              />
+            </div>
           </div>
-          <div className="imageHolder"></div>
+        </div>
+        <div className="likeArea mt-8">
+          <div className="likeHeader">
+            <p className="ml-5 text-gray-500 font-normal font-roboto text-xl">
+              You might also like
+            </p>
+            <div className="mt-3 lg:mt-6">
+              <CardObj data={data} />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="likeArea"></div>
 
       {OpenImage && (
         <Modal
