@@ -17,6 +17,7 @@ import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
 import ScrollComp from "./Components/TESTComp/ScrollComp";
 import Carts from "./Components/CARTPAGE/Carts";
 import Productdescription from "./Components/PRODUCTDESCR/Productdescription";
+import SizeChart from "./Components/SIZECHART/SizeChart";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,16 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <TrackOrder />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/sizechart",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <SizeChart />
         <Footer />
       </>
     ),
