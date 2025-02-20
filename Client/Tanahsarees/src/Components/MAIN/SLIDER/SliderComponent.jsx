@@ -14,7 +14,7 @@ const items = [
   { id: 3, title: "Siffon saree", img: "/Sarees/saree3.jpg" },
   { id: 4, title: "silk saree", img: "/Sarees/saree4.jpg" },
   { id: 5, title: "Cotton saree", img: "/Sarees/saree5.jpg" },
-  { id: 6, title: "Chikon saree", img: "/Sarees/saree6.jpg" },
+  { id: 6, title: "Chikon saree", img: "/Sarees/saree11.jpg" },
 ];
 
 const SliderComponent = () => {

@@ -14,7 +14,7 @@ const Selling = () => {
       maintitle: "Top Sellings",
     },
     {
-      image: "Sarees/saree6.jpg",
+      image: "Sarees/saree11.jpg",
       title: "Cozy Blue",
       maintitle: "No Wrinkles",
     },
