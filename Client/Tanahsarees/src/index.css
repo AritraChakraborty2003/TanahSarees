@@ -102,6 +102,9 @@ body.no-scroll {
 .zoom-div {
   transition: transform 0.3s ease-in-out;
 }
+input:focus {
+  outline: none;
+}
 
 .google-btn > div {
   width: 100% !important; /* Forces width */
