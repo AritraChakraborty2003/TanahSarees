@@ -20,6 +20,7 @@ import Productdescription from "./Components/PRODUCTDESCR/Productdescription";
 import SizeChart from "./Components/SIZECHART/SizeChart";
 import Order from "./Components/ORDERS/Order";
 import FilterAccordion from "./Components/TESTComp/FilterAccordian";
+import Profile from "./Components/PROFILE/Profile";
 
 const router = createBrowserRouter([
   {
@@ -167,6 +168,16 @@ const router = createBrowserRouter([
   {
     path: "/filteraccordian",
     element: <FilterAccordion />,
+  },
+  {
+    path: "/profile",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Profile />
+        <Footer />
+      </>
+    ),
   },
 ]);
 

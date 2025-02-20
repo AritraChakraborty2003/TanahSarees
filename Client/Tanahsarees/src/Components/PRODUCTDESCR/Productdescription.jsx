@@ -209,7 +209,7 @@ const Productdescription = () => {
                 </p>
               ))}
             </div>
-            <div className="FAQ_Area w-[98%] lg:w-[80%] ml-3 mt-3">
+            <div className="FAQ_Area w-[98%] lg:w-[80%] ml-3 mt-6">
               {deatilsProductFaq.map((item, index) => (
                 <ControlledAccordions
                   key={index}
