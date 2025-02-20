@@ -18,6 +18,8 @@ import ScrollComp from "./Components/TESTComp/ScrollComp";
 import Carts from "./Components/CARTPAGE/Carts";
 import Productdescription from "./Components/PRODUCTDESCR/Productdescription";
 import SizeChart from "./Components/SIZECHART/SizeChart";
+import Order from "./Components/ORDERS/Order";
+import FilterAccordion from "./Components/TESTComp/FilterAccordian";
 
 const router = createBrowserRouter([
   {
