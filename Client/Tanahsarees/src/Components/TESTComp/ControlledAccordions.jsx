@@ -1,46 +1,46 @@
-/* eslint-disable react/prop-types */
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion";
+import "react-accessible-accordion/dist/fancy-example.css"; // Default styles (you can customize)
 
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+const faqs = [
+  {
+    question: "What is your return policy?",
+    answer: "You can return items within 30 days of purchase.",
+  },
+  {
+    question: "Do you offer international shipping?",
+    answer: "Yes, we ship worldwide.",
+  },
+  {
+    question: "How can I track my order?",
+    answer: "You will receive a tracking link via email after shipping.",
+  },
+];
 
-export default function ControlledAccordions({ id, data, expanded, onChange }) {
-  const isSmallScreen = window.innerWidth <= 600;
+const ControlledAccordion = () => {
   return (
-    <Accordion expanded={expanded} onChange={onChange}>
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        aria-controls={`panel-content-${id}`}
-        id={`panel-header-${id}`}
-      >
-        <Typography
-          component="span"
-          sx={{
-            width: "80%",
-            flexShrink: 0,
-            color: "#883022",
-            fontFamily: "Montserrat",
-            fontSize: isSmallScreen ? "3vmin" : "1.75vmin",
-          }}
-        >
-          {data.heading}
-        </Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography
-          sx={{
-            color: "#883022",
-            fontFamily: "Montserrat",
-
-            fontWeight: "light",
-            fontSize: isSmallScreen ? "3vmin" : "1.75vmin",
-          }}
-        >
-          {data.details}
-        </Typography>
-      </AccordionDetails>
-    </Accordion>
+    <div className="w-full max-w-md mx-auto space-y-2">
+      <Accordion allowZeroExpanded>
+        {faqs.map((faq, index) => (
+          <AccordionItem key={index} className="border-b border-gray-300">
+            <AccordionItemHeading>
+              <AccordionItemButton className="flex justify-between w-full px-4 py-3 text-left font-medium">
+                {faq.question}
+              </AccordionItemButton>
+            </AccordionItemHeading>
+            <AccordionItemPanel className="px-4 pb-3 pt-1 text-gray-700">
+              {faq.answer}
+            </AccordionItemPanel>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </div>
   );
-}
+};
+
+export default ControlledAccordion;

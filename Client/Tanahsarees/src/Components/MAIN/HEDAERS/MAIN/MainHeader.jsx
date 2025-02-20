@@ -11,7 +11,7 @@ import Drawer from "react-modern-drawer";
 import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartsCard from "../../../CARDS/CartsCard";
 import AuthModal from "./AuthModal";
 import { height } from "@mui/system";
@@ -22,7 +22,7 @@ export default function MainHeader(props) {
   const [loginOpen, setLoginOpen] = useState(false);
   const data = [
     {
-      image: "/Sarees/saree6.jpg",
+      image: "/Sarees/saree11.jpg",
       name: "Silk raw mango raw pes pesus and hugs and currency",
       price: "3000",
       size: "xl",
@@ -69,6 +69,7 @@ export default function MainHeader(props) {
   const { scrollValue } = props;
   // console.log(scrollValue);
   const regularScroll = !scrollValue ? 340 : Number(scrollValue);
+  const navigate = useNavigate();
   const [showHeader, setShowHeader] = useState(true);
   const [showHi, setShowHi] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -112,7 +113,7 @@ export default function MainHeader(props) {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      height: "70vmin",
+      height: "75vmin",
       width: "70vw",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
@@ -227,11 +228,15 @@ export default function MainHeader(props) {
                     Cart
                   </p>
                   <div className="">
-                    <Link to="/cart">
-                      <button className="h-8 w-[50%] text-sm border-1 bg-[#F58B75] text-white text-Monteserrat cursor-pointer">
-                        View Cart
-                      </button>
-                    </Link>
+                    <button
+                      onClick={() => {
+                        toggleDrawer();
+                        navigate("/cart");
+                      }}
+                      className="h-8 w-[50%] text-sm border-1 bg-[#F58B75] text-white text-Monteserrat cursor-pointer"
+                    >
+                      View Cart
+                    </button>
                   </div>
                 </div>
 
@@ -275,7 +280,7 @@ export default function MainHeader(props) {
                     SUBTOTAL
                   </p>
                   <div className="flex subtotalArea  w-[50vw] lg:w-[26vw] p-1 justify-end mt-[-1.35vmin] lg:mt-[-1vmin] ">
-                    <p className="text-end  darktext font-Montserrat font-normal tracking-[2.35px]">
+                    <p className="text-end  darktext font-Montserrat font-normal tracking-[2.35px] text-xs lg:text-sm">
                       ₹2579
                     </p>
                   </div>

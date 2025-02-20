@@ -4,13 +4,14 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../AppContext/AppContext";
 // import Product from "../../PRODUCTS/Product";
 // import { Link, useNavigate } from "react-router-dom";
 // Sample Hardcoded Data (Replace with API later)
 const items = [
   { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
-  { id: 2, title: "Silk Saree", img: "/Sarees/saree2.jpg" },
+  { id: 2, title: "Silk Saree", img: "/Sarees/saree8.jpg" },
   { id: 3, title: "Siffon saree", img: "/Sarees/saree3.jpg" },
   { id: 4, title: "silk saree", img: "/Sarees/saree10.jpg" },
   { id: 5, title: "Cotton saree", img: "/Sarees/saree5.jpg" },
@@ -19,6 +20,7 @@ const items = [
 
 const SliderComponent = () => {
   const { change } = useContext(AppContext);
+  const navigate = useNavigate();
   const sliderRef = React.useRef(null);
   // const navigate = useNavigate();
 
@@ -75,19 +77,21 @@ const SliderComponent = () => {
               <>
                 <div className="">
                   <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
-                    <div
-                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[0.15px]"
-                      style={{
-                        backgroundImage: `url(${item.img})`,
-                        backgroundSize: "cover", // Ensures image fills the div
-                        backgroundPosition: "center", // Centers the image
-                        backgroundRepeat: "no-repeat", // Prevents tiling
-                      }}
-                    ></div>
+                    <Link to="/products">
+                      <div
+                        className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[0.15px]"
+                        style={{
+                          backgroundImage: `url(${item.img})`,
+                          backgroundSize: "cover", // Ensures image fills the div
+                          backgroundPosition: "center", // Centers the image
+                          backgroundRepeat: "no-repeat", // Prevents tiling
+                        }}
+                      ></div>
 
-                    <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
-                      {item.title}
-                    </p>
+                      <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
+                        {item.title}
+                      </p>
+                    </Link>
                   </div>
                 </div>
               </>
@@ -137,17 +141,22 @@ const SliderComponent = () => {
                     <>
                       <div className="zoom-div ml-[-6vmin]">
                         <div className="flex flex-col gap-y-4 justify-center items-center">
-                          <div
-                            className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
-                            style={{
-                              backgroundImage: `url(${item.img})`,
-                              backgroundPosition: "center",
-                              // Assuming each item has an image property
-                            }}
-                          ></div>
-                          <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                            {item.title}
-                          </p>
+                          <Link to="/products">
+                            <div
+                              className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                              style={{
+                                backgroundImage: `url(${item.img})`,
+                                backgroundPosition: "center",
+                                // Assuming each item has an image property
+                              }}
+                              onClick={() => {
+                                navigate("/products");
+                              }}
+                            ></div>
+                            <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                              {item.title}
+                            </p>
+                          </Link>
                         </div>
                       </div>
                     </>
@@ -184,6 +193,9 @@ const SliderComponent = () => {
                               backgroundPosition: "top",
 
                               // Assuming each item has an image property
+                            }}
+                            onClick={() => {
+                              navigate("/products");
                             }}
                           ></div>
                           <p className="font-Montserrat font-normal text-[#d5d5d5]-800">

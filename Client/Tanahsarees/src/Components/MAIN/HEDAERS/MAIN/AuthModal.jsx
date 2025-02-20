@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { useContext } from "react";
 import { AppContext } from "../../../../AppContext/AppContext";
+import { useGoogleLogin } from "@react-oauth/google";
 const AuthModal = ({ isOpen, onClose }) => {
   const { isLogin, setIsLogin } = useContext(AppContext);
   const [formData, setFormData] = useState({
@@ -20,6 +22,9 @@ const AuthModal = ({ isOpen, onClose }) => {
   };
 
   if (!isOpen) return null;
+
+  // Custom Google Login Hook
+  const login = useGoogleLogin({});
 
   return (
     <div className="inset-0 flex items-center justify-center bg-black bg-opacity-100  ">
@@ -71,6 +76,31 @@ const AuthModal = ({ isOpen, onClose }) => {
           >
             {!isLogin ? "Login" : "Signup"}
           </button>
+          <div className="google-btn">
+            <button
+              onClick={login}
+              style={{
+                // backgroundColor: "#4285F4",
+                // color: "#00000",
+                border: "1px solid #d5d5d5",
+                padding: screen.width > 1000 ? "1.35vmin" : "2.35vmin",
+                width: "100%",
+                fontSize: "16px",
+                borderRadius: "5px",
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src="https://www.pngplay.com/wp-content/uploads/13/Google-Logo-PNG-Photo-Image.png"
+                alt="Google logo"
+                style={{ width: "20px", marginRight: "10px" }}
+              />
+              Sign in with Google
+            </button>
+          </div>
         </form>
       </div>
     </div>
