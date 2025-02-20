@@ -10,39 +10,21 @@ import "react-modern-drawer/dist/index.css";
 
 const Header = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
-  const { cartIsOpen, toggleDrawer, hamIsOpen, toggleHam } =
-    useContext(AppContext);
-  console.log(hamIsOpen);
+  const {
+    cartIsOpen,
+    toggleDrawer,
+    hamIsOpen,
+    toggleHam,
+    Loginlargescreen,
+    setLoginlargescreen,
+  } = useContext(AppContext);
 
-  const toggle = () => {
-    console.log("toggleDrawer");
+  const openLoginLargeModal = () => {
+    setLoginlargescreen(true);
   };
-  const modalOpen = () => {
-    setIsOpen(true);
-  };
-  const modalClose = () => {
-    setIsOpen(false);
-  };
-  const customStyles = {
-    content: {
-      position: "fixed",
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      width: "65vw",
-      height: "56vh",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      backgroundColor: "transparent",
-      border: "none",
-      boxShadow: "none",
-    },
-    overlay: {
-      zIndex: 1600, // Ensuring it's above all elements
-      backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
-      backdropFilter: "blur(1.5px)", // Optional blur effect
-    },
+
+  const closeLoginLargeModal = () => {
+    setLoginlargescreen(false);
   };
 
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
@@ -71,7 +53,7 @@ const Header = (props) => {
               <i className="ri-heart-line"></i>
             </a>
             <a className="mt-[-1vmin] darktext text-[3.75vmin] font-extralight">
-              <i className="ri-user-line " onClick={modalOpen}></i>
+              <i className="ri-user-line " onClick={openLoginLargeModal}></i>
             </a>
 
             <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.75vmin] font-extralight">
@@ -104,23 +86,6 @@ const Header = (props) => {
             </div>
           </div>
         </>
-      )}
-      {modalIsOpen ? (
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={modalOpen}
-          onRequestClose={modalClose}
-          style={customStyles}
-          contentLabel="Example Modal"
-          shouldCloseOnOverlayClick={false}
-        >
-          <div className="w-[100%] h-[100%] flex bgpink">
-            <div className="left w-[60%] border-[1px]"></div>
-            <div className="right w-[40%] border-[1px]"></div>
-          </div>
-        </Modal>
-      ) : (
-        ""
       )}
     </>
   );

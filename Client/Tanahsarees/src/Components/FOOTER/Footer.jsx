@@ -141,7 +141,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="w-[100vw] flex flex-col justify-center items-center gap-x-4  p-4 pl-3 mt-5 ml-4">
+          <div className="w-[100vw] flex flex-col justify-center items-center gap-x-4  p-4 pl-3 mt-5 ml-4 darktext">
             <p className="text-xs">© Tanah Sarees 2024. All Rights Reserved.</p>
             <p className="text-xs mt-4">Powered By Codemap.</p>
           </div>

@@ -14,6 +14,7 @@ import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
 import CartsCard from "../../../CARDS/CartsCard";
 import AuthModal from "./AuthModal";
+import { height } from "@mui/system";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
@@ -57,8 +58,14 @@ export default function MainHeader(props) {
     },
   ];
   setContentCart(data.length);
-  const { cartIsOpen, toggleDrawer, hamIsOpen, toggleHam } =
-    useContext(AppContext);
+  const {
+    cartIsOpen,
+    toggleDrawer,
+    hamIsOpen,
+    toggleHam,
+    Loginlargescreen,
+    setLoginlargescreen,
+  } = useContext(AppContext);
   const { scrollValue } = props;
   // console.log(scrollValue);
   const regularScroll = !scrollValue ? 340 : Number(scrollValue);
@@ -66,6 +73,13 @@ export default function MainHeader(props) {
   const [showHi, setShowHi] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollThreshold, setScrollThreshold] = useState(regularScroll);
+
+  const OpenLargeModalLogin = () => {
+    setLoginlargescreen(true);
+  };
+  const CloseLargeModalLogin = () => {
+    setLoginlargescreen(false);
+  };
   const modalOpen = () => {
     setLoginOpen(true);
   };
@@ -89,6 +103,27 @@ export default function MainHeader(props) {
       zIndex: 1600, // Ensuring it's above all elements
       backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
       backdropFilter: "blur(1.5px)", // Optional blur effect
+    },
+  };
+
+  const customStylesLarge = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      height: "70vmin",
+      width: "70vw",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "transparent",
+      border: "none",
+      boxShadow: "none",
+    },
+    overlay: {
+      zIndex: 1600, // Ensuring it's above all elements
+      backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
+      backdropFilter: "blur(1.5px)",
     },
   };
   useEffect(() => {
@@ -234,7 +269,7 @@ export default function MainHeader(props) {
                   : ""
               }`}
             >
-              <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%] flex flex-col pl-3 ">
+              <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%] flex flex-col pl-3 mt-3 ">
                 <div className="flex  subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
                   <p className="font-Montserrat text-xs text-[#883022] tracking-[2.35px]">
                     SUBTOTAL
@@ -383,7 +418,7 @@ export default function MainHeader(props) {
               <a className="absolute w-[80vw] flex justify-end text-3xl font-light font-Lato darktext  mt-1 p-2">
                 <i className="ri-close-line" onClick={modalClose}></i>
               </a>
-              <div className="mt">
+              <div className="">
                 <AuthModal
                   isOpen={loginOpen}
                   isLogin={false}
@@ -396,6 +431,56 @@ export default function MainHeader(props) {
           ""
         )}
       </>
+      {Loginlargescreen ? (
+        <>
+          {" "}
+          <Modal
+            isOpen={Loginlargescreen}
+            onAfterOpen={OpenLargeModalLogin}
+            onRequestClose={CloseLargeModalLogin}
+            style={customStylesLarge}
+            contentLabel="Small Login Modal"
+            shouldCloseOnOverlayClick={false}
+          >
+            <div className="bg-[#f7d9cb] w-[100%] h-[100%]">
+              <div className="iconHolder h-[6vmin] overflow-hidden">
+                <a className="flex justify-start text-3xl font-light font-Lato darktext  mt-2 ml-2 p-2 ">
+                  <i
+                    className="ri-close-line"
+                    onClick={CloseLargeModalLogin}
+                  ></i>
+                </a>
+              </div>
+              <div className="holder flex h-[calc(100%-6vmin)] w-[100%] pr-2 pb-2">
+                <div className="leftHolder w-[52%] mt-[-1.45vmin] h-full flex flex-col justify-center items-center">
+                  <img
+                    src="logo_new.png"
+                    height={280}
+                    width={280}
+                    className="darktext"
+                  />
+                  <p className="text-xs lg:text-sm mt-6 darktext tracking-wider">
+                    ( Login to your account & fill the details )
+                  </p>
+                </div>
+                <div className="rightHolder w-[48%]  h-full  ">
+                  <div className="w-[80%]   mt-3 ml-2 bg-white  rounded-md ">
+                    <div className="formHolder">
+                      <AuthModal
+                        isOpen={Loginlargescreen}
+                        isLogin={false}
+                        onClose={() => setLoginlargescreen(false)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Modal>
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 }

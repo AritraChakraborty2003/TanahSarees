@@ -22,7 +22,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="inset-0 flex items-center justify-center bg-black bg-opacity-100 border-[0.15px] border-[#d5d5d5] ">
+    <div className="inset-0 flex items-center justify-center bg-black bg-opacity-100  ">
       <div className="w-[90vw] max-w-md p-6 bg-white rounded-xs shadow-lg ">
         <h2 className="text-2xl font-bold text-center mb-2 mt-3">
           {!isLogin ? "Login" : "Signup"}

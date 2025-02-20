@@ -162,6 +162,7 @@ const App = () => {
   const toggleHam = () => setHamIsOpen(!hamIsOpen);
   const [contentCart, setContentCart] = useState(0);
   const [isLogin, setIsLogin] = useState(true);
+  const [Loginlargescreen, setLoginlargescreen] = useState(false);
   return (
     <>
       <AppContext.Provider
@@ -177,6 +178,8 @@ const App = () => {
           setContentCart,
           isLogin,
           setIsLogin,
+          Loginlargescreen,
+          setLoginlargescreen,
         }}
       >
         <RouterProvider router={router} />

@@ -231,7 +231,7 @@ const Productdescription = () => {
         </div>
         <div className="likeArea mt-8">
           <div className="likeHeader">
-            <p className="ml-5 text-gray-500 font-normal font-roboto text-xl">
+            <p className="ml-5 text-gray-500 font-normal font-Montserrat text-2xl">
               You might also like
             </p>
             <div className="mt-3 lg:mt-6">

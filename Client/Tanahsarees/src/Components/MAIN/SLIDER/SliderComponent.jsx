@@ -12,7 +12,7 @@ const items = [
   { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
   { id: 2, title: "Silk Saree", img: "/Sarees/saree2.jpg" },
   { id: 3, title: "Siffon saree", img: "/Sarees/saree3.jpg" },
-  { id: 4, title: "silk saree", img: "/Sarees/saree4.jpg" },
+  { id: 4, title: "silk saree", img: "/Sarees/saree10.jpg" },
   { id: 5, title: "Cotton saree", img: "/Sarees/saree5.jpg" },
   { id: 6, title: "Chikon saree", img: "/Sarees/saree11.jpg" },
 ];
@@ -76,7 +76,7 @@ const SliderComponent = () => {
                 <div className="">
                   <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
                     <div
-                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[1px]"
+                      className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[0.15px]"
                       style={{
                         backgroundImage: `url(${item.img})`,
                         backgroundSize: "cover", // Ensures image fills the div
@@ -155,7 +155,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[5.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[5.5%] 2xl:w-[5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>
@@ -176,7 +176,7 @@ const SliderComponent = () => {
                   {items.map((item) => (
                     <>
                       <div className="ml-[-6vmin]">
-                        <div className="flex flex-col gap-y-4 justify-center items-center">
+                        <div className="flex flex-col gap-y-3 justify-center items-center">
                           <div
                             className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                             style={{
@@ -196,7 +196,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.5%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>

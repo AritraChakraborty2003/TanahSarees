@@ -31,7 +31,7 @@ const CartDisplay = (props) => {
         >
           Quick View
         </div>
-        <div className="absolute ml-[84%] lg:ml-[86%] darktext text-lg lg:text-3xl ">
+        <div className="absolute ml-[84%] lg:ml-[86%] darktext text-lg lg:text-3xl 2xl:text-xl mt-2 ">
           <p className="hover:shadow-lg hover:text-[red] transition-shadow duration-300">
             ⛌
           </p>
