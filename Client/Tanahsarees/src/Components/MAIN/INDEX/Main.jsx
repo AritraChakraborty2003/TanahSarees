@@ -21,7 +21,7 @@ const Main = () => {
 
         {/* <div className="mt-2 lg:mt-10"> */}
         <BannerSlider />
-        <SliderComponent />
+
         {/* </div> */}
         <Feature />
         <Exclusive />
