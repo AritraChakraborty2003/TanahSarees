@@ -14,7 +14,6 @@ import { AppContext } from "../../../../AppContext/AppContext";
 import { Link } from "react-router-dom";
 import CartsCard from "../../../CARDS/CartsCard";
 import AuthModal from "./AuthModal";
-import Carts from "../../../CARTPAGE/Carts";
 
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
@@ -193,7 +192,7 @@ export default function MainHeader(props) {
                     Cart
                   </p>
                   <div className="">
-                    <Link to="/carts">
+                    <Link to="/cart">
                       <button className="h-8 w-[50%] text-sm border-1 bg-[#F58B75] text-white text-Monteserrat cursor-pointer">
                         View Cart
                       </button>
