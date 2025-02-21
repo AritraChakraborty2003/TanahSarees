@@ -58,7 +58,7 @@ const OptionsBar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="fixed top-[258px] left-0 w-screen bg-white shadow-lg border border-gray-200 z-50"
+                      className="fixed top-[36%] left-0 w-screen bg-white shadow-lg border border-gray-200 z-50"
                       onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
                       onMouseLeave={handleMouseLeave} // Close only if mouse leaves
                     >

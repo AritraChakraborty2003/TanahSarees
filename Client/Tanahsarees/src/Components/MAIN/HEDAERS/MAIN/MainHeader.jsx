@@ -19,6 +19,7 @@ import { height } from "@mui/system";
 export default function MainHeader(props) {
   const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
     useContext(AppContext);
+  const { isLogin, setIsLogin } = useContext(AppContext);
   const [loginOpen, setLoginOpen] = useState(false);
   const data = [
     {
@@ -109,11 +110,11 @@ export default function MainHeader(props) {
 
   const customStylesLarge = {
     content: {
-      top: "50%",
+      top: "56%",
       left: "50%",
       right: "auto",
       bottom: "auto",
-      height: "75vmin",
+      height: !isLogin ? "83vmin" : "75vmin",
       width: "70vw",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
@@ -457,7 +458,7 @@ export default function MainHeader(props) {
                 </a>
               </div>
               <div className="holder flex h-[calc(100%-6vmin)] w-[100%] pr-2 pb-2">
-                <div className="leftHolder w-[52%] mt-[-1.45vmin] h-full flex flex-col justify-center items-center">
+                <div className="leftHolder w-[49%] mt-[-1.45vmin] h-full flex flex-col justify-center items-center">
                   <img
                     src="logo_new.png"
                     height={280}
@@ -468,8 +469,8 @@ export default function MainHeader(props) {
                     ( Login to your account & fill the details )
                   </p>
                 </div>
-                <div className="rightHolder w-[48%]  h-full  ">
-                  <div className="w-[80%]   mt-3 ml-2 bg-white  rounded-md ">
+                <div className="rightHolder w-[48%]  h-full  flex justify-center items-center mt-[-1vmin]">
+                  <div className="w-fit   mt-3 ml-1 bg-white  rounded-md ">
                     <div className="formHolder">
                       <AuthModal
                         isOpen={Loginlargescreen}
