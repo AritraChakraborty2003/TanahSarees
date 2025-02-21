@@ -9,6 +9,13 @@ const testimonialSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 60,
     },
+    sname: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 3,
+      maxlength: 60,
+    },
     review: {
       type: String,
       required: true,

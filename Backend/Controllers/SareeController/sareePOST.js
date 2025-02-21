@@ -4,15 +4,28 @@ export const SareePOST = () => {
   return async (req, res) => {
     try {
       console.log(req.body);
-      const { name, price, description, review, customer } = req.body;
+      const {
+        sname,
+        type,
+        price,
+        material,
+        color,
+        discount,
+        occasion,
+        topSelling,
+      } = req.body;
+
       const photo = req.file.filename;
       const newSaree = new SareeTestObj({
-        name,
+        sname,
+        type,
         price,
-        description,
         photo,
-        review,
-        customer,
+        material,
+        color,
+        discount,
+        occasion,
+        topSelling,
       });
       newSaree.save();
       res.status(201).json(newSaree);
