@@ -2,6 +2,12 @@ import mongoose from "mongoose";
 
 const cancelSchema = new mongoose.Schema(
   {
+    order_id: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+    },
     item_name: {
       type: String,
       required: true,
