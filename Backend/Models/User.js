@@ -1,22 +1,16 @@
 import mongoose from "mongoose";
+import validator from "validator";
 
 const userShcema = mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
-      unique: true,
       trim: true,
       lowercase: true,
       minlength: 2,
       maxlength: 600,
-      validate: {
-        validator: function (v) {
-          return /^(?=.*[@$_])[A-Za-z0-9@$_]+$/.test(v);
-        },
-        message: "Name must contain at least one '@', '$', or '_'",
-      },
     },
+
     email: {
       type: String,
       required: true,
@@ -27,9 +21,19 @@ const userShcema = mongoose.Schema(
         }
       },
     },
+    phone: {
+      type: String,
+      trim: true,
+      unique: true,
+      validate: {
+        validator: function (v) {
+          return /^\d{10}$/.test(v);
+        },
+        message: "Please enter a valid phone number",
+      },
+    },
     password: {
       type: String,
-      required: true,
       unique: true,
       validate(value) {
         if (!validator.isStrongPassword(value)) {
@@ -37,7 +41,38 @@ const userShcema = mongoose.Schema(
         }
       },
     },
+    additionalNo: {
+      type: String,
+      trim: true,
+      validate: {
+        validator: function (v) {
+          return /^[0-9]{10}$/.test(v);
+        },
+        message: "Please enter a valid additional number",
+      },
+    },
+    favourites: {
+      type: [String],
+      trim: true,
+    },
+    cart: {
+      type: [String],
+      trim: true,
+    },
+    orders: {
+      type: [String],
+      trim: true,
+    },
+    cancel: {
+      type: [String],
+      trim: true,
+    },
+    favourites: {
+      type: [String],
+      trim: true,
+    },
   },
+
   {
     timestamps: true,
     collection: "users",

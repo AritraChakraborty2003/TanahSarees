@@ -3,9 +3,13 @@
 import { useState, useContext } from "react";
 import { useGoogleLogin } from "@react-oauth/google";
 import { AppContext } from "../../../../AppContext/AppContext";
-
-const AuthModal = ({ isOpen, onClose }) => {
-  const { isLogin, setIsLogin } = useContext(AppContext);
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+const AuthModal = ({ isOpen }) => {
+  const navigate = useNavigate();
+  const { isLogin, setIsLogin, Loginlargescreen, setLoginlargescreen } =
+    useContext(AppContext);
 
   // ✅ Fixed: Separate email, phone, and password in state
   const [formData, setFormData] = useState({
@@ -22,15 +26,34 @@ const AuthModal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    onClose();
   };
 
   if (!isOpen) return null;
 
-  // ✅ Google Login
+  console.log(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/google`);
+
+  const handleLogin = async (codeResponse) => {
+    console.log("Authorization Code:", codeResponse.code); // ✅ Debugging
+
+    const res = await axios.post(
+      `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/google`,
+      { code: codeResponse.code },
+      { withCredentials: true } // ✅ Required to send cookies
+    );
+
+    toast.success("Login successful!");
+    console.log(res);
+    setLoginlargescreen(!Loginlargescreen);
+    navigate("/");
+
+    // ✅ Check cookies in console
+    console.log("Cookies in React:", document.cookie);
+  };
+
   const login = useGoogleLogin({
-    onSuccess: (response) => console.log("Google Auth Response:", response),
+    onSuccess: handleLogin,
     onError: () => console.log("Google Login Failed"),
+    flow: "auth-code", // ✅ Correct flow for authorization code
   });
 
   return (

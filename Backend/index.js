@@ -1,31 +1,36 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 import connectDB from "./Connection/DbConnect.js";
-
 import { generalRouter } from "./Routes/GeneralRouter.js";
 import { SareeRouter } from "./Routes/SareeRouter.js";
 import { OrderRouter } from "./Routes/OrderRouter.js";
 import { CancelRouter } from "./Routes/CancelRouter.js";
 import { TestimonialRouter } from "./Routes/TestimonialRouter.js";
+import { AuthRouter } from "./Routes/AuthRouter.js";
+import { userRouter } from "./Routes/UserRouter.js";
 
-//Basic Application Setup
 dotenv.config();
+
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(express.json());
-app.use(express.static("uploads"));
-app.use(bodyParser.json());
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Change this to your React frontend URL
+    credentials: true, // ✅ Allows sending cookies
+  })
+);
+app.use(express.urlencoded({ extended: true })); // ✅ Parses URL-encoded form data
 
-// Load environment variables from .env file
-const PORT = process.env.PORT || 3000;
+app.use(express.static("uploads")); // Serve static files
 
-//MongoDB connection
+// ✅ MongoDB Connection
 connectDB(process.env.MONGODB_URI);
 
-//routes of project
+// ✅ Routes (MUST COME AFTER MIDDLEWARE)
 app.use("/", generalRouter);
 app.use("/api/v1", generalRouter);
 app.use("/api/v1/sarees", SareeRouter);
@@ -33,7 +38,11 @@ app.use("/api/v1/saree", SareeRouter);
 app.use("/api/v1/orders", OrderRouter);
 app.use("/api/v1/cancel", CancelRouter);
 app.use("/api/v1/testimonials", TestimonialRouter);
+app.use("/api/v1/auth", AuthRouter);
+app.use("/api/v1/users", userRouter);
 
+// ✅ Start the Server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`🚀 Server is running on port ${PORT}`);
 });

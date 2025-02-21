@@ -21,6 +21,8 @@ import SizeChart from "./Components/SIZECHART/SizeChart";
 import Order from "./Components/ORDERS/Order";
 import FilterAccordion from "./Components/TESTComp/FilterAccordian";
 import Profile from "./Components/PROFILE/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -210,6 +212,7 @@ const App = () => {
         }}
       >
         <RouterProvider router={router} />
+        <ToastContainer position="top-right" autoClose={3000} />
       </AppContext.Provider>
     </>
   );
