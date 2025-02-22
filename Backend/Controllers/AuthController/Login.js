@@ -7,8 +7,6 @@ export const Login = () => {
     try {
       const { email, password } = req.body;
 
-      console.log(email, password);
-
       // Find user by email (Ensure await is used)
       const user = await UserObj.findOne({ email: email });
 
@@ -34,7 +32,7 @@ export const Login = () => {
       res.cookie("ecom_token", jwtToken, {
         httpOnly: true,
         secure: false,
-        sameSite: "None",
+        sameSite: "Lax",
         maxAge: 3600000, // 1 hour
       });
 

@@ -4,10 +4,10 @@ export const Signup = () => {
   return async (req, res) => {
     try {
       const { email, phone, password } = req.body;
-      const uname = email.split("@");
+      const uname = email.split("@")[0];
       const passwordHash = await bcrypt.hash(password, 10);
       const Userobj = new UserObj({
-        usernamename: uname,
+        username: uname,
         phone: phone,
         email: email,
         password: passwordHash,

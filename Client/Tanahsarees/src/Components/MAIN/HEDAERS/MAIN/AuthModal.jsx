@@ -25,7 +25,7 @@ const AuthModal = ({ isOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(isLogin);
+
     try {
       if (!isLogin) {
         const res = await axios.post(
@@ -46,6 +46,13 @@ const AuthModal = ({ isOpen }) => {
           { withCredentials: true }
         );
         if (res.data.status === "success") {
+          const res1 = await axios.get(
+            `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/profile`,
+            { withCredentials: true }
+          );
+
+          console.log(res1.data);
+
           toast.success("Login successful!");
           navigate("/");
           setLoginlargescreen(!Loginlargescreen);
@@ -62,20 +69,29 @@ const AuthModal = ({ isOpen }) => {
 
   const handleLogin = async (codeResponse) => {
     console.log("Authorization Code:", codeResponse.code); // ✅ Debugging
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/google`,
+        { code: codeResponse.code },
+        { withCredentials: true } // ✅ Required to send cookies
+      );
+      const res1 = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/profile`,
+        { withCredentials: true }
+      );
 
-    const res = await axios.post(
-      `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/google`,
-      { code: codeResponse.code },
-      { withCredentials: true } // ✅ Required to send cookies
-    );
+      console.log(res1.data);
 
-    toast.success("Login successful!");
-    console.log(res);
-    setLoginlargescreen(!Loginlargescreen);
-    navigate("/");
+      toast.success("Login successful!");
+      console.log(res);
+      setLoginlargescreen(!Loginlargescreen);
+      navigate("/");
 
-    // ✅ Check cookies in console
-    console.log("Cookies in React:", document.cookie);
+      // ✅ Check cookies in console
+      console.log("Cookies in React:", document.cookie);
+    } catch (error) {
+      console.error("Google Login Error:", error);
+    }
   };
 
   const login = useGoogleLogin({
