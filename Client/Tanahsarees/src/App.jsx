@@ -24,6 +24,8 @@ import FilterAccordion from "./Components/TESTComp/FilterAccordian";
 import Profile from "./Components/PROFILE/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminLogin from "./Components/CMS/AdminLogin";
+import CmsDashboard from "./Components/CMS/DASHBOARD/CmsDashboard";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -179,6 +181,26 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <Profile />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/cms",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <AdminLogin />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <CmsDashboard />
         <Footer />
       </>
     ),
