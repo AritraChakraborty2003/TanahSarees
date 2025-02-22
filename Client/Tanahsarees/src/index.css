@@ -123,3 +123,12 @@ select:focus {
   transform: translateY(-50px);
   pointer-events: none;
 }
+
+/* .custom-nav .rs-nav-item {
+  transition: all 0.3s ease-in-out;
+} */
+
+/* .custom-nav .rs-nav-item:hover { */
+/* transform: scale(1.1); */
+/* color: #1675e0; Change to your theme color */
+/* } */
