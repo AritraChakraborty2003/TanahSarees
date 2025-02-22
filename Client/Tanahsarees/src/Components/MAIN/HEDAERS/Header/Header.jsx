@@ -48,17 +48,33 @@ const Header = (props) => {
               <img src="logo.png" height={200} width={220} />{" "}
             </Link>
           </div>
-          <div className="purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
-            <a className="mt-[-0.65vmin] darktext  text-[3.75vmin] font-extralight">
-              <i className="ri-heart-line"></i>
-            </a>
-            <a className="mt-[-1vmin] darktext text-[3.75vmin] font-extralight">
+          <div className="relative purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
+            <div className="relative inline-block">
+              {/* Heart Icon */}
+              <a className="mt-[-0.65vmin] darktext text-[4.75vmin] font-extralight relative">
+                <i className="ri-heart-line"></i> {/* Heart Icon */}
+              </a>
+
+              {/* Notification Circle (Positioned Over Heart) */}
+              <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[2.8vmin] h-[2.8vmin] bg-[#FFA500] text-white text-[1.5vmin] font-medium rounded-full">
+                0{/* Replace with dynamic count */}
+              </div>
+            </div>
+
+            <a className="mt-[-1vmin] darktext text-[4.75vmin] font-extralight">
               <i className="ri-user-line " onClick={openLoginLargeModal}></i>
             </a>
+            <div className="relative inline-block">
+              {/* Heart Icon */}
+              <a className="mt-[-1.35vmin] 2xl:mt-[-2vmin] darktext text-[4.75vmin] font-extralight">
+                <i className="ri-shopping-cart-line" onClick={toggleDrawer}></i>
+              </a>
 
-            <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.75vmin] font-extralight">
-              <i className="ri-shopping-cart-line" onClick={toggleDrawer}></i>
-            </a>
+              {/* Notification Circle (Positioned Over Heart) */}
+              <div className="absolute top-[1px] right-[-0.15px] flex items-center justify-center w-[2.8vmin] h-[2.8vmin] bg-[#FFA500] text-white text-[1.5vmin] font-medium rounded-full">
+                0{/* Replace with dynamic count */}
+              </div>
+            </div>
           </div>
         </div>
       )) || (
@@ -76,13 +92,35 @@ const Header = (props) => {
               </Link>
             </div>
             <div className="purchaseOptHolder w-[27%]  flex justify-end items-center  gap-x-5 pr-2 2xl:gap-x-20 mt-3">
-              <a className="mt-[-0.65vmin] darktext  text-[7.75vmin] font-extralight">
-                <i className="ri-heart-line"></i>
-              </a>
+              <div className="relative inline-block">
+                {/* Heart Icon */}
+                <a className="mt-[-0.65vmin] darktext text-[9vmin] font-extralight relative">
+                  <i className="ri-heart-line"></i> {/* Heart Icon */}
+                </a>
 
-              <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[7.75vmin] font-extralight">
-                <i className="ri-shopping-cart-line" onClick={toggleDrawer}></i>
-              </a>
+                {/* Notification Circle (Positioned Over Heart) */}
+                <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
+                  0{/* Replace with dynamic count */}
+                </div>
+              </div>
+              <div className="relative inline-block">
+                {/* Heart Icon */}
+                <a className="mt-[-0.65vmin] darktext text-[9vmin] font-extralight relative">
+                  <i
+                    className="ri-shopping-cart-line"
+                    onClick={toggleDrawer}
+                  ></i>{" "}
+                  {/* Heart Icon */}
+                  <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
+                    0{/* Replace with dynamic count */}
+                  </div>
+                </a>
+
+                {/* Notification Circle (Positioned Over Heart) */}
+                <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
+                  0{/* Replace with dynamic count */}
+                </div>
+              </div>
             </div>
           </div>
         </>
