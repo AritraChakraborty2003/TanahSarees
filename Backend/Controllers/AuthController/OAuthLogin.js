@@ -44,9 +44,9 @@ export const OAuthLogin = () => {
       );
 
       // ✅ Proper Cookie Settings for Cross-Origin Requests
-      res.cookie("baba", jwtToken, {
+      res.cookie("ecom_token", jwtToken, {
         httpOnly: true, // 🔒 Prevents XSS attacks
-        secure: process.env.NODE_ENV === "production", // ❌ Set to true in production
+        secure: false, // ❌ Set to true in production
         sameSite: "None", // ✅ Required for cross-origin cookies
         maxAge: 3600000, // 1 hour
       });
