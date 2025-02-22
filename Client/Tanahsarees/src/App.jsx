@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Faqcomponent from "./Components/FAQ/Faqcomponent";
+import axios from "axios";
 import { useState } from "react";
 import Loader from "./Components/MAIN/INDEX/Loader";
 import MainHeader from "./Components/MAIN/HEDAERS/MAIN/MainHeader";
@@ -24,6 +25,7 @@ import Profile from "./Components/PROFILE/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
   {
     path: "/",

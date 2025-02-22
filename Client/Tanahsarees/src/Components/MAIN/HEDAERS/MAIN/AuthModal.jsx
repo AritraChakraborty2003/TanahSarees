@@ -23,14 +23,42 @@ const AuthModal = ({ isOpen }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Data:", formData);
+    console.log(isLogin);
+    try {
+      if (!isLogin) {
+        const res = await axios.post(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/signup`,
+          formData
+        );
+        if (res.data.status === "success") {
+          toast.success("Signup successful!");
+          navigate("/");
+          setLoginlargescreen(!Loginlargescreen);
+        } else {
+          toast.error("Signup failed. Please try again.");
+        }
+      } else {
+        const res = await axios.post(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/login`,
+          formData,
+          { withCredentials: true }
+        );
+        if (res.data.status === "success") {
+          toast.success("Login successful!");
+          navigate("/");
+          setLoginlargescreen(!Loginlargescreen);
+        } else {
+          toast.error("Login failed. Please try again.");
+        }
+      }
+    } catch (error) {
+      console.error("Error signing up", error);
+    }
   };
 
   if (!isOpen) return null;
-
-  console.log(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/google`);
 
   const handleLogin = async (codeResponse) => {
     console.log("Authorization Code:", codeResponse.code); // ✅ Debugging
