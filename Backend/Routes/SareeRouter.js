@@ -6,4 +6,4 @@ import { ImageUploader } from "../utils/ImageUploader.js";
 export const SareeRouter = new express.Router();
 
 SareeRouter.get("/", SareeGET);
-SareeRouter.post("/", ImageUploader(), SareePOST());
+// SareeRouter.post("/", ImageUploader(), SareePOST());

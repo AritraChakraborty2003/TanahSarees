@@ -5,4 +5,4 @@ import { ImageUploader } from "../utils/ImageUploader.js";
 
 export const TestimonialRouter = express.Router();
 TestimonialRouter.get("/", TestimonialsGET);
-TestimonialRouter.post("/", ImageUploader(), TestimonialPOST());
+// TestimonialRouter.post("/", ImageUploader(), TestimonialPOST());

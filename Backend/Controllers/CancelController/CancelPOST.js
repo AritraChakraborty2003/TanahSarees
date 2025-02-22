@@ -4,10 +4,17 @@ export const CancelPOST = () => {
   return async (req, res) => {
     try {
       console.log(req.body);
-      const { item_name, item_price, uname, info, additional_number } =
-        req.body;
+      const {
+        order_id,
+        item_name,
+        item_price,
+        uname,
+        info,
+        additional_number,
+      } = req.body;
 
       const newCancel = new CancelObj({
+        order_id,
         item_name,
         item_price,
         uname,
