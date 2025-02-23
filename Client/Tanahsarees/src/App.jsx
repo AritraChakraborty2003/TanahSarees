@@ -241,10 +241,14 @@ const App = () => {
 
   /*-------------------------*/
   // For HTTP Click Handler request
-
   const [httpClick, setHttpClick] = useState(false);
-
   /*-------------------------*/
+
+  /*------------------*/
+  //For Check Auth //
+  const [isUserLogin, setIsUserLogin] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
+  /*-----------------*/
   return (
     <>
       <AppContext.Provider
@@ -264,6 +268,10 @@ const App = () => {
           setLoginlargescreen,
           httpClick,
           setHttpClick,
+          isUserLogin,
+          setIsUserLogin,
+          userInfo,
+          setUserInfo,
         }}
       >
         <RouterProvider router={router} />

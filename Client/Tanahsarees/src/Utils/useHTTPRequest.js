@@ -30,12 +30,12 @@ export const UseHTTPRequest = (tigger, route, type, data) => {
           setData(res.data.message);
           setHttpClick(!httpClick);
           toast.success("Data added successfully!");
+        })
+        .catch((error) => {
+          setData(error);
+          setHttpClick(!httpClick);
+          toast.error("Something went wrong...");
         });
-      // .catch((error) => {
-      //   setData(error);
-      //   setHttpClick(!httpClick);
-      //   toast.error("Something went wrong...");
-      // });
     }
   }, [data, route, tigger, type, httpClick, setHttpClick]);
   return Data;

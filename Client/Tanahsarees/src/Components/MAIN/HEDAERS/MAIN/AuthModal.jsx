@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react/prop-types */
 import { useState, useContext } from "react";
@@ -18,6 +19,7 @@ const AuthModal = ({ isOpen }) => {
     password: "",
   });
 
+  console.log(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/login`);
   // ✅ Fixed: Correct state updates for each input field
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -83,7 +85,7 @@ const AuthModal = ({ isOpen }) => {
       console.log(res1.data);
 
       toast.success("Login successful!");
-      console.log(res);
+
       setLoginlargescreen(!Loginlargescreen);
       navigate("/");
 
