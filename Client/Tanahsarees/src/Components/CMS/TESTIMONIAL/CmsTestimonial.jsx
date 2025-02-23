@@ -2,8 +2,10 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import { AppContext } from "../../../AppContext/AppContext";
+import { useContext } from "react";
 const CmsTestimonial = () => {
+  const { change } = useContext(AppContext);
   const [preview, setPreview] = useState(null);
 
   // Validation Schema
@@ -33,7 +35,21 @@ const CmsTestimonial = () => {
   });
 
   return (
-    <div className="flex justify-center items-center p-6 mb-10">
+    <div
+      className="flex justify-center items-center p-6 mb-10"
+      style={{
+        marginTop: `${
+          !change
+            ? screen.width > 1000
+              ? "22.5%"
+              : ""
+            : screen.width > 1000
+            ? "12%"
+            : ""
+        }`, // Adjust based on header height
+        zIndex: 10, // Keep content below the header
+      }}
+    >
       <Formik
         initialValues={{
           name: "",
@@ -60,7 +76,7 @@ const CmsTestimonial = () => {
         }}
       >
         {({ setFieldValue }) => (
-          <Form className="max-w-4xl w-full p-6 font-Montserrat bg-white shadow-md rounded-lg">
+          <Form className="max-w-4xl w-full p-6 font-Montserrat bg-white shadow-md border-[#d5d5d5] border-[1px] rounded-lg">
             <h2 className="text-xl font-semibold  text-center mb-4">
               Add New Review
             </h2>

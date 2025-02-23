@@ -12,7 +12,7 @@ const AdminLogin = () => {
         marginTop: `${
           !change
             ? screen.width > 1000
-              ? "20%"
+              ? "18%"
               : ""
             : screen.width > 1000
             ? "12%"

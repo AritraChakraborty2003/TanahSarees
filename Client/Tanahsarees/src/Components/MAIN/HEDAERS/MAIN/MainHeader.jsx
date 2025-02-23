@@ -75,6 +75,7 @@ export default function MainHeader(props) {
   const [showHi, setShowHi] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollThreshold, setScrollThreshold] = useState(regularScroll);
+  const { category } = props;
 
   const OpenLargeModalLogin = () => {
     setLoginlargescreen(true);
@@ -186,7 +187,7 @@ export default function MainHeader(props) {
                 <Marqueecomp />
                 {window.innerWidth > 1000 && <Smallheader />}
                 <Header />
-                <OptionsBar />
+                {category != "CMS" && <OptionsBar />}
               </div>
             ) : null}
             {showHi ? (

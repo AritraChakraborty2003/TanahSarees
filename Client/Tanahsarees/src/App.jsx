@@ -26,6 +26,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminLogin from "./Components/CMS/AdminLogin";
 import CmsDashboard from "./Components/CMS/DASHBOARD/CmsDashboard";
+import CmsTestimonial from "./Components/CMS/TESTIMONIAL/CmsTestimonial";
+import Catalogue from "./Components/CMS/CATALOGUE/Catalogue";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -201,6 +203,26 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <CmsDashboard />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/CMSTestinomials",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <CmsTestimonial />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/CatalogueManager",
+    element: (
+      <>
+        <MainHeader scrollValue="30" category="CMS" />
+        <Catalogue />
         <Footer />
       </>
     ),

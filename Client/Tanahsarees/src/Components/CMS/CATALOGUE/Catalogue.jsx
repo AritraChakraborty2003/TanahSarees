@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-
 import ViewCatalogue from "./ViewCatalogue";
 import AddCatalogue from "./AddCatalogue";
+import { AppContext } from "../../../AppContext/AppContext";
+import { useContext } from "react";
 
 const Catalogue = () => {
+  const { change } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState("view");
 
   const data = [
@@ -53,7 +55,7 @@ const Catalogue = () => {
   const tabContent = {
     view: (
       <>
-        <div className="border-2 flex flex-wrap p-5">
+        <div className="flex flex-wrap p-1">
           {" "}
           {data.map((item, index) => (
             <ViewCatalogue key={index} data={item} />
@@ -70,7 +72,21 @@ const Catalogue = () => {
   };
 
   return (
-    <div className="w-[100vw] border-2 flex flex-col justify-center items-center ">
+    <div
+      className="w-[100vw] flex flex-col justify-center items-center "
+      style={{
+        marginTop: `${
+          !change
+            ? screen.width > 1000
+              ? "17%"
+              : ""
+            : screen.width > 1000
+            ? "12%"
+            : ""
+        }`, // Adjust based on header height
+        zIndex: 10, // Keep content below the header
+      }}
+    >
       <h1 className="text-center font-Montserrat text-4xl p-2">
         Catalogue Page
       </h1>
@@ -81,7 +97,7 @@ const Catalogue = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`relative text-lg px-4 py-2 transition ${
+            className={`relative text-lg px-4 py-2 transition overflow-hidden ${
               activeTab === tab
                 ? "bg-[#883022] rounded-2xl p-1 text-white"
                 : "text-white"
