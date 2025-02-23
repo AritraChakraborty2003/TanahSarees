@@ -5,6 +5,7 @@ export const ProfileAuth = async (req, res) => {
     // 🔍 Debugging
 
     const token = req.cookies.ecom_token;
+
     if (!token) {
       return res
         .status(401)
@@ -23,7 +24,7 @@ export const ProfileAuth = async (req, res) => {
         .json({ message: "User not found", status: "Not Login" });
     }
 
-    return res.status(200).json(user);
+    return res.status(200).json({ message: user });
   } catch (error) {
     console.error("JWT Error:", error); // 🔍 Debugging
     return res.status(401).json({ message: "Not authorized" });
