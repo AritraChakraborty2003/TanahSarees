@@ -29,7 +29,7 @@ const CmsDashboard = () => {
     },
     {
       title: "Review Management",
-      path: "/testimonialmanagement",
+      path: "/testimonial",
       icon: "/CMSIMG/testimonial.png",
     },
     { title: "Users", path: "/users", icon: "/CMSIMG/users.png" },
@@ -37,7 +37,7 @@ const CmsDashboard = () => {
 
   return (
     <div
-      className="flex flex-wrap  justify-center items-center pb-10 pt-10  m-10 gap-10 bg-gray-50"
+      className="flex flex-wrap  justify-center items-center pb-10 pt-10 m-10 gap-10 bg-gray-50"
       style={{
         marginTop: `${
           !change
