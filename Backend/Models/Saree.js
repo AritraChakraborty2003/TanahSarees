@@ -49,6 +49,12 @@ const sareeSchema = new mongoose.Schema(
       type: Boolean, // Changed from String to Boolean
       default: false, // Default is false
     },
+    rating: {
+      type: Number,
+      default: 0, // Added default rating to 0
+      min: 0,
+      max: 5, // Added min and max rating values
+    },
   },
   {
     collection: "Sarees", // Fixed incorrect syntax  this is collection name or table name
