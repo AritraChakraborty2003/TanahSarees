@@ -30,7 +30,7 @@ const sareeSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    color: {
+    colour: {
       type: String,
       required: true,
       trim: true,

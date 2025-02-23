@@ -8,12 +8,12 @@ const AddCatalogue = ({ onSubmit }) => {
 
   // Validation Schema
   const validationSchema = Yup.object({
-    name: Yup.string().required("Product name is required"),
+    sname: Yup.string().required("Product name is required"),
     type: Yup.string().required("Product type is required"),
     price: Yup.number()
       .positive("Price must be positive")
       .required("Price is required"),
-    photo: Yup.mixed().required("Product photo is required"),
+    file: Yup.mixed().required("Product photo is required"),
     material: Yup.string().required("Material is required"),
     colour: Yup.string().required("Colour is required"),
     isOffer: Yup.string().required("Please select an offer status"),
@@ -29,23 +29,37 @@ const AddCatalogue = ({ onSubmit }) => {
         otherwise: (schema) => schema.notRequired().nullable(),
       }),
     isOccasion: Yup.string().required("Please select an occasion status"),
+    occasion: Yup.string()
+      .nullable()
+      .when("isOccasion", {
+        is: "yes",
+        otherwise: (schema) => schema.notRequired().nullable(),
+      }),
     topSelling: Yup.string().required("Please select if it's top-selling"),
+    rating: Yup.number()
+
+      .positive("rating must be positive")
+      .max(5, "Discount cannot be more than 5")
+      .min(1, "rating must not be less than 1")
+      .required("Discount is required when offer is Yes"),
   });
 
   return (
     <div className="flex justify-center items-center p-4">
       <Formik
         initialValues={{
-          name: "",
+          sname: "",
           type: "",
           price: "",
-          photo: null,
+          file: null,
           material: "",
           colour: "",
           isOffer: "no",
           discount: "",
           isOccasion: "no",
           topSelling: "no",
+          ocassion: "",
+          rating: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
@@ -53,7 +67,7 @@ const AddCatalogue = ({ onSubmit }) => {
           for (let key in values) {
             formData.append(key, values[key]);
           }
-          console.log("Form Submitted: ", values);
+          // console.log("Form Submitted: ", values);
           onSubmit && onSubmit(values);
           resetForm();
           setPreview(null);
@@ -70,9 +84,9 @@ const AddCatalogue = ({ onSubmit }) => {
               {/* Name */}
               <div>
                 <label className="block font-medium">Product Name</label>
-                <Field name="name" className="border p-2 w-full" />
+                <Field name="sname" className="border p-2 w-full" />
                 <ErrorMessage
-                  name="name"
+                  name="sname"
                   component="div"
                   className="text-red-500"
                 />
@@ -111,7 +125,7 @@ const AddCatalogue = ({ onSubmit }) => {
                   type="file"
                   accept="image/*"
                   onChange={(event) => {
-                    setFieldValue("photo", event.currentTarget.files[0]);
+                    setFieldValue("file", event.currentTarget.files[0]);
                     setPreview(
                       URL.createObjectURL(event.currentTarget.files[0])
                     );
@@ -126,7 +140,7 @@ const AddCatalogue = ({ onSubmit }) => {
                   />
                 )}
                 <ErrorMessage
-                  name="photo"
+                  name="file"
                   component="div"
                   className="text-red-500"
                 />
@@ -162,7 +176,7 @@ const AddCatalogue = ({ onSubmit }) => {
                 <label className="block font-medium">Top Selling?</label>
                 <Field
                   as="select"
-                  name="topselling"
+                  name="topSelling"
                   className="border p-2 w-full"
                 >
                   <option value="no">No</option>
@@ -224,6 +238,20 @@ const AddCatalogue = ({ onSubmit }) => {
               )}
             </div>
 
+            {/* Rating */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+              {/* Rating */}
+              <div>
+                <label className="block font-medium">Rating</label>
+                <Field as="select" name="rating" className="border p-2 w-full">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </Field>
+              </div>
+            </div>
             {/* Submit Button */}
             <button
               type="submit"

@@ -238,6 +238,13 @@ const App = () => {
   const [contentCart, setContentCart] = useState(0);
   const [isLogin, setIsLogin] = useState(true);
   const [Loginlargescreen, setLoginlargescreen] = useState(false);
+
+  /*-------------------------*/
+  // For HTTP Click Handler request
+
+  const [httpClick, setHttpClick] = useState(false);
+
+  /*-------------------------*/
   return (
     <>
       <AppContext.Provider
@@ -255,6 +262,8 @@ const App = () => {
           setIsLogin,
           Loginlargescreen,
           setLoginlargescreen,
+          httpClick,
+          setHttpClick,
         }}
       >
         <RouterProvider router={router} />

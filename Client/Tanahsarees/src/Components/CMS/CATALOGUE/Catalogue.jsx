@@ -1,13 +1,17 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ViewCatalogue from "./ViewCatalogue";
 import AddCatalogue from "./AddCatalogue";
 import { AppContext } from "../../../AppContext/AppContext";
 import { useContext } from "react";
+import UseHTTPRequest from "../../../Utils/useHTTPRequest";
 
 const Catalogue = () => {
-  const { change } = useContext(AppContext);
+  const { change, httpClick, setHttpClick } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState("view");
+  const [tigger, setTigger] = useState(false);
+  const [formData, setFormData] = useState({});
 
   const data = [
     {
@@ -46,9 +50,41 @@ const Catalogue = () => {
       price: "3000",
     },
   ];
-  const handleFormSubmit = (data) => {
-    console.log("Sending to API: ", data);
-    // Send data to backend API using fetch/axios
+
+  const res = UseHTTPRequest(tigger, "/sarees", "POST", formData);
+
+  const handleFormSubmit = (values) => {
+    let {
+      sname,
+      type,
+      price,
+      file,
+      material,
+      colour,
+      discount,
+      occasion,
+      topSelling,
+      rating,
+    } = values;
+
+    topSelling = topSelling === "yes" ? true : false;
+
+    // Create FormData object to send file
+    const formData = new FormData();
+    formData.append("sname", sname);
+    formData.append("type", type);
+    formData.append("price", price);
+    formData.append("material", material);
+    formData.append("colour", colour);
+    formData.append("discount", discount);
+    formData.append("occasion", occasion);
+    formData.append("topSelling", topSelling);
+    formData.append("rating", rating);
+    formData.append("file", file); // Ensure file is appended
+
+    setFormData(formData);
+
+    setHttpClick(true);
   };
 
   const tabs = ["view", "update", "add"];
