@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Heart from "react-animated-heart";
 import Tilt from "react-parallax-tilt";
 
@@ -9,7 +10,13 @@ const ProductCard = (props) => {
   const [isFavorite, setIsFavourite] = useState(true);
   const [isClick, setClick] = useState(false);
   const { image, name, price } = props.data;
-  const { type } = props;
+  const { type, Fav } = props;
+
+  useEffect(() => {
+    if (Fav === true) {
+      setClick(true);
+    }
+  }, []);
 
   return (
     <>

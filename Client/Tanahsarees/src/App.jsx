@@ -12,7 +12,7 @@ import Footer from "./Components/FOOTER/Footer";
 import TestUpload from "./Components/CMS/TestUpload/TestUpload";
 import { AppContext } from "./AppContext/AppContext";
 import CustomerReviews from "./Components/CUSTOMER_REVIEWS/CustomerReviews";
-import Product from "./Components/PRODUCTS/Product";
+import ProductDisplay from "./Components/PRODUCTS/ProductDisplay";
 import Favourite from "./Components/FAVOURITES/Favourite";
 import AnimatedCounter from "./Components/TESTComp/AnimatedCounter";
 import ScrollComp from "./Components/TESTComp/ScrollComp";
@@ -124,7 +124,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <MainHeader scrollValue="30" />
-        <Product />
+        <ProductDisplay />
         <Footer />
       </>
     ),

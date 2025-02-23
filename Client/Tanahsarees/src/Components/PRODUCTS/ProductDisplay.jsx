@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 
 import FilterAccordion from "../TESTComp/FilterAccordian";
-const Product = () => {
+const ProductDisplay = () => {
   const { change } = useContext(AppContext);
   const [Filter, setFilter] = useState(true);
 
@@ -51,6 +51,8 @@ const Product = () => {
       price: "3000",
     },
   ];
+
+  const arr = [1, 2, 3];
   return (
     <div>
       <>
@@ -121,8 +123,14 @@ const Product = () => {
               screen.width > 1000 ? (!Filter ? "w-full" : "w-[70vw]") : ""
             }`}
           >
-            {data.map((item) => (
-              <ProductCard key={item.id} data={item} />
+            {data.map((item, index) => (
+              <>
+                {arr.includes(index) ? (
+                  <ProductCard key={item.id} data={item} Fav={true} />
+                ) : (
+                  <ProductCard key={item.id} data={item} />
+                )}
+              </>
             ))}
           </div>
         </div>
@@ -131,4 +139,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDisplay;
