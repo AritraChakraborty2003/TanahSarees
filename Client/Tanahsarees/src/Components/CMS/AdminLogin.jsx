@@ -23,7 +23,7 @@ const AdminLogin = () => {
     >
       {/* <<<---left div--->>> */}
       {screen.width > 1000 ? (
-        <div className="w-[50%] h-[60vmin]  bg-[#F7D9CB] flex justify-center items-center">
+        <div className="w-[50%]  h-[60vh] bg-[#F7D9CB] flex justify-center items-center">
           <img
             height={300}
             width={300}
@@ -37,8 +37,8 @@ const AdminLogin = () => {
       )}
 
       {/* <<<<-----right div----->>>> */}
-      <div className="w-[90%] lg:h-[60vmin] pt-10 pb-5 lg:pt-0 lg:pb-0 lg:w-[50%]   mb-5 mt-5 bg-[#F7D9CB] flex justify-center items-center">
-        <div className="w-[85%]  pb-8 bg-white  rounded-lg shadow-2xl">
+      <div className="w-[90%] lg:w-[50%]  h-[60vh] mb-5 mt-5 bg-[#F7D9CB] flex justify-center items-center">
+        <div className="w-[85%] h-[38vh] lg:h-[50vh] bg-white  rounded-lg shadow-2xl">
           <h2 className="text-2xl font-Montserrat font-bold text-center mt-5">
             Admin Login
           </h2>
@@ -55,14 +55,14 @@ const AdminLogin = () => {
             />
           </div>
 
-          <p className="ml-5 mt-10  ">
-            <a className="text-gray-500 hover:text-red-800 text-sm" href="">
+          <p className="ml-5 mt-7  ">
+            <a className="text-gray-500 hover:text-red-800" href="">
               forgot password?
             </a>
           </p>
 
           <div className="flex justify-center items-center">
-            <button className="p-2 mt-[3%] w-[90%] text-white cursor-pointer bg-[#883022] rounded hover:bg-[#883022eb]">
+            <button className="p-2 mt-[10%] w-[90%] text-white cursor-pointer bg-[#883022] rounded hover:bg-[#883022eb]">
               Login
             </button>
           </div>
