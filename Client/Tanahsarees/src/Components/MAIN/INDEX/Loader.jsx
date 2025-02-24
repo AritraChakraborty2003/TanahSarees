@@ -16,7 +16,7 @@ const Loader = () => {
     }, 3100);
   });
 
-  const message = useCheckAuth(tigger_auth);
+  const message = useCheckAuth(tigger_auth, "auth");
   return (
     <div>
       {isLoading ? (

@@ -1,7 +1,12 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AppContext } from "../AppContext/AppContext";
 
-export const useCheckAuth = (triggerAuth) => {
+export const useCheckAuth = (triggerAuth, type) => {
+  const { setIsUserLogin, setUserInfo, setIsAdminLogin, setAdminInfo } =
+    useContext(AppContext);
+
   const [authStatus, setAuthStatus] = useState({
     user: null,
     isAuthenticated: false,
@@ -9,11 +14,22 @@ export const useCheckAuth = (triggerAuth) => {
 
   const getAuthStatus = async () => {
     try {
-      const res = await axios.get(`http://localhost:8040/api/v1/auth/profile`, {
-        withCredentials: true, // ✅ Ensures cookies are sent
-      });
+      const res = await axios.get(
+        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/${type}/profile`,
+        {
+          withCredentials: true, // ✅ Ensures cookies are sent
+        }
+      );
 
       setAuthStatus({ user: res.data, isAuthenticated: true });
+
+      if (type === "auth") {
+        setUserInfo(res.data);
+        setIsUserLogin(true);
+      } else {
+        setAdminInfo(res.data);
+        setIsAdminLogin(true);
+      }
     } catch (error) {
       // ✅ Handle different error types
       if (error.response) {

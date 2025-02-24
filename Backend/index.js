@@ -10,6 +10,7 @@ import { CancelRouter } from "./Routes/CancelRouter.js";
 import { TestimonialRouter } from "./Routes/TestimonialRouter.js";
 import { AuthRouter } from "./Routes/AuthRouter.js";
 import { userRouter } from "./Routes/UserRouter.js";
+import { AdminRouter } from "./Routes/AdminRouter.js";
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use("/api/v1/cancel", CancelRouter);
 app.use("/api/v1/testimonials", TestimonialRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/admin", AdminRouter);
 
 // ✅ Start the Server
 const PORT = process.env.PORT || 3000;

@@ -249,6 +249,12 @@ const App = () => {
   const [isUserLogin, setIsUserLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   /*-----------------*/
+
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const [adminInfo, setAdminInfo] = useState({});
+
+  /***Admin Loigin Info */
+
   return (
     <>
       <AppContext.Provider
@@ -272,6 +278,10 @@ const App = () => {
           setIsUserLogin,
           userInfo,
           setUserInfo,
+          isAdminLogin,
+          setIsAdminLogin,
+          adminInfo,
+          setAdminInfo,
         }}
       >
         <RouterProvider router={router} />
