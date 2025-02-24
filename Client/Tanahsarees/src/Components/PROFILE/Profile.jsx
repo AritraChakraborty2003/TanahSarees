@@ -77,7 +77,7 @@ const Profile = () => {
           Profile
         </p>
       </div>
-      <div className="w-[70vw] mt-10  border-1 border-[#d5d5d5] bg-[#f7d9cb28] rounded-md shadow-xl ">
+      <div className="lg:w-[70vw] w-[90vw] mt-10  border-1 border-[#d5d5d5] bg-[#f7d9cb28] rounded-md shadow-xl ">
         <h2 className="text-lg font-semibold flex justify-center mb-4 mt-4">
           Hi!&nbsp;{name}
         </h2>
@@ -114,7 +114,7 @@ const Profile = () => {
               />
               <button
                 type="button"
-                className="px-3 py-2 bg-[#883022] hover:bg-[#883022d5] cursor-grab text-white rounded"
+                className="lg:px-3 lg:py-2 px-2 pr-3 bg-[#883022] hover:bg-[#883022d5] text-sm cursor-grab text-white rounded"
                 onClick={handleEditClick}
               >
                 Edit
@@ -147,7 +147,7 @@ const Profile = () => {
               />
               <button
                 type="button"
-                className="px-3 py-2 bg-[#883022] hover:bg-[#883022d5] cursor-grab text-white rounded"
+                className="px-2 pr-3 lg:px-3 lg:py-2 bg-[#883022] hover:bg-[#883022d5] text-sm cursor-grab text-white rounded"
                 onClick={handleEditClick}
               >
                 Edit
@@ -158,15 +158,15 @@ const Profile = () => {
           <label className="block font-medium">Mobile Number:</label>
           <div className="flex gap-2">
             <select
-              className="border-b-1 border-gray-400 p-2"
+              className="border-b-1 border-gray-400  w-[35%] text-sm"
               value={countryCode}
               onChange={(e) => setCountryCode(e.target.value)}
             >
-              <option value="+91">🇮🇳 +91 (India)</option>
-              <option value="+1">🇺🇸 +1 (USA)</option>
-              <option value="+44">🇬🇧 +44 (UK)</option>
-              <option value="+81">🇯🇵 +81 (Japan)</option>
-              <option value="+49">🇩🇪 +49 (Germany)</option>
+              <option value="+91">🇮🇳+91 (India)</option>
+              <option value="+1">🇺🇸+1 (USA)</option>
+              <option value="+44">🇬🇧+44 (UK)</option>
+              <option value="+81">🇯🇵+81 (Japan)</option>
+              <option value="+49">🇩🇪+49 (Germany)</option>
             </select>
             <input
               type="number"
@@ -178,7 +178,7 @@ const Profile = () => {
             />
             <button
               type="button"
-              className="pr-6 pl-4 bg-[#883022] hover:bg-[#883022d5] cursor-grab text-white rounded"
+              className="px-2 pr-5 lg:pr-6 lg:pl-4 text-sm bg-[#883022] hover:bg-[#883022d5] cursor-grab text-white rounded"
               onClick={handleEditClick}
             >
               Edit
