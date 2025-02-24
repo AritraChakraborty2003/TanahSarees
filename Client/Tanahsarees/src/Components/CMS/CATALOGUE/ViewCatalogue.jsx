@@ -5,9 +5,9 @@ const ViewCatalogue = (props) => {
   const [isQuickView, setIsQuickView] = useState(false);
   const { image, name, price } = props.data;
   return (
-    <div className="flex flex-col pr-4 pb-5">
+    <div className="flex flex-col  pr-4 pb-5">
       <div
-        className="flex relative flex-col mb-4 w-[35vw] lg:w-[12vw] gap-y-2 lg:gap-y-1 cursor-pointer"
+        className="flex relative flex-col   mb-4 w-[35vw] lg:w-[12vw] gap-y-2 lg:gap-y-1 cursor-pointer"
         onMouseEnter={() => setIsQuickView(true)}
         onMouseLeave={() => setIsQuickView(false)}
       >

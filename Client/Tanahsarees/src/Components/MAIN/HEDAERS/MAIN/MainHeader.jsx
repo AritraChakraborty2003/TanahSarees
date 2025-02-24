@@ -186,13 +186,18 @@ export default function MainHeader(props) {
               >
                 <Marqueecomp />
                 {window.innerWidth > 1000 && <Smallheader />}
-                <Header />
+                {category != "CMS" && <Header />}
+                {category == "CMS" && <Header category="CMS" />}
+
                 {category != "CMS" && <OptionsBar />}
               </div>
             ) : null}
             {showHi ? (
               <div className="fixed top-0 left-0 w-full z-[100] bg-white shadow-md">
-                <Header type="scrollHead" />
+                {category != "CMS" && <Header type="scrollHead" />}
+                {category == "CMS" && (
+                  <Header category="CMS" type="scrollHead" />
+                )}
               </div>
             ) : null}
           </div>
@@ -200,7 +205,9 @@ export default function MainHeader(props) {
           <>
             <Marqueecomp />
             {window.innerWidth > 1000 && <Smallheader />}
-            <Header />
+            {category != "CMS" && <Header />}
+            {category == "CMS" && <Header category="CMS" />}
+
             <OptionsBar />
           </>
         )}

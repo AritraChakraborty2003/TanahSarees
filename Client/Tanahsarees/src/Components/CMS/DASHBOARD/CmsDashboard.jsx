@@ -23,7 +23,7 @@ const CmsDashboard = () => {
   const sections = [
     {
       title: "Catalogue Management",
-      path: "/catalogue",
+      path: "/cataloguemanager",
       icon: "/CMSIMG/catalogue.png",
     },
     {
@@ -57,15 +57,15 @@ const CmsDashboard = () => {
   return (
     <>
       <div
-        className="flex flex-wrap  justify-center items-center pb-10 pt-10 m-10 gap-10 bg-gray-50"
+        className="flex flex-wrap gap-x-5 gap-y-6 pt-6 pb-6  justify-center items-center  bg-gray-50"
         style={{
           marginTop: `${
             !change
               ? screen.width > 1000
-                ? "20%"
+                ? "15%"
                 : ""
               : screen.width > 1000
-              ? "12%"
+              ? "1.5%"
               : ""
           }`, // Adjust based on header height
           zIndex: 10, // Keep content below the header
@@ -78,7 +78,7 @@ const CmsDashboard = () => {
             onClick={() => navigate(section.path)}
           />
         ))}
-        <div className="p- w-[40vw]">
+        <div className="hidden lg:block w-[40vw]">
           <NewOrdersChart />
         </div>
       </div>

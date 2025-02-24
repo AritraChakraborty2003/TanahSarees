@@ -91,7 +91,7 @@ const Catalogue = () => {
   const tabContent = {
     view: (
       <>
-        <div className="flex flex-wrap p-1">
+        <div className="flex flex-wrap p-1  justify-center items-center">
           {" "}
           {data.map((item, index) => (
             <ViewCatalogue key={index} data={item} />

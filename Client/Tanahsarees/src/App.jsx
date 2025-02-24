@@ -192,7 +192,7 @@ const router = createBrowserRouter([
     path: "/cms",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        <MainHeader scrollValue="30" category="CMS" />
         <AdminLogin />
         <Footer />
       </>
@@ -202,17 +202,17 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        <MainHeader scrollValue="30" category="CMS" />
         <CmsDashboard />
         <Footer />
       </>
     ),
   },
   {
-    path: "/catalogue",
+    path: "/cataloguemanager",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        <MainHeader scrollValue="30" category="CMS" />
         <Catalogue />
         <Footer />
       </>
@@ -254,6 +254,7 @@ const App = () => {
   /*-------------------------*/
   // For HTTP Click Handler request
   const [httpClick, setHttpClick] = useState(false);
+  const [isLogoutClick, setisLogoutClick] = useState(false);
   /*-------------------------*/
 
   /*------------------*/
@@ -294,6 +295,8 @@ const App = () => {
           setIsAdminLogin,
           adminInfo,
           setAdminInfo,
+          isLogoutClick,
+          setisLogoutClick,
         }}
       >
         <RouterProvider router={router} />
