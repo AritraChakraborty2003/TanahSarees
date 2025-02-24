@@ -95,12 +95,12 @@ const AddCatalogue = ({ onSubmit }) => {
               {/* Type */}
               <div>
                 <label className="block font-medium">Type</label>
-                <Field name="type" className="border p-2 w-full" />
-                <ErrorMessage
-                  name="type"
-                  component="div"
-                  className="text-red-500"
-                />
+                <Field as="select" name="type" className="border p-2 w-full">
+                  <option value="floral">Floral</option>
+                  <option value="paestral">Paestral</option>
+                  <option value="sequince">Sequince</option>
+                  <option value="printed">Printed</option>
+                </Field>
               </div>
 
               {/* Price */}
@@ -149,18 +149,34 @@ const AddCatalogue = ({ onSubmit }) => {
               {/* Material */}
               <div>
                 <label className="block font-medium">Material</label>
-                <Field name="material" className="border p-2 w-full" />
-                <ErrorMessage
+                <Field
+                  as="select"
                   name="material"
-                  component="div"
-                  className="text-red-500"
-                />
+                  className="border p-2 w-full"
+                >
+                  <option value="silk">Silk</option>
+                  <option value="orange">Orange</option>
+                  <option value="mansoor">Mansoor Silk</option>
+                  <option value="crepe">Crepe silk</option>
+                  <option value="georgette">Georgette Silk</option>
+                  <option value="china">China silk</option>
+                  <option value="tissue">Tissue Silk</option>
+                  <option value="rawmango">Raw Mango silk</option>
+                </Field>
               </div>
 
               {/* Colour */}
               <div>
                 <label className="block font-medium">Colour</label>
-                <Field name="colour" className="border p-2 w-full" />
+                <Field as="select" name="colour" className="border p-2 w-full">
+                  <option value="red">Red</option>
+                  <option value="orange">Orange</option>
+                  <option value="black">Black</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="green">Green</option>
+                  <option value="white">White</option>
+                  <option value="maroon">Maroon</option>
+                </Field>
                 <ErrorMessage
                   name="colour"
                   component="div"
@@ -225,10 +241,18 @@ const AddCatalogue = ({ onSubmit }) => {
                 <div>
                   <label className="block font-medium">Occasion</label>
                   <Field
-                    name="occasion"
-                    type="text"
-                    className="border p-1.5 w-full"
-                  />
+                    as="select"
+                    name="Occasion"
+                    className="border p-2 w-full"
+                  >
+                    <option value="wedding">Wedding</option>
+                    <option value="engagement">Engagement</option>
+                    <option value="reception">Reception</option>
+                    <option value="haldi">Haldi</option>
+                    <option value="festive">Festive</option>
+                    <option value="party">Party</option>
+                  </Field>
+
                   <ErrorMessage
                     name="discount"
                     component="div"
