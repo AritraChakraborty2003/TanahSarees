@@ -63,7 +63,7 @@ const AddCatalogue = ({ onSubmit }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log("Form Submitted: ", values); // Debugging
+          // console.log("Form Submitted: ", values); // Debugging
           const formData = new FormData();
           for (let key in values) {
             formData.append(key, values[key]);
@@ -243,7 +243,7 @@ const AddCatalogue = ({ onSubmit }) => {
                   <label className="block font-medium">Occasion</label>
                   <Field
                     as="select"
-                    name="Occasion"
+                    name="occasion"
                     className="border p-2 w-full"
                   >
                     <option value="wedding">Wedding</option>
