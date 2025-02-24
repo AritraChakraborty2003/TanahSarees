@@ -14,7 +14,7 @@ const CmsDashboard = () => {
   const sections = [
     {
       title: "Catalogue Management",
-      path: "/addcatalogue",
+      path: "/catalogue",
       icon: "/CMSIMG/catalogue.png",
     },
     {

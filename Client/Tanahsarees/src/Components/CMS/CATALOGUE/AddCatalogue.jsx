@@ -63,6 +63,7 @@ const AddCatalogue = ({ onSubmit }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
+          console.log("Form Submitted: ", values); // Debugging
           const formData = new FormData();
           for (let key in values) {
             formData.append(key, values[key]);
