@@ -15,7 +15,7 @@ const Main = () => {
   return (
     <>
       <div className="relative">
-        <MainHeader />
+        <MainHeader category="Not CMS" />
 
         <SliderComponent />
 

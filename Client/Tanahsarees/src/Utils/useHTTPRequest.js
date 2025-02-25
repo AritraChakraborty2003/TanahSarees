@@ -46,7 +46,7 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
           .then((res) => {
             setData(res.data.message);
             setHttpClick(!httpClick);
-            toast.success("Data added successfully!");
+            toast.success("Logged In Successfully!!!");
           })
           .catch((error) => {
             setData(error);

@@ -3,6 +3,7 @@ import UserCard from "../CMScards/UserCard";
 
 import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
+import SearchBar from "../CMS_Search/SearchBar";
 
 const User = () => {
   const { change } = useContext(AppContext);
@@ -82,12 +83,12 @@ const User = () => {
   return (
     <>
       <div
-        className="flex flex-col text-center mt-6 lg:mt-0"
+        className="flex flex-col text-center mt-8 lg:mt-0"
         style={{
           marginTop: `${
             !change
               ? screen.width > 1000
-                ? "22.4%"
+                ? "18%"
                 : ""
               : screen.width > 1000
               ? "12%"
@@ -97,9 +98,15 @@ const User = () => {
         }}
       >
         <p className="text-sm text-gray-500">Home/Users</p>
-        <h2 className="text-5xl text-gray-500 font-Montserrat font-medium">
+        <h2 className="text-5xl text-gray-500 font-Montserrat font-medium overflow-hidden">
           Users
         </h2>
+      </div>
+
+      <div className="flex justify-center items-center w-[100vw] pb-5 mt-10">
+        <div className="w-[85vw] lg:w-[50vw] ">
+          <SearchBar category="user" />
+        </div>
       </div>
       <div className="flex flex-col justify-center items-center  mt-10 mb-10 gap-y-5">
         {data.map((item) => (

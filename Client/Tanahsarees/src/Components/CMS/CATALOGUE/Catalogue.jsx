@@ -1,60 +1,54 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { motion } from "framer-motion";
 import ViewCatalogue from "./ViewCatalogue";
 import AddCatalogue from "./AddCatalogue";
 import { AppContext } from "../../../AppContext/AppContext";
-import { useContext } from "react";
 import UseHTTPRequest from "../../../Utils/useHTTPRequest";
+import SearchBar from "../CMS_Search/SearchBar";
+import { useNavigate } from "react-router-dom";
+import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Catalogue = () => {
-  const { change, httpClick, setHttpClick } = useContext(AppContext);
-  const [activeTab, setActiveTab] = useState("view");
-  const [tigger, setTigger] = useState(false);
-  const [formData, setFormData] = useState({});
+  const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
 
+  const [activeTab, setActiveTab] = useState("view");
+  const [trigger, setTrigger] = useState(false);
+  const [formData, setFormData] = useState({});
+  const [tigger_auth, set_tigger_auth] = useState(false);
+
+  const [isLoginAdmin, setIsLoginAdmin] = useState(false);
+
+  const navigate = useNavigate();
+  const dataLogin = useCheckAuth(tigger_auth, "admin");
+  useEffect(() => {
+    if (dataLogin.isAuthenticated == true) {
+      setIsLoginAdmin(true);
+    }
+  }, [dataLogin]);
+  useEffect(() => {
+    if (!isAdminLogin) {
+      navigate("/cms");
+    }
+  }, [isAdminLogin, navigate]);
+
+  // Sample Data (Replace with API data)
   const data = [
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree7.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree9.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree4.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
+    { image: "/Sarees/saree1.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree2.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree8.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree7.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree9.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree3.jpg", name: "Silk raw mango", price: "3000" },
+    { image: "/Sarees/saree4.jpg", name: "Silk raw mango", price: "3000" },
   ];
 
-  const res = UseHTTPRequest(tigger, "/sarees", "POST", formData);
+  // API Call
+  const res = UseHTTPRequest(trigger, "/sarees", "POST", formData);
 
+  // Handle Form Submission
   const handleFormSubmit = (values) => {
-    let {
+    const {
       sname,
       type,
       price,
@@ -67,60 +61,34 @@ const Catalogue = () => {
       rating,
     } = values;
 
-    topSelling = topSelling === "yes" ? true : false;
+    const newFormData = new FormData();
+    newFormData.append("sname", sname);
+    newFormData.append("type", type);
+    newFormData.append("price", price);
+    newFormData.append("material", material);
+    newFormData.append("colour", colour);
+    newFormData.append("discount", discount);
+    newFormData.append("occasion", occasion);
+    newFormData.append("topSelling", topSelling === "yes");
+    newFormData.append("rating", rating);
+    newFormData.append("file", file);
 
-    // Create FormData object to send file
-    const formData = new FormData();
-    formData.append("sname", sname);
-    formData.append("type", type);
-    formData.append("price", price);
-    formData.append("material", material);
-    formData.append("colour", colour);
-    formData.append("discount", discount);
-    formData.append("occasion", occasion);
-    formData.append("topSelling", topSelling);
-    formData.append("rating", rating);
-    formData.append("file", file); // Ensure file is appended
-
-    setFormData(formData);
-
+    setFormData(newFormData);
     setHttpClick(true);
-  };
-
-  const tabs = ["view", "update", "add"];
-  const tabContent = {
-    view: (
-      <>
-        <div className="flex flex-wrap p-1  justify-center items-center">
-          {" "}
-          {data.map((item, index) => (
-            <ViewCatalogue key={index} data={item} />
-          ))}
-        </div>
-      </>
-    ),
-    update: "",
-    add: (
-      <>
-        <AddCatalogue onSubmit={handleFormSubmit} />
-      </>
-    ),
   };
 
   return (
     <div
-      className="w-[100vw] flex flex-col justify-center items-center "
+      className="w-full flex flex-col justify-center items-center"
       style={{
-        marginTop: `${
-          !change
-            ? screen.width > 1000
-              ? "17%"
-              : ""
-            : screen.width > 1000
-            ? "12%"
+        marginTop: !change
+          ? window.innerWidth > 1000
+            ? "17%"
             : ""
-        }`, // Adjust based on header height
-        zIndex: 10, // Keep content below the header
+          : window.innerWidth > 1000
+          ? "12%"
+          : "",
+        zIndex: 10,
       }}
     >
       <h1 className="text-center font-Montserrat text-4xl p-2">
@@ -128,8 +96,8 @@ const Catalogue = () => {
       </h1>
 
       {/* Navigation Tabs */}
-      <div className="relative flex justify-center space-x-5 lg:space-x-70  bg-[#F58B74] p-3 mt-5 w-[90vw] lg:rounded-lg">
-        {tabs.map((tab) => (
+      <div className="relative flex justify-center space-x-5 lg:space-x-70 bg-[#F58B74] p-3 mt-5 w-[90vw] lg:rounded-lg">
+        {["view", "update", "add"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -144,7 +112,7 @@ const Catalogue = () => {
             {activeTab === tab && (
               <motion.div
                 layoutId="underline"
-                className="absolute left-0 right-0 -bottom-1  bg-[#883022] rounded-full"
+                className="absolute left-0 right-0 -bottom-1 bg-[#883022] rounded-full"
               />
             )}
           </button>
@@ -152,16 +120,29 @@ const Catalogue = () => {
       </div>
 
       {/* Sliding Content Box */}
-      <div className="relative w-[100%]  mt-6 bg-gray-100 rounded-lg overflow-hidden p-4 flex justify-center items-center ">
+      <div className="relative w-full mt-6 bg-gray-100 rounded-lg overflow-hidden p-4 flex justify-center items-center">
         <motion.div
           key={activeTab}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.6 }}
-          className="text-center text-lg "
+          className="text-center text-lg"
         >
-          {tabContent[activeTab]}
+          {activeTab === "view" && (
+            <div className="w-full flex flex-col items-center">
+              <div className="w-[85vw] lg:w-[50vw]">
+                <SearchBar category="order" />
+              </div>
+              <div className="flex flex-wrap p-1 gap-x-6 justify-center items-center mt-6 lg:mt-9">
+                {data.map((item, index) => (
+                  <ViewCatalogue key={index} data={item} />
+                ))}
+              </div>
+            </div>
+          )}
+          {activeTab === "update" && <div>Update Section Coming Soon...</div>}
+          {activeTab === "add" && <AddCatalogue onSubmit={handleFormSubmit} />}
         </motion.div>
       </div>
     </div>

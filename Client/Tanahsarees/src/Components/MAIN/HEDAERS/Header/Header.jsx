@@ -8,6 +8,7 @@ import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../../../AppContext/AppContext";
 //import styles 👇
 import "react-modern-drawer/dist/index.css";
+import { toast } from "react-toastify";
 
 const Header = (props) => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -21,6 +22,7 @@ const Header = (props) => {
     Loginlargescreen,
     setLoginlargescreen,
     isAdminLogin,
+    setIsAdminLogin,
     isLogoutClick,
     setisLogoutClick,
   } = useContext(AppContext);
@@ -42,11 +44,12 @@ const Header = (props) => {
           withCredentials: true,
         }
       );
-      console.log("Logout successful");
+      setIsAdminLogin(false);
+      toast.success("Logout successful");
 
       location.reload();
     } catch (error) {
-      console.error("Logout failed:", error);
+      toast.error("Logout failed:", error);
     }
   };
 

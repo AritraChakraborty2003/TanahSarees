@@ -2,6 +2,7 @@
 import TransactionCard from "../CMScards/TransactionCard";
 import { useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
+import SearchBar from "../CMS_Search/SearchBar";
 
 const Transaction = () => {
   const { change } = useContext(AppContext);
@@ -81,24 +82,29 @@ const Transaction = () => {
   return (
     <>
       <div
-        className="flex flex-col text-center  lg:mt-0"
+        className="flex flex-col text-center mt-6  lg:mt-0"
         style={{
           marginTop: `${
             !change
               ? screen.width > 1000
-                ? "22.4%"
+                ? "17%"
                 : ""
               : screen.width > 1000
-              ? "12%"
+              ? "15%"
               : ""
           }`, // Adjust based on header height
           zIndex: 10, // Keep content below the header
         }}
       >
         <p className="text-sm mr-5 text-gray-500">Home/Transactions</p>
-        <h2 className="text-5xl text-gray-500 font-Montserrat font-medium">
+        <h2 className="text-3xl lg:text-5xl text-gray-500 font-Montserrat mt-3 font-medium overflow-hidden">
           Transaction History
         </h2>
+        <div className="flex justify-center items-center w-[100vw] pb-5 mt-10">
+          <div className="w-[85vw] lg:w-[50vw] ">
+            <SearchBar category="order" />
+          </div>
+        </div>
       </div>
       <div className=" flex flex-col justify-center items-center ">
         <div className="border-1 mt-20 border-gray-200 mb-15">

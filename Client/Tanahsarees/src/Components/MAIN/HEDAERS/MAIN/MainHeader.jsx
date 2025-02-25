@@ -66,6 +66,8 @@ export default function MainHeader(props) {
     toggleHam,
     Loginlargescreen,
     setLoginlargescreen,
+    isAdminLogin,
+    setIsAdmin,
   } = useContext(AppContext);
   const { scrollValue } = props;
   // console.log(scrollValue);
@@ -185,7 +187,12 @@ export default function MainHeader(props) {
                 className="w-full bg-white shadow-lg fixed top-0 left-0 z-50"
               >
                 <Marqueecomp />
-                {window.innerWidth > 1000 && <Smallheader />}
+                {window.innerWidth > 1000 &&
+                  (category != "CMS" ? (
+                    <Smallheader />
+                  ) : (
+                    <Smallheader category="CMS" />
+                  ))}
                 {category != "CMS" && <Header />}
                 {category == "CMS" && <Header category="CMS" />}
 

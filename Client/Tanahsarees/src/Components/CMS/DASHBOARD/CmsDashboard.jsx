@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import { useNavigate } from "react-router-dom";
 import CMScard from "../CMScards/CMScard";
@@ -12,14 +13,6 @@ const CmsDashboard = () => {
   const [checkingAuth, isCheckAuth] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!isAdminLogin) {
-      navigate("/cms");
-    } else {
-      isCheckAuth(false);
-    }
-  }, [isAdminLogin, navigate]);
-
   const sections = [
     {
       title: "Catalogue Management",
@@ -28,7 +21,7 @@ const CmsDashboard = () => {
     },
     {
       title: "Transaction History",
-      path: "/transactionrecords",
+      path: "/transactionmanager",
       icon: "/CMSIMG/transaction.png",
     },
     {
@@ -43,16 +36,6 @@ const CmsDashboard = () => {
     },
     { title: "Users", path: "/users", icon: "/CMSIMG/users.png" },
   ];
-
-  if (checkingAuth) {
-    return (
-      <>
-        <div className="w-[100vw] h-[100vh] flex flex-col items-center justify-center h-screen bg-[#f7d9cb]">
-          <h1 className="text-lg text-center">Checking Authentication...</h1>
-        </div>
-      </>
-    );
-  }
 
   return (
     <>

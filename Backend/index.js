@@ -11,6 +11,7 @@ import { TestimonialRouter } from "./Routes/TestimonialRouter.js";
 import { AuthRouter } from "./Routes/AuthRouter.js";
 import { userRouter } from "./Routes/UserRouter.js";
 import { AdminRouter } from "./Routes/AdminRouter.js";
+import { verifyUser } from "./utils/verifyUser.js";
 
 dotenv.config();
 
@@ -43,6 +44,11 @@ app.use("/api/v1/testimonials", TestimonialRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/admin", AdminRouter);
+
+//To handle check Auth:
+app.get("/api/v1/check", verifyUser, (req, res) => {
+  res.json({ isAuthenticated: true });
+});
 
 // ✅ Start the Server
 const PORT = process.env.PORT || 3000;

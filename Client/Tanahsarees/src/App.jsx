@@ -32,6 +32,7 @@ import AddCatalogue from "./Components/CMS/CATALOGUE/AddCatalogue";
 
 import User from "./Components/CMS/USERS/User";
 import Transaction from "./Components/CMS/TRANSACTION/Transaction";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -205,9 +206,11 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <CmsDashboard />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <CmsDashboard />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },
@@ -215,9 +218,11 @@ const router = createBrowserRouter([
     path: "/cataloguemanager",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <Catalogue />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <Catalogue />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },
@@ -225,9 +230,11 @@ const router = createBrowserRouter([
     path: "/CMSTestinomials",
     element: (
       <>
-        <MainHeader scrollValue="30" />
-        <CmsTestimonial />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" />
+          <CmsTestimonial />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },
@@ -236,27 +243,27 @@ const router = createBrowserRouter([
     path: "/addcatalogue",
     element: (
       <>
-        {/* <MainHeader scrollValue="30" /> */}
+        <MainHeader scrollValue="30" category="CMS" />
         <AddCatalogue />
         <Footer />
       </>
     ),
   },
   {
-    path: "/users",
+    path: "/CMSusers",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        <MainHeader scrollValue="30" category="CMS" />
         <User />
         <Footer />
       </>
     ),
   },
   {
-    path: "/transaction",
+    path: "/transactionmanager",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        <MainHeader scrollValue="30" category="CMS" />
         <Transaction />
         <Footer />
       </>
@@ -286,6 +293,7 @@ const App = () => {
   const [userInfo, setUserInfo] = useState({});
   /*-----------------*/
 
+  // const isAdminLoginValue = localStorage.getItem("isAdminLogin");
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [adminInfo, setAdminInfo] = useState({});
 
