@@ -30,6 +30,9 @@ import CmsTestimonial from "./Components/CMS/TESTIMONIAL/CmsTestimonial";
 import Catalogue from "./Components/CMS/CATALOGUE/Catalogue";
 import AddCatalogue from "./Components/CMS/CATALOGUE/AddCatalogue";
 
+import User from "./Components/CMS/USERS/User";
+import Transaction from "./Components/CMS/TRANSACTION/Transaction";
+
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
   {
@@ -235,6 +238,26 @@ const router = createBrowserRouter([
       <>
         {/* <MainHeader scrollValue="30" /> */}
         <AddCatalogue />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/users",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <User />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/transaction",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Transaction />
         <Footer />
       </>
     ),
