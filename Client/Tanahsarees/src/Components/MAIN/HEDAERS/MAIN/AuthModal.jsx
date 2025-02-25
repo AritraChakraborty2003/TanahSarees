@@ -56,8 +56,12 @@ const AuthModal = ({ isOpen }) => {
           console.log(res1.data);
 
           toast.success("Login successful!");
-          navigate("/");
+
           setLoginlargescreen(!Loginlargescreen);
+
+          setTimeout(() => {
+            location.reload();
+          }, 800);
         } else {
           toast.error("Login failed. Please try again.");
         }
@@ -86,8 +90,13 @@ const AuthModal = ({ isOpen }) => {
 
       toast.success("Login successful!");
 
-      setLoginlargescreen(!Loginlargescreen);
-      navigate("/");
+      if (screen.width > 1000) {
+        setLoginlargescreen(!Loginlargescreen);
+      }
+
+      setTimeout(() => {
+        location.reload();
+      }, 400);
 
       // ✅ Check cookies in console
       console.log("Cookies in React:", document.cookie);

@@ -5,13 +5,30 @@ import CMScard from "../CMScards/CMScard";
 import NewOrdersChart from "../CMScards/NewOrderCharts";
 import "react-modern-drawer/dist/index.css";
 import { useContext, useEffect, useState } from "react";
-
+import { useCheckAuth } from "../../../Utils/useCheckAuth";
 import { AppContext } from "../../../AppContext/AppContext";
 
 const CmsDashboard = () => {
-  const { change, isAdminLogin } = useContext(AppContext);
   const [checkingAuth, isCheckAuth] = useState(true);
+
+  const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
+
+  const [tigger_auth, set_tigger_auth] = useState(false);
+
+  const [isLoginAdmin, setIsLoginAdmin] = useState(false);
+
   const navigate = useNavigate();
+  const dataLogin = useCheckAuth(tigger_auth, "admin");
+  useEffect(() => {
+    if (dataLogin.isAuthenticated == true) {
+      setIsLoginAdmin(true);
+    }
+  }, [dataLogin]);
+  useEffect(() => {
+    if (!isAdminLogin) {
+      navigate("/cms");
+    }
+  }, [isAdminLogin, navigate]);
 
   const sections = [
     {
@@ -34,7 +51,7 @@ const CmsDashboard = () => {
       path: "/testimonial",
       icon: "/CMSIMG/testimonial.png",
     },
-    { title: "Users", path: "/users", icon: "/CMSIMG/users.png" },
+    { title: "Users", path: "/CMSusers", icon: "/CMSIMG/users.png" },
   ];
 
   return (

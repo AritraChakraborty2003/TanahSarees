@@ -1,12 +1,33 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 import UserCard from "../CMScards/UserCard";
-
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 import SearchBar from "../CMS_Search/SearchBar";
 
+import { useNavigate } from "react-router-dom";
+import { useCheckAuth } from "../../../Utils/useCheckAuth";
+
 const User = () => {
-  const { change } = useContext(AppContext);
+  const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
+
+  const [tigger_auth, set_tigger_auth] = useState(false);
+
+  const [isLoginAdmin, setIsLoginAdmin] = useState(false);
+
+  const navigate = useNavigate();
+  const dataLogin = useCheckAuth(tigger_auth, "admin");
+  useEffect(() => {
+    if (dataLogin.isAuthenticated == true) {
+      setIsLoginAdmin(true);
+    }
+  }, [dataLogin]);
+  useEffect(() => {
+    if (!isAdminLogin) {
+      navigate("/cms");
+    }
+  }, [isAdminLogin, navigate]);
+
   const data = [
     {
       name: "Aarav Sharma",

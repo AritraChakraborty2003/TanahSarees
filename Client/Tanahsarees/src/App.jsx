@@ -297,7 +297,11 @@ const App = () => {
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [adminInfo, setAdminInfo] = useState({});
 
-  /***Admin Loigin Info */
+  /***Admin Login Info */
+
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <>
@@ -328,6 +332,10 @@ const App = () => {
           setAdminInfo,
           isLogoutClick,
           setisLogoutClick,
+          userLoggedIn,
+          setUserLoggedIn,
+          profileOpen,
+          setProfileOpen,
         }}
       >
         <RouterProvider router={router} />

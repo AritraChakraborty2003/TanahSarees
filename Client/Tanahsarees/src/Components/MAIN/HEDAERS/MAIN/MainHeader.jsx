@@ -11,16 +11,37 @@ import Drawer from "react-modern-drawer";
 import { useContext } from "react";
 import Modal from "react-modal";
 import { AppContext } from "../../../../AppContext/AppContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import CartsCard from "../../../CARDS/CartsCard";
 import AuthModal from "./AuthModal";
 import { height } from "@mui/system";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useCheckAuth } from "../../../../Utils/useCheckAuth";
 
 export default function MainHeader(props) {
-  const { setChange, contentCart, setContentCart, isLoggedIn, setIsLoggedIn } =
-    useContext(AppContext);
+  const {
+    setChange,
+    contentCart,
+    setContentCart,
+    isLoggedIn,
+    setIsLoggedIn,
+    setIsAdminLogin,
+  } = useContext(AppContext);
   const { isLogin, setIsLogin } = useContext(AppContext);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [Favourite, setFavourite] = useState(0);
+  const [cart, setCart] = useState(0);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const authStatus = useCheckAuth(null, "auth");
+
+  useEffect(() => {
+    if (authStatus.user) {
+      setLoggedIn(true);
+    }
+  }, [authStatus]);
+
   const data = [
     {
       image: "/Sarees/saree11.jpg",
@@ -68,6 +89,8 @@ export default function MainHeader(props) {
     setLoginlargescreen,
     isAdminLogin,
     setIsAdmin,
+    profileOpen,
+    setProfileOpen,
   } = useContext(AppContext);
   const { scrollValue } = props;
   // console.log(scrollValue);
@@ -90,6 +113,14 @@ export default function MainHeader(props) {
   };
   const modalClose = () => {
     setLoginOpen(false);
+  };
+
+  const profileOpenFunc = () => {
+    setProfileOpen(true);
+  };
+
+  const profileCloseFunc = () => {
+    setProfileOpen(false);
   };
   const customStyles = {
     content: {
@@ -129,6 +160,21 @@ export default function MainHeader(props) {
       zIndex: 1600, // Ensuring it's above all elements
       backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
       backdropFilter: "blur(1.5px)",
+    },
+  };
+
+  const customStylesProfile = {
+    content: {
+      top: "25%",
+      left: "80%",
+      right: "auto",
+      bottom: "auto",
+      width: "30vmin",
+      backgroundColor: "white",
+    },
+    overlay: {
+      zIndex: 2000, // Ensuring it's above all elements
+      backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
     },
   };
   useEffect(() => {
@@ -175,6 +221,37 @@ export default function MainHeader(props) {
       document.body.style.overflow = "";
     };
   }, [cartIsOpen, loginOpen]);
+
+  useEffect(() => {
+    if (profileOpen) {
+      const handleScroll = () => setProfileOpen(false);
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [profileOpen]);
+
+  const handleLogout = async () => {
+    try {
+      await axios.get(
+        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/admin/logout`,
+        {
+          withCredentials: true,
+        }
+      );
+      setIsAdminLogin(false);
+      setProfileOpen(false);
+      toast.success("Logout successful");
+      setTimeout(() => {
+        navigate("/");
+        location.reload();
+      }, 400);
+    } catch (error) {
+      toast.error("Logout failed:", error);
+    }
+  };
 
   return (
     <>
@@ -391,7 +468,7 @@ export default function MainHeader(props) {
                   <Link to="/tackorder"> TRACK ORDER</Link>
                 </div>
               </div>
-              {!isLoggedIn ? (
+              {!loggedIn ? (
                 <div className="optionsHolder w-[75vw] flex justify-start items-center mt-9 pl-2">
                   <div
                     onClick={toggleHam}
@@ -409,15 +486,20 @@ export default function MainHeader(props) {
                 <div className="optionsHolder w-[100%] flex gap-x-5 justify-start items-center mt-9 pl-3">
                   <button
                     className="btn p-2 border-[#F28C28] border-[1px]  bg-white  text-[#F28C28] rounded-[11px] w-[40%] "
-                    onClick={modalOpen}
+                    onClick={() => {
+                      navigate("/profile");
+                      toggleHam();
+                    }}
                   >
-                    ACCOUNT
+                    PROFILE
                   </button>
                   <button
                     className="btn p-2 border-[#F28C28] border-[1px] bg-[#f69a7c]  text-white rounded-[11px] w-[40%] "
-                    onClick={modalOpen}
+                    onClick={() => {
+                      handleLogout();
+                    }}
                   >
-                    LOGIN
+                    LOGOUT
                   </button>
                 </div>
               )}
@@ -502,6 +584,35 @@ export default function MainHeader(props) {
       ) : (
         ""
       )}
+
+      <Modal
+        isOpen={profileOpen}
+        style={customStylesProfile}
+        onAfterOpen={profileOpenFunc}
+        onRequestClose={profileCloseFunc}
+      >
+        <a className="">
+          <i className="ri-close-line" onClick={profileCloseFunc}></i>
+        </a>
+        <div className="iconsHolder">
+          <div
+            className="profileHolder border-[0.15px] border-[#d5d5d5] p-2 mt-2 rounded-md cursor-pointer"
+            onClick={() => {
+              navigate("/profile");
+              profileCloseFunc();
+            }}
+          >
+            Profile
+          </div>
+
+          <div
+            className="profileHolder bg-red-500 text-white border-[0.15px] border-[#d5d5d5] p-2 mt-4 rounded-md cursor-pointer"
+            onClick={handleLogout}
+          >
+            Logout
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }

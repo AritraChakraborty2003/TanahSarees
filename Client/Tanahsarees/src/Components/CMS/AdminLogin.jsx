@@ -19,7 +19,7 @@ const AdminLogin = () => {
 
   const data = UseHTTPRequest(tigger, "/admin/login", "POST", formData, "auth");
 
-  const isLoginData = useCheckAuth(tigger_auth, "admin");
+  // const isLoginData = useCheckAuth(tigger_auth, "admin");
 
   const handleLogin = (e) => {
     e.preventDefault();
