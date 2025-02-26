@@ -56,7 +56,7 @@ const Catalogue = () => {
     newFormData.append("discount", discount);
     newFormData.append("occasion", occasion);
     newFormData.append("topSelling", topSelling === "yes");
-    newFormData.append("rating", rating);
+    newFormData.append("rating", Number(rating));
     newFormData.append("file", file);
 
     setFormData(newFormData);

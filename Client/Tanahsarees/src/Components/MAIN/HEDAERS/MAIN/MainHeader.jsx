@@ -607,6 +607,13 @@ export default function MainHeader(props) {
           </div>
 
           <div
+            className="profileHolder bg-yellow-500 text-white border-[0.15px] border-[#d5d5d5] p-2 mt-4 rounded-md cursor-pointer"
+            onClick={() => {}}
+          >
+            Orders
+          </div>
+
+          <div
             className="profileHolder bg-red-500 text-white border-[0.15px] border-[#d5d5d5] p-2 mt-4 rounded-md cursor-pointer"
             onClick={handleLogout}
           >

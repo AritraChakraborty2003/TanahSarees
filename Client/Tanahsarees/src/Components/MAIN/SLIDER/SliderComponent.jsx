@@ -229,7 +229,7 @@ const SliderComponent = () => {
                 !change
                   ? document.getElementById("mainHeader")?.offsetHeight ||
                     "686px"
-                  : "380px"
+                  : "686px"
               }`,
 
               zIndex: 900,

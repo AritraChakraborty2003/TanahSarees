@@ -1,20 +1,17 @@
-<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-key */
-=======
+
 import { useState, useEffect } from "react";
->>>>>>> ad06ff6 (UPDATED:Updated the CMS UI designs)
 import TransactionCard from "../CMScards/TransactionCard";
-import { useContext, useState, useEffect } from "react";
+
 import { AppContext } from "../../../AppContext/AppContext";
 import SearchBar from "../CMS_Search/SearchBar";
 
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Transaction = () => {
-<<<<<<< HEAD
-  const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
+  const { setHttpClick, isAdminLogin } = useContext(AppContext);
 
   const [tigger_auth, set_tigger_auth] = useState(false);
 
@@ -33,10 +30,8 @@ const Transaction = () => {
     }
   }, [isAdminLogin, navigate]);
 
-=======
   const { change } = useContext(AppContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Default check for mobile
->>>>>>> ad06ff6 (UPDATED:Updated the CMS UI designs)
   const data = [
     {
       id: "pay_ABC123",

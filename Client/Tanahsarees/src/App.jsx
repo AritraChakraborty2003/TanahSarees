@@ -329,6 +329,10 @@ const App = () => {
 
   const [profileOpen, setProfileOpen] = useState(false);
 
+  const [favouriteLength, setFavouriteLength] = useState(0);
+
+  const [cartLength, setCartLength] = useState(0);
+
   return (
     <>
       <AppContext.Provider
@@ -362,6 +366,10 @@ const App = () => {
           setUserLoggedIn,
           profileOpen,
           setProfileOpen,
+          favouriteLength,
+          setFavouriteLength,
+          cartLength,
+          setCartLength,
         }}
       >
         <RouterProvider router={router} />

@@ -9,12 +9,14 @@ import { AppContext } from "../../../../AppContext/AppContext";
 //import styles 👇
 import "react-modern-drawer/dist/index.css";
 import { toast } from "react-toastify";
+
 import { useCheckAuth } from "../../../../Utils/useCheckAuth";
 const Header = (props) => {
+  const { favouriteLength, setFavouriteLength, cartLength, setCartLength } =
+    useContext(AppContext);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [tigger, setTigger] = useState(false);
-  const [Favourite, setFavourite] = useState(0);
-  const [cart, setCart] = useState(0);
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
@@ -25,11 +27,11 @@ const Header = (props) => {
 
   useEffect(() => {
     if (authStatus.user) {
-      setFavourite(authStatus.user.message.favourites.length);
-      setCart(authStatus.user.message.cart.length);
+      setFavouriteLength(authStatus.user.message.favourites.length);
+      setCartLength(authStatus.user.message.cart.length);
       setLoggedIn(true);
     }
-  }, [authStatus]);
+  }, [authStatus, setCartLength, setFavouriteLength]);
 
   const {
     cartIsOpen,
@@ -110,7 +112,7 @@ const Header = (props) => {
 
                   {/* Notification Circle (Positioned Over Heart) */}
                   <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[2.8vmin] h-[2.8vmin] bg-[#FFA500] text-white text-[1.5vmin] font-medium rounded-full">
-                    {Favourite}
+                    {favouriteLength}
                     {/* Replace with dynamic count */}
                   </div>
                 </div>
@@ -139,7 +141,7 @@ const Header = (props) => {
 
                   {/* Notification Circle (Positioned Over Heart) */}
                   <div className="absolute top-[1px] right-[-0.15px] flex items-center justify-center w-[2.8vmin] h-[2.8vmin] bg-[#FFA500] text-white text-[1.5vmin] font-medium rounded-full">
-                    {cart}
+                    {cartLength}
                     {/* Replace with dynamic count */}
                   </div>
                 </div>
@@ -183,7 +185,7 @@ const Header = (props) => {
 
                     {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                      {Favourite}
+                      {favouriteLength}
                       {/* Replace with dynamic count */}
                     </div>
                   </div>
@@ -196,13 +198,13 @@ const Header = (props) => {
                       ></i>{" "}
                       {/* Heart Icon */}
                       <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                        {Favourite}
+                        {favouriteLength}
                       </div>
                     </a>
 
                     {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                      {cart}
+                      {cartLength}
                     </div>
                   </div>
                 </div>

@@ -35,9 +35,12 @@ const OrderCard = (props) => {
                 {item.orderId}
               </p>
             </div>
-            <div className="w-[35%] lg:w-[30%] flex items-end ">
+            <div className="w-[35%] lg:w-[50%] flex items-end ">
               <button className="p-1.5 lg:p-2 text-xs lg:text-lg   bg-amber-600 text-white mb-5 mr-5 hover:bg-[#e18300]">
                 See status
+              </button>
+              <button className="p-1.5 lg:p-2 text-xs lg:text-lg   bg-amber-600 text-white mb-5 mr-5 hover:bg-[#e18300]">
+                Return Order
               </button>
             </div>
           </div>

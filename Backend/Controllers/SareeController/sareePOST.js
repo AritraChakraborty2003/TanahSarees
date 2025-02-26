@@ -13,6 +13,7 @@ export const SareePOST = () => {
         discount,
         occasion,
         topSelling,
+        rating,
       } = req.body;
 
       const photo = req.file.filename;
@@ -26,6 +27,7 @@ export const SareePOST = () => {
         discount,
         occasion,
         topSelling,
+        rating,
       });
       newSareeObj.save();
       res

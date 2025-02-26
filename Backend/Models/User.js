@@ -24,7 +24,7 @@ const userShcema = mongoose.Schema(
     phone: {
       type: String,
       trim: true,
-      unique: true,
+      required: false,
       validate: {
         validator: function (v) {
           return /^\d{10}$/.test(v);
@@ -44,6 +44,7 @@ const userShcema = mongoose.Schema(
     additionalNo: {
       type: String,
       trim: true,
+      required: false,
       validate: {
         validator: function (v) {
           return /^[0-9]{10}$/.test(v);
