@@ -127,8 +127,12 @@ const Catalogue = () => {
               </div>
             </div>
           )}
-          {activeTab === "update" && <div>Update Section Coming Soon...</div>}
-          {activeTab === "add" && <AddCatalogue onSubmit={handleFormSubmit} />}
+          {activeTab === "update" && (
+            <AddCatalogue onSubmit={handleFormSubmit} />
+          )}
+          {activeTab === "add" && (
+            <AddCatalogue onSubmit={handleFormSubmit} type={"update"} />
+          )}
         </motion.div>
       </div>
     </div>

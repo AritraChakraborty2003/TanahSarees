@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
+=======
+import { useState, useEffect } from "react";
+>>>>>>> ad06ff6 (UPDATED:Updated the CMS UI designs)
 import TransactionCard from "../CMScards/TransactionCard";
 import { useContext, useState, useEffect } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
@@ -9,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Transaction = () => {
+<<<<<<< HEAD
   const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
 
   const [tigger_auth, set_tigger_auth] = useState(false);
@@ -28,9 +33,14 @@ const Transaction = () => {
     }
   }, [isAdminLogin, navigate]);
 
+=======
+  const { change } = useContext(AppContext);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // Default check for mobile
+>>>>>>> ad06ff6 (UPDATED:Updated the CMS UI designs)
   const data = [
     {
       id: "pay_ABC123",
+      orderid: "1243",
       amount: 50000,
       currency: "INR",
       status: "captured",
@@ -41,6 +51,7 @@ const Transaction = () => {
     },
     {
       id: "pay_DEF456",
+      orderid: "1243",
       amount: 120000,
       currency: "INR",
       status: "failed",
@@ -49,73 +60,34 @@ const Transaction = () => {
       email: "john.doe@example.com",
       contact: "9988776655",
     },
-    {
-      id: "pay_GHI789",
-      amount: 25000,
-      currency: "INR",
-      status: "captured",
-      method: "Credit Card",
-      created_at: 1719082323,
-      email: "alice@example.com",
-      contact: "9123456789",
-    },
-    {
-      id: "pay_JKL012",
-      amount: 75000,
-      currency: "INR",
-      status: "refunded",
-      method: "Debit Card",
-      created_at: 1719083423,
-      email: "mike@example.com",
-      contact: "9234567890",
-    },
-    {
-      id: "pay_MNO345",
-      amount: 90000,
-      currency: "INR",
-      status: "captured",
-      method: "Wallet",
-      created_at: 1719084523,
-      email: "emma@example.com",
-      contact: "9345678901",
-    },
-    {
-      id: "pay_PQR678",
-      amount: 45000,
-      currency: "INR",
-      status: "failed",
-      method: "UPI",
-      created_at: 1719085623,
-      email: "david@example.com",
-      contact: "9456789012",
-    },
-    {
-      id: "pay_STU901",
-      amount: 110000,
-      currency: "INR",
-      status: "captured",
-      method: "Netbanking",
-      created_at: 1719086723,
-      email: "sophia@example.com",
-      contact: "9567890123",
-    },
+    // Add more items as needed...
   ];
+
+  // Resize listener to check screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Update isMobile state based on screen width
+    };
+
+    window.addEventListener("resize", handleResize); // Listen for window resize
+    return () => window.removeEventListener("resize", handleResize); // Cleanup listener
+  }, []);
 
   return (
     <>
       <div
-        className="flex flex-col text-center mt-6  lg:mt-0"
+        className="flex flex-col text-center mt-6 lg:mt-0"
         style={{
           marginTop: `${
             !change
-              ? screen.width > 1000
+              ? window.innerWidth > 1000
                 ? "17%"
                 : ""
-              : screen.width > 1000
+              : window.innerWidth > 1000
               ? "15%"
               : ""
-          }`, // Adjust based on header height
-          zIndex: 10, // Keep content below the header
+          }`,
+          zIndex: 10,
         }}
       >
         <p className="text-sm mr-5 text-gray-500">Home/Transactions</p>
@@ -123,26 +95,37 @@ const Transaction = () => {
           Transaction History
         </h2>
         <div className="flex justify-center items-center w-[100vw] pb-5 mt-10">
-          <div className="w-[85vw] lg:w-[50vw] ">
+          <div className="w-[85vw] lg:w-[50vw]">
             <SearchBar category="order" />
           </div>
         </div>
       </div>
-      <div className=" flex flex-col justify-center items-center ">
-        <div className="border-1 mt-20 border-gray-200 mb-15">
-          <div className=" flex w-[90vw] justify-between border-b-2 border-2  p-2">
-            <li>Transaction ID:</li>
-            <li>Amount</li>
-            <li>Status:</li>
-            <li>Payment Method:</li>
-            <li>Email:</li>
-            <li className="mr-5">Contact:</li>
+
+      <div className="flex flex-col justify-center items-center mt-4">
+        {isMobile ? (
+          <div className="">
+            <div className="flex  justify-between border-b-1 text-lg mb-2 font-Montserrat font-medium w-[100vw] pr-7 pl-2   list-none">
+              <li className="">Transaction ID</li>
+              <li className="">Order ID</li>
+              <li className="">Amount</li>
+            </div>
           </div>
-          <div>
-            {data.map((item) => (
-              <TransactionCard data={item} />
-            ))}
+        ) : (
+          <div className="flex  border-1 w-[98vw] list-none">
+            <li className="w-[12%] ml-2">Transaction ID</li>
+            <li className="border-l-1 w-[14%] pl-9 ">Order ID</li>
+            <li className="w-[13%] border-l-1 text-center">Amount</li>
+            <li className="w-[16%] border-l-1 pl-18">Status</li>
+            <li className="border-l-1 w-[14%] pl-23">Method</li>
+            <li className="border-l-1 w-[20%] text-center">Email</li>
+            <li className="w-[11%] border-l-1 text-center">Contact</li>
           </div>
+        )}
+
+        <div className="w-full">
+          {data.map((item) => (
+            <TransactionCard key={item.id} data={item} isMobile={isMobile} />
+          ))}
         </div>
       </div>
     </>

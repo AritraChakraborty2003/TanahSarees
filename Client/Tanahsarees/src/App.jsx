@@ -33,6 +33,8 @@ import AddCatalogue from "./Components/CMS/CATALOGUE/AddCatalogue";
 import User from "./Components/CMS/USERS/User";
 import Transaction from "./Components/CMS/TRANSACTION/Transaction";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import CMSorderCard from "./Components/CMS/CMScards/CMSorderCard";
+import CMSReviews from "./Components/CMS/CMScards/CMSReviews";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -270,6 +272,26 @@ const router = createBrowserRouter([
           <Transaction />
           <Footer />
         </ProtectedRoute>
+      </>
+    ),
+  },
+  {
+    path: "/cmsorders",
+    element: (
+      <>
+        <MainHeader scrollValue="30" category="CMS" />
+        <CMSorderCard />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/CMSReviews",
+    element: (
+      <>
+        <MainHeader scrollValue="30" category="CMS" />
+        <CMSReviews />
+        <Footer />
       </>
     ),
   },

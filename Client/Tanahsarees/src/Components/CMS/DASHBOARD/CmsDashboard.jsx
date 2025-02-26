@@ -43,12 +43,12 @@ const CmsDashboard = () => {
     },
     {
       title: "Orders History",
-      path: "/ordershistory",
+      path: "/cmsorders",
       icon: "/CMSIMG/orders.png",
     },
     {
       title: "Review Management",
-      path: "/testimonial",
+      path: "/CMSReviews",
       icon: "/CMSIMG/testimonial.png",
     },
     { title: "Users", path: "/CMSusers", icon: "/CMSIMG/users.png" },
