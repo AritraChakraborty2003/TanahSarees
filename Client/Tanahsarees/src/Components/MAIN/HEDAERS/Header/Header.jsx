@@ -22,6 +22,8 @@ const Header = (props) => {
 
   const authStatus = useCheckAuth(null, "auth");
 
+  const adminStatus = useCheckAuth(null, "admin");
+
   useEffect(() => {
     if (authStatus.user) {
       setFavourite(authStatus.user.message.favourites.length);
@@ -62,7 +64,7 @@ const Header = (props) => {
           withCredentials: true,
         }
       );
-      setIsAdminLogin(false);
+      setIsAdminLogin(!isAdminLogin);
       toast.success("Logout successful");
 
       location.reload();
@@ -71,6 +73,12 @@ const Header = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (adminStatus.user) {
+      setIsAdminLogin(true);
+      console.log(adminStatus.user);
+    }
+  }, [adminStatus, setIsAdminLogin]);
   // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
   return (
@@ -139,7 +147,7 @@ const Header = (props) => {
               </div>
             ) : (
               <>
-                {isAdminLogin ? (
+                {adminStatus.isAuthenticated ? (
                   <div className="buttonHolder w-[33.33%] flex justify-center items-center ">
                     <button
                       className="bg-red-500 text-white p-3 rounded-md lg:w-[30%]"
@@ -148,9 +156,7 @@ const Header = (props) => {
                       Logout
                     </button>
                   </div>
-                ) : (
-                  ""
-                )}
+                ) : null}
               </>
             )}
           </div>
@@ -202,7 +208,7 @@ const Header = (props) => {
                 </div>
               ) : (
                 <>
-                  {isAdminLogin ? (
+                  {adminStatus.isAuthenticated ? (
                     <div className="buttonHolder w-[33.33%] flex justify-center items-center ">
                       <button
                         className="bg-red-500 text-white p-3 rounded-md lg:w-[30%]"
@@ -211,9 +217,7 @@ const Header = (props) => {
                         Logout
                       </button>
                     </div>
-                  ) : (
-                    ""
-                  )}
+                  ) : null}
                 </>
               )}
             </div>

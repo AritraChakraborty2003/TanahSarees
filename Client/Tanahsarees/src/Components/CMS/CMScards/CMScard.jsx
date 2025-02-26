@@ -14,7 +14,9 @@ const CMScard = (props) => {
         />
       </div>
       <div className="text-sm lg:text-lg lg:font-semibold mb-0">
-        {screen.width < 1000 ? title.slice(0, 16) + "..." : title + "..."}
+        {screen.width < 1000
+          ? title.slice(0, 16) + "..."
+          : title.slice(0, 15) + "..."}
       </div>
     </div>
   );

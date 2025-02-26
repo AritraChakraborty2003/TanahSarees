@@ -1,19 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../../Utils/useAuth";
+import useAuth from "../../Utils/useAuthSystem";
 
 const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated } = useAuth("admin");
+  const { user, loading } = useAuth({ type: "admin" });
 
-  if (isAuthenticated === null) {
-    return (
-      <div className="w-screen h-screen flex justify-center items-center bg-[#f7d9cb]">
-        Checking authentication...
-      </div>
-    );
-  }
+  if (loading) return <h2>Loading...</h2>; // ✅ Shows while loading
 
-  return isAuthenticated ? children : <Navigate to="/cms" replace />;
+  return user ? children : <Navigate to="/cms" replace />;
 };
 
 export default ProtectedRoute;

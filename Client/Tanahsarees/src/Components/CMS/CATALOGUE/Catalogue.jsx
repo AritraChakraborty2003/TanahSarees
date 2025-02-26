@@ -19,20 +19,6 @@ const Catalogue = () => {
 
   const [isLoginAdmin, setIsLoginAdmin] = useState(false);
 
-  const navigate = useNavigate();
-  const dataLogin = useCheckAuth(tigger_auth, "admin");
-  useEffect(() => {
-    if (dataLogin.isAuthenticated == true) {
-      setIsLoginAdmin(true);
-    }
-  }, [dataLogin]);
-  useEffect(() => {
-    if (!isAdminLogin) {
-      navigate("/cms");
-    }
-  }, [isAdminLogin, navigate]);
-
-  // Sample Data (Replace with API data)
   const data = [
     { image: "/Sarees/saree1.jpg", name: "Silk raw mango", price: "3000" },
     { image: "/Sarees/saree2.jpg", name: "Silk raw mango", price: "3000" },

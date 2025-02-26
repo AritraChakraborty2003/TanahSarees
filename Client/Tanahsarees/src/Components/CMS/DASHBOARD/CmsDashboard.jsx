@@ -18,17 +18,17 @@ const CmsDashboard = () => {
   const [isLoginAdmin, setIsLoginAdmin] = useState(false);
 
   const navigate = useNavigate();
-  const dataLogin = useCheckAuth(tigger_auth, "admin");
-  useEffect(() => {
-    if (dataLogin.isAuthenticated == true) {
-      setIsLoginAdmin(true);
-    }
-  }, [dataLogin]);
-  useEffect(() => {
-    if (!isAdminLogin) {
-      navigate("/cms");
-    }
-  }, [isAdminLogin, navigate]);
+  // const dataLogin = useCheckAuth(tigger_auth, "admin");
+  // useEffect(() => {
+  //   if (dataLogin.isAuthenticated == true) {
+  //     setIsLoginAdmin(true);
+  //   }
+  // }, [dataLogin]);
+  // useEffect(() => {
+  //   if (!isAdminLogin) {
+  //     navigate("/cms");
+  //   }
+  // }, [isAdminLogin, navigate]);
 
   const sections = [
     {

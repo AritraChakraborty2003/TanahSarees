@@ -90,6 +90,7 @@ export default function MainHeader(props) {
     isAdminLogin,
     setIsAdmin,
     profileOpen,
+
     setProfileOpen,
   } = useContext(AppContext);
   const { scrollValue } = props;
@@ -241,7 +242,7 @@ export default function MainHeader(props) {
           withCredentials: true,
         }
       );
-      setIsAdminLogin(false);
+
       setProfileOpen(false);
       toast.success("Logout successful");
       setTimeout(() => {
