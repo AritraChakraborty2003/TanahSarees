@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
 import { useContext, useState } from "react";
 
@@ -5,7 +6,21 @@ import Modal from "react-modal";
 import ControlledAccordions from "../TESTComp/ControlledAccordions";
 
 import CardObj from "../CARDS/CardObj";
+// import { useNavigate } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
+import { DiscountUI } from "../../Utils/DiscountUI";
+// import { useEffect } from "react";
 const Productdescription = () => {
+  // const location = useLocation();
+  // const navigate = useNavigate();
+
+  const { activeProduct, setActiveProduct } = useContext(AppContext);
+
+  const { photo, material, price, discount, sname, colour, type, _id, rating } =
+    activeProduct;
+
+  console.log(activeProduct);
+
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);
 
@@ -36,16 +51,17 @@ const Productdescription = () => {
   ];
 
   const productDetails = [
-    "- Sea Green Semi Stitched Lehenga in Tissue fabric",
-    "- The Lehenga is embellished with Zariwork embroidery",
+    `- ${colour} Semi Stitched saree in ${type}`,
+    `- Made up of ${material} silk`,
     "- Accompanied with an Unstitched blouse and dupatta",
-    "- Comes with the Koskii promise of premium quality",
+    "- Comes with the Tanahasrees promise of premium quality",
   ];
 
   const materialDetails = [
     "- Excellent and 100% pure silk",
-    "- Raw Mango",
+    `- ${material} silk material`,
     "- Dry Wash Only",
+    `- Rating: ${rating > 0 ? rating + " stars" : ""}`,
   ];
 
   // ✅ Function to handle accordion toggle
@@ -55,14 +71,20 @@ const Productdescription = () => {
 
   // Sample FAQ data
   const deatilsProductFaq = [
-    { heading: "PRODUCT SPECIFICATION", details: "100% original silk product" },
-    { heading: "MATERIAL DETAILS", details: "Made from premium raw silk" },
+    {
+      heading: "PRODUCT SPECIFICATION",
+      details: `100% original ${type} saree in ${material}`,
+    },
+    {
+      heading: "MATERIAL DETAILS",
+      details: `Made from premium ${material} silk`,
+    },
     { heading: "WASH CARE", details: "Dry wash only for best results" },
     { heading: "RETURN POLICY", details: "Easy 7-day return policy" },
   ];
 
   const IdDetails = [
-    "-GCBR0040896_SEA_GREEN",
+    `Product Id:${_id}`,
 
     "-Note: Product color may slightly vary due to photographic lighting sources or your monitor settings",
   ];
@@ -114,7 +136,7 @@ const Productdescription = () => {
           <div className="leftImageHolder w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
             <div className="imageHolder mt-[-1.75vmin] lg:mt-0 w-[75%]  h-[88vmin] lg:w-[78%] lg:h-[95vmin]  flex justify-end items-center">
               <img
-                src="Sarees/saree13.jpg"
+                src={`${import.meta.env.VITE_APP_API_URL + photo} `}
                 alt="Product Image"
                 className="max-w-full max-h-full object-contain"
                 onClick={() => {
@@ -133,13 +155,26 @@ const Productdescription = () => {
             </div>
             <div className="saree_name">
               <p className="mt-5 ml-4  text-xl  lg:text-2xl font-Montserrat ">
-                Sea Green Zariwork Tissue Semi Stitched Lehenga
+                {sname}
               </p>
             </div>
             <div className="mrp_area  w-[90%]  mt-5 ml-5   ">
               <p className="mrp-text text-md lg:text-sm">
                 <span className="font-medium font-poppins">MRP : </span>
-                ₹30,900
+                {discount ? (
+                  <>
+                    <span className="line-through">
+                      {DiscountUI(Number(price), Number(discount))}
+                    </span>{" "}
+                    &nbsp;&nbsp;
+                    <span>₹ {price}</span>
+                    <span className="text-sm lg:text-sm ml-2">
+                      ({discount}% Off)
+                    </span>
+                  </>
+                ) : (
+                  <span>₹{price}</span>
+                )}
               </p>
               <p className=" text-sm lg:text-xs mt-2 ">
                 Inclusive of All Taxes
@@ -260,7 +295,7 @@ const Productdescription = () => {
             <div className="w-[100%] flex justify-center items-center">
               <div className="imageHolder w-[78%] h-[75vmin]  flex justify-center items-center">
                 <img
-                  src="Sarees/saree13.jpg"
+                  src={`${import.meta.env.VITE_APP_API_URL + photo} `}
                   alt="Product Image"
                   className="max-w-full max-h-full object-contain "
                 />

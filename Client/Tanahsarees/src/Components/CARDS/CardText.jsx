@@ -3,9 +3,11 @@
 import Tilt from "react-parallax-tilt";
 import Modal from "react-modal";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const CardText = (props) => {
   const { data } = props;
   const [modalIsOpen, setIsOpen] = useState(false);
+
   Modal.setAppElement("#root");
   const modalOpen = () => {
     setIsOpen(true);
@@ -28,6 +30,8 @@ const CardText = (props) => {
     },
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-10 lg:gap-y-10 2xl:gap-y-3">
@@ -41,22 +45,48 @@ const CardText = (props) => {
           >
             <div className="flex flex-col  overflow-hidden gap-y-1">
               {/* Image Section */}
-              <div className="relative overflow-hidden w-full h-2/3">
+
+              <div
+                className="relative overflow-hidden w-full h-2/3"
+                onClick={() => {
+                  navigate("/products");
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <img
-                  src={item.image}
+                  src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
                   alt="Tilted Image"
                   className="w-full  h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
                 {/* Black vignete */}
                 <div className="absolute inset-x-[-100px] bottom-0 h-1/1 bg-gradient-to-t from-black/100 via-transparent"></div>
                 {/* Text Content Section */}
-                <h2 className="absolute w-full bottom-10 text-lg lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
-                  {item.maintitle}
+                <h2 className="absolute w-full bottom-4  bottom-5 lg:bottom-10 text-3xl lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
+                  {props.type === "selling" && item.material}
                 </h2>
-                {item.description ? (
-                  <p className="absolute bottom-10 text-[#BCBBBC] text-Montserrat font-normal flex text-center p-2">
-                    {item.description}
-                  </p>
+                <h2 className="absolute w-full  bottom-1 lg:bottom-3 text-lg lg:text-md flex pt-1 justify-center font-Montserrat text-white overflow-hidden">
+                  {props.type === "selling" && item.colour}
+                </h2>
+                {item.occasion && props.type === "occasion" ? (
+                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Montserrat flex pt-1 justify-center text-white overflow-hidden">
+                    {item.occasion}
+                  </h2>
+                ) : (
+                  ""
+                )}
+
+                {props.type === "collection" ? (
+                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center text-white overflow-hidden">
+                    {item.type}
+                  </h2>
+                ) : (
+                  ""
+                )}
+
+                {props.type === "material" ? (
+                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center text-white overflow-hidden">
+                    {item.material + " silk"}
+                  </h2>
                 ) : (
                   ""
                 )}
@@ -64,14 +94,16 @@ const CardText = (props) => {
                   {item.title}
                 </h3>
               </div>
-              {item.name ? (
+              {props.type === "testimonials" ? (
                 <>
                   <div>
-                    <p className="p-2 text-gray-500 text-lg">{item.name}</p>
+                    <p className="p-2 text-gray-500 text-lg">
+                      {item.material + "  silk"}
+                    </p>
                     <p className="p-2 text-gray-500 text-sm">
                       {screen.width > 900
-                        ? item.review.slice(0, 42) + "...."
-                        : item.review.slice(0, 32) + "...."}
+                        ? item.type.slice(0, 42) + "...."
+                        : item.type.slice(0, 32) + "...."}
                     </p>
                     <p
                       className="p-2 text-gray-500 text-[2.45vmin] lg:text-sm font-medium font-Montserrat"

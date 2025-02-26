@@ -35,6 +35,7 @@ import Transaction from "./Components/CMS/TRANSACTION/Transaction";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import CMSorderCard from "./Components/CMS/CMScards/CMSorderCard";
 import CMSReviews from "./Components/CMS/CMScards/CMSReviews";
+import ScrollToTop from "./Components/MAIN/Support/ScrollToTop";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -175,6 +176,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <MainHeader scrollValue="30" />
+        <ScrollToTop />
         <Productdescription />
         <Footer />
       </>
@@ -335,6 +337,12 @@ const App = () => {
 
   const [sareeData, setSareeData] = useState([]);
 
+  const [activeProduct, setActiveProduct] = useState({});
+
+  const [activeFilter, setActiveFilter] = useState(false);
+
+  const [filteredData, setFilteredData] = useState([]);
+
   return (
     <>
       <AppContext.Provider
@@ -374,6 +382,12 @@ const App = () => {
           setCartLength,
           sareeData,
           setSareeData,
+          activeProduct,
+          setActiveProduct,
+          activeFilter,
+          setActiveFilter,
+          filteredData,
+          setFilteredData,
         }}
       >
         <RouterProvider router={router} />

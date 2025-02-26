@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import Tilt from "react-parallax-tilt";
+import { useNavigate } from "react-router-dom";
 const CardObj = (props) => {
+  const navigate = useNavigate();
   const { data } = props;
   return (
     <>
@@ -16,9 +18,15 @@ const CardObj = (props) => {
               className="relative lg:ml-0  w-[45vw]  lg:w-80  bg-white rounded-lg shadow-lg overflow-hidden"
             >
               {/* Image Section */}
-              <div className="relative overflow-hidden w-full h-2/3">
+              <div
+                className="relative overflow-hidden w-full h-2/3"
+                onClick={() => {
+                  navigate("/products");
+                  window.scrollTo(0, 0);
+                }}
+              >
                 <img
-                  src={item.image}
+                  src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
                   alt="Tilted Image"
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
@@ -27,7 +35,11 @@ const CardObj = (props) => {
             {/* Text Content Section */}
             <div className="lg:p-1 text-center">
               <p className="text-sm lg:text-md 2xl:text-[2vmin] text-gray-600">
-                {item.title}
+                {item.sname
+                  ? screen.width > 1000
+                    ? item.sname
+                    : item.sname.slice(0, 10) + "..."
+                  : ""}
               </p>
             </div>
           </div>

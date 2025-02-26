@@ -1,25 +1,12 @@
 import CardText from "../../CARDS/CardText";
+import { useContext } from "react";
+import { AppContext } from "../../../AppContext/AppContext";
 
 const Collection = () => {
-  const data = [
-    {
-      image: "Sarees/saree1.jpg",
-      title: "PARTY BASH",
-    },
+  const { sareeData } = useContext(AppContext);
 
-    {
-      image: "/Sarees/saree2.jpg",
-      title: "FUNCTION SPECIAL",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      title: "BANARASI BEAUTY",
-    },
-    {
-      image: "/Sarees/saree4.jpg",
-      title: "PERFECT PASTEL",
-    },
-  ];
+  const dataExclusive = sareeData.filter((item) => item.occasion != null);
+  const data = dataExclusive.slice(26, 30);
   return (
     <div className="mt-5 lg:mt-15">
       <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
@@ -30,7 +17,7 @@ const Collection = () => {
         ( Shop by collection )
       </p>
       <div className="mt-5 lg:mt-10">
-        <CardText data={data} />
+        <CardText data={data} type="collection" />
       </div>
     </div>
   );

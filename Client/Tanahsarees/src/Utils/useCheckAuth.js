@@ -15,7 +15,7 @@ export const useCheckAuth = (triggerAuth, type) => {
   const getAuthStatus = async () => {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/${type}/profile`,
+        `${import.meta.env.VITE_APP_API_URL}api/v1/${type}/profile`,
         {
           withCredentials: true, // ✅ Ensures cookies are sent
         }

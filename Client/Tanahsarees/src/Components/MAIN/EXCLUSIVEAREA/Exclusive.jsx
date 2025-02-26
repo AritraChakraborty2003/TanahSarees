@@ -1,26 +1,13 @@
 import CardObj from "../../CARDS/CardObj";
-
+import { useContext } from "react";
+import { AppContext } from "../../../AppContext/AppContext";
 const Exclusive = () => {
-  const data = [
-    {
-      image: "/Sarees/saree1.jpg",
-      title: "This is a silk saree",
-    },
+  const { sareeData } = useContext(AppContext);
 
-    {
-      image: "/Sarees/saree2.jpg",
-      title: "This is a cotton saree",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      title: "This is a linen saree",
-    },
+  const dataExclusive = sareeData.filter((item) => item.discount != null);
+  console.log("dataExclusive:", dataExclusive);
 
-    {
-      image: "/Sarees/saree4.jpg",
-      title: "This is a woolen saree",
-    },
-  ];
+  const data = dataExclusive.reverse().slice(21, 25);
 
   return (
     <>

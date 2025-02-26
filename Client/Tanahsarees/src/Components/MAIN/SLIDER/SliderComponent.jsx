@@ -16,7 +16,7 @@ const SliderComponent = () => {
   const sliderRef = React.useRef(null);
   // const navigate = useNavigate();
 
-  const items = sareeData.reverse().slice(0, 11);
+  const items = sareeData.reverse().slice(0, 7);
 
   // Slick Slider Settings
   const settings = {
@@ -46,7 +46,7 @@ const SliderComponent = () => {
             paddingTop: `${
               !change
                 ? document.getElementById("mainHeader")?.offsetHeight || "190px"
-                : "160px"
+                : "200px"
             }`,
 
             zIndex: 900,
@@ -67,29 +67,35 @@ const SliderComponent = () => {
             {...settings}
             className="  w-[100vw] mt-[-40vmin] gap-x-6 ml-[1.2vmin]"
           >
-            {items.map((item) => (
-              <>
-                <div className="">
-                  <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
-                    <Link to="/products">
-                      <div
-                        className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[0.15px]"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                          backgroundSize: "cover", // Ensures image fills the div
-                          backgroundPosition: "center", // Centers the image
-                          backgroundRepeat: "no-repeat", // Prevents tiling
-                        }}
-                      ></div>
+            {items &&
+              [...items].map((item) => (
+                <>
+                  <div className="">
+                    <div className="flex flex-col gap-y-4 gap-x-2 justify-center items-center">
+                      <Link to="/products">
+                        <div
+                          className="w-[28vw] h-[14vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] lg:rounded-[50%] lg:gap-x-2 border-[#E97451] border-[0.15px]"
+                          style={{
+                            backgroundImage: `url(${
+                              import.meta.env.VITE_APP_API_URL + item.photo
+                            })`,
 
-                      <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
-                        {item.sname}
-                      </p>
-                    </Link>
+                            backgroundSize: "cover", // Ensures image fills the div
+                            backgroundPosition: "center", // Centers the image
+                            backgroundRepeat: "no-repeat", // Prevents tiling
+                          }}
+                        ></div>
+
+                        <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
+                          {screen.width > 1000
+                            ? item.sname
+                            : item.sname.slice(0, 10) + "..."}
+                        </p>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              </>
-            ))}
+                </>
+              ))}
           </Slider>
 
           {/* Right Button */}
@@ -131,30 +137,31 @@ const SliderComponent = () => {
                   {...settings}
                   className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin] ml-[1.35vmin] "
                 >
-                  {items.map((item) => (
-                    <>
-                      <div className="zoom-div ml-[-6vmin]">
-                        <div className="flex flex-col gap-y-4 justify-center items-center">
-                          <Link to="/products">
-                            <div
-                              className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
-                              style={{
-                                backgroundImage: `url(${item.img})`,
-                                backgroundPosition: "center",
-                                // Assuming each item has an image property
-                              }}
-                              onClick={() => {
-                                navigate("/products");
-                              }}
-                            ></div>
-                            <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                              {item.sname}
-                            </p>
-                          </Link>
+                  {items &&
+                    [...items].map((item) => (
+                      <>
+                        <div className="zoom-div ml-[-6vmin]">
+                          <div className="flex flex-col gap-y-4 justify-center items-center">
+                            <Link to="/products">
+                              <div
+                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                                style={{
+                                  backgroundImage: `url(${item.img})`,
+                                  backgroundPosition: "center",
+                                  // Assuming each item has an image property
+                                }}
+                                onClick={() => {
+                                  navigate("/products");
+                                }}
+                              ></div>
+                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                                {item.sname}
+                              </p>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    </>
-                  ))}
+                      </>
+                    ))}
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
@@ -176,29 +183,30 @@ const SliderComponent = () => {
                   {...settings}
                   className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
                 >
-                  {items.map((item) => (
-                    <>
-                      <div className="ml-[-6vmin]">
-                        <div className="flex flex-col gap-y-3 justify-center items-center">
-                          <div
-                            className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                            style={{
-                              backgroundImage: `url(${item.img})`,
-                              backgroundPosition: "top",
+                  {items &&
+                    [...items].map((item) => (
+                      <>
+                        <div className="ml-[-6vmin]">
+                          <div className="flex flex-col gap-y-3 justify-center items-center">
+                            <div
+                              className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                              style={{
+                                backgroundImage: `url(${item.img})`,
+                                backgroundPosition: "top",
 
-                              // Assuming each item has an image property
-                            }}
-                            onClick={() => {
-                              navigate("/products");
-                            }}
-                          ></div>
-                          <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                            {item.title}
-                          </p>
+                                // Assuming each item has an image property
+                              }}
+                              onClick={() => {
+                                navigate("/products");
+                              }}
+                            ></div>
+                            <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                              {item.title}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </>
-                  ))}
+                      </>
+                    ))}
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
@@ -223,7 +231,7 @@ const SliderComponent = () => {
                 !change
                   ? document.getElementById("mainHeader")?.offsetHeight ||
                     "686px"
-                  : "686px"
+                  : "500px"
               }`,
 
               zIndex: 900,
@@ -240,31 +248,32 @@ const SliderComponent = () => {
               {...settings}
               className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
             >
-              {items.map((item) => (
-                <>
-                  <div className="ml-[-6vmin]">
-                    <div className="flex flex-col gap-y-3 justify-center items-center">
-                      <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                        style={{
-                          backgroundImage: `url(${
-                            import.meta.env.VITE_APP_API_URL + item.photo
-                          })`,
-                          backgroundPosition: "top",
+              {items &&
+                [...items].map((item) => (
+                  <>
+                    <div className="ml-[-6vmin]">
+                      <div className="flex flex-col gap-y-3 justify-center items-center">
+                        <div
+                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                          style={{
+                            backgroundImage: `url(${
+                              import.meta.env.VITE_APP_API_URL + item.photo
+                            })`,
+                            backgroundPosition: "top",
 
-                          // Assuming each item has an image property
-                        }}
-                        onClick={() => {
-                          navigate("/products");
-                        }}
-                      ></div>
-                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.sname}
-                      </p>
+                            // Assuming each item has an image property
+                          }}
+                          onClick={() => {
+                            navigate("/products");
+                          }}
+                        ></div>
+                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                          {item.sname.slice(0, 18) + "..."}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
+                  </>
+                ))}
             </Slider>
             <button
               onClick={() => sliderRef.current.slickNext()}
@@ -302,29 +311,30 @@ const SliderComponent = () => {
               {...settings}
               className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
             >
-              {items.map((item) => (
-                <>
-                  <div className="ml-[-6vmin]">
-                    <div className="flex flex-col gap-y-3 justify-center items-center">
-                      <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                          backgroundPosition: "top",
+              {items &&
+                [...items].map((item) => (
+                  <>
+                    <div className="ml-[-6vmin]">
+                      <div className="flex flex-col gap-y-3 justify-center items-center">
+                        <div
+                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                          style={{
+                            backgroundImage: `url(${item.img})`,
+                            backgroundPosition: "top",
 
-                          // Assuming each item has an image property
-                        }}
-                        onClick={() => {
-                          navigate("/products");
-                        }}
-                      ></div>
-                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.sname}
-                      </p>
+                            // Assuming each item has an image property
+                          }}
+                          onClick={() => {
+                            navigate("/products");
+                          }}
+                        ></div>
+                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                          {item.sname}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
+                  </>
+                ))}
             </Slider>
             <button
               onClick={() => sliderRef.current.slickNext()}
@@ -362,29 +372,30 @@ const SliderComponent = () => {
               {...settings}
               className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
             >
-              {items.map((item) => (
-                <>
-                  <div className="ml-[-6vmin]">
-                    <div className="flex flex-col gap-y-3 justify-center items-center">
-                      <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                          backgroundPosition: "top",
+              {items &&
+                [...items].map((item) => (
+                  <>
+                    <div className="ml-[-6vmin]">
+                      <div className="flex flex-col gap-y-3 justify-center items-center">
+                        <div
+                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                          style={{
+                            backgroundImage: `url(${item.img})`,
+                            backgroundPosition: "top",
 
-                          // Assuming each item has an image property
-                        }}
-                        onClick={() => {
-                          navigate("/products");
-                        }}
-                      ></div>
-                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.sname}
-                      </p>
+                            // Assuming each item has an image property
+                          }}
+                          onClick={() => {
+                            navigate("/products");
+                          }}
+                        ></div>
+                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                          {item.sname}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
+                  </>
+                ))}
             </Slider>
             <button
               onClick={() => sliderRef.current.slickNext()}
@@ -422,29 +433,30 @@ const SliderComponent = () => {
               {...settings}
               className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
             >
-              {items.map((item) => (
-                <>
-                  <div className="ml-[-6vmin]">
-                    <div className="flex flex-col gap-y-3 justify-center items-center">
-                      <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                        style={{
-                          backgroundImage: `url(${item.img})`,
-                          backgroundPosition: "top",
+              {items &&
+                [...items].map((item) => (
+                  <>
+                    <div className="ml-[-6vmin]">
+                      <div className="flex flex-col gap-y-3 justify-center items-center">
+                        <div
+                          className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                          style={{
+                            backgroundImage: `url(${item.img})`,
+                            backgroundPosition: "top",
 
-                          // Assuming each item has an image property
-                        }}
-                        onClick={() => {
-                          navigate("/products");
-                        }}
-                      ></div>
-                      <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.sname}
-                      </p>
+                            // Assuming each item has an image property
+                          }}
+                          onClick={() => {
+                            navigate("/products");
+                          }}
+                        ></div>
+                        <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                          {item.sname}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </>
-              ))}
+                  </>
+                ))}
             </Slider>
             <button
               onClick={() => sliderRef.current.slickNext()}
