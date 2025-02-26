@@ -253,9 +253,11 @@ const router = createBrowserRouter([
     path: "/CMSusers",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <User />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <User />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },
@@ -263,9 +265,11 @@ const router = createBrowserRouter([
     path: "/transactionmanager",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <Transaction />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <Transaction />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },

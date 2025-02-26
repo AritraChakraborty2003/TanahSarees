@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
@@ -184,7 +183,8 @@ const Header = (props) => {
 
                     {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                      0{/* Replace with dynamic count */}
+                      {Favourite}
+                      {/* Replace with dynamic count */}
                     </div>
                   </div>
                   <div className="relative inline-block">
@@ -196,13 +196,13 @@ const Header = (props) => {
                       ></i>{" "}
                       {/* Heart Icon */}
                       <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                        0{/* Replace with dynamic count */}
+                        {Favourite}
                       </div>
                     </a>
 
                     {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                      0{/* Replace with dynamic count */}
+                      {cart}
                     </div>
                   </div>
                 </div>
