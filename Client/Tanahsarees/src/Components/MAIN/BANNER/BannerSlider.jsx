@@ -1,8 +1,6 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-// import { useContext } from "react";
-// import { AppContext } from "../../../AppContext/AppContext";
 
 // Hardcoded images (Replace with API later)
 const images = [
@@ -16,7 +14,6 @@ const images = [
 ];
 
 const BannerSlider = () => {
-  // const { change } = useContext(AppContext);
   const settings = {
     dots: true, // Show navigation dots
     infinite: true, // Infinite loop
@@ -43,8 +40,7 @@ const BannerSlider = () => {
             gap: "8px",
           }}
         >
-          {" "}
-          {dots}{" "}
+          {dots}
         </ul>
       </div>
     ),
@@ -65,23 +61,21 @@ const BannerSlider = () => {
 
   return (
     <div
-      className="w-screen mt-[2.65vmin]  2xl:mt-4  overflow-hidden relative"
+      className="w-full mt-[2.65vmin] xl:mt-4 relative overflow-hidden"
       style={{
         zIndex: 10,
-        // marginTop: "4vmin",
-        // marginTop: `${!change ? "320px" : "250px"}`,
       }}
     >
       <Slider {...settings} className="h-full overflow-hidden">
         {images.map((img, index) => (
           <div
             key={index}
-            className="w-full h-[65vh] lg:h-[90vh] flex justify-center items-center "
+            className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center"
           >
             <img
               src={img}
               alt={`Slide ${index + 1}`}
-              className="w-full h-[100%]  object-cover pointer-events-none"
+              className="w-full h-full object-cover pointer-events-none"
             />
           </div>
         ))}
