@@ -177,6 +177,7 @@ const AddCatalogue = ({ onSubmit }) => {
                   <option value="green">Green</option>
                   <option value="white">White</option>
                   <option value="maroon">Maroon</option>
+                  <option value="blue">Blue</option>
                 </Field>
                 <ErrorMessage
                   name="colour"
@@ -246,6 +247,7 @@ const AddCatalogue = ({ onSubmit }) => {
                     name="occasion"
                     className="border p-2 w-full"
                   >
+                    <option value="Summer Collection">Summer Collection</option>
                     <option value="wedding">Wedding</option>
                     <option value="engagement">Engagement</option>
                     <option value="reception">Reception</option>

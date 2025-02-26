@@ -11,7 +11,7 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
   useEffect(() => {
     if (type === "GET") {
       axios
-        .get(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route)
+        .get(`${import.meta.env.VITE_APP_API_URL}api/v1` + route)
         .then((res) => {
           setData(res.data);
         })

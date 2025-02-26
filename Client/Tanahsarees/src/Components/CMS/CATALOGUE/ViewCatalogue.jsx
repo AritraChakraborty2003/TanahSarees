@@ -3,7 +3,7 @@ import { useState } from "react";
 import Tilt from "react-parallax-tilt";
 const ViewCatalogue = (props) => {
   const [isQuickView, setIsQuickView] = useState(false);
-  const { image, name, price } = props.data;
+  const { sname, photo, price } = props.data;
   return (
     <div className="flex flex-col  pr-4 pb-5">
       <div
@@ -18,7 +18,10 @@ const ViewCatalogue = (props) => {
           transitionSpeed={500} // Smooth transition
           className="rounded-lg"
         >
-          <img src={image} alt={name} />
+          <img
+            src={`${import.meta.env.VITE_APP_API_URL}` + photo}
+            alt={sname}
+          />
         </Tilt>
 
         <div
@@ -37,7 +40,7 @@ const ViewCatalogue = (props) => {
           </p>
         </div>
         <div className="flex flex-col text-center text-gray-600">
-          <h2>{name}</h2>
+          <h2>{sname.slice(0, 10) + "..."}</h2>
           <p>₹{price}</p>
         </div>
       </div>

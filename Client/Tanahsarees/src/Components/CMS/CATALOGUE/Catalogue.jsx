@@ -19,16 +19,17 @@ const Catalogue = () => {
 
   const [isLoginAdmin, setIsLoginAdmin] = useState(false);
 
-  const data = [
-    { image: "/Sarees/saree1.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree2.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree8.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree7.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree9.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree3.jpg", name: "Silk raw mango", price: "3000" },
-    { image: "/Sarees/saree4.jpg", name: "Silk raw mango", price: "3000" },
-  ];
+  // const data = [
+  //   { image: "/Sarees/saree1.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree2.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree8.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree7.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree9.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree3.jpg", name: "Silk raw mango", price: "3000" },
+  //   { image: "/Sarees/saree4.jpg", name: "Silk raw mango", price: "3000" },
+  // ];
 
+  const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
   // API Call
   const res = UseHTTPRequest(trigger, "/sarees", "POST", formData);
 
@@ -120,10 +121,20 @@ const Catalogue = () => {
               <div className="w-[85vw] lg:w-[50vw]">
                 <SearchBar category="order" />
               </div>
-              <div className="flex flex-wrap p-1 gap-x-6 justify-center items-center mt-6 lg:mt-9">
-                {data.map((item, index) => (
-                  <ViewCatalogue key={index} data={item} />
-                ))}
+              <div
+                className={`flex flex-wrap p-1 gap-x-6 space-y-8 justify-center items-center mt-8 lg:mt-9 ${
+                  data ? "bg-[#f7d9cb]" : "bg-white"
+                }`}
+              >
+                {data ? (
+                  data
+                    .reverse()
+                    .map((item, index) => (
+                      <ViewCatalogue key={index} data={item} />
+                    ))
+                ) : (
+                  <p>Data Loading</p>
+                )}
               </div>
             </div>
           )}

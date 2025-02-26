@@ -333,6 +333,8 @@ const App = () => {
 
   const [cartLength, setCartLength] = useState(0);
 
+  const [sareeData, setSareeData] = useState([]);
+
   return (
     <>
       <AppContext.Provider
@@ -370,6 +372,8 @@ const App = () => {
           setFavouriteLength,
           cartLength,
           setCartLength,
+          sareeData,
+          setSareeData,
         }}
       >
         <RouterProvider router={router} />

@@ -9,20 +9,14 @@ import { AppContext } from "../../../AppContext/AppContext";
 // import Product from "../../PRODUCTS/Product";
 // import { Link, useNavigate } from "react-router-dom";
 // Sample Hardcoded Data (Replace with API later)
-const items = [
-  { id: 1, title: "Raw Mango ", img: "/Sarees/saree1.jpg" },
-  { id: 2, title: "Silk Saree", img: "/Sarees/saree8.jpg" },
-  { id: 3, title: "Siffon saree", img: "/Sarees/saree3.jpg" },
-  { id: 4, title: "silk saree", img: "/Sarees/saree10.jpg" },
-  { id: 5, title: "Cotton saree", img: "/Sarees/saree5.jpg" },
-  { id: 6, title: "Chikon saree", img: "/Sarees/saree11.jpg" },
-];
 
 const SliderComponent = () => {
-  const { change } = useContext(AppContext);
+  const { change, sareeData } = useContext(AppContext);
   const navigate = useNavigate();
   const sliderRef = React.useRef(null);
   // const navigate = useNavigate();
+
+  const items = sareeData.reverse().slice(0, 11);
 
   // Slick Slider Settings
   const settings = {
@@ -89,7 +83,7 @@ const SliderComponent = () => {
                       ></div>
 
                       <p className="font-Montserrat text-[3.75vmin] font-normal text-[#d5d5d5]-800">
-                        {item.title}
+                        {item.sname}
                       </p>
                     </Link>
                   </div>
@@ -154,7 +148,7 @@ const SliderComponent = () => {
                               }}
                             ></div>
                             <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                              {item.title}
+                              {item.sname}
                             </p>
                           </Link>
                         </div>
@@ -253,7 +247,9 @@ const SliderComponent = () => {
                       <div
                         className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                         style={{
-                          backgroundImage: `url(${item.img})`,
+                          backgroundImage: `url(${
+                            import.meta.env.VITE_APP_API_URL + item.photo
+                          })`,
                           backgroundPosition: "top",
 
                           // Assuming each item has an image property
@@ -263,7 +259,7 @@ const SliderComponent = () => {
                         }}
                       ></div>
                       <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.title}
+                        {item.sname}
                       </p>
                     </div>
                   </div>
@@ -323,7 +319,7 @@ const SliderComponent = () => {
                         }}
                       ></div>
                       <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.title}
+                        {item.sname}
                       </p>
                     </div>
                   </div>
@@ -383,7 +379,7 @@ const SliderComponent = () => {
                         }}
                       ></div>
                       <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.title}
+                        {item.sname}
                       </p>
                     </div>
                   </div>
@@ -443,7 +439,7 @@ const SliderComponent = () => {
                         }}
                       ></div>
                       <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                        {item.title}
+                        {item.sname}
                       </p>
                     </div>
                   </div>

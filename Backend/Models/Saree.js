@@ -5,7 +5,6 @@ const sareeSchema = new mongoose.Schema(
     sname: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
       minlength: 3,
       maxlength: 60,
