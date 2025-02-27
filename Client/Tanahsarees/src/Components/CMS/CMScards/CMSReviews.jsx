@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import { useState, useContext } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 
 const CMSReviews = () => {
   const { change } = useContext(AppContext);
+  const [addReview, setAddReview] = useState(false);
   const [reviews, setReviews] = useState([
     {
       id: 1,
@@ -29,64 +31,45 @@ const CMSReviews = () => {
 
   const [editingReview, setEditingReview] = useState(null);
   const [editedText, setEditedText] = useState("");
+  const [newReview, setNewReview] = useState({
+    name: "",
+    image: "",
+    review: "",
+  });
 
-  // Function to handle edit button click
   const handleEditClick = (review) => {
     setEditingReview(review.id);
     setEditedText(review.review);
   };
 
-  // Function to save the edited review
-  const handleSaveClick = async (id) => {
-    const updatedReviews = reviews.map((review) =>
-      review.id === id ? { ...review, review: editedText } : review
+  const handleSaveClick = (id) => {
+    setReviews(
+      reviews.map((review) =>
+        review.id === id ? { ...review, review: editedText } : review
+      )
     );
-    setReviews(updatedReviews);
     setEditingReview(null);
+  };
 
-    // API request to save the updated review
-    try {
-      const response = await fetch(
-        "https://your-api-endpoint.com/update-review",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id,
-            updatedReview: editedText,
-          }),
-        }
-      );
+  const handleAddReview = () => {
+    if (!newReview.name || !newReview.image || !newReview.review) return;
+    setReviews([...reviews, { id: reviews.length + 1, ...newReview }]);
+    setNewReview({ name: "", image: "", review: "" });
+  };
 
-      if (!response.ok) {
-        throw new Error("Failed to update review");
-      }
-
-      console.log("Review updated successfully!");
-    } catch (error) {
-      console.error("Error updating review:", error);
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewReview((prev) => ({ ...prev, image: reader.result }));
+      };
+      reader.readAsDataURL(file);
     }
   };
-  const isMobile = screen.width <= 768 ? true : false;
 
   return (
-    <div
-      className="w-full p-6"
-      style={{
-        paddingTop: `${
-          !change
-            ? document.getElementById("mainHeader")?.offsetHeight ||
-              (isMobile ? "60px" : "280px")
-            : isMobile
-            ? "60px"
-            : "280px"
-        }`,
-
-        zIndex: 900,
-      }}
-    >
+    <div className="w-full p-6 mt-[30vh]">
       <h2 className="text-2xl font-semibold text-center mb-4">
         Customer Reviews
       </h2>
@@ -102,7 +85,6 @@ const CMSReviews = () => {
               className="w-full h-40 object-cover rounded-lg mb-3"
             />
             <h3 className="text-lg font-bold">{review.name}</h3>
-
             {editingReview === review.id ? (
               <textarea
                 className="w-full border p-2 rounded-md"
@@ -112,7 +94,6 @@ const CMSReviews = () => {
             ) : (
               <p className="text-gray-700 mt-2">{review.review}</p>
             )}
-
             <div className="flex justify-between mt-3">
               {editingReview === review.id ? (
                 <button
@@ -133,6 +114,55 @@ const CMSReviews = () => {
           </div>
         ))}
       </div>
+      <button
+        className={`p-2 mt-9 ml-[90%] rounded-md ${
+          addReview ? "bg-[#da4d0c] text-white" : "bg-[#F7D9CB]"
+        }`}
+        onClick={() => setAddReview(!addReview)}
+      >
+        {addReview ? "Cancel Review" : "Add Review"}
+      </button>
+      {addReview && (
+        <div className="mt-6 p-4 border rounded-lg bg-white shadow-md">
+          <h3 className="text-xl font-semibold mb-3">Add a New Review</h3>
+          <input
+            type="text"
+            placeholder="Name"
+            className="w-full border p-2 rounded-md mb-2"
+            value={newReview.name}
+            onChange={(e) =>
+              setNewReview({ ...newReview, name: e.target.value })
+            }
+          />
+          <input
+            type="file"
+            accept="image/*"
+            className="w-full border p-2 rounded-md mb-2"
+            onChange={handleImageUpload}
+          />
+          {newReview.image && (
+            <img
+              src={newReview.image}
+              alt="Preview"
+              className="w-full h-40 object-cover rounded-lg mb-3"
+            />
+          )}
+          <textarea
+            placeholder="Review"
+            className="w-full border p-2 rounded-md mb-2"
+            value={newReview.review}
+            onChange={(e) =>
+              setNewReview({ ...newReview, review: e.target.value })
+            }
+          />
+          <button
+            onClick={handleAddReview}
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 w-full"
+          >
+            Add Review
+          </button>
+        </div>
+      )}
     </div>
   );
 };
