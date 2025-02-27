@@ -34,7 +34,7 @@ const OptionsBar = () => {
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
         <nav className="relative w-full bg-white shadow-md border-t border-gray-300">
           <div className="flex justify-center items-center px-3 py-4">
-            <ul className="flex gap-x-21">
+            <ul className="flex gap-x-18">
               {[
                 "SALE",
                 "OFFERS",

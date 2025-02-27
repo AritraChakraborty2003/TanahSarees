@@ -25,11 +25,13 @@ export default function MainHeader(props) {
     contentCart,
     setContentCart,
     isLoggedIn,
+    loginOpen,
+    setLoginOpen,
     setIsLoggedIn,
     setIsAdminLogin,
   } = useContext(AppContext);
   const { isLogin, setIsLogin } = useContext(AppContext);
-  const [loginOpen, setLoginOpen] = useState(false);
+
   const [Favourite, setFavourite] = useState(0);
   const [cart, setCart] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false);

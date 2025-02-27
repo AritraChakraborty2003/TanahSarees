@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import BannerSlider from "../BANNER/BannerSlider";
 import MainHeader from "../HEDAERS/MAIN/MainHeader";
 import SliderComponent from "../SLIDER/SliderComponent";
@@ -10,8 +11,27 @@ import Collection from "../SHOPBYCOLLECTION/Collection";
 import Material from "../SHOPBYMATERIAL/Material";
 import Testimonial from "../TESTIMONIALS/Testimonial";
 import VideoCard from "../VIDEOCARD/VideoCard";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../../AppContext/AppContext";
+import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Main = () => {
+  const authStatus = useCheckAuth(null, "auth");
+  const { loginOpen, setLoginOpen, Loginlargescreen, setLoginlargescreen } =
+    useContext(AppContext);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (screen.width > 1000 && !authStatus.user) {
+        setLoginlargescreen(true);
+      } else if (screen.width < 1000 && !authStatus.user) {
+        setLoginOpen(true);
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [authStatus.user, setLoginOpen, setLoginlargescreen]);
+
   return (
     <>
       <div className="relative">

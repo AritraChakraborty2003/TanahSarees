@@ -343,6 +343,8 @@ const App = () => {
 
   const [filteredData, setFilteredData] = useState([]);
 
+  const [loginOpen, setLoginOpen] = useState(false);
+
   return (
     <>
       <AppContext.Provider
@@ -388,6 +390,8 @@ const App = () => {
           setActiveFilter,
           filteredData,
           setFilteredData,
+          loginOpen,
+          setLoginOpen,
         }}
       >
         <RouterProvider router={router} />

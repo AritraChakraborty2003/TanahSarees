@@ -146,8 +146,11 @@ const SliderComponent = () => {
                               <div
                                 className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
                                 style={{
-                                  backgroundImage: `url(${item.img})`,
-                                  backgroundPosition: "center",
+                                  backgroundImage: `url(${
+                                    import.meta.env.VITE_APP_API_URL +
+                                    item.photo
+                                  })`,
+                                  backgroundPosition: "top",
                                   // Assuming each item has an image property
                                 }}
                                 onClick={() => {
@@ -191,7 +194,9 @@ const SliderComponent = () => {
                             <div
                               className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                               style={{
-                                backgroundImage: `url(${item.img})`,
+                                backgroundImage: `url(${
+                                  import.meta.env.VITE_APP_API_URL + item.photo
+                                })`,
                                 backgroundPosition: "top",
 
                                 // Assuming each item has an image property
@@ -268,7 +273,7 @@ const SliderComponent = () => {
                           }}
                         ></div>
                         <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                          {item.sname.slice(0, 18) + "..."}
+                          {item.sname.slice(0, 18)}
                         </p>
                       </div>
                     </div>
@@ -319,7 +324,9 @@ const SliderComponent = () => {
                         <div
                           className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                           style={{
-                            backgroundImage: `url(${item.img})`,
+                            backgroundImage: `url(${
+                              import.meta.env.VITE_APP_API_URL + item.photo
+                            })`,
                             backgroundPosition: "top",
 
                             // Assuming each item has an image property
@@ -380,7 +387,9 @@ const SliderComponent = () => {
                         <div
                           className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                           style={{
-                            backgroundImage: `url(${item.img})`,
+                            backgroundImage: `url(${
+                              import.meta.env.VITE_APP_API_URL + item.photo
+                            })`,
                             backgroundPosition: "top",
 
                             // Assuming each item has an image property
@@ -441,7 +450,9 @@ const SliderComponent = () => {
                         <div
                           className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                           style={{
-                            backgroundImage: `url(${item.img})`,
+                            backgroundImage: `url(${
+                              import.meta.env.VITE_APP_API_URL + item.photo
+                            })`,
                             backgroundPosition: "top",
 
                             // Assuming each item has an image property

@@ -30,6 +30,8 @@ const Header = (props) => {
       setFavouriteLength(authStatus.user.message.favourites.length);
       setCartLength(authStatus.user.message.cart.length);
       setLoggedIn(true);
+
+      console.log("Hello", authStatus);
     }
   }, [authStatus, setCartLength, setFavouriteLength]);
 
