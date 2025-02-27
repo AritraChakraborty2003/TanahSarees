@@ -15,7 +15,14 @@ const ProductCard = (props) => {
   const { photo, sname, price } = props.data;
   const { type, Fav } = props;
 
-  const { activeProduct, setActiveProduct } = useContext(AppContext);
+  const {
+    activeProduct,
+    setActiveProduct,
+    activeFilter,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+  } = useContext(AppContext);
 
   useEffect(() => {
     if (Fav === true) {
@@ -42,6 +49,8 @@ const ProductCard = (props) => {
             to="/product_descr"
             onClick={() => {
               setActiveProduct(props.data);
+              setActiveFilter(false);
+              setFilteredData([]); // Reset filter data on click
               window.scrollTo(0, 0);
             }}
             className="block"

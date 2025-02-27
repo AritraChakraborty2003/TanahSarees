@@ -8,7 +8,13 @@ import { AppContext } from "../../../AppContext/AppContext";
 
 const Loader = () => {
   const [isLoading, setIsloading] = useState(true);
-  const { sareeData, setSareeData } = useContext(AppContext);
+  const {
+    sareeData,
+    setSareeData,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+  } = useContext(AppContext);
   const [tigger, setTigger] = useState(false);
   const [tigger_auth, set_tigger_auth] = useState(false);
   const data = UseHTTPRequest(tigger, "/sarees", "GET", "", "");
@@ -21,10 +27,12 @@ const Loader = () => {
   const message = useCheckAuth(tigger_auth, "auth");
 
   useEffect(() => {
+    setFilteredData([]);
+    setActiveFilter(false);
     if (data) {
       setSareeData(data);
     }
-  }, [data, setSareeData]);
+  }, [data, setActiveFilter, setFilteredData, setSareeData]);
   return (
     <div>
       {isLoading ? (

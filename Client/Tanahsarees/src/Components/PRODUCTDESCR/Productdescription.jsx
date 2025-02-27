@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import Modal from "react-modal";
 import ControlledAccordions from "../TESTComp/ControlledAccordions";
@@ -14,7 +14,14 @@ const Productdescription = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
 
-  const { activeProduct, setActiveProduct } = useContext(AppContext);
+  const {
+    activeProduct,
+    setActiveProduct,
+    activeFilter,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+  } = useContext(AppContext);
 
   const { photo, material, price, discount, sname, colour, type, _id, rating } =
     activeProduct;

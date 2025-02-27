@@ -1,8 +1,22 @@
-import { useState, useEffect, useRef } from "react";
+/* eslint-disable react/jsx-key */
+/* eslint-disable no-unused-vars */
+import { useState, useEffect, useRef, useContext } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import Search from "./Search";
+import { AppContext } from "../../../../AppContext/AppContext";
 
 const OptionsBar = () => {
+  const {
+    searchDataValue,
+    activeFilter,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+    smallSearchBox,
+    setSmallSearchBox,
+    setSearchDataValue,
+  } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
 
@@ -29,6 +43,7 @@ const OptionsBar = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
   return (
     <div>
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
@@ -60,7 +75,9 @@ const OptionsBar = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
-                      className="fixed top-[258px] left-0 w-screen bg-white shadow-lg border border-gray-200 z-50"
+                      className={`fixed  ${
+                        screen.width <= 1919 ? "top-[258px]" : "top-[288px]"
+                      } left-0 w-screen bg-white shadow-lg border border-gray-200 z-50`}
                       onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
                       onMouseLeave={handleMouseLeave} // Close only if mouse leaves
                     >
@@ -86,8 +103,34 @@ const OptionsBar = () => {
           </div>
         </nav>
       ) : (
-        <div className="border-b border-gray-300 flex justify-center items-center w-full flex-wrap pb-4 darktext font-lato">
+        <div className="border-b border-gray-300 flex flex-col justify-center items-center w-full flex-wrap pb-4 darktext font-lato">
           <Search className="mt-[2vmin]" />
+
+          {smallSearchBox ? (
+            <div className="w-[80%] border-[1px] border-[#d5d5d5]">
+              {searchDataValue.length > 0 ? (
+                searchDataValue.slice(0, 4).map((item, index) => (
+                  <div className="border-b-[1px] p-2">
+                    <p
+                      onClick={() => {
+                        setActiveFilter(true);
+                        setFilteredData([item]);
+                        navigate("/products");
+                        setSmallSearchBox(false);
+                        setSearchDataValue("");
+                      }}
+                    >
+                      {item.sname}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p>No results found...</p>
+              )}
+            </div>
+          ) : (
+            <p></p>
+          )}
         </div>
       )}
     </div>

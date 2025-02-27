@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Link, useNavigate } from "react-router-dom";
@@ -48,6 +49,16 @@ const Header = (props) => {
     setisLogoutClick,
     profileOpen,
     setProfileOpen,
+    LargeSearchBox,
+    setLargeSearchBox,
+    smallSearchBox,
+    searchDataValue,
+    setSearchDataValue,
+    setSmallSearchBox,
+    activeFilter,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
   } = useContext(AppContext);
 
   const openLoginLargeModal = () => {
@@ -57,6 +68,10 @@ const Header = (props) => {
   const closeLoginLargeModal = () => {
     setLoginlargescreen(false);
   };
+
+  useEffect(() => {
+    console.log("Search Data called");
+  }, [searchDataValue]);
 
   //For CMS Logout
   const handleLogout = async () => {
@@ -96,7 +111,34 @@ const Header = (props) => {
             }`}
           >
             <div className="searchHolder w-[33.3%]  flex justify-center items-center">
-              <Search />
+              <div className="w-[94%]">
+                <Search />
+                {LargeSearchBox ? (
+                  <div className=" border-[1px] border-[#d5d5d5] w-[80%] flex flex-col justify-center items-start pl-2 ">
+                    {searchDataValue.length > 0 ? (
+                      searchDataValue.slice(0, 3).map((item, index) => (
+                        <div className="border-b-[1px] p-2">
+                          <p
+                            onClick={() => {
+                              setActiveFilter(true);
+                              setFilteredData([item]);
+                              navigate("/products");
+                              setLargeSearchBox(false);
+                              setSearchDataValue("");
+                            }}
+                          >
+                            {item.sname}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No results found...</p>
+                    )}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
             <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
               <Link to="/">

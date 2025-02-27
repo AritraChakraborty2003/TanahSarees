@@ -345,6 +345,15 @@ const App = () => {
 
   const [loginOpen, setLoginOpen] = useState(false);
 
+  const [searchTerm, setSearchTerm] = useState("");
+
+  //For Search Box Display
+  const [LargeSearchBox, setLargeSearchBox] = useState(false);
+  const [smallSearchBox, setSmallSearchBox] = useState(false);
+
+  //Search data
+  const [searchDataValue, setSearchDataValue] = useState([]);
+
   return (
     <>
       <AppContext.Provider
@@ -392,6 +401,14 @@ const App = () => {
           setFilteredData,
           loginOpen,
           setLoginOpen,
+          searchTerm,
+          setSearchTerm,
+          LargeSearchBox,
+          setLargeSearchBox,
+          smallSearchBox,
+          setSmallSearchBox,
+          searchDataValue,
+          setSearchDataValue,
         }}
       >
         <RouterProvider router={router} />

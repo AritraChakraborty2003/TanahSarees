@@ -76,7 +76,7 @@ const ProductDisplay = () => {
       )}
 
       <div className="lg:mt-5 flex flex-wrap pb-20">
-        {!Filter ? (
+        {!Filter && !activeFilter ? (
           <p className="flex cursor-pointer" onClick={toggleFilter}>
             <img
               src="filtericon.png"
@@ -85,7 +85,9 @@ const ProductDisplay = () => {
               className="ml-2 mt-6"
               alt="Filter Icon"
             />
-            <span className="ml-2 mt-6">Show Filters</span>
+            <span className="ml-2 mt-6" onClick={toggleFilter}>
+              Show Filters
+            </span>
           </p>
         ) : null}
 
@@ -105,7 +107,7 @@ const ProductDisplay = () => {
 
         {activeFilter === false ? (
           <div
-            className={`mt-6 lg:mt-10 ml-2 flex flex-wrap gap-x-3 gap-y-8 justify-center items-center ${
+            className={`mt-6 lg:mt-10 ml-1 flex flex-wrap gap-x-3 gap-y-8 justify-center items-center ${
               window.innerWidth > 1000 ? (!Filter ? "w-full" : "w-[70vw]") : ""
             }`}
           >
@@ -130,7 +132,7 @@ const ProductDisplay = () => {
         ) : (
           <>
             <div
-              className={`mt-6 lg:mt-10 ml-2 flex flex-wrap gap-x-3 gap-y-8 justify-center items-center ${
+              className={`mt-6 lg:mt-3 ml-2 flex flex-wrap gap-x-3 gap-y-3 justify-center  ${
                 window.innerWidth > 1000
                   ? !Filter
                     ? "w-full"

@@ -92,7 +92,10 @@ export default function MainHeader(props) {
     isAdminLogin,
     setIsAdmin,
     profileOpen,
-
+    LargeSearchBox,
+    setLargeSearchBox,
+    smallSearchBox,
+    setSmallSearchBox,
     setProfileOpen,
   } = useContext(AppContext);
   const { scrollValue } = props;
@@ -104,6 +107,19 @@ export default function MainHeader(props) {
   const [scrollY, setScrollY] = useState(0);
   const [scrollThreshold, setScrollThreshold] = useState(regularScroll);
   const { category } = props;
+
+  // const OpenLargeSearchBox = () => {
+  //   setLargeSearchBox(true);
+  // };
+  // const CloseLargeSearchBox = () => {
+  //   setLargeSearchBox(false);
+  // };
+  // const OpenSmallSearchBox = () => {
+  //   setSmallSearchBox(true);
+  // };
+  // const CloseSmallSearchBox = () => {
+  //   setSmallSearchBox(false);
+  // };
 
   const OpenLargeModalLogin = () => {
     setLoginlargescreen(true);
@@ -168,7 +184,7 @@ export default function MainHeader(props) {
 
   const customStylesProfile = {
     content: {
-      top: "25%",
+      top: "22.5%",
       left: "80%",
       right: "auto",
       bottom: "auto",
@@ -180,6 +196,21 @@ export default function MainHeader(props) {
       backgroundColor: "rgba(0, 0, 0, 0.2)", // Light blur effect
     },
   };
+
+  const customSearchProfile = {
+    content: {
+      top: "23%",
+      left: "3%",
+      right: "auto",
+      bottom: "auto",
+      width: "30vmin",
+      backgroundColor: "white",
+    },
+    overlay: {
+      zIndex: 2500, // Ensuring it's above all elements
+    },
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -227,7 +258,10 @@ export default function MainHeader(props) {
 
   useEffect(() => {
     if (profileOpen) {
-      const handleScroll = () => setProfileOpen(false);
+      const handleScroll = () => {
+        setProfileOpen(false);
+      };
+
       window.addEventListener("scroll", handleScroll);
 
       return () => {

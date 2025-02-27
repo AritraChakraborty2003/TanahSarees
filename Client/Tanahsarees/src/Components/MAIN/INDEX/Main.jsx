@@ -17,20 +17,44 @@ import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Main = () => {
   const authStatus = useCheckAuth(null, "auth");
-  const { loginOpen, setLoginOpen, Loginlargescreen, setLoginlargescreen } =
-    useContext(AppContext);
+  const {
+    loginOpen,
+    setLoginOpen,
+    Loginlargescreen,
+    setLoginlargescreen,
+    LargeSearchBox,
+    setLargeSearchBox,
+    smallSearchBox,
+    setSmallSearchBox,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (screen.width > 1000 && !authStatus.user) {
+      if (
+        screen.width > 1000 &&
+        !authStatus.user &&
+        !LargeSearchBox &&
+        !smallSearchBox
+      ) {
         setLoginlargescreen(true);
-      } else if (screen.width < 1000 && !authStatus.user) {
+      } else if (
+        screen.width < 1000 &&
+        !authStatus.user &&
+        !LargeSearchBox &&
+        !smallSearchBox
+      ) {
         setLoginOpen(true);
       }
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, [authStatus.user, setLoginOpen, setLoginlargescreen]);
+  }, [
+    LargeSearchBox,
+    authStatus.user,
+    setLoginOpen,
+    setLoginlargescreen,
+    smallSearchBox,
+  ]);
 
   return (
     <>
