@@ -107,7 +107,7 @@ const ProductDisplay = () => {
 
         {activeFilter === false ? (
           <div
-            className={`mt-6 lg:mt-10 ml-1 flex flex-wrap gap-x-3 gap-y-8 justify-center items-center ${
+            className={`mt-6 lg:mt-10 ml-1 flex flex-wrap gap-x-3 gap-y-8 lg:gap-x-6 2xl:gap-x-3 justify-center items-center ${
               window.innerWidth > 1000 ? (!Filter ? "w-full" : "w-[70vw]") : ""
             }`}
           >

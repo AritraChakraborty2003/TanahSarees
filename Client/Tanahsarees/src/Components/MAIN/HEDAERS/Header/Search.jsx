@@ -21,7 +21,7 @@ const Search = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="w-[80%] flex gap-x-3 border-[#d5d5d5] border-[0.25px] p-[6px] lg:p-[0.35px] mt-4">
+      <div className="w-[95%] flex gap-x-3 border-[#d5d5d5] border-[0.25px] p-[6px] lg:p-[0.35px] mt-4">
         <a className="darktext text-[5vmin] lg:text-[3.15vmin] ml-3">
           <i
             className="ri-search-line"

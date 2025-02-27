@@ -110,8 +110,8 @@ const Header = (props) => {
                 : "z-10"
             }`}
           >
-            <div className="searchHolder w-[33.3%]  flex justify-center items-center">
-              <div className="w-[94%]">
+            <div className="searchHolder w-[33.3%]  flex justify-center items-center pl-3">
+              <div className="w-[97%]">
                 <Search />
                 {LargeSearchBox ? (
                   <div className=" border-[1px] border-[#d5d5d5] w-[80%] flex flex-col justify-center items-start pl-2 ">

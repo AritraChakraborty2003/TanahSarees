@@ -128,23 +128,23 @@ const SliderComponent = () => {
               <>
                 <button
                   onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
+                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[6%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3  rounded-full shadow-md"
                 >
                   <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                 </button>
                 <Slider
                   ref={sliderRef}
                   {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin] ml-[1.35vmin] "
+                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin] pr-[3.45vmin]"
                 >
                   {items &&
                     [...items].map((item) => (
                       <>
-                        <div className="zoom-div ml-[-6vmin]">
+                        <div className="zoom-div ml-[-1vmin]">
                           <div className="flex flex-col gap-y-4 justify-center items-center">
                             <Link to="/products">
                               <div
-                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[38vh] border-[#E97451] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
                                 style={{
                                   backgroundImage: `url(${
                                     import.meta.env.VITE_APP_API_URL +
@@ -157,8 +157,8 @@ const SliderComponent = () => {
                                   navigate("/products");
                                 }}
                               ></div>
-                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                                {item.sname}
+                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800 text-center mt-3">
+                                {item.sname.slice(0, 20) + "..."}
                               </p>
                             </Link>
                           </div>
@@ -168,7 +168,7 @@ const SliderComponent = () => {
                 </Slider>
                 <button
                   onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[5.5%] 2xl:w-[5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
+                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[6%] 2xl:w-[5%] transform -translate-y-1/2 z-10 bg-[#883022] text-white p-1 lg:p-3 rounded-full shadow-md"
                 >
                   <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                 </button>
