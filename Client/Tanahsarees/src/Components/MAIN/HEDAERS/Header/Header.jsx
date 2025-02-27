@@ -117,7 +117,7 @@ const Header = (props) => {
                   <div className=" border-[1px] border-[#d5d5d5] w-[80%] flex flex-col justify-center items-start pl-2 ">
                     {searchDataValue.length > 0 ? (
                       searchDataValue.slice(0, 3).map((item, index) => (
-                        <div className="border-b-[1px] p-2">
+                        <div className="border-b-[0.1px] border-[#d5d5d5] p-2 text-[#883022]">
                           <p
                             onClick={() => {
                               setActiveFilter(true);
@@ -132,7 +132,7 @@ const Header = (props) => {
                         </div>
                       ))
                     ) : (
-                      <p>No results found...</p>
+                      <p className=" p-2 text-[#883022]">No results found...</p>
                     )}
                   </div>
                 ) : (

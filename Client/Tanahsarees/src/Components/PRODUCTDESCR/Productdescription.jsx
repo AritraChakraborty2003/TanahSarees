@@ -9,10 +9,22 @@ import CardObj from "../CARDS/CardObj";
 // import { useNavigate } from "react-router-dom";
 // import { useLocation } from "react-router-dom";
 import { DiscountUI } from "../../Utils/DiscountUI";
+import UseHTTPRequest from "../../Utils/useHTTPRequest";
+import CardText from "../CARDS/CardText";
 // import { useEffect } from "react";
 const Productdescription = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
+  const [sareeDataObj, setSareeDataObj] = useState([]);
+
+  const dataObj = UseHTTPRequest(null, "/sarees", "GET", "");
+  useEffect(() => {
+    if (dataObj && JSON.stringify(dataObj) !== JSON.stringify(sareeDataObj)) {
+      setSareeDataObj(dataObj);
+    }
+  }, [dataObj, sareeDataObj]);
+
+  console.log("Data:", sareeDataObj);
 
   const {
     activeProduct,
@@ -277,7 +289,19 @@ const Productdescription = () => {
               You might also like
             </p>
             <div className="mt-3 lg:mt-6">
-              <CardObj data={data} />
+              {sareeDataObj.length > 0 ? (
+                <CardObj
+                  for={"like"}
+                  data={sareeDataObj
+                    .filter(
+                      (saree) =>
+                        saree.material === material || saree.colour === colour
+                    )
+                    .slice(0, 4)}
+                />
+              ) : (
+                <p>Data Loading...</p>
+              )}
             </div>
           </div>
         </div>

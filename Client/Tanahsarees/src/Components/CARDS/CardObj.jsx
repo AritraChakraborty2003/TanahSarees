@@ -1,10 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import Tilt from "react-parallax-tilt";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "../../AppContext/AppContext";
 const CardObj = (props) => {
   const navigate = useNavigate();
   const { data } = props;
+  const { activeProduct, setActiveProduct } = useContext(AppContext);
   return (
     <>
       <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-7 2xl:gap-x-10">
@@ -21,7 +25,12 @@ const CardObj = (props) => {
               <div
                 className="relative overflow-hidden w-full h-2/3"
                 onClick={() => {
-                  navigate("/products");
+                  if (props.for === "like") {
+                    setActiveProduct(item);
+                    navigate("/product_descr");
+                  } else {
+                    navigate("/products");
+                  }
                   window.scrollTo(0, 0);
                 }}
               >
