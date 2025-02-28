@@ -8,7 +8,7 @@ const Collection = () => {
   const dataExclusive = sareeData.filter((item) => item.occasion != null);
   const data = dataExclusive.slice(26, 30);
   return (
-    <div className="mt-5 lg:mt-15">
+    <div className="mt-5 lg:mt-15 bg-[ #eee5da]">
       <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
         Ultimate Collection
       </p>

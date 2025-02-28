@@ -291,9 +291,11 @@ const router = createBrowserRouter([
     path: "/CMSReviews",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <CMSReviews />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <CMSReviews />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },

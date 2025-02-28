@@ -107,7 +107,7 @@ const Header = (props) => {
             className={`mainHolder flex w-[100vw] pb-3 bg-white ${
               props?.type === "scrollHead"
                 ? "z-[1000] fixed top-0 left-0 border-[#d5d5d5] border-b-[1px] p-4"
-                : "z-10"
+                : "z-2000"
             }`}
           >
             <div className="searchHolder w-[33.3%]  flex justify-center items-center pl-3">

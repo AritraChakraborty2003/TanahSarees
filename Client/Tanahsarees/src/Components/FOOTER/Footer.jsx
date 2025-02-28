@@ -14,7 +14,7 @@ const Footer = () => {
           backgroundRepeat: "no-repeat", // Prevents tiling
         }}
       >
-        <div className=" bottom-0 w-[100vw] absolute lg:justify-center z-2000  flex flex-col  font-Poppins text-white">
+        <div className=" bottom-0 w-[100vw] absolute lg:justify-center z-5  flex flex-col  font-Poppins text-white">
           {(screen.width > 1000 && (
             <>
               <div className="flex w-full p-[1vmin] gap-x-3 lighttxt font-Poppins">

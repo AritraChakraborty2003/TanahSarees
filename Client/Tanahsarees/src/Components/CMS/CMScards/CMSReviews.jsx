@@ -152,7 +152,7 @@ const CMSReviews = () => {
               className="border p-4 rounded-lg shadow-md bg-white"
             >
               <img
-                src={`${import.meta.env.VITE_APP_API_URL_TEST}` + review.photo}
+                src={`${import.meta.env.VITE_APP_API_URL}` + review.photo}
                 alt={review.name}
                 className="w-full h-40 object-cover rounded-lg mb-3"
               />
