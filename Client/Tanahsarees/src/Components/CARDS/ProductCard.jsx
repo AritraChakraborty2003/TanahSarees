@@ -7,8 +7,12 @@ import { Link } from "react-router-dom";
 import Heart from "react-animated-heart";
 import Tilt from "react-parallax-tilt";
 import { AppContext } from "../../AppContext/AppContext";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
 
 const ProductCard = (props) => {
+  const authStatus = useCheckAuth(null, "auth");
+
+  const { setLoginlargescreen, setLoginOpen } = useContext(AppContext);
   const [isQuickView, setIsQuickView] = useState(false);
   const [isFavorite, setIsFavourite] = useState(true);
   const [isClick, setClick] = useState(false);
@@ -105,7 +109,22 @@ const ProductCard = (props) => {
           <p className="text-sm lg:text-md text-gray-600">Rs. {price}</p>
         </div>
       </div>
-      <button className="btn p-2 text-white bg-[#F58B75]">Add To Cart</button>
+      <button
+        className="btn p-2 text-white bg-[#F58B75]"
+        onClick={() => {
+          if (authStatus.isAuthenticated) {
+            alert("Logged In");
+          } else {
+            if (screen.width > 1000) {
+              setLoginlargescreen(true);
+            } else {
+              setLoginOpen(true);
+            }
+          }
+        }}
+      >
+        Add To Cart
+      </button>
     </div>
   );
 };
