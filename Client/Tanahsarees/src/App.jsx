@@ -356,6 +356,10 @@ const App = () => {
   //Search data
   const [searchDataValue, setSearchDataValue] = useState([]);
 
+  //cart click mgmt
+  const [cartClick, setCartClick] = useState(false);
+
+  const [activeCartId, setactiveCartId] = useState("");
   return (
     <>
       <AppContext.Provider
@@ -411,6 +415,10 @@ const App = () => {
           setSmallSearchBox,
           searchDataValue,
           setSearchDataValue,
+          cartClick,
+          setCartClick,
+          activeCartId,
+          setactiveCartId,
         }}
       >
         <RouterProvider router={router} />

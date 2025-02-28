@@ -49,7 +49,7 @@ const OptionsBar = () => {
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
         <nav className="relative w-full dark  shadow-md border-t border-gray-300">
           <div className="flex justify-center darktxt items-center px-3 py-4">
-            <ul className="flex  gap-x-24 2xl:text-[1.75vmin] ">
+            <ul className="flex  gap-x-24 lg:text-[1.75vmin] ">
               {[
                 "SALE",
                 "OFFERS",
@@ -76,7 +76,7 @@ const OptionsBar = () => {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                       className={`fixed  ${
-                        screen.width <= 1919 ? "top-[258px]" : "top-[293px]"
+                        screen.width <= 1919 ? "top-[258px]" : "top-[297px]"
                       } left-0 w-screen bg-white shadow-lg border border-gray-200 z-50`}
                       onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
                       onMouseLeave={handleMouseLeave} // Close only if mouse leaves

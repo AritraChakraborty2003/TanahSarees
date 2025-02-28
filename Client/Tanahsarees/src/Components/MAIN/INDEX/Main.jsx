@@ -14,9 +14,11 @@ import VideoCard from "../VIDEOCARD/VideoCard";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
   const authStatus = useCheckAuth(null, "auth");
+  const navigate = useNavigate();
   const {
     loginOpen,
     setLoginOpen,
@@ -47,10 +49,18 @@ const Main = () => {
       }
     }, 5000);
 
-    return () => clearTimeout(timer);
+    const timer1 = setTimeout(() => {
+      navigate("/");
+    }, 3600000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer1);
+    };
   }, [
     LargeSearchBox,
     authStatus.user,
+    navigate,
     setLoginOpen,
     setLoginlargescreen,
     smallSearchBox,

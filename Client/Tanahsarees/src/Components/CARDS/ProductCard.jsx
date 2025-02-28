@@ -8,15 +8,15 @@ import Heart from "react-animated-heart";
 import Tilt from "react-parallax-tilt";
 import { AppContext } from "../../AppContext/AppContext";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
+// import { useHandleCart } from "../../Utils/useHandleCart";
 
 const ProductCard = (props) => {
   const authStatus = useCheckAuth(null, "auth");
-
   const { setLoginlargescreen, setLoginOpen } = useContext(AppContext);
   const [isQuickView, setIsQuickView] = useState(false);
   const [isFavorite, setIsFavourite] = useState(true);
   const [isClick, setClick] = useState(false);
-  const { photo, sname, price } = props.data;
+  const { _id, photo, sname, price } = props.data;
   const { type, Fav } = props;
 
   const {
@@ -26,6 +26,10 @@ const ProductCard = (props) => {
     setActiveFilter,
     filteredData,
     setFilteredData,
+    cartClick,
+    setCartClick,
+    activeCartId,
+    setactiveCartId,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -33,6 +37,8 @@ const ProductCard = (props) => {
       setClick(true);
     }
   }, []);
+
+  // const res = useHandleCart();
 
   return (
     <div className="flex flex-col mt-6 lg:mt-0">
@@ -113,7 +119,8 @@ const ProductCard = (props) => {
         className="btn p-2 text-white bg-[#F58B75]"
         onClick={() => {
           if (authStatus.isAuthenticated) {
-            alert("Logged In");
+            setactiveCartId(_id);
+            setCartClick(!cartClick);
           } else {
             if (screen.width > 1000) {
               setLoginlargescreen(true);

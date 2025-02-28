@@ -12,6 +12,7 @@ import { AuthRouter } from "./Routes/AuthRouter.js";
 import { userRouter } from "./Routes/UserRouter.js";
 import { AdminRouter } from "./Routes/AdminRouter.js";
 import { verifyUser } from "./utils/verifyUser.js";
+import { cartRouter } from "./Routes/CartRouter.js";
 
 dotenv.config();
 
@@ -44,6 +45,7 @@ app.use("/api/v1/testimonials", TestimonialRouter);
 app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/admin", AdminRouter);
+app.use("/api/v1/cart", cartRouter);
 
 //To handle check Auth:
 app.get("/api/v1/check", verifyUser, (req, res) => {

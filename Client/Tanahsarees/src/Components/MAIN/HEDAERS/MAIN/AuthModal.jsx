@@ -60,7 +60,7 @@ const AuthModal = ({ isOpen }) => {
           setLoginlargescreen(!Loginlargescreen);
 
           setTimeout(() => {
-            location.reload();
+            navigate("/");
           }, 800);
         } else {
           toast.error("Login failed. Please try again.");

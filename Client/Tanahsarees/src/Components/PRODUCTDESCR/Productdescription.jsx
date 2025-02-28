@@ -11,10 +11,13 @@ import CardObj from "../CARDS/CardObj";
 import { DiscountUI } from "../../Utils/DiscountUI";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import CardText from "../CARDS/CardText";
+import { useHandleCart } from "../../Utils/useHandleCart";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
 // import { useEffect } from "react";
 const Productdescription = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
+  const authStatus = useCheckAuth(null, "auth");
   const [sareeDataObj, setSareeDataObj] = useState([]);
 
   const dataObj = UseHTTPRequest(null, "/sarees", "GET", "");
@@ -33,6 +36,11 @@ const Productdescription = () => {
     setActiveFilter,
     filteredData,
     setFilteredData,
+    setCartClick,
+    activeCartId,
+    setactiveCartId,
+    setLoginOpen,
+    setLoginlargescreen,
   } = useContext(AppContext);
 
   const { photo, material, price, discount, sname, colour, type, _id, rating } =
@@ -134,6 +142,8 @@ const Productdescription = () => {
       backdropFilter: "blur(15px)", // Optional blur effect
     },
   };
+
+  const res = useHandleCart();
   return (
     <>
       <div className="flex flex-col gap-y-6 pb-15">
@@ -207,7 +217,23 @@ const Productdescription = () => {
                   <a href="" className="font-Montserrat font-medium">
                     <i className="ri-shopping-bag-line"></i>
                   </a>{" "}
-                  <span className="ml-2 text-sm lg:text-md">ADD TO CART</span>
+                  <span
+                    className="ml-2 text-sm lg:text-md"
+                    onClick={() => {
+                      if (authStatus.isAuthenticated) {
+                        setactiveCartId(activeProduct._id);
+                        setCartClick(true);
+                      } else {
+                        if (screen.width > 1000) {
+                          setLoginlargescreen(true);
+                        } else {
+                          setLoginOpen(true);
+                        }
+                      }
+                    }}
+                  >
+                    ADD TO CART
+                  </span>
                 </button>
               </div>
 

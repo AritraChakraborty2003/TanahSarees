@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import ProductCard from "../CARDS/ProductCard";
 import { useContext, useEffect, useState } from "react";
+import { useHandleCart } from "../../Utils/useHandleCart";
 import { AppContext } from "../../AppContext/AppContext";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
@@ -27,8 +28,6 @@ const ProductDisplay = () => {
     }
   }, [data, sareeData, setSareeData, activeFilter, filteredData]);
 
-  console.log(activeFilter);
-
   useEffect(() => {
     window.innerWidth > 1000 ? setFilter(true) : setFilter(false);
   }, []);
@@ -39,6 +38,8 @@ const ProductDisplay = () => {
   const Prodname = activeFilter
     ? "Filtered Data "
     : "Complete Saree Collections";
+
+  const res = useHandleCart();
 
   return (
     <div>
@@ -144,7 +145,7 @@ const ProductDisplay = () => {
                 [...filteredData] // Create a copy before reversing
                   .reverse()
                   .slice(0, visibleCount)
-                  .map((item) => <ProductCard key={item.id} data={item} />)}
+                  .map((item) => <ProductCard key={item._id} data={item} />)}
 
               {/* Load More Button */}
               {filteredData && visibleCount < filteredData.length && (
