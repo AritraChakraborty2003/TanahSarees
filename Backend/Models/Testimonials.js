@@ -11,7 +11,7 @@ const testimonialSchema = new mongoose.Schema(
     },
     sname: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
       minlength: 3,
       maxlength: 60,

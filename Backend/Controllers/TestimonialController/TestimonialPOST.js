@@ -8,6 +8,7 @@ export const TestimonialPOST = () => {
       const testimonial = new TestimonialsObj({
         name,
         sname,
+
         review,
         rating,
         photo,

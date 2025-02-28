@@ -47,9 +47,9 @@ const OptionsBar = () => {
   return (
     <div>
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
-        <nav className="relative w-full bg-white shadow-md border-t border-gray-300">
-          <div className="flex justify-center items-center px-3 py-4">
-            <ul className="flex gap-x-18">
+        <nav className="relative w-full dark  shadow-md border-t border-gray-300">
+          <div className="flex justify-center darktxt items-center px-3 py-4">
+            <ul className="flex  gap-x-18 ">
               {[
                 "SALE",
                 "OFFERS",
@@ -60,11 +60,11 @@ const OptionsBar = () => {
               ].map((menu, index) => (
                 <li
                   key={index}
-                  className="relative group cursor-pointer"
+                  className="relative group cursor-pointer "
                   onMouseEnter={() => handleMouseEnter(menu)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <span className="hover:underline darktext text-md font-Montserrat underline-offset-5 font-medium">
+                  <span className="hover:underline lighttxt text-md font-Montserrat underline-offset-5 font-medium">
                     {menu}
                   </span>
 
@@ -76,7 +76,7 @@ const OptionsBar = () => {
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.3 }}
                       className={`fixed  ${
-                        screen.width <= 1919 ? "top-[258px]" : "top-[288px]"
+                        screen.width <= 1919 ? "top-[258px]" : "top-[293px]"
                       } left-0 w-screen bg-white shadow-lg border border-gray-200 z-50`}
                       onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
                       onMouseLeave={handleMouseLeave} // Close only if mouse leaves
@@ -103,7 +103,7 @@ const OptionsBar = () => {
           </div>
         </nav>
       ) : (
-        <div className="border-b border-gray-300 flex flex-col justify-center items-center w-full flex-wrap pb-4 darktext font-lato">
+        <div className="border-b border-gray-300 flex flex-col justify-center items-center w-full flex-wrap pb-4 darktxt font-lato">
           <Search className="mt-[2vmin]" />
 
           {smallSearchBox ? (
