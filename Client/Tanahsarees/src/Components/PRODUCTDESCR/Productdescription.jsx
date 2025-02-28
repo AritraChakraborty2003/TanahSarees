@@ -183,7 +183,7 @@ const Productdescription = () => {
               </p>
             </div>
             <div className="saree_name">
-              <p className="mt-5 ml-4  text-xl  lg:text-2xl font-Montserrat ">
+              <p className="mt-5 ml-4  text-xl  lg:text-xl font-Montserrat ">
                 {sname}
               </p>
             </div>
@@ -213,27 +213,25 @@ const Productdescription = () => {
 
             <div className="mt-3 ml-3 lg:ml-5  buttonHolder   w-[100%]  flex gap-x-5">
               <div className="addToCart">
-                <button className="bg-[#f58b75] rounded-xs   lg:w-[32vmin] p-3   font-Montserrat text-black text-center ">
-                  <a href="" className="font-Montserrat font-medium">
-                    <i className="ri-shopping-bag-line"></i>
-                  </a>{" "}
-                  <span
-                    className="ml-2 text-sm lg:text-md"
-                    onClick={() => {
-                      if (authStatus.isAuthenticated) {
-                        setactiveCartId(activeProduct._id);
-                        setCartClick(true);
+                <button
+                  className="bg-[#f58b75] rounded-xs   lg:w-[32vmin] p-3   font-Montserrat text-black text-center "
+                  onClick={() => {
+                    if (authStatus.isAuthenticated) {
+                      setactiveCartId(activeProduct._id);
+                      setCartClick(true);
+                    } else {
+                      if (screen.width > 1000) {
+                        setLoginlargescreen(true);
                       } else {
-                        if (screen.width > 1000) {
-                          setLoginlargescreen(true);
-                        } else {
-                          setLoginOpen(true);
-                        }
+                        setLoginOpen(true);
                       }
-                    }}
-                  >
-                    ADD TO CART
-                  </span>
+                    }
+                  }}
+                >
+                  <a className="font-Montserrat font-medium">
+                    <i className="ri-shopping-bag-line"></i>
+                  </a>
+                  <span className="ml-2 text-sm lg:text-md">ADD TO CART</span>
                 </button>
               </div>
 

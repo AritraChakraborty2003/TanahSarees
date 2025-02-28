@@ -95,8 +95,8 @@ const AuthModal = ({ isOpen }) => {
       }
 
       setTimeout(() => {
-        location.reload();
-      }, 400);
+        navigate("/");
+      }, 800);
 
       // ✅ Check cookies in console
       console.log("Cookies in React:", document.cookie);
