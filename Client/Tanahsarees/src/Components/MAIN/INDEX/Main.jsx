@@ -28,33 +28,33 @@ const Main = () => {
     setSmallSearchBox,
   } = useContext(AppContext);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (
-        screen.width > 1000 &&
-        !authStatus.user &&
-        !LargeSearchBox &&
-        !smallSearchBox
-      ) {
-        setLoginlargescreen(true);
-      } else if (
-        screen.width < 1000 &&
-        !authStatus.user &&
-        !LargeSearchBox &&
-        !smallSearchBox
-      ) {
-        setLoginOpen(true);
-      }
-    }, 5000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (
+  //       screen.width > 1000 &&
+  //       !authStatus.user &&
+  //       !LargeSearchBox &&
+  //       !smallSearchBox
+  //     ) {
+  //       setLoginlargescreen(true);
+  //     } else if (
+  //       screen.width < 1000 &&
+  //       !authStatus.user &&
+  //       !LargeSearchBox &&
+  //       !smallSearchBox
+  //     ) {
+  //       setLoginOpen(true);
+  //     }
+  //   }, 5000);
 
-    return () => clearTimeout(timer);
-  }, [
-    LargeSearchBox,
-    authStatus.user,
-    setLoginOpen,
-    setLoginlargescreen,
-    smallSearchBox,
-  ]);
+  //   return () => clearTimeout(timer);
+  // }, [
+  //   LargeSearchBox,
+  //   authStatus.user,
+  //   setLoginOpen,
+  //   setLoginlargescreen,
+  //   smallSearchBox,
+  // ]);
 
   return (
     <>

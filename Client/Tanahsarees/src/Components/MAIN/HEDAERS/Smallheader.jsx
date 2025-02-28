@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const Smallheader = (props) => {
   const { category } = props;
   return (
-    <div className="w-[100vw] p-[4px] pl-12 grey flex pt-3">
-      <div className="textHolder w-[70%] flex gap-x-6 text-[1.55vmin] lg:text-[1.4vmin] pt-[1.5px] mt-[3px] darktext ">
+    <div className="w-[100vw] p-[4px] pl-12 grey flex pt-3 ">
+      <div className="textHolder w-[70%] flex gap-x-6 text-[1.55vmin] lg:text-[1.4vmin] pt-[1.5px] mt-[3px] darktxt ">
         {category != "CMS" ? (
           <>
-            <p>
+            {/* <p>
               <Link to="/orders">DOWNLOAD THE APP</Link>
-            </p>
+            </p> */}
             <p>
               <Link to="/sizechart">SIZE CHART</Link>
             </p>

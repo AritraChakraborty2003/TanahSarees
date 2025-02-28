@@ -1,41 +1,26 @@
 /* eslint-disable no-unused-vars */
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
+import { toast } from "react-toastify";
+import UseHTTPRequest from "../../../Utils/useHTTPRequest";
 
 const CMSReviews = () => {
-  const { change } = useContext(AppContext);
+  const { change, setHttpClick } = useContext(AppContext);
   const [addReview, setAddReview] = useState(false);
-  const [reviews, setReviews] = useState([
-    {
-      id: 1,
-      image: "/Sarees/saree1.jpg",
-      name: "Ananya Mehta ⭐⭐⭐⭐⭐",
-      review:
-        "Absolutely loved the silk saree I purchased from TanahSarees! The fabric is so soft, and the intricate zari work is stunning. Perfect for festive occasions. Highly recommend!",
-    },
-    {
-      id: 2,
-      image: "/Sarees/saree2.jpg",
-      name: "Priya Sharma ⭐⭐⭐⭐",
-      review:
-        "I am thrilled to say that I have received a beautiful silk saree from TanahSarees. The fabric is soft and the design is intricate. Highly recommend this brand!",
-    },
-    {
-      id: 3,
-      image: "/Sarees/saree3.jpg",
-      name: "Radhika Iyer ⭐⭐⭐⭐",
-      review:
-        "The fabric is soft, and the design is intricate. I would highly recommend this brand to anyone looking for a beautiful silk saree.",
-    },
-  ]);
+  const [reviews, setReviews] = useState([]);
+  const [reviewData, setReviewData] = useState(null);
 
   const [editingReview, setEditingReview] = useState(null);
   const [editedText, setEditedText] = useState("");
   const [newReview, setNewReview] = useState({
     name: "",
-    image: "",
     review: "",
+    rating: "",
   });
+  const [file, setFile] = useState(null);
+  const handleChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const handleEditClick = (review) => {
     setEditingReview(review.id);
@@ -51,23 +36,46 @@ const CMSReviews = () => {
     setEditingReview(null);
   };
 
+  // making post api call
+  const res = UseHTTPRequest(null, "/testimonials", "POST", reviewData);
+
   const handleAddReview = () => {
-    if (!newReview.name || !newReview.image || !newReview.review) return;
-    setReviews([...reviews, { id: reviews.length + 1, ...newReview }]);
-    setNewReview({ name: "", image: "", review: "" });
-    setAddReview(!addReview);
+    if (!newReview.name || !file || !newReview.review || !newReview.rating) {
+      toast.error("all fields are required!");
+      return;
+    }
+    // setReviews([...reviews, { id: reviews.length + 1, ...newReview }]);
+    console.log(
+      newReview.name,
+      file,
+
+      newReview.review,
+      newReview.rating
+    );
+    const formData = new FormData();
+    formData.append("name", newReview.name);
+    formData.append("review", newReview.review);
+    formData.append("rating", newReview.rating);
+    formData.append("file", file);
+    setReviewData(formData);
+    setHttpClick(true);
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewReview((prev) => ({ ...prev, image: reader.result }));
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       setNewReview((prev) => ({ ...prev, image: reader.result }));
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+  const data = UseHTTPRequest(null, "/testimonials", "GET", "");
+  useEffect(() => {
+    setReviews(data);
+    console.log("fetched");
+  }, [setHttpClick, reviews, data]);
 
   return (
     <div className="w-full p-6 mt-[vh] lg:mt-[30vh]">
@@ -94,19 +102,32 @@ const CMSReviews = () => {
               setNewReview({ ...newReview, name: e.target.value })
             }
           />
+          <select
+            name="Rating"
+            id="rating"
+            className="p-2 border w-[50%] mb-2 rounded"
+            onChange={(e) =>
+              setNewReview({ ...newReview, rating: e.target.value })
+            }
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            Rating
+          </select>
           <input
+            name="files"
             type="file"
             accept="image/*"
             className="w-full border p-2 rounded-md mb-2"
-            onChange={handleImageUpload}
+            onChange={
+              // handleImageUpload();
+              handleChange
+            }
           />
-          {newReview.image && (
-            <img
-              src={newReview.image}
-              alt="Preview"
-              className="w-full h-40 object-cover rounded-lg mb-3"
-            />
-          )}
+
           <textarea
             placeholder="Review"
             className="w-full border p-2 rounded-md mb-2"
@@ -124,45 +145,55 @@ const CMSReviews = () => {
         </div>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {reviews.map((review) => (
-          <div
-            key={review.id}
-            className="border p-4 rounded-lg shadow-md bg-white"
-          >
-            <img
-              src={review.image}
-              alt={review.name}
-              className="w-full h-40 object-cover rounded-lg mb-3"
-            />
-            <h3 className="text-lg font-bold">{review.name}</h3>
-            {editingReview === review.id ? (
-              <textarea
-                className="w-full border p-2 rounded-md"
-                value={editedText}
-                onChange={(e) => setEditedText(e.target.value)}
+        {reviews ? (
+          reviews.map((review) => (
+            <div
+              key={review.id}
+              className="border p-4 rounded-lg shadow-md bg-white"
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL_TEST}` + review.photo}
+                alt={review.name}
+                className="w-full h-40 object-cover rounded-lg mb-3"
               />
-            ) : (
-              <p className="text-gray-700 mt-2">{review.review}</p>
-            )}
-            <div className="flex justify-between mt-3">
+              <h3 className="text-lg font-bold">
+                {review.name + review.rating}
+              </h3>
               {editingReview === review.id ? (
-                <button
-                  onClick={() => handleSaveClick(review.id)}
-                  className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600"
-                >
-                  Save
-                </button>
+                <textarea
+                  className="w-full border p-2 rounded-md"
+                  value={editedText}
+                  onChange={(e) => setEditedText(e.target.value)}
+                />
               ) : (
-                <button
-                  onClick={() => handleEditClick(review)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
-                >
-                  Edit
-                </button>
+                <p className="text-gray-700 mt-2">{review.review}</p>
               )}
+              <div className="flex justify-between mt-3">
+                {editingReview === review.id ? (
+                  <button
+                    onClick={() => handleSaveClick(review.id)}
+                    className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600"
+                  >
+                    Save
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => handleEditClick(review)}
+                    className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
+                  >
+                    Edit
+                  </button>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <>
+            <div className="flex w-[95vw] h-[100%] justify-center items-center">
+              <p>No data Found ... </p>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

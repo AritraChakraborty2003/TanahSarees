@@ -26,7 +26,7 @@ const CartsCard = (props) => {
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
               <p className="text-sm text-gray-500 ml-2 ">
-                <span className="font-bold darktext text-[3.35vmin] lg:text-[2.27vmin]">
+                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2.27vmin]">
                   size&nbsp;:&nbsp;
                 </span>
                 {size}
@@ -34,7 +34,7 @@ const CartsCard = (props) => {
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
               <p className="text-sm text-gray-500 ml-2 ">
-                <span className="font-bold darktext text-[3.35vmin] lg:text-[2.27vmin]">
+                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2.27vmin]">
                   Type&nbsp;:&nbsp;
                 </span>
                 {type}
@@ -42,23 +42,24 @@ const CartsCard = (props) => {
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat justify-end">
               <p className="text-sm text-gray-500 mr-3 lg:mr-10">
-                <span className="font-bold darktext">price&nbsp;:&nbsp;</span>
+                <span className="font-bold darktxt">price&nbsp;:&nbsp;</span>
                 ₹&nbsp;{price}
               </p>
             </div>
             <div className="info w-[100%] h-[25%] flex items-center">
-              <div className="main w-[55%] mt-2 lg:mt-1 lg:w-[45%] ml-4 lg:ml-2 border-[#883022] border-1 h-[65%]  lg:h-[80%] flex items-center">
+              <div className="main w-[55%] mt-2 lg:mt-1 lg:w-[45%] ml-4 lg:ml-2 border-[#262424] border-1 h-[65%]  lg:h-[80%] flex items-center">
                 <div
-                  className="decrement border-r-1 border-[#883022] w-[25%] h-full flex justify-center items-center overflow-hidden "
+                  className="decrement border-r-1 border-[#262424] w-[25%] h-full flex justify-center items-center overflow-hidden "
                   id={`decr${id}`}
                   onMouseEnter={() => {
-                    document.getElementById(`minus${id}`).style.color = "#fff";
+                    document.getElementById(`minus${id}`).style.color =
+                      "#EEE5DA";
                     document.getElementById(`decr${id}`).style.backgroundColor =
-                      "#F58b76";
+                      "#26242489";
                   }}
                   onMouseLeave={() => {
                     document.getElementById(`minus${id}`).style.color =
-                      "#883022";
+                      "#262424";
                     document.getElementById(`decr${id}`).style.backgroundColor =
                       "#fff";
                   }}
@@ -67,7 +68,7 @@ const CartsCard = (props) => {
                   }}
                 >
                   <p
-                    className="darktext text-2xl cursor-pointer"
+                    className="darktxt text-2xl cursor-pointer"
                     id={`minus${id}`}
                   >
                     -
@@ -86,16 +87,17 @@ const CartsCard = (props) => {
                   </motion.h1>
                 </div>
                 <div
-                  className="increment border-[#883022] border-l-1  w-[25%] h-full  flex justify-center items-center overflow-hidden"
+                  className="increment border-[#262424] border-l-1  w-[25%] h-full  flex justify-center items-center overflow-hidden"
                   id={`incr${id}`}
                   onMouseEnter={() => {
-                    document.getElementById(`plus${id}`).style.color = "#fff";
+                    document.getElementById(`plus${id}`).style.color =
+                      "#EEE5DA";
                     document.getElementById(`incr${id}`).style.backgroundColor =
-                      "#F58b76";
+                      "#26242489";
                   }}
                   onMouseLeave={() => {
                     document.getElementById(`plus${id}`).style.color =
-                      "#883022";
+                      "#262424";
                     document.getElementById(`incr${id}`).style.backgroundColor =
                       "#fff";
                   }}
@@ -104,7 +106,7 @@ const CartsCard = (props) => {
                   }}
                 >
                   <p
-                    className="darktext text-2xl cursor-pointer"
+                    className="darktxt text-2xl cursor-pointer"
                     id={`plus${id}`}
                   >
                     +

@@ -36,8 +36,8 @@ const Loader = () => {
   return (
     <div>
       {isLoading ? (
-        <div className=" h-[100vh] w-[100vw] flex justify-center items-center bg-[#f7d9cb] ">
-          <HashLoader size={72} color="#c97366" />
+        <div className=" h-[100vh] w-[100vw] flex justify-center items-center light ">
+          <HashLoader size={72} color="#262424" />
           {data ? <>{console.log("SareeData:", sareeData)}</> : ""}
           {message ? <>{console.log(message)}</> : ""}
 
