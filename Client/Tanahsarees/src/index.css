@@ -10,6 +10,8 @@
   overflow-x: hidden;
 }
 :root {
+  --new-dark: #262424;
+  --new-light: #eee5da;
   --side-color: #f7d9cb;
   --side-text-color: #bd8c84;
   --side-dark: #883022;
@@ -30,6 +32,18 @@
 .no-scroll {
   overflow: hidden;
   height: 100vh;
+}
+.light {
+  background-color: var(--new-light);
+}
+.dark {
+  background-color: var(--new-dark);
+}
+.lighttxt {
+  color: var(--new-light);
+}
+.darktxt {
+  color: var(--new-dark);
 }
 
 body.no-scroll {

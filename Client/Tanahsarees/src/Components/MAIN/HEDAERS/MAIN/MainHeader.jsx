@@ -354,7 +354,7 @@ export default function MainHeader(props) {
             <div className="relative cartHolder flex flex-col">
               <div className="cartTextHolder flex p-3 ">
                 <div className="w-[100%]">
-                  <p className="darktext font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-1 letter-spacing-[3px]">
+                  <p className="darktxt font-Space-Grotesk font-semibold text-[6.5vmin] lg:text-[4vmin] p-1 letter-spacing-[3px]">
                     Cart
                   </p>
                   <div className="">
@@ -363,19 +363,19 @@ export default function MainHeader(props) {
                         toggleDrawer();
                         navigate("/cart");
                       }}
-                      className="h-8 w-[50%] text-sm border-1 bg-[#F58B75] text-white text-Monteserrat cursor-pointer"
+                      className="h-8 w-[50%] text-sm  dark lighttxt text-Monteserrat cursor-pointer"
                     >
                       View Cart
                     </button>
                   </div>
                 </div>
 
-                <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 mt-1">
+                <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktxt mr-3 mt-1">
                   <i className="ri-close-line" onClick={toggleDrawer}></i>
                 </a>
               </div>
               <div className="flex justify-center items-center">
-                <div className="line w-[96%] h-[0.65px] bg-[#883022]"></div>
+                <div className="line w-[96%] h-[0.65px] dark"></div>
               </div>
 
               <div
@@ -404,25 +404,37 @@ export default function MainHeader(props) {
                   : ""
               }`}
             >
-              <div className="TotalItems border-[#883022] border-t-[0.15px] w-[96%] flex flex-col pl-3 mt-3 ">
+              <div className="TotalItems border-[#262424] border-t-[0.15px] w-[96%] flex flex-col pl-3 mt-3 ">
                 <div className="flex  subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
-                  <p className="font-Montserrat text-xs text-[#883022] tracking-[2.35px]">
+                  <p className="font-Montserrat text-xs darktxt tracking-[2.35px]">
                     SUBTOTAL
                   </p>
                   <div className="flex subtotalArea  w-[50vw] lg:w-[26vw] p-1 justify-end mt-[-1.35vmin] lg:mt-[-1vmin] ">
-                    <p className="text-end  darktext font-Montserrat font-normal tracking-[2.35px] text-xs lg:text-sm">
+                    <p className="text-end  darktxt font-Montserrat font-normal tracking-[2.35px] text-xs lg:text-sm">
                       ₹2579
                     </p>
                   </div>
                 </div>
                 <div className="sloganText">
-                  <p className="text-[2.95vmin] pl-[1px]  md:text-xs darktext font-light ml-[-0.15vmin] mt-[-0.15vmin]">
+                  <p className="text-[2.95vmin] pl-[1px]  md:text-xs darktxt font-light ml-[-0.15vmin] mt-[-0.15vmin]">
                     Shipping, taxes, and discount codes calculated at checkout.
                   </p>
                 </div>
 
-                <div className="w-[100%] buttonHolder pb-4 flex justify-center items-center mt-4">
-                  <button className="w-[80%]  bg-[#f58b76] text-white text-center lg:mt-3 p-2">
+                <div className="w-[100%] buttonHolder pb-4 flex justify-center items-center mt-4 ">
+                  <button
+                    className="orderbtn w-[80%]  dark lighttxt  text-center cursor-pointer lg:mt-3 p-2"
+                    onMouseEnter={() => {
+                      document.querySelector(
+                        ".orderbtn"
+                      ).style.backgroundColor = "#262424f2";
+                    }}
+                    onMouseLeave={() => {
+                      document.querySelector(
+                        ".orderbtn"
+                      ).style.backgroundColor = "#262424";
+                    }}
+                  >
                     PLACE ORDER
                   </button>
                 </div>
