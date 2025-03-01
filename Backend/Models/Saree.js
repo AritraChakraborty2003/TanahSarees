@@ -2,6 +2,13 @@ import mongoose from "mongoose";
 
 const sareeSchema = new mongoose.Schema(
   {
+    sku: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true,
+      index: true,
+    },
     sname: {
       type: String,
       required: true,

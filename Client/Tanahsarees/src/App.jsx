@@ -366,6 +366,8 @@ const App = () => {
   const [activeCartId, setactiveCartId] = useState("");
 
   const [activeDeleteSaree, setActiveDeleteSaree] = useState("");
+
+  const [clickDeleteAccount, setclickDeleteAccount] = useState(false);
   return (
     <>
       <AppContext.Provider
@@ -429,6 +431,8 @@ const App = () => {
           setHttpClickDelete,
           activeDeleteSaree,
           setActiveDeleteSaree,
+          clickDeleteAccount,
+          setclickDeleteAccount,
         }}
       >
         <RouterProvider router={router} />

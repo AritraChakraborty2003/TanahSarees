@@ -1,9 +1,15 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import { useState } from "react";
+import { useAccountDelete } from "../../Utils/useAccountDelete";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Profile = () => {
-  const { change } = useContext(AppContext);
+  const { change, setclickDeleteAccount } = useContext(AppContext);
+
+  const res = useAccountDelete();
   const [name, setName] = useState("John Doe"); // Initial name
   const [email, setEmail] = useState("example@gmail.com"); // Initial name
   const [mobile, setMobile] = useState(""); // Initial number
@@ -19,6 +25,25 @@ const Profile = () => {
   const [address1, setAddress1] = useState("");
   const [landmark, setLandmark] = useState("");
   const [image, setImage] = useState(null);
+
+  const handleDelete = () => {
+    confirmAlert({
+      title: "Confirm Delete Account",
+      message: "Are you sure you want to delete account?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            setclickDeleteAccount(true);
+          },
+        },
+        {
+          label: "No",
+          onClick: () => console.log("Logout canceled"),
+        },
+      ],
+    });
+  };
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -282,7 +307,12 @@ const Profile = () => {
           </div>
         </form>
         <div className="mt-10 mb-10 flex  justify-center text-white text-[2vmin]">
-          <button className="bg-red-500 p-2 rounded cursor-pointer">
+          <button
+            className="bg-red-500 p-2 rounded cursor-pointer"
+            onClick={() => {
+              handleDelete();
+            }}
+          >
             Delete account
           </button>
         </div>

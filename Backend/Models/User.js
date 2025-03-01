@@ -3,6 +3,13 @@ import validator from "validator";
 
 const userShcema = mongoose.Schema(
   {
+    name: {
+      type: String,
+      trim: true,
+      minlength: 3,
+      maxlength: 60,
+    },
+
     username: {
       type: String,
       trim: true,
@@ -51,6 +58,11 @@ const userShcema = mongoose.Schema(
         },
         message: "Please enter a valid additional number",
       },
+    },
+
+    address: {
+      type: String,
+      trim: true,
     },
     favourites: {
       type: [String],
