@@ -7,11 +7,11 @@ const Material = () => {
   const dataExclusive = sareeData.filter((item) => item.discount != null);
   const data = dataExclusive.slice(11, 15);
   return (
-    <div className="mt-5 lg:mt-15">
-      <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+    <div className="mt-5 lg:mt-15 light lg:pt-10 lg:pb-10">
+      <p className="text-center font-Montserrat darktxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
         Shop By Material
       </p>
-      <p className="text-center text-sm lg:text-md  text-gray-500">
+      <p className="text-center text-sm lg:text-md  darktxt">
         ( Shop your saree by Material )
       </p>
       <div className="mt-5 lg:mt-10">

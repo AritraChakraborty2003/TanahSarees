@@ -463,7 +463,7 @@ export default function MainHeader(props) {
           >
             <div className="cross-holder flex justify-end mr-4 mt-3">
               <div className="imageHolder">
-                <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 mt-1 p-1">
+                <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktxt mr-3 mt-1 p-1">
                   <i className="ri-close-line" onClick={toggleHam}></i>
                 </a>
               </div>
@@ -472,7 +472,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   <Link to="/main"> SALE</Link>
                 </div>
@@ -480,7 +480,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   SAREES
                 </div>
@@ -488,7 +488,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   <Link to="/products"> PRODUCTS </Link>
                 </div>
@@ -496,7 +496,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   <Link to="/faq"> FAQ</Link>
                 </div>
@@ -504,7 +504,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   <Link to="/shipping">SHIPPING</Link>
                 </div>
@@ -512,7 +512,7 @@ export default function MainHeader(props) {
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktext font-Montserrat font-medium"
+                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
                   <Link to="/tackorder"> TRACK ORDER</Link>
                 </div>
@@ -567,7 +567,7 @@ export default function MainHeader(props) {
             shouldCloseOnOverlayClick={false}
           >
             <div className="relative ">
-              <a className="absolute w-[80vw] flex justify-end text-3xl font-light font-Lato darktext  mt-1 p-2">
+              <a className="absolute w-[80vw] flex justify-end text-3xl font-light font-Lato darktxt  mt-1 p-2">
                 <i className="ri-close-line" onClick={modalClose}></i>
               </a>
               <div className="">
@@ -596,7 +596,7 @@ export default function MainHeader(props) {
           >
             <div className="bg-[#f7d9cb] w-[100%] h-[100%]">
               <div className="iconHolder h-[6vmin] overflow-hidden">
-                <a className="flex justify-start text-3xl font-light font-Lato darktext  mt-2 ml-2 p-2 ">
+                <a className="flex justify-start text-3xl font-light font-Lato darktxt  mt-2 ml-2 p-2 ">
                   <i
                     className="ri-close-line"
                     onClick={CloseLargeModalLogin}
@@ -609,9 +609,9 @@ export default function MainHeader(props) {
                     src="logo_new.png"
                     height={280}
                     width={280}
-                    className="darktext"
+                    className="darktxt"
                   />
-                  <p className="text-xs lg:text-sm mt-6 darktext tracking-wider">
+                  <p className="text-xs lg:text-sm mt-6 darktxt tracking-wider">
                     ( Login to your account & fill the details )
                   </p>
                 </div>

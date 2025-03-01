@@ -11,11 +11,11 @@ const Exclusive = () => {
 
   return (
     <>
-      <div>
-        <p className="text-center mt-6 lg:mt-15 font-Montserrat text-gray-500 font-medium text-[4.65vmin] md:text-[3.5vmin]">
+      <div className="light pb-5">
+        <p className="text-center mt-6 lg:mt-15 font-Montserrat darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
           EXCLUSIVE OFFERS FOR YOU
         </p>
-        <p className="text-center text-sm lg:text-md text-gray-500 mt-1">
+        <p className="text-center text-sm lg:text-md darktxt mt-1">
           ( Exclusive offers from us )
         </p>
         <div className="mt-6 md:mt-12">

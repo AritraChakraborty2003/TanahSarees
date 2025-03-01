@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Smallheader = (props) => {
   const { category } = props;
   return (
-    <div className="w-[100vw] p-[4px] pl-12 grey flex pt-3 ">
+    <div className="w-[100vw] p-[4px] pl-12 grey flex pt-3 light">
       <div className="textHolder w-[70%] flex gap-x-6 text-[1.55vmin] lg:text-[1.4vmin] pt-[1.5px] mt-[3px] darktxt ">
         {category != "CMS" ? (
           <>
@@ -54,17 +54,17 @@ const Smallheader = (props) => {
       </div>
       <div className="w-[30%] pt-[1.5px] flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
         <a className="mt-[-0.65vmin] ">
-          <i className="ri-instagram-line darktext text-[3vmin]"></i>
+          <i className="ri-instagram-line darktxt text-[3vmin]"></i>
         </a>
-        <a className="mt-[-1vmin] darktext text-[3.15vmin]">
+        <a className="mt-[-1vmin] darktxt text-[3.15vmin]">
           <i className="ri-facebook-circle-fill"></i>
         </a>
 
-        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.75vmin]">
+        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.75vmin]">
           <i className="ri-youtube-fill"></i>
         </a>
 
-        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktext text-[3.55vmin] mr-[2vmin]">
+        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.55vmin] mr-[2vmin]">
           <i className="ri-pinterest-fill"></i>
         </a>
       </div>

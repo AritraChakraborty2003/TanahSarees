@@ -45,10 +45,10 @@ const Testimonial = () => {
 
   return (
     <div className="mt-5 lg:mt-15">
-      <p className="text-center font-Montserrat text-gray-500 font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+      <p className="text-center font-Montserrat darktxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
         Our happy customers
       </p>
-      <p className="text-center text-sm lg:text-md text-gray-500 mt-1">
+      <p className="text-center text-sm lg:text-md darktxt mt-1">
         ( Our Testimonials from clients )
       </p>
       <div className=" mt-5 lg:mt-10 lg:ml-6">
