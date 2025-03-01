@@ -20,47 +20,55 @@ const Footer = () => {
               <div className="flex w-full p-[1vmin] gap-x-3 lighttxt font-Poppins">
                 <div className="w-[50vw] p-[6vmin] flex  gap-x-3">
                   <div className="w-[24vw] flex flex-col space-y-[1.45vmin]  font-Poppins mt-4           lighttxt font-extralight">
-                    <p className="text-[2vmin] font-normal font-Poppins text-dark">
+                    <p className="text-[2vmin] font-normal font-Poppins text-white">
                       CUSTOMER SERVICE
                     </p>
-                    <p className="text-xs  text-dark mt-4">DOWNLOAD THE APP</p>
-                    <p className="text-xs font-Poppins text-dark">SIZE CHART</p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs  text-white mt-4">DOWNLOAD THE APP</p>
+                    <p className="text-xs font-Poppins text-white">
+                      SIZE CHART
+                    </p>
+                    <p className="text-xs font-Poppins text-white">
                       SHIPPING & DELIVERY
                     </p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">
                       TRACK YOUR ORDER
                     </p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">
                       CUSTOMER REVIEWS
                     </p>
-                    <p className="text-xs font-Poppins text-dark">RETURNS</p>
-                    <p className="text-xs font-Poppins text-dark">CONTACT US</p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">RETURNS</p>
+                    <p className="text-xs font-Poppins text-white">
+                      CONTACT US
+                    </p>
+                    <p className="text-xs font-Poppins text-white">
                       FAQ&lsquo;s
                     </p>
                   </div>
 
                   <div className="w-[24vw] flex flex-col space-y-[1.35vmin] text-black font-Poppins mt-4 lighttxt font-extralight ml-10">
-                    <p className="text-[2vmin] font-normal font-Poppins text-dark">
+                    <p className="text-[2vmin] font-normal font-Poppins text-white">
                       ABOUT TANAH SAREES
                     </p>
-                    <p className="text-xs font-Poppins text-dark mt-3">
+                    <p className="text-xs font-Poppins text-white mt-3">
                       ABOUT US
                     </p>
-                    <p className="text-xs font-Poppins text-dark">OUR STORES</p>
-                    <p className="text-xs font-Poppins text-dark">CONTACT US</p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">
+                      OUR STORES
+                    </p>
+                    <p className="text-xs font-Poppins text-white">
+                      CONTACT US
+                    </p>
+                    <p className="text-xs font-Poppins text-white">
                       OWN A TANAH FRANCHISE
                     </p>
-                    <p className="text-xs font-Poppins text-dark">BLOG</p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">BLOG</p>
+                    <p className="text-xs font-Poppins text-white">
                       RETURNS POLICY
                     </p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">
                       PRIVACY POLICY
                     </p>
-                    <p className="text-xs font-Poppins text-dark">
+                    <p className="text-xs font-Poppins text-white">
                       TERMS & CONDITIONS
                     </p>
                   </div>

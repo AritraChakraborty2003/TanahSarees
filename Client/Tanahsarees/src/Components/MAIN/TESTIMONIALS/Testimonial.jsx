@@ -1,73 +1,47 @@
-import CardText from "../../CARDS/CardText";
+/* eslint-disable react/jsx-key */
+// import CardText from "../../CARDS/CardText";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import UseHTTPRequest from "../../../Utils/useHTTPRequest";
+import TestinomialsCard from "../../CARDS/TestinomialsCard";
 
 const Testimonial = () => {
-  const data = [
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Ananya Mehta ⭐⭐⭐⭐⭐",
-      review:
-        "Absolutely loved the silk saree I purchased from TanahSarees! The fabric is so soft, and the intricate zari work is stunning. Perfect for festive occasions. Highly recommend!",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Priya Sharma ⭐⭐⭐⭐",
-      review:
-        "I am thrilled to say that I have received a beautiful silk saree from TanahSarees. The fabric is soft and the design is intricate. Highly recommend this brand!",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      name: "Radhika Iyer ⭐⭐⭐⭐",
-      review:
-        "The fabric is soft, and the design is intricate. I would highly recommend this brand to anyone looking for a beautiful silk saree.",
-    },
-    {
-      image: "/Sarees/saree4.jpg",
-      name: "Neha Kapoor ⭐⭐⭐⭐⭐",
-      review:
-        "Fast delivery and premium quality! The silk saree feels luxurious, and the embroidery is exquisite. Worth every penny.",
-    },
-    {
-      image: "/Sarees/saree5.jpg",
-      name: "Meera Nair ⭐⭐⭐⭐⭐",
-      review:
-        "One of the best silk sarees I have ever owned! The detailing is just amazing.",
-    },
-  ];
+  const data = UseHTTPRequest(null, "/testimonials", "GET", "");
+  let settings;
+  if (data) {
+    settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: Math.min(3, data.length), // Ensures at least 4 slides are shown
+      slidesToScroll: 1,
+      autoplay: true, // Enable auto-slide
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: Math.min(4, data.length), // Ensures at least 4 slides are shown
-    slidesToScroll: 1,
-    autoplay: true, // Enable auto-slide
-
-    autoplaySpeed: 2500, // Set auto-slide speed (3 seconds)
-    pauseOnHover: true, // Pause on hover for better UX
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: Math.min(3, data.length),
+      autoplaySpeed: 2500, // Set auto-slide speed (3 seconds)
+      pauseOnHover: true, // Pause on hover for better UX
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: Math.min(3, data.length),
+          },
         },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: Math.min(2, data.length),
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: Math.min(2, data.length),
+          },
         },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+          },
         },
-      },
-    ],
-  };
+      ],
+    };
+  }
 
   return (
     <div className="mt-5 lg:mt-15">
@@ -77,18 +51,16 @@ const Testimonial = () => {
       <p className="text-center text-sm lg:text-md text-gray-500 mt-1">
         ( Our Testimonials from clients )
       </p>
-      <div className=" mt-5 lg:mt-10">
+      <div className=" mt-5 lg:mt-10 lg:ml-6">
         {data && data.length > 4 ? (
           <Slider className="overflow-hidden" {...settings}>
-            {data.map((item, index) => (
-              <CardText key={index} data={[item]} />
+            {data.map((item) => (
+              <TestinomialsCard review={item} />
             ))}
           </Slider>
         ) : (
           <div className="flex justify-center gap-3">
-            {data.map((item, index) => (
-              <CardText key={index} data={[item]} />
-            ))}
+            {data && data.map((item) => <TestinomialsCard review={item} />)}
           </div>
         )}
       </div>

@@ -144,7 +144,7 @@ const CMSReviews = () => {
           </button>
         </div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {reviews ? (
           reviews.map((review) => (
             <div
@@ -154,11 +154,19 @@ const CMSReviews = () => {
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}` + review.photo}
                 alt={review.name}
-                className="w-full h-40 object-cover rounded-lg mb-3"
+                className="w-full h-80 object-contain rounded-lg mb-3"
               />
-              <h3 className="text-lg font-bold">
-                {review.name + review.rating}
-              </h3>
+              <div className="flex gap-x-4">
+                <h3 className="text-lg font-bold">{review.name}</h3>
+
+                <p className="mt-[1px]">
+                  {Array.from({ length: review.rating }, (_, index) => (
+                    <span key={index} className="text-yellow-500">
+                      ⭐
+                    </span>
+                  ))}
+                </p>
+              </div>
               {editingReview === review.id ? (
                 <textarea
                   className="w-full border p-2 rounded-md"
