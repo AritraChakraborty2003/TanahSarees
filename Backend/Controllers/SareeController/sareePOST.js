@@ -5,6 +5,7 @@ export const SareePOST = () => {
       console.log("Hi");
       console.log(req.body);
       const {
+        sku,
         sname,
         type,
         price,
@@ -12,12 +13,14 @@ export const SareePOST = () => {
         colour,
         discount,
         occasion,
+        photo,
         topSelling,
         rating,
       } = req.body;
 
-      const photo = req.file.filename;
+      // const photo = req.file.filename;
       const newSareeObj = new sareeObj({
+        sku,
         sname,
         type,
         price,
