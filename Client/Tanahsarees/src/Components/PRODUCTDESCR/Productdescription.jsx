@@ -96,7 +96,7 @@ const Productdescription = () => {
     setExpandedAccordion(isExpanded ? panelId : null); // Only one can be open
   };
 
-  // Sample FAQ data
+  /* Accordian Component Data*/
   const deatilsProductFaq = [
     {
       heading: "PRODUCT SPECIFICATION",
@@ -108,6 +108,16 @@ const Productdescription = () => {
     },
     { heading: "WASH CARE", details: "Dry wash only for best results" },
     { heading: "RETURN POLICY", details: "Easy 7-day return policy" },
+
+    {
+      heading: "RATE YOUR PRODUCT",
+      details: (
+        <>
+          {/** Rating Component */}
+          <p>Hi</p>
+        </>
+      ),
+    },
   ];
 
   const IdDetails = [
