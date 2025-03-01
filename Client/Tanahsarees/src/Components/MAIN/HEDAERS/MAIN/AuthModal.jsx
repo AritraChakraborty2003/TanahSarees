@@ -165,13 +165,13 @@ const AuthModal = ({ isOpen }) => {
           {isLogin ? (
             <div className="flex flex-col items-center">
               <p
-                className="mt-2 text-xs darktext cursor-pointer"
+                className="mt-2 text-xs darktxt cursor-pointer"
                 onClick={() => setIsLogin(false)}
               >
                 Don&apos;t have an account?
               </p>
               <p
-                className="mt-2 text-xs darktext cursor-pointer"
+                className="mt-2 text-xs darktxt cursor-pointer"
                 onClick={() => setIsLogin(true)}
               >
                 Forgot Password?
@@ -179,7 +179,7 @@ const AuthModal = ({ isOpen }) => {
             </div>
           ) : (
             <p
-              className="mt-2 text-xs darktext cursor-pointer"
+              className="mt-2 text-xs darktxt cursor-pointer"
               onClick={() => setIsLogin(true)}
             >
               Already have an account?

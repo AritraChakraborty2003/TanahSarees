@@ -150,7 +150,7 @@ const Header = (props) => {
               <div className="relative purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
                 <div className="relative inline-block">
                   {/* Heart Icon */}
-                  <a className="mt-[-0.65vmin] darktext text-[4.75vmin] font-extralight relative">
+                  <a className="mt-[-0.65vmin] darktxt text-[4.75vmin] font-extralight relative">
                     <i className="ri-heart-line"></i> {/* Heart Icon */}
                   </a>
 
@@ -161,7 +161,7 @@ const Header = (props) => {
                   </div>
                 </div>
 
-                <a className="mt-[-1vmin] darktext text-[4.75vmin] font-extralight">
+                <a className="mt-[-1vmin] darktxt text-[4.75vmin] font-extralight">
                   <i
                     className="ri-user-line "
                     onClick={() => {
@@ -176,7 +176,7 @@ const Header = (props) => {
 
                 <div className="relative inline-block">
                   {/* Heart Icon */}
-                  <a className="mt-[-1.35vmin] 2xl:mt-[-2vmin] darktext text-[4.75vmin] font-extralight">
+                  <a className="mt-[-1.35vmin] 2xl:mt-[-2vmin] darktxt text-[4.75vmin] font-extralight">
                     <i
                       className="ri-shopping-cart-line"
                       onClick={toggleDrawer}
@@ -209,7 +209,7 @@ const Header = (props) => {
           <>
             <div className="flex w-[100vw]">
               <div className="logoHolder  flex  w-[24%]  mt-3 ">
-                <a className="mt-[3vmin] darktext  text-[7.75vmin] font-extralight pl-3">
+                <a className="mt-[3vmin] darktxt  text-[7.75vmin] font-extralight pl-3">
                   <i className="ri-menu-line" onClick={toggleHam}></i>
                 </a>
               </div>
@@ -223,7 +223,7 @@ const Header = (props) => {
                 <div className="purchaseOptHolder w-[27%]  flex justify-end items-center  gap-x-5 pr-2 2xl:gap-x-20 mt-3">
                   <div className="relative inline-block">
                     {/* Heart Icon */}
-                    <a className="mt-[-0.65vmin] darktext text-[9vmin] font-extralight relative">
+                    <a className="mt-[-0.65vmin] darktxt text-[9vmin] font-extralight relative">
                       <i className="ri-heart-line"></i> {/* Heart Icon */}
                     </a>
 
@@ -235,7 +235,7 @@ const Header = (props) => {
                   </div>
                   <div className="relative inline-block">
                     {/* Heart Icon */}
-                    <a className="mt-[-0.65vmin] darktext text-[9vmin] font-extralight relative">
+                    <a className="mt-[-0.65vmin] darktxt text-[9vmin] font-extralight relative">
                       <i
                         className="ri-shopping-cart-line"
                         onClick={toggleDrawer}

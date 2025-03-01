@@ -63,15 +63,15 @@ const VideoCard = () => {
 
   return (
     <>
-      <div className="flex pl-6 pr-2 mt-7 lg:mt-20">
+      <div className="flex pl-6 pr-2 mt-7  lg:mt-20">
         <Slider {...settings} className="w-full overflow-hidden">
           {data.map((item, index) => (
             <div key={index} className="px-2">
               {" "}
               {/* Add padding for spacing */}
-              <div className="relative flex flex-col p-4 mb-4 rounded-md shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
+              <div className="light border-1 relative flex flex-col p-4 mb-4 rounded-md shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
                 <video
-                  className=" w-full h-full object-cover"
+                  className="border-1 w-full h-full object-cover"
                   autoPlay
                   loop
                   muted
@@ -79,17 +79,17 @@ const VideoCard = () => {
                   <source src={item.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <div className="absolute rounded-sm flex w-[15vw] h-[7.5vh] top-[58%] left-[35%] lg:w-[4vw] lg:h-[8vh] lg:top-[65%] lg:left-[38%] ">
+                <div className="absolute rounded-sm flex w-[15vw]  h-[7.5vh] top-[58%] left-[35%] lg:w-[4vw] lg:h-[8vh] lg:top-[65%] lg:left-[38%] ">
                   <video className=" w-full h-full object-cover">
                     <source src={item.video} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
                 <div className="mb-10">
-                  <p className="flex justify-center mt-8 text-gray-700 text-md font-Montserrat">
+                  <p className="flex justify-center mt-8 darktxt text-md font-Montserrat">
                     {item.name.slice(0, 10) + "..."}
                   </p>
-                  <p className="flex justify-center text-gray-700 font-semibold text-md">
+                  <p className="flex justify-center darktxt font-semibold text-md">
                     ₹&nbsp;{item.price}
                   </p>
                 </div>
