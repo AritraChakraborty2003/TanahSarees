@@ -10,6 +10,7 @@ export const useCheckAuth = (triggerAuth, type) => {
   const [authStatus, setAuthStatus] = useState({
     user: null,
     isAuthenticated: false,
+    loading: true,
   });
 
   const getAuthStatus = async () => {
@@ -21,7 +22,7 @@ export const useCheckAuth = (triggerAuth, type) => {
         }
       );
 
-      setAuthStatus({ user: res.data, isAuthenticated: true });
+      setAuthStatus({ user: res.data, isAuthenticated: true, loading: false });
 
       if (type === "auth") {
         setUserInfo(res.data);
@@ -32,9 +33,10 @@ export const useCheckAuth = (triggerAuth, type) => {
       }
     } catch (error) {
       // ✅ Handle different error types
+
       if (error.response) {
         // Server responded (e.g., 401, 403)
-        setAuthStatus({ user: null, isAuthenticated: false });
+        setAuthStatus({ user: null, isAuthenticated: false, loading: false });
       } else if (error.request) {
         // No response (e.g., CORS issue, Network Error)
         console.log(

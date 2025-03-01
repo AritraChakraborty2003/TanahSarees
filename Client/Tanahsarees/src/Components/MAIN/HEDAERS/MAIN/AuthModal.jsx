@@ -58,10 +58,15 @@ const AuthModal = ({ isOpen }) => {
           toast.success("Login successful!");
 
           setLoginlargescreen(!Loginlargescreen);
-
-          setTimeout(() => {
-            navigate("/");
-          }, 800);
+          if (window.location.pathname === "/") {
+            setTimeout(() => {
+              window.location.reload();
+            }, 800);
+          } else {
+            setTimeout(() => {
+              navigate("/");
+            }, 800);
+          }
         } else {
           toast.error("Login failed. Please try again.");
         }
@@ -93,13 +98,15 @@ const AuthModal = ({ isOpen }) => {
       if (screen.width > 1000) {
         setLoginlargescreen(!Loginlargescreen);
       }
-
-      setTimeout(() => {
-        navigate("/");
-      }, 800);
-
-      // ✅ Check cookies in console
-      console.log("Cookies in React:", document.cookie);
+      if (window.location.pathname === "/") {
+        setTimeout(() => {
+          window.location.reload();
+        }, 800);
+      } else {
+        setTimeout(() => {
+          navigate("/");
+        }, 800);
+      }
     } catch (error) {
       console.error("Google Login Error:", error);
     }

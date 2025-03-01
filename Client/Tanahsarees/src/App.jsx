@@ -36,6 +36,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import CMSorderCard from "./Components/CMS/CMScards/CMSorderCard";
 import CMSReviews from "./Components/CMS/CMScards/CMSReviews";
 import ScrollToTop from "./Components/MAIN/Support/ScrollToTop";
+import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -190,9 +191,11 @@ const router = createBrowserRouter([
     path: "/profile",
     element: (
       <>
-        <MainHeader scrollValue="30" />
-        <Profile />
-        <Footer />
+        <ProtectedRouteUser>
+          <MainHeader scrollValue="30" />
+          <Profile />
+          <Footer />
+        </ProtectedRouteUser>
       </>
     ),
   },
