@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
@@ -6,7 +7,14 @@ import { AppContext } from "../AppContext/AppContext";
 
 export const UseHTTPRequest = (tigger, route, type, data, category) => {
   const [Data, setData] = useState(null);
-  const { httpClick, setHttpClick } = useContext(AppContext);
+  const {
+    httpClick,
+    setHttpClick,
+    httpClickDelete,
+    setHttpClickDelete,
+    setActiveDeleteSaree,
+    activeDeleteSaree,
+  } = useContext(AppContext);
 
   useEffect(() => {
     if (type === "GET") {
@@ -36,12 +44,14 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
             setHttpClick(!httpClick);
             toast.error("Something went wrong...");
           });
-      } else {
+      } else if (category === "auth") {
         axios
           .post(
             `${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route,
             data,
-            { withCredentials: true }
+            {
+              withCredentials: true,
+            }
           )
           .then((res) => {
             setData(res.data.message);
@@ -55,7 +65,35 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
           });
       }
     }
-  }, [data, route, tigger, type, httpClick, setHttpClick, category]);
+    if (type === "DELETE" && httpClickDelete && !httpClick) {
+      axios
+        .delete(
+          `${
+            import.meta.env.VITE_APP_API_URL
+          }api/v1/${category}/data?id=${activeDeleteSaree}`
+        )
+        .then((res) => {
+          setData(res.data.message);
+          setHttpClickDelete(!httpClickDelete);
+          toast.success("Saree deleted successfully!");
+        })
+        .catch((error) => {
+          setData(error);
+          setHttpClickDelete(!httpClickDelete);
+          toast.error("Something went wrong...");
+        });
+    }
+  }, [
+    data,
+    route,
+    tigger,
+    type,
+    httpClick,
+    setHttpClick,
+    category,
+    httpClickDelete,
+    setHttpClickDelete,
+  ]);
   return Data;
 };
 

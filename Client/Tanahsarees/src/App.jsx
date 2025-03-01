@@ -313,7 +313,8 @@ const App = () => {
 
   /*-------------------------*/
   // For HTTP Click Handler request
-  const [httpClick, setHttpClick] = useState(false);
+  const [httpClick, setHttpClick] = useState(false); //FOR POST
+  const [httpClickDelete, setHttpClickDelete] = useState(false); //DELETE
   const [isLogoutClick, setisLogoutClick] = useState(false);
   /*-------------------------*/
 
@@ -360,6 +361,8 @@ const App = () => {
   const [cartClick, setCartClick] = useState(false);
 
   const [activeCartId, setactiveCartId] = useState("");
+
+  const [activeDeleteSaree, setActiveDeleteSaree] = useState("");
   return (
     <>
       <AppContext.Provider
@@ -419,6 +422,10 @@ const App = () => {
           setCartClick,
           activeCartId,
           setactiveCartId,
+          httpClickDelete,
+          setHttpClickDelete,
+          activeDeleteSaree,
+          setActiveDeleteSaree,
         }}
       >
         <RouterProvider router={router} />

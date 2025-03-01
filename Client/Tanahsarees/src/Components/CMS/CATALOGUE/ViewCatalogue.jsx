@@ -1,9 +1,14 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
+import { AppContext } from "../../../AppContext/AppContext";
 const ViewCatalogue = (props) => {
   const [isQuickView, setIsQuickView] = useState(false);
-  const { sname, photo, price } = props.data;
+  const { _id, sname, photo, price } = props.data;
+  const { setHttpClickDelete, activeDeleteSaree, setActiveDeleteSaree } =
+    useContext(AppContext);
+
   return (
     <div className="flex flex-col  pr-4 pb-5">
       <div
@@ -35,7 +40,12 @@ const ViewCatalogue = (props) => {
           Quick View
         </div>
         <div className="absolute ml-[84%] lg:ml-[83%] darktext text-lg lg:text-3xl 2xl:text-xl mt-1.5 ">
-          <p className="hover:shadow-lg hover:text-[red] transition-shadow duration-300">
+          <p
+            className="hover:shadow-lg hover:text-[red] transition-shadow duration-300"
+            onClick={() => {
+              setActiveDeleteSaree(_id);
+            }}
+          >
             ⛌
           </p>
         </div>

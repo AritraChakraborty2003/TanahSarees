@@ -10,7 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const Catalogue = () => {
-  const { change, setHttpClick, isAdminLogin } = useContext(AppContext);
+  const {
+    change,
+    setHttpClick,
+    isAdminLogin,
+    setHttpClickDelete,
+    activeDeleteSaree,
+  } = useContext(AppContext);
 
   const [activeTab, setActiveTab] = useState("view");
   const [trigger, setTrigger] = useState(false);
@@ -31,7 +37,16 @@ const Catalogue = () => {
 
   const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
   // API Call
-  const res = UseHTTPRequest(trigger, "/sarees", "POST", formData);
+  const res = UseHTTPRequest(trigger, "/sarees", "POST", formData, "");
+
+  //For Delete api call
+  const del = UseHTTPRequest(null, "/sarees", "DELETE", "", "sarees");
+
+  useEffect(() => {
+    if (activeDeleteSaree) {
+      setHttpClickDelete(true);
+    }
+  }, [activeDeleteSaree, setHttpClickDelete]);
 
   // Handle Form Submission
   const handleFormSubmit = (values) => {
@@ -122,12 +137,12 @@ const Catalogue = () => {
                 <SearchBar category="order" />
               </div>
               <div
-                className={`flex flex-wrap p-1 gap-x-6 space-y-8 justify-center items-center mt-8 lg:mt-9 ${
+                className={`flex flex-wrap p-1 gap-x-6 space-y-8 justify-center items-center mt-8 lg:mt-9 pt-6 ${
                   data ? "bg-[#f7d9cb]" : "bg-white"
                 }`}
               >
                 {data ? (
-                  data
+                  [...data]
                     .reverse()
                     .map((item, index) => (
                       <ViewCatalogue key={index} data={item} />

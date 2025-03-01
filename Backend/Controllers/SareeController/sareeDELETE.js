@@ -5,6 +5,8 @@ export const sareeDELETE = async (req, res) => {
     // ✅ Extract ID correctly
     const { id } = req.query;
 
+    console.log(id);
+
     if (!id) {
       return res
         .status(400)
