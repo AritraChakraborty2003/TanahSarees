@@ -11,6 +11,12 @@ const userSchema = mongoose.Schema(
       maxlength: 60,
     },
 
+    image: {
+      type: String,
+      trim: true,
+      required: false,
+    },
+
     email: {
       type: String,
       unique: true,

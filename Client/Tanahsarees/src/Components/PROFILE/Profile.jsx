@@ -1,12 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../AppContext/AppContext";
 import { useState } from "react";
 import { useAccountDelete } from "../../Utils/useAccountDelete";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
+import UseHTTPRequest from "../../Utils/useHTTPRequest";
 
 const Profile = () => {
+  const authStatus = useCheckAuth(null, "auth");
   const { change, setclickDeleteAccount } = useContext(AppContext);
 
   const res = useAccountDelete();
@@ -25,6 +29,32 @@ const Profile = () => {
   const [address1, setAddress1] = useState("");
   const [landmark, setLandmark] = useState("");
   const [image, setImage] = useState(null);
+
+  const [formData, setFormData] = useState({});
+
+  const { PATCHClick, setPATCHClick } = useContext(AppContext);
+
+  useEffect(() => {
+    if (authStatus.isAuthenticated) {
+      setName(authStatus.user.message?.name);
+      setEmail(authStatus.user.message?.email);
+
+      setMobile(authStatus.user.message?.phone);
+
+      setGender(authStatus.user.message?.gender);
+
+      setCountry(authStatus.user.message?.address?.split(":")[3]);
+      setState(authStatus.user.message?.address?.split(":")[2]);
+      setDistrict(authStatus.user.message?.address?.split(":")[1]);
+      setPincode(authStatus.user.message?.address?.split(":")[4]);
+      setAddress1(authStatus.user.message?.address?.split(":")[0]);
+      setLandmark(authStatus.user.message?.address?.split(":")[5]);
+
+      if (authStatus.user.message.image) {
+        setImage(authStatus.user.message.image);
+      }
+    }
+  }, [authStatus.isAuthenticated, authStatus, authStatus.user]);
 
   const handleDelete = () => {
     confirmAlert({
@@ -56,13 +86,29 @@ const Profile = () => {
     setIsEditing(true);
   };
 
+  const res3 = UseHTTPRequest(null, "/users", "PATCH", formData, "");
+  const [isSet, setIsSet] = useState();
+  useEffect(() => {
+    setPATCHClick(true);
+    setIsSet(!isSet);
+  }, [formData, setPATCHClick, isSet]);
+
   const handleSave = (e) => {
     e.preventDefault();
     setIsEditing(false);
-    alert(`Saved:
-        Name: ${name}, Gender: ${gender}
-        Mobile: ${countryCode} ${mobile}
-        Address: ${address1}, ${landmark}, ${district}, ${state}, ${pincode}, ${country}`);
+    // Save the updated data to the database or state
+
+    const formData = {
+      name,
+      email,
+      phone: mobile,
+      gender,
+      image,
+      address: `${address1}:${district}:${state}:${country}:${pincode}:${landmark}`,
+    };
+
+    setFormData(formData);
+    setIsSet(!isSet);
   };
 
   const handleCancel = () => {
@@ -133,7 +179,7 @@ const Profile = () => {
                 type="text"
                 className="border-b-1 border-gray-400 p-2  w-full"
                 placeholder={name}
-                value={isEditing ? name : ""}
+                value={isEditing ? name : name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={!isEditing}
               />
@@ -166,7 +212,7 @@ const Profile = () => {
                 type="text"
                 className="border-b-1 border-gray-400 p-2 w-full"
                 placeholder={email}
-                value={isEditing ? email : ""}
+                value={isEditing ? email : email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={!isEditing}
               />
@@ -196,8 +242,8 @@ const Profile = () => {
             <input
               type="number"
               className="border-b-1 border-gray-400 p-2  w-full"
-              placeholder="Enter Mobile Number"
-              value={isEditing ? mobile : ""}
+              placeholder={mobile}
+              value={isEditing ? mobile : mobile}
               onChange={(e) => setMobile(e.target.value)}
               disabled={!isEditing}
             />
@@ -227,32 +273,31 @@ const Profile = () => {
           </div>
 
           {/* If India is selected, show State & District */}
-          {country === "India" && (
-            <>
-              <div>
-                <label className="block font-medium">State:</label>
-                <input
-                  type="text"
-                  className="border-b-1 border-gray-400 p-2  w-full"
-                  placeholder="Enter State"
-                  value={state}
-                  required="true"
-                  onChange={(e) => setState(e.target.value)}
-                />
-              </div>
-              <div>
-                <label className="block font-medium">District:</label>
-                <input
-                  type="text"
-                  className="border-b-1 border-gray-400 p-2  w-full"
-                  placeholder="Enter District"
-                  value={district}
-                  required="true"
-                  onChange={(e) => setDistrict(e.target.value)}
-                />
-              </div>
-            </>
-          )}
+
+          <>
+            <div>
+              <label className="block font-medium">State:</label>
+              <input
+                type="text"
+                className="border-b-1 border-gray-400 p-2  w-full"
+                placeholder="Enter State"
+                value={state}
+                required="true"
+                onChange={(e) => setState(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block font-medium">District:</label>
+              <input
+                type="text"
+                className="border-b-1 border-gray-400 p-2  w-full"
+                placeholder="Enter District"
+                value={district}
+                required="true"
+                onChange={(e) => setDistrict(e.target.value)}
+              />
+            </div>
+          </>
 
           {/* Common Address Fields */}
           <div>

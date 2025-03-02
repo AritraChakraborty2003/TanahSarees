@@ -368,6 +368,9 @@ const App = () => {
   const [activeDeleteSaree, setActiveDeleteSaree] = useState("");
 
   const [clickDeleteAccount, setclickDeleteAccount] = useState(false);
+
+  //Patch Click
+  const [PATCHClick, setPATCHClick] = useState(false);
   return (
     <>
       <AppContext.Provider
@@ -433,6 +436,8 @@ const App = () => {
           setActiveDeleteSaree,
           clickDeleteAccount,
           setclickDeleteAccount,
+          PATCHClick,
+          setPATCHClick,
         }}
       >
         <RouterProvider router={router} />

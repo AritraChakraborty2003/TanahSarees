@@ -14,6 +14,8 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
     setHttpClickDelete,
     setActiveDeleteSaree,
     activeDeleteSaree,
+    PATCHClick,
+    setPATCHClick,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -80,6 +82,23 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
         .catch((error) => {
           setData(error);
           setHttpClickDelete(!httpClickDelete);
+          toast.error("Something went wrong...");
+        });
+    }
+
+    if (type === "PATCH" && !httpClick && !httpClickDelete && PATCHClick) {
+      axios
+        .patch(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route, data, {
+          withCredentials: true, // Ensures cookies are sent
+        })
+        .then((res) => {
+          setData(res.data.message);
+          setPATCHClick(false);
+          toast.success("User updated successfully!");
+        })
+        .catch((error) => {
+          setData(error);
+          setPATCHClick(false);
           toast.error("Something went wrong...");
         });
     }
