@@ -5,10 +5,16 @@ import jwt from "jsonwebtoken";
 export const Login = () => {
   return async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { phone, email, password } = req.body;
 
       // Find user by email (Ensure await is used)
-      const user = await UserObj.findOne({ email: email });
+      let user;
+      if (!email) {
+        user = await UserObj.findOne({ phone: phone });
+      }
+      if (!phone) {
+        user = await UserObj.findOne({ email: email });
+      }
 
       if (!user) {
         return res.status(401).json({ message: "Invalid credentials" });
@@ -24,9 +30,17 @@ export const Login = () => {
       const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
       // Generate JWT token
-      const jwtToken = jwt.sign({ id: user._id, email }, JWT_SECRET_KEY, {
-        expiresIn: "1h",
-      });
+      let jwtToken;
+
+      if (!email) {
+        jwtToken = jwt.sign({ id: user._id, phone }, JWT_SECRET_KEY, {
+          expiresIn: "1h",
+        });
+      } else {
+        jwtToken = jwt.sign({ id: user._id, email }, JWT_SECRET_KEY, {
+          expiresIn: "1h",
+        });
+      }
 
       // Set cookie
       res.cookie("ecom_token", jwtToken, {

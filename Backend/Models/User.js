@@ -1,27 +1,20 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
-const userShcema = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
     name: {
       type: String,
       trim: true,
+      required: false,
       minlength: 3,
       maxlength: 60,
     },
 
-    username: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      minlength: 2,
-      maxlength: 600,
-    },
-
     email: {
       type: String,
-      required: true,
       unique: true,
+      required: false,
       validate(value) {
         if (!validator.isEmail(value)) {
           throw new Error("Email is invalid");
@@ -92,6 +85,6 @@ const userShcema = mongoose.Schema(
   }
 );
 
-const UserObj = mongoose.model("User", userShcema);
+const UserObj = mongoose.model("User", userSchema);
 
 export default UserObj;

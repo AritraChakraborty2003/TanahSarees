@@ -3,12 +3,12 @@ import jwt from "jsonwebtoken";
 export const userPATCH = () => {
   return async (req, res) => {
     try {
-      const { name, gender, address, additionalNo, phone } = req.body;
+      const { email, name, gender, address, additionalNo, phone } = req.body;
       const token = req.cookies.ecom_token;
       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
       const user = await UserObj.findByIdAndUpdate(
         decoded.id,
-        { name, gender, address, additionalNo, phone },
+        { email, name, gender, address, additionalNo, phone },
         {
           new: true,
         }

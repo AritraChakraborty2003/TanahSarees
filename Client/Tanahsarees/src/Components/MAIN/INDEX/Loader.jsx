@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
-import { HashLoader } from "react-spinners";
+// import { HashLoader } from "react-spinners";
+// import { TailSpin } from "react-loader-spinner";
 import Main from "./Main";
 import UseHTTPRequest from "../../../Utils/useHTTPRequest";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
@@ -37,7 +38,8 @@ const Loader = () => {
     <div>
       {isLoading ? (
         <div className=" h-[100vh] w-[100vw] flex justify-center items-center light ">
-          <HashLoader size={72} color="#262424" />
+          {/* <TailSpin size={72} color="#262424" /> */}
+          <div className="loader"></div>
           {data ? <>{console.log("SareeData:", sareeData)}</> : ""}
           {message ? <>{console.log(message)}</> : ""}
 
