@@ -13,10 +13,12 @@ import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import CardText from "../CARDS/CardText";
 import { useHandleCart } from "../../Utils/useHandleCart";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
+import StarRating from "./StarRating";
 // import { useEffect } from "react";
 const Productdescription = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
+
   const authStatus = useCheckAuth(null, "auth");
   const [sareeDataObj, setSareeDataObj] = useState([]);
 
@@ -113,8 +115,7 @@ const Productdescription = () => {
       heading: "RATE YOUR PRODUCT",
       details: (
         <>
-          {/** Rating Component */}
-          <p>Hi</p>
+          <StarRating />
         </>
       ),
     },
@@ -186,7 +187,7 @@ const Productdescription = () => {
               />
             </div>
           </div>
-          <div className="rightTextHolder w-[98vw] lg:w-[50vw] text-[#7f7273]">
+          <div className="rightTextHolder w-[98vw] lg:w-[50vw] darktxt">
             <div className="small_descr">
               <p className="mt-5 ml-4 text-sm  lg:text-xs font-Montserrat ">
                 Home&nbsp;&nbsp;/&nbsp;&nbsp; Sarees&nbsp;&nbsp; /
@@ -224,7 +225,7 @@ const Productdescription = () => {
             <div className="mt-3 ml-3 lg:ml-5  buttonHolder   w-[100%]  flex gap-x-5">
               <div className="addToCart">
                 <button
-                  className="bg-[#f58b75] rounded-xs   lg:w-[32vmin] p-3   font-Montserrat text-black text-center "
+                  className="dark rounded-xs   lg:w-[32vmin] p-3   font-Montserrat lighttxt text-center "
                   onClick={() => {
                     if (authStatus.isAuthenticated) {
                       setactiveCartId(activeProduct._id);
@@ -246,7 +247,7 @@ const Productdescription = () => {
               </div>
 
               <div className="wishlist">
-                <button className="bg-white rounded-xs border-[#d5d5d5] border-[0.1px]   lg:w-[32vmin] p-3 font-Montserrat text-black text-center ">
+                <button className="light rounded-xs border-[#d5d5d5] border-[0.1px]   lg:w-[32vmin] p-3 font-Montserrat darktxt text-center ">
                   <a href="" className="font-Montserrat font-medium">
                     <i className="ri-heart-line"></i>
                   </a>{" "}
@@ -259,45 +260,45 @@ const Productdescription = () => {
               <div className="line w-[90%]  h-[1px] bg-[#d5d5d5] mt-2"></div>
             </div>
             <div className="detailsArea mt-2 ml-5">
-              <p className="font-normal darktext text-sm font-Montserrat text-[#7f7273]">
+              <p className="font-normal darktxt text-sm font-Montserrat darktxt">
                 Product Details
               </p>
               {productDetails.map((detail, index) => (
                 <p
                   key={index}
-                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
+                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktxt font-light"
                 >
                   {detail}
                 </p>
               ))}
             </div>
             <div className="MaterialArea ml-5 mt-3">
-              <p className="font-normal darktext text-sm font-Montserrat text-[#7f7273]">
+              <p className="font-normal darktxt text-sm font-Montserrat darktxt">
                 Material & Care
               </p>
               {materialDetails.map((detail, index) => (
                 <p
                   key={index}
-                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
+                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktxt font-light"
                 >
                   {detail}
                 </p>
               ))}
             </div>
             <div className="ProductIdArea mt-3 ml-5">
-              <p className="font-normal darktext text-sm font-Montserrat text-[#7f7273]">
+              <p className="font-normal darktxt text-sm font-Montserrat darktxt">
                 Product Id
               </p>
               {IdDetails.map((id, index) => (
                 <p
                   key={index}
-                  className="mt-1  text-[3vmin] lg:text-xs font-Montserrat darktext font-light"
+                  className="mt-1  text-[3vmin] lg:text-xs font-Montserrat darktxt font-light"
                 >
                   {id}
                 </p>
               ))}
             </div>
-            <div className="FAQ_Area w-[98%] lg:w-[80%] ml-3 mt-6">
+            <div className="FAQ_Area w-[98%]  lg:w-[80%] ml-3 mt-6">
               {deatilsProductFaq.map((item, index) => (
                 <ControlledAccordions
                   key={index}
@@ -319,7 +320,7 @@ const Productdescription = () => {
         </div>
         <div className="likeArea mt-8">
           <div className="likeHeader">
-            <p className="ml-5 text-gray-500 font-normal font-Montserrat text-2xl">
+            <p className=" text-center dark lighttxt p-3 w-[100%]  font-normal font-Montserrat text-2xl">
               You might also like
             </p>
             <div className="mt-3 lg:mt-6">
@@ -353,7 +354,7 @@ const Productdescription = () => {
           <div className="holder flex flex-col">
             <div className="flex justify-end">
               <i
-                className="ri-close-line text-4xl darktext mr-5 mt-2"
+                className="ri-close-line text-4xl darktxt mr-5 mt-2"
                 onClick={CloseImage}
               ></i>
             </div>

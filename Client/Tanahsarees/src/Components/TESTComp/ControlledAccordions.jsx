@@ -19,7 +19,7 @@ export default function ControlledAccordions({ id, data, expanded, onChange }) {
           sx={{
             width: "80%",
             flexShrink: 0,
-            color: "#883022",
+            color: "#262424",
             fontFamily: "Montserrat",
             fontSize: isSmallScreen ? "3vmin" : "1.75vmin",
           }}
@@ -30,7 +30,7 @@ export default function ControlledAccordions({ id, data, expanded, onChange }) {
       <AccordionDetails>
         <Typography
           sx={{
-            color: "#883022",
+            color: "#262424",
             fontFamily: "Montserrat",
 
             fontWeight: "light",
