@@ -74,7 +74,14 @@ const Main = () => {
         <SliderComponent />
 
         {/* <div className="mt-2 lg:mt-10"> */}
-        <BannerSlider />
+
+        {screen.width <= 1280 && screen.height < 700 ? (
+          <div className="mt-[-10vmin]">
+            <BannerSlider />
+          </div>
+        ) : (
+          <BannerSlider />
+        )}
 
         {/* </div> */}
         <Feature />

@@ -13,9 +13,19 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
     httpClickDelete,
     setHttpClickDelete,
     setActiveDeleteSaree,
+    favItem,
+    setFavItem,
+    heartClick,
+    setHeartClick,
     activeDeleteSaree,
     PATCHClick,
     setPATCHClick,
+    favouriteLength,
+    setFavouriteLength,
+    heartSave,
+    setHeartSave,
+    heartItem,
+    setHeartItem,
   } = useContext(AppContext);
 
   useEffect(() => {
@@ -88,18 +98,104 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
 
     if (type === "PATCH" && !httpClick && !httpClickDelete && PATCHClick) {
       axios
-        .patch(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route, data, {
-          withCredentials: true, // Ensures cookies are sent
-        })
+        .patch(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route,
+          { pid: data },
+          {
+            withCredentials: true, // Ensures cookies are sent
+          }
+        )
         .then((res) => {
-          setData(res.data.message);
-          setPATCHClick(false);
-          toast.success("User updated successfully!");
+          if (category === "favourite") {
+            if (res.data.message === "Duplicate item sent") {
+              toast.info("Already in Favourites");
+              setPATCHClick(false);
+            } else {
+              toast.success("Favourite added successfully!");
+              setFavouriteLength(res.data.size);
+              setPATCHClick(false);
+            }
+          } else {
+            setData(res.data.message);
+            setPATCHClick(false);
+
+            toast.success("User updated successfully!");
+          }
         })
         .catch((error) => {
           setData(error);
           setPATCHClick(false);
           toast.error("Something went wrong...");
+        });
+    }
+    if (type === "PATCH" && !httpClick && !httpClickDelete && PATCHClick) {
+      axios
+        .patch(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route,
+          { pid: data },
+          {
+            withCredentials: true, // Ensures cookies are sent
+          }
+        )
+        .then((res) => {
+          if (category === "favourite") {
+            if (res.data.message === "Duplicate item sent") {
+              toast.info("Already in Favourites");
+              setPATCHClick(false);
+            } else {
+              toast.success("Favourite added successfully!");
+              setFavouriteLength(res.data.size);
+              setPATCHClick(false);
+            }
+          } else {
+            setData(res.data.message);
+            setPATCHClick(false);
+
+            toast.success("User updated successfully!");
+          }
+        })
+        .catch((error) => {
+          setData(error);
+          setPATCHClick(false);
+          toast.error("Something went wrong...");
+        });
+    }
+    if (
+      type === "PATCH" &&
+      route === "/favourites/heart" &&
+      !httpClick &&
+      !httpClickDelete &&
+      !PATCHClick &&
+      heartClick
+    ) {
+      axios
+        .patch(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route,
+          { pid: data },
+          {
+            withCredentials: true, // Ensures cookies are sent
+          }
+        )
+        .then((res) => {
+          if (res.data.message === "Favorite removed") {
+            setHeartClick(false);
+            setFavouriteLength(res.data.size);
+            setHeartSave(true);
+
+            setHeartItem("");
+          } else {
+            setHeartClick(false);
+            setFavouriteLength(res.data.size);
+            setHeartSave(true);
+            setHeartItem("");
+          }
+        })
+        .catch((error) => {
+          setData(error);
+          setPATCHClick(false);
+          toast.error("Something went wrong...");
+          setHeartSave(true);
+          setHeartItem("");
         });
     }
   }, [
@@ -112,6 +208,8 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
     category,
     httpClickDelete,
     setHttpClickDelete,
+    PATCHClick,
+    heartClick,
   ]);
   return Data;
 };

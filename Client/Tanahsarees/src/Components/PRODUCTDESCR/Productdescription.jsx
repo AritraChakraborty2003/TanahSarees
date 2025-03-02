@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
 import { useContext, useState, useEffect } from "react";
@@ -23,6 +24,7 @@ const Productdescription = () => {
   const [sareeDataObj, setSareeDataObj] = useState([]);
 
   const dataObj = UseHTTPRequest(null, "/sarees", "GET", "");
+
   useEffect(() => {
     if (dataObj && JSON.stringify(dataObj) !== JSON.stringify(sareeDataObj)) {
       setSareeDataObj(dataObj);
@@ -155,6 +157,17 @@ const Productdescription = () => {
   };
 
   const res = useHandleCart();
+  const { PATCHClick, setPATCHClick, favItem, setFavItem } =
+    useContext(AppContext);
+
+  const data_res = UseHTTPRequest(
+    null,
+    "/favourites/heart",
+    "PATCH",
+    favItem,
+    "favourite"
+  );
+
   return (
     <>
       <div className="flex flex-col gap-y-6 pb-15">
@@ -247,10 +260,24 @@ const Productdescription = () => {
               </div>
 
               <div className="wishlist">
-                <button className="light rounded-xs border-[#d5d5d5] border-[0.1px]   lg:w-[32vmin] p-3 font-Montserrat darktxt text-center ">
-                  <a href="" className="font-Montserrat font-medium">
+                <button
+                  onClick={() => {
+                    if (authStatus.isAuthenticated) {
+                      setFavItem(activeProduct._id);
+                      setPATCHClick(true);
+                    } else {
+                      if (screen.width > 1000) {
+                        setLoginlargescreen(true);
+                      } else {
+                        setLoginOpen(true);
+                      }
+                    }
+                  }}
+                  className="light rounded-xs border-[#d5d5d5] border-[0.1px]   lg:w-[32vmin] p-3 font-Montserrat darktxt text-center "
+                >
+                  <a className="font-Montserrat font-medium">
                     <i className="ri-heart-line"></i>
-                  </a>{" "}
+                  </a>
                   <span className="ml-3 text-sm lg:text-md">ADD WISHLIST</span>
                 </button>
               </div>

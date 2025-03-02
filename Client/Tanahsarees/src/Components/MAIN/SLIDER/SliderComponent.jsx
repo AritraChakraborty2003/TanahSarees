@@ -110,120 +110,239 @@ const SliderComponent = () => {
 
       {screen.width > 1000 && screen.width < 1520 && (
         <>
-          <div
-            className="w-[100vw] pl-5 bg-[ #eee5da]" // Adjust based on actual header height
-            style={{
-              paddingTop: `${
-                !change
-                  ? document.getElementById("mainHeader")?.offsetHeight ||
-                    "730px"
-                  : "730px"
-              }`,
+          {(screen.width > 1280 && (
+            <div
+              className="w-[100vw] pl-5 bg-[ #eee5da]" // Adjust based on actual header height
+              style={{
+                paddingTop: `${
+                  !change
+                    ? document.getElementById("mainHeader")?.offsetHeight ||
+                      "730px"
+                    : "730px"
+                }`,
 
-              zIndex: 900,
-            }}
-          >
-            {/* Slider */}
-            {screen.width >= 1440 && screen.height > 890 ? (
-              <>
-                <button
-                  onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-5  top-[40%] lg:top-[6%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full shadow-md"
-                >
-                  <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
-                </button>
-                <Slider
-                  ref={sliderRef}
-                  {...settings}
-                  className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin]  pr-[3.45vmin]"
-                >
-                  {items &&
-                    [...items].map((item) => (
-                      <>
-                        <div className="zoom-div ml-[-1vmin]">
-                          <div className="flex flex-col gap-y-4 justify-center items-center">
-                            <Link to="/products">
+                zIndex: 900,
+              }}
+            >
+              {/* Slider */}
+              {screen.width >= 1440 && screen.height > 890 ? (
+                <>
+                  <button
+                    onClick={() => sliderRef.current.slickPrev()}
+                    className="absolute  left-1 lg:left-5  top-[40%] lg:top-[5.75%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                  <Slider
+                    ref={sliderRef}
+                    {...settings}
+                    className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin]  pr-[3.45vmin]"
+                  >
+                    {items &&
+                      [...items].map((item) => (
+                        <>
+                          <div className="zoom-div ml-[-1vmin]">
+                            <div className="flex flex-col gap-y-4 justify-center items-center">
+                              <Link to="/products">
+                                <div
+                                  className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[38vh] shadow-lg shadow-amber-100 border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                                  style={{
+                                    backgroundImage: `url(${
+                                      import.meta.env.VITE_APP_API_URL +
+                                      item.photo
+                                    })`,
+                                    backgroundPosition: "top",
+                                    // Assuming each item has an image property
+                                  }}
+                                  onClick={() => {
+                                    navigate("/products");
+                                  }}
+                                ></div>
+                                <p className="font-Montserrat font-normal text-[#d5d5d5]-800 text-center mt-3">
+                                  {item.sname.slice(0, 20) + "..."}
+                                </p>
+                              </Link>
+                            </div>
+                          </div>
+                        </>
+                      ))}
+                  </Slider>
+                  <button
+                    onClick={() => sliderRef.current.slickNext()}
+                    className="absolute right-1 lg:right-1 top-[40%] lg:top-[5.75%] 2xl:w-[4.85%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3 rounded-full shadow-md"
+                  >
+                    <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => sliderRef.current.slickPrev()}
+                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                  <Slider
+                    ref={sliderRef}
+                    {...settings}
+                    className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
+                  >
+                    {items &&
+                      [...items].map((item) => (
+                        <>
+                          <div className="ml-[-6vmin]">
+                            <div className="flex flex-col gap-y-3 justify-center items-center">
                               <div
-                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[38vh] shadow-lg shadow-amber-100 border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#EEE5DA] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                                 style={{
                                   backgroundImage: `url(${
                                     import.meta.env.VITE_APP_API_URL +
                                     item.photo
                                   })`,
                                   backgroundPosition: "top",
+
                                   // Assuming each item has an image property
                                 }}
                                 onClick={() => {
                                   navigate("/products");
                                 }}
                               ></div>
-                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800 text-center mt-3">
-                                {item.sname.slice(0, 20) + "..."}
+                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                                {item.title}
                               </p>
-                            </Link>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    ))}
-                </Slider>
-                <button
-                  onClick={() => sliderRef.current.slickNext()}
-                  className="absolute right-1 lg:right-1 top-[40%] lg:top-[6%] 2xl:w-[5%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3 rounded-full shadow-md"
-                >
-                  <ChevronRight size={screen.width > 1000 ? 24 : 14} />
-                </button>
-              </>
-            ) : (
-              <>
-                <button
-                  onClick={() => sliderRef.current.slickPrev()}
-                  className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
-                >
-                  <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
-                </button>
-                <Slider
-                  ref={sliderRef}
-                  {...settings}
-                  className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-56vmin] ml-[1.35vmin] "
-                >
-                  {items &&
-                    [...items].map((item) => (
-                      <>
-                        <div className="ml-[-6vmin]">
-                          <div className="flex flex-col gap-y-3 justify-center items-center">
-                            <div
-                              className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#EEE5DA] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
-                              style={{
-                                backgroundImage: `url(${
-                                  import.meta.env.VITE_APP_API_URL + item.photo
-                                })`,
-                                backgroundPosition: "top",
+                        </>
+                      ))}
+                  </Slider>
+                  <button
+                    onClick={() => sliderRef.current.slickNext()}
+                    className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.5%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                </>
+              )}
 
-                                // Assuming each item has an image property
-                              }}
-                              onClick={() => {
-                                navigate("/products");
-                              }}
-                            ></div>
-                            <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
-                              {item.title}
-                            </p>
+              {/* Right Button */}
+            </div>
+          )) || (
+            <div
+              className="w-[100vw] pl-5 bg-[#eee5da] border-1" // Adjust based on actual header height
+              style={{
+                paddingTop: `${
+                  !change
+                    ? document.getElementById("mainHeader")?.offsetHeight ||
+                      "675px"
+                    : "675px"
+                }`,
+
+                zIndex: 900,
+              }}
+            >
+              {/* Slider */}
+              {screen.width >= 1440 && screen.height > 890 ? (
+                <>
+                  <button
+                    onClick={() => sliderRef.current.slickPrev()}
+                    className="absolute  left-1 lg:left-5  top-[40%] lg:top-[6%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                  <Slider
+                    ref={sliderRef}
+                    {...settings}
+                    className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin]  pr-[3.45vmin]"
+                  >
+                    {items &&
+                      [...items].map((item) => (
+                        <>
+                          <div className="zoom-div ml-[-1vmin]">
+                            <div className="flex flex-col gap-y-4 justify-center items-center">
+                              <Link to="/products">
+                                <div
+                                  className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[38vh] shadow-lg shadow-amber-100 border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                                  style={{
+                                    backgroundImage: `url(${
+                                      import.meta.env.VITE_APP_API_URL +
+                                      item.photo
+                                    })`,
+                                    backgroundPosition: "top",
+                                    // Assuming each item has an image property
+                                  }}
+                                  onClick={() => {
+                                    navigate("/products");
+                                  }}
+                                ></div>
+                                <p className="font-Montserrat font-normal text-[#d5d5d5]-800 text-center mt-3">
+                                  {item.sname.slice(0, 20) + "..."}
+                                </p>
+                              </Link>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    ))}
-                </Slider>
-                <button
-                  onClick={() => sliderRef.current.slickNext()}
-                  className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.5%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
-                >
-                  <ChevronRight size={screen.width > 1000 ? 24 : 14} />
-                </button>
-              </>
-            )}
+                        </>
+                      ))}
+                  </Slider>
+                  <button
+                    onClick={() => sliderRef.current.slickNext()}
+                    className="absolute right-1 lg:right-1 top-[40%] lg:top-[4.75%] 2xl:w-[4.85%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3 rounded-full shadow-md"
+                  >
+                    <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => sliderRef.current.slickPrev()}
+                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[4.2%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                  <Slider
+                    ref={sliderRef}
+                    {...settings}
+                    className="  w-[100vw] 2xl:mt-[-51vmin] lg:mt-[-53vmin] ml-[1.35vmin] "
+                  >
+                    {items &&
+                      [...items].map((item) => (
+                        <>
+                          <div className="ml-[-6vmin]">
+                            <div className="flex flex-col gap-y-3 justify-center items-center">
+                              <div
+                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#EEE5DA] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                                style={{
+                                  backgroundImage: `url(${
+                                    import.meta.env.VITE_APP_API_URL +
+                                    item.photo
+                                  })`,
+                                  backgroundPosition: "top",
 
-            {/* Right Button */}
-          </div>
+                                  // Assuming each item has an image property
+                                }}
+                                onClick={() => {
+                                  navigate("/products");
+                                }}
+                              ></div>
+                              <p className="font-Montserrat font-normal text-[#d5d5d5]-800">
+                                {item.title}
+                              </p>
+                            </div>
+                          </div>
+                        </>
+                      ))}
+                  </Slider>
+                  <button
+                    onClick={() => sliderRef.current.slickNext()}
+                    className="absolute  right-1 lg:right-1  top-[40%] lg:top-[4.2%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                  >
+                    <ChevronRight size={screen.width > 1000 ? 24 : 14} />
+                  </button>
+                </>
+              )}
+
+              {/* Right Button */}
+            </div>
+          )}
         </>
       )}
 

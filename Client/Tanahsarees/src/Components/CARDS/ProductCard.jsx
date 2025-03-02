@@ -12,12 +12,30 @@ import { useCheckAuth } from "../../Utils/useCheckAuth";
 
 const ProductCard = (props) => {
   const authStatus = useCheckAuth(null, "auth");
-  const { setLoginlargescreen, setLoginOpen } = useContext(AppContext);
+  const {
+    setLoginlargescreen,
+    setLoginOpen,
+    heartClick,
+    setHeartClick,
+    heartSave,
+    setHeartSave,
+    heartItem,
+    setHeartItem,
+  } = useContext(AppContext);
   const [isQuickView, setIsQuickView] = useState(false);
   const [isFavorite, setIsFavourite] = useState(true);
   const [isClick, setClick] = useState(false);
   const { _id, photo, sname, price } = props.data;
-  const { type, Fav } = props;
+  const { type, Fav, isClicked } = props;
+
+  const [heartClickTemp, setHeartClickTemp] = useState(false);
+
+  console.log(isClicked);
+  useEffect(() => {
+    if (isClicked === "clicked") {
+      setClick(true);
+    }
+  });
 
   const {
     activeProduct,
@@ -103,7 +121,21 @@ const ProductCard = (props) => {
         {/* Default Heart */}
         {type !== "favourite" && (
           <div className="absolute bottom-[15%] right-[-5%] z-50">
-            <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+            <Heart
+              isClick={isClick}
+              onClick={() => {
+                if (authStatus.isAuthenticated) {
+                  setHeartItem(_id);
+                  setClick(!isClick);
+                } else {
+                  if (screen.width > 1000) {
+                    setLoginlargescreen(true);
+                  } else {
+                    setLoginOpen(true);
+                  }
+                }
+              }}
+            />
           </div>
         )}
 

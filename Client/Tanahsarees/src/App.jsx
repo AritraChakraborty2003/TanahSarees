@@ -154,9 +154,11 @@ const router = createBrowserRouter([
     path: "/favourites",
     element: (
       <>
-        <MainHeader scrollValue="30" />
-        <Favourite />
-        <Footer />
+        <ProtectedRouteUser>
+          <MainHeader scrollValue="30" />
+          <Favourite />
+          <Footer />
+        </ProtectedRouteUser>
       </>
     ),
   },
@@ -371,6 +373,16 @@ const App = () => {
 
   //Patch Click
   const [PATCHClick, setPATCHClick] = useState(false);
+
+  const [favItem, setFavItem] = useState("");
+
+  //HeartClick,setHeartClick
+  const [heartClick, setHeartClick] = useState(false);
+
+  const [heartSave, setHeartSave] = useState(false);
+
+  const [heartItem, setHeartItem] = useState("");
+
   return (
     <>
       <AppContext.Provider
@@ -438,6 +450,14 @@ const App = () => {
           setclickDeleteAccount,
           PATCHClick,
           setPATCHClick,
+          favItem,
+          setFavItem,
+          heartClick,
+          setHeartClick,
+          heartSave,
+          setHeartSave,
+          heartItem,
+          setHeartItem,
         }}
       >
         <RouterProvider router={router} />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import ProductCard from "../CARDS/ProductCard";
 import { useContext, useEffect, useState } from "react";
@@ -5,6 +6,7 @@ import { useHandleCart } from "../../Utils/useHandleCart";
 import { AppContext } from "../../AppContext/AppContext";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
 
 const ProductDisplay = () => {
   const {
@@ -14,10 +16,32 @@ const ProductDisplay = () => {
     activeFilter,
     setActiveFilter,
     filteredData,
+    heartClick,
+    setHeartClick,
+    heartSave,
+    setHeartSave,
+    heartItem,
+    setHeartItem,
     setFilteredData,
   } = useContext(AppContext);
+
+  useEffect(() => {
+    if (heartItem) {
+      setHeartClick(true);
+    }
+  }, [heartItem]);
+
+  const data_heart = UseHTTPRequest(
+    null,
+    "/favourites/heart",
+    "PATCH",
+    heartItem,
+    "heart"
+  );
   const [Filter, setFilter] = useState(true);
   const [visibleCount, setVisibleCount] = useState(12); // Controls items displayed
+
+  const authStatus = useCheckAuth(null, "auth");
 
   const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
 
@@ -112,11 +136,38 @@ const ProductDisplay = () => {
               window.innerWidth > 1000 ? (!Filter ? "w-full" : "w-[70vw]") : ""
             }`}
           >
-            {sareeData &&
-              [...sareeData] // Create a copy before reversing
-                .reverse()
-                .slice(0, visibleCount)
-                .map((item) => <ProductCard key={item.id} data={item} />)}
+            {!authStatus.isAuthenticated
+              ? sareeData &&
+                [...sareeData] // Create a copy before reversing
+                  .reverse()
+                  .slice(0, visibleCount)
+                  .map((item) => (
+                    <ProductCard
+                      key={item._id}
+                      data={item}
+                      isClicked={
+                        authStatus.isAuthenticated &&
+                        authStatus.user.message.favourites.includes(item._id)
+                          ? "clicked"
+                          : ""
+                      }
+                    />
+                  ))
+              : sareeData &&
+                [...sareeData] // Create a copy before reversing
+                  .reverse()
+                  .slice(0, visibleCount)
+                  .map((item) => (
+                    <ProductCard
+                      key={item._id}
+                      data={item}
+                      isClicked={
+                        authStatus.user.message.favourites.includes(item._id)
+                          ? "clicked"
+                          : ""
+                      }
+                    />
+                  ))}
 
             {/* Load More Button */}
             {sareeData && visibleCount < sareeData.length && (
@@ -142,10 +193,20 @@ const ProductDisplay = () => {
               }`}
             >
               {filteredData &&
-                [...filteredData] // Create a copy before reversing
+                [...filteredData]
                   .reverse()
                   .slice(0, visibleCount)
-                  .map((item) => <ProductCard key={item._id} data={item} />)}
+                  .map((item) => {
+                    const isFavourite =
+                      authStatus.user?.message?.favourites?.includes(item._id);
+                    return (
+                      <ProductCard
+                        key={item._id}
+                        data={item}
+                        isClicked={isFavourite ? "clicked" : ""}
+                      />
+                    );
+                  })}
 
               {/* Load More Button */}
               {filteredData && visibleCount < filteredData.length && (

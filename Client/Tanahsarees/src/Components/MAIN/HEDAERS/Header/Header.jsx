@@ -29,6 +29,7 @@ const Header = (props) => {
   useEffect(() => {
     if (authStatus.user) {
       setFavouriteLength(authStatus.user.message.favourites.length);
+      console.log(authStatus.user.message.favourites.length);
       setCartLength(authStatus.user.message.cart.length);
       setLoggedIn(true);
 

@@ -69,9 +69,9 @@ const VideoCard = () => {
             <div key={index} className="px-2">
               {" "}
               {/* Add padding for spacing */}
-              <div className="light border-1 relative flex flex-col p-4 mb-4 rounded-md shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
+              <div className="light border-[1px] border-gray-300 relative flex flex-col p-4 mb-4 rounded-md shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
                 <video
-                  className="border-1 w-full h-full object-cover"
+                  className="border-[1px] border-gray-300 w-full h-full object-cover"
                   autoPlay
                   loop
                   muted
