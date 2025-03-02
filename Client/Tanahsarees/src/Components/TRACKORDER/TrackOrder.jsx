@@ -50,7 +50,7 @@ const TrackOrder = () => {
               }
               className=" flex-1 p-2  focus:outline-none border-b-[0.5px]"
             />
-            <button className="bg-[#883022] text-white px-4 py-2 rounded-md hover:bg-[#6f241a] transition">
+            <button className="dark lighttxt px-4 py-2 rounded-md hover:bg-[#6f241a] transition">
               Track
             </button>
           </div>
