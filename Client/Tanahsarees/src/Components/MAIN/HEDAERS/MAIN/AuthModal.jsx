@@ -7,6 +7,7 @@ import { AppContext } from "../../../../AppContext/AppContext";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { checkInput } from "../../../../Utils/checkInput";
 const AuthModal = ({ isOpen }) => {
   const navigate = useNavigate();
   const { isLogin, setIsLogin, Loginlargescreen, setLoginlargescreen } =
@@ -14,8 +15,8 @@ const AuthModal = ({ isOpen }) => {
 
   // ✅ Fixed: Separate email, phone, and password in state
   const [formData, setFormData] = useState({
-    email: "",
-    phone: "",
+    info: "",
+    name: "",
     password: "",
   });
 
@@ -27,12 +28,30 @@ const AuthModal = ({ isOpen }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       if (!isLogin) {
+        const type = checkInput(formData.info);
+        let dataObj = {};
+        if (type === "email") {
+          dataObj = {
+            name: formData.name,
+            email: formData.info,
+            password: formData.password,
+          };
+        } else if (type === "phone") {
+          dataObj = {
+            name: formData.name,
+            phone: formData.info,
+            password: formData.password,
+          };
+        } else {
+          toast.error("Invalid email or phone number");
+          return;
+        }
+
         const res = await axios.post(
           `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/signup`,
-          formData
+          dataObj
         );
         if (res.data.status === "success") {
           toast.success("Signup successful!");
@@ -42,9 +61,26 @@ const AuthModal = ({ isOpen }) => {
           toast.error("Signup failed. Please try again.");
         }
       } else {
+        const type = checkInput(formData.info);
+        let dataObj = {};
+        if (type === "email") {
+          dataObj = {
+            email: formData.info,
+            password: formData.password,
+          };
+        } else if (type === "phone") {
+          dataObj = {
+            phone: formData.info,
+            password: formData.password,
+          };
+        } else {
+          toast.error("Invalid email or phone number");
+          return;
+        }
+
         const res = await axios.post(
           `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/auth/login`,
-          formData,
+          dataObj,
           { withCredentials: true }
         );
         if (res.data.status === "success") {
@@ -57,7 +93,9 @@ const AuthModal = ({ isOpen }) => {
 
           toast.success("Login successful!");
 
-          setLoginlargescreen(!Loginlargescreen);
+          if (screen.width > 1000) {
+            setLoginlargescreen(!Loginlargescreen);
+          }
           if (window.location.pathname === "/") {
             setTimeout(() => {
               window.location.reload();
@@ -72,7 +110,7 @@ const AuthModal = ({ isOpen }) => {
         }
       }
     } catch (error) {
-      console.error("Error signing up", error);
+      toast.error("Something went wrong");
     }
   };
 
@@ -108,7 +146,7 @@ const AuthModal = ({ isOpen }) => {
         }, 800);
       }
     } catch (error) {
-      console.error("Google Login Error:", error);
+      toast.error("Google Login Error:", error);
     }
   };
 
@@ -127,28 +165,27 @@ const AuthModal = ({ isOpen }) => {
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-y-6 mt-6">
           {/* ✅ Fixed: Separate state field for email */}
-          <input
-            type="text"
-            name="email"
-            placeholder="Email..."
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full p-2 text-md border-b border-gray-300 outline-none"
-          />
-
-          {/* ✅ Show phone number input only for Signup */}
           {!isLogin && (
             <input
               type="text"
-              name="phone"
-              placeholder="Enter phone number..."
-              value={formData.phone}
+              name="name"
+              placeholder="Enter name..."
+              value={formData.email}
               onChange={handleChange}
               required
               className="w-full p-2 text-md border-b border-gray-300 outline-none"
             />
           )}
+          {/* ✅ Show phone number input only for Signup */}
+          <input
+            type="text"
+            name="info"
+            placeholder="Enter email/phone..."
+            value={formData.phone}
+            onChange={handleChange}
+            required
+            className="w-full p-2 text-md border-b border-gray-300 outline-none"
+          />
 
           {/* ✅ Fixed: Password field */}
           <input
@@ -160,7 +197,6 @@ const AuthModal = ({ isOpen }) => {
             required
             className="w-full p-2 text-md border-b border-gray-300 outline-none"
           />
-
           {/* ✅ Login/Signup toggle */}
           {isLogin ? (
             <div className="flex flex-col items-center">
@@ -185,7 +221,6 @@ const AuthModal = ({ isOpen }) => {
               Already have an account?
             </p>
           )}
-
           {/* ✅ Submit Button */}
           <button
             type="submit"
@@ -193,7 +228,6 @@ const AuthModal = ({ isOpen }) => {
           >
             {isLogin ? "Login" : "Signup"}
           </button>
-
           {/* ✅ Google Login Button */}
           <div className="google-btn">
             <button

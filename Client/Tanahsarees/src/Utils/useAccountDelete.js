@@ -3,8 +3,10 @@ import axios from "axios";
 import { useContext, useEffect } from "react";
 import { toast } from "react-toastify";
 import { AppContext } from "../AppContext/AppContext";
+import { useNavigate } from "react-router-dom";
 export const useAccountDelete = () => {
   const { clickDeleteAccount, setclickDeleteAccount } = useContext(AppContext);
+  const navigate = useNavigate();
   // Your logic here
   const deleteAccount = async () => {
     try {
@@ -18,7 +20,15 @@ export const useAccountDelete = () => {
       if (res.data.message === "User deleted successfully") {
         toast.success("Account deleted successfully");
         setclickDeleteAccount(false);
-        window.location.href = "/";
+        if (window.location.pathname === "/") {
+          setTimeout(() => {
+            window.location.reload();
+          }, 800);
+        } else {
+          setTimeout(() => {
+            navigate("/");
+          }, 800);
+        }
       } else {
         toast.error("Failed to delete account");
         setclickDeleteAccount(false); // Reset the flag after deletion failed
@@ -27,7 +37,7 @@ export const useAccountDelete = () => {
       console.error("Error deleting account:", error);
       toast.error("Failed to delete account");
       setclickDeleteAccount(false); // Reset the flag after deletion failed
-      window.location.href = "/";
+      // window.location.href = "/";
     }
   };
 
