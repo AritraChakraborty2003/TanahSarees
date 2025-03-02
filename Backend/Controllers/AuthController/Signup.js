@@ -3,11 +3,11 @@ import UserObj from "../../Models/User.js";
 export const Signup = () => {
   return async (req, res) => {
     try {
-      const { email, phone, password } = req.body;
-      const uname = email.split("@")[0];
+      const { name, email, phone, password } = req.body;
+
       const passwordHash = await bcrypt.hash(password, 10);
       const Userobj = new UserObj({
-        username: uname,
+        name: name,
         phone: phone,
         email: email,
         password: passwordHash,
