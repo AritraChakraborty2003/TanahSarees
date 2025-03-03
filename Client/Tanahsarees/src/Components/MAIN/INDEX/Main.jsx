@@ -93,8 +93,8 @@ const Main = () => {
 
         {/* <div className="mt-2 lg:mt-10"> */}
 
-        {screen.width <= 1280 && screen.height < 700 ? (
-          <div className="mt-[-10vmin]">
+        {screen.width <= 1366 && screen.height < 700 ? (
+          <div className="mt-[-13vmin]">
             <BannerSlider />
           </div>
         ) : (

@@ -112,8 +112,9 @@ const SliderComponent = () => {
         <>
           {(screen.width > 1280 && (
             <div
-              className="w-[100vw] pl-5 bg-[ #eee5da]" // Adjust based on actual header height
+              className="w-[100vw]  border-1 bg-[ #eee5da]" // Adjust based on actual header height
               style={{
+                // paddingBottom: "[-300px]",
                 paddingTop: `${
                   !change
                     ? document.getElementById("mainHeader")?.offsetHeight ||
@@ -136,7 +137,7 @@ const SliderComponent = () => {
                   <Slider
                     ref={sliderRef}
                     {...settings}
-                    className="  w-[100vw] 2xl:mt-[-46vmin] lg:mt-[-49vmin]  pr-[3.45vmin]"
+                    className="  w-[100vw] mb-[-20%] 2xl:mt-[-46vmin] lg:mt-[-49vmin]  pr-[3.45vmin]"
                   >
                     {items &&
                       [...items].map((item) => (
@@ -178,7 +179,7 @@ const SliderComponent = () => {
                 <>
                   <button
                     onClick={() => sliderRef.current.slickPrev()}
-                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.5%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.75%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
                   >
                     <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                   </button>
@@ -228,13 +229,13 @@ const SliderComponent = () => {
             </div>
           )) || (
             <div
-              className="w-[100vw] pl-5 bg-[#eee5da] border-1" // Adjust based on actual header height
+              className="w-[100vw]  pl-5 border-1" // Adjust based on actual header height
               style={{
                 paddingTop: `${
                   !change
                     ? document.getElementById("mainHeader")?.offsetHeight ||
-                      "675px"
-                    : "675px"
+                      "600px"
+                    : "600px"
                 }`,
 
                 zIndex: 900,
@@ -294,7 +295,7 @@ const SliderComponent = () => {
                 <>
                   <button
                     onClick={() => sliderRef.current.slickPrev()}
-                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[4.2%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                    className="absolute  left-1 lg:left-1  top-[40%] lg:top-[5.65%] 2xl:top-[6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
                   >
                     <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
                   </button>
@@ -309,7 +310,7 @@ const SliderComponent = () => {
                           <div className="ml-[-6vmin]">
                             <div className="flex flex-col gap-y-3 justify-center items-center">
                               <div
-                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[40vh] border-[#EEE5DA] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
+                                className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[21vw] lg:h-[48vh] border-[#EEE5DA] border-[2px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center shadow-lg"
                                 style={{
                                   backgroundImage: `url(${
                                     import.meta.env.VITE_APP_API_URL +
@@ -333,7 +334,7 @@ const SliderComponent = () => {
                   </Slider>
                   <button
                     onClick={() => sliderRef.current.slickNext()}
-                    className="absolute  right-1 lg:right-1  top-[40%] lg:top-[4.2%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
+                    className="absolute  right-1 lg:right-1  top-[40%] lg:top-[5.6%] 2xl:top-[5.6%] transform -translate-y-1/2 z-10 dark lighttxt p-1 lg:p-3  rounded-full shadow-md"
                   >
                     <ChevronRight size={screen.width > 1000 ? 24 : 14} />
                   </button>

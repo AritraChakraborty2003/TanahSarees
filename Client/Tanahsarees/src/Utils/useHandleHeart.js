@@ -23,7 +23,7 @@ const useHandleHeart = () => {
       console.log("heart clicked", heartItem);
       axios
         .patch(
-          `${import.meta.env.VITE_APP_API_URL}api/v1/favourites/heart`,
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/favourites/heart`,
           { pid: heartItem },
           { withCredentials: true }
         )

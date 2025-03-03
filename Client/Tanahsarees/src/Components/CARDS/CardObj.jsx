@@ -19,7 +19,7 @@ const CardObj = (props) => {
               tiltMaxAngleY={15} // Tilt angle on Y-axis
               scale={1.03} // Image zoom on hover
               transitionSpeed={500} // Smooth transition
-              className="relative lg:ml-0  w-[45vw]  lg:w-80  dark rounded-lg shadow-lg overflow-hidden"
+              className="relative lg:ml-0  w-[45vw]  lg:w-64  dark rounded-lg shadow-lg overflow-hidden"
             >
               {/* Image Section */}
               <div
