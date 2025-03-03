@@ -37,6 +37,7 @@ import CMSorderCard from "./Components/CMS/CMScards/CMSorderCard";
 import CMSReviews from "./Components/CMS/CMScards/CMSReviews";
 import ScrollToTop from "./Components/MAIN/Support/ScrollToTop";
 import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
+import PayPage from "../TestPage/PayPage";
 // import { useLocation } from "react-router-dom";
 
 // axios.defaults.withCredentials = true;
@@ -302,6 +303,15 @@ const router = createBrowserRouter([
           <CMSReviews />
           <Footer />
         </ProtectedRoute>
+      </>
+    ),
+  },
+
+  {
+    path: "/pay",
+    element: (
+      <>
+        <PayPage />
       </>
     ),
   },
