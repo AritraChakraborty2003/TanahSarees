@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
 import { useContext, useState, useEffect } from "react";
@@ -162,7 +161,7 @@ const Productdescription = () => {
 
   const data_res = UseHTTPRequest(
     null,
-    "/favourites/heart",
+    "/favourites",
     "PATCH",
     favItem,
     "favourite"
