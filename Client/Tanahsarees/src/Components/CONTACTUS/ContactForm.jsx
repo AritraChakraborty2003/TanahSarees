@@ -41,8 +41,8 @@ export default function ContactForm() {
         zIndex: 10, // Keep content below the header
       }}
     >
-      <div className="w-[96vw] lg:max-w-lg mx-auto p-6 bg-white shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15 font-Montserrat">
-        <h2 className="text-4xl lg:text-5xl font-medium text-center text-gray-500 overflow-hidden">
+      <div className="w-[96vw] lg:max-w-lg mx-auto p-6 light shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15 font-Montserrat">
+        <h2 className="text-4xl lg:text-5xl font-medium text-center darktxt overflow-hidden">
           Contact Us
         </h2>
         <p className="text-sm lg:text-md text-center mt-2  text-gray-500">
@@ -60,7 +60,7 @@ export default function ContactForm() {
                 type="text"
                 placeholder="Your Name"
                 {...register("name", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg  outline-none"
+                className="w-full p-3 border darktxt rounded-lg  outline-none"
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">Name is required</p>
@@ -72,7 +72,7 @@ export default function ContactForm() {
                 type="email"
                 placeholder="Your Email"
                 {...register("email", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg  outline-none"
+                className="w-full p-3 border border-[#262424] rounded-lg  outline-none"
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">Email is required</p>
@@ -85,7 +85,7 @@ export default function ContactForm() {
               <textarea
                 placeholder="Your Message"
                 {...register("message", { required: true })}
-                className="w-full p-3 border border-gray-300 rounded-lg outline-none h-32 resize-none"
+                className="w-full p-3 border border-[#262424] rounded-lg outline-none h-32 resize-none"
               />
               {errors.message && (
                 <p className="text-red-500 text-sm mt-1">Message is required</p>
@@ -94,7 +94,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#883022] text-white py-3 rounded-lg font-semibold hover:bg-[#c28076] transition-all"
+              className="w-full bg-[#262424] lighttxt py-3 rounded-lg font-semibold hover:bg-gray-900 cursor-pointer transition-all"
             >
               {loading ? "Sending..." : "Send Message"}
             </button>

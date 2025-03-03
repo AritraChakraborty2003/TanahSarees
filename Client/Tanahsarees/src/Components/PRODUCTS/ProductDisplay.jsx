@@ -7,6 +7,8 @@ import { AppContext } from "../../AppContext/AppContext";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
+import { useLocation } from "react-router-dom";
+import useHandleHeart from "../../Utils/usehandleHeart";
 
 const ProductDisplay = () => {
   const {
@@ -25,25 +27,21 @@ const ProductDisplay = () => {
     setFilteredData,
   } = useContext(AppContext);
 
-  useEffect(() => {
-    if (heartItem) {
-      setHeartClick(true);
-    }
-  }, [heartItem]);
-
-  const data_heart = UseHTTPRequest(
-    null,
-    "/favourites/heart",
-    "PATCH",
-    heartItem,
-    "heart"
-  );
   const [Filter, setFilter] = useState(true);
   const [visibleCount, setVisibleCount] = useState(12); // Controls items displayed
-
-  const authStatus = useCheckAuth(null, "auth");
+  const [tigger, setTigger] = useState(false);
+  const authStatus = useCheckAuth(tigger, "auth");
+  const heart = useHandleHeart();
 
   const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
+
+  const location = useLocation();
+
+  useEffect(() => {
+    window.addEventListener("popstate", (event) => {
+      window.location.reload();
+    });
+  }, [location]);
 
   useEffect(() => {
     if (data && JSON.stringify(data) !== JSON.stringify(sareeData)) {
@@ -55,6 +53,9 @@ const ProductDisplay = () => {
   useEffect(() => {
     window.innerWidth > 1000 ? setFilter(true) : setFilter(false);
   }, []);
+  useEffect(() => {
+    setTigger(!tigger);
+  }, [heartSave]);
 
   const toggleFilter = () => setFilter(!Filter);
   const loadMore = () => setVisibleCount((prev) => prev + 12); // Increase count by 12
@@ -148,8 +149,8 @@ const ProductDisplay = () => {
                       isClicked={
                         authStatus.isAuthenticated &&
                         authStatus.user.message.favourites.includes(item._id)
-                          ? "clicked"
-                          : ""
+                          ? true
+                          : false
                       }
                     />
                   ))
@@ -163,8 +164,8 @@ const ProductDisplay = () => {
                       data={item}
                       isClicked={
                         authStatus.user.message.favourites.includes(item._id)
-                          ? "clicked"
-                          : ""
+                          ? true
+                          : false
                       }
                     />
                   ))}

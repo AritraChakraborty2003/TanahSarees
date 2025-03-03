@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
+
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect, useContext } from "react";
@@ -24,23 +24,15 @@ const ProductCard = (props) => {
   } = useContext(AppContext);
   const [isQuickView, setIsQuickView] = useState(false);
   const [isFavorite, setIsFavourite] = useState(true);
-  const [isClick, setClick] = useState(false);
+  const [isClick, setClick] = useState(props.isClicked);
   const { _id, photo, sname, price } = props.data;
   const { type, Fav, isClicked } = props;
 
   const [heartClickTemp, setHeartClickTemp] = useState(false);
 
-  console.log(isClicked);
-  useEffect(() => {
-    if (isClicked === "clicked") {
-      setClick(true);
-    }
-  });
-
   const {
     activeProduct,
     setActiveProduct,
-    activeFilter,
     setActiveFilter,
     filteredData,
     setFilteredData,
@@ -49,12 +41,6 @@ const ProductCard = (props) => {
     activeCartId,
     setactiveCartId,
   } = useContext(AppContext);
-
-  useEffect(() => {
-    if (Fav === true) {
-      setClick(true);
-    }
-  }, []);
 
   // const res = useHandleCart();
 
@@ -127,6 +113,7 @@ const ProductCard = (props) => {
                 if (authStatus.isAuthenticated) {
                   setHeartItem(_id);
                   setClick(!isClick);
+                  setHeartClick(true);
                 } else {
                   if (screen.width > 1000) {
                     setLoginlargescreen(true);

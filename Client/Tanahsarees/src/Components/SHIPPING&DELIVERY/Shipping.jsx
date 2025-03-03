@@ -38,7 +38,7 @@ const Shipping = () => {
       }}
     >
       {/* First Internal Div - Breadcrumbs */}
-      <div className="flex flex-col items-center text-gray-600 mt-10 p-1 ">
+      <div className="flex flex-col items-center darktxt mt-10 p-1 ">
         <p className="text-sm mb-3 font-Montserrat">Home / Shipping</p>
         <p className="text-5xl lg:text-7xl font-medium overflow-hidden p-1 font-Montserrat">
           DELIVERY

@@ -54,7 +54,7 @@ const Faqcomponent = (props) => {
   const styles = {
     // bgColor: 'white',
     titleTextColor: "grey",
-    rowTitleColor: "#c97366",
+    rowTitleColor: "#262424",
     rowContentColor: "grey",
     titleTextSize: "3.5vmin",
     titleTextAlign: "center",
@@ -91,10 +91,10 @@ const Faqcomponent = (props) => {
           <>
             {!props?.type && (
               <>
-                <p className="text-center font-Montserrat text-gray-600 font-extralight  text-xs lg:text-sm">
+                <p className="text-center font-Montserrat darktxt font-extralight  text-xs lg:text-sm">
                   Home / Frequently Asked Questions - India
                 </p>
-                <p className="text-center font-Montserrat text-gray-600 font-medium text-2xl overflow-hidden lg:text-4xl mt-2 lg:mt-5 ">
+                <p className="text-center font-Montserrat darktxt font-medium text-2xl overflow-hidden lg:text-4xl mt-2 lg:mt-5 ">
                   Frequently Asked Questions
                 </p>
               </>
@@ -107,10 +107,10 @@ const Faqcomponent = (props) => {
           <>
             {!props?.type && (
               <>
-                <p className="text-center font-Montserrat text-gray-600 font-extralight  text-xl">
+                <p className="text-center font-Montserrat darktxt font-extralight  text-xl">
                   Home / Frequently Asked Questions - India
                 </p>
-                <p className="text-center font-Montserrat text-gray-600 overflow-hidden  font-medium text-2xl lg:text-4xl mt-2 lg:mt-5 ">
+                <p className="text-center font-Montserrat darktxt overflow-hidden  font-medium text-2xl lg:text-4xl mt-2 lg:mt-5 ">
                   Frequently Asked Questions
                 </p>
               </>

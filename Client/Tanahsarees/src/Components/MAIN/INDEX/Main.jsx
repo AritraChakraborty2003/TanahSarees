@@ -14,7 +14,7 @@ import VideoCard from "../VIDEOCARD/VideoCard";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../../AppContext/AppContext";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Main = () => {
   const authStatus = useCheckAuth(null, "auth");
@@ -29,6 +29,24 @@ const Main = () => {
     smallSearchBox,
     setSmallSearchBox,
   } = useContext(AppContext);
+
+  ///-->>> this is code for updating th add favourite item in product display//--->>>>
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const handlePopState = () => {
+      if (location.pathname === "/products") {
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [location]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
