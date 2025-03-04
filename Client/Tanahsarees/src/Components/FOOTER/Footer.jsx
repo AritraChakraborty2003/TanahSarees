@@ -5,7 +5,7 @@ const Footer = () => {
       <div
         className={`${
           screen.width <= 375 ? "h-[100vh]" : "h-[77vh]"
-        } lg:h-[110vh] w-[100vw] 2xl:h-[80vh]`}
+        } lg:h-[90vh] w-[100vw] 2xl:h-[80vh]`}
         style={{
           backgroundImage: `url(shivam-baraik-HvZEpNO1Mp0-unsplash.jpg)`,
 

@@ -39,6 +39,7 @@ import ScrollToTop from "./Components/MAIN/Support/ScrollToTop";
 import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 
 import { TestPay } from "../TestPay/TestPay";
+import ResultPage from "../TestPay/ResultPage";
 // import { useLocation } from "react-router-dom";
 
 // axios.defaults.withCredentials = true;
@@ -313,6 +314,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <TestPay />
+      </>
+    ),
+  },
+  {
+    path: "/result",
+    element: (
+      <>
+        <ResultPage />
       </>
     ),
   },
