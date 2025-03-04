@@ -30,11 +30,11 @@ const useHandleHeart = () => {
         .then((response) => {
           if (response.data.message === "Success") {
             setHeartClick(false);
-            setHeartSave(true);
+            setHeartSave(!heartSave);
             setFavouriteLength(response.data.size);
           } else {
             setHeartClick(false);
-            setHeartSave(true);
+            setHeartSave(!heartSave);
             setFavouriteLength(response.data.size);
           }
         })
