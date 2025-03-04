@@ -1,50 +1,41 @@
-/* eslint-disable react/jsx-key */
-import { useContext } from "react";
+/* eslint-disable no-unused-vars */
+
+import { useContext, useState, useEffect } from "react";
 import ProductCard from "../CARDS/ProductCard";
 import { AppContext } from "../../AppContext/AppContext";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
+import UseHTTPRequest from "../../Utils/useHTTPRequest";
+import useHandleHeart from "../../Utils/usehandleHeart";
+import { useHandleCart } from "../../Utils/useHandleCart";
 
 const Favourite = () => {
-  const { change } = useContext(AppContext);
-  const data = [
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3000",
-    },
-    // {
-    //   image: "/Sarees/saree1.jpg",
-    //   name: "Silk raw mango",
-    //   price: "3000",
-    // },
-    // {
-    //   image: "/Sarees/saree2.jpg",
-    //   name: "Silk raw mango",
-    //   price: "3000",
-    // },
-    // {
-    //   image: "/Sarees/saree8.jpg",
-    //   name: "Silk raw mango",
-    //   price: "3000",
-    // },
-  ];
+  const [tigger, setTigger] = useState(false);
+  const { change, heartSave } = useContext(AppContext);
+  const authStatus = useCheckAuth(tigger, "auth");
+  const sareeData = UseHTTPRequest(null, "/sarees", "GET", "", "");
+  const [data, setData] = useState([]);
+  const heart = useHandleHeart();
+
+  useEffect(() => {
+    if (authStatus.isAuthenticated) {
+      setData(authStatus.user.message.favourites);
+    }
+  }, [authStatus.isAuthenticated, authStatus.user]);
+  useEffect(() => {
+    console.log("tigger called");
+    // setTigger(!tigger);
+    setTigger((prev) => !prev);
+  }, [heartSave]);
+
+  const res = useHandleCart();
   return (
     <div
-      className="mt-100 pb-10"
+      className=" pb-10 lg:p-5 flex flex-col justify-center items-center"
       style={{
         marginTop: `${
           !change
             ? screen.width > 1000
-              ? "24%"
+              ? "19%"
               : ""
             : screen.width > 1000
             ? "14%"
@@ -60,10 +51,16 @@ const Favourite = () => {
             FAVOURITES
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-10 gap-y-8 justify-center items-center mt-10">
-          {data.map((item) => (
-            <ProductCard data={item} type={"favourite"} />
-          ))}
+        <div className="flex flex-wrap gap-x-5 lg:gap-x-10 gap-y-8 justify-center  items-center mt-10">
+          {sareeData && data.length > 0 ? (
+            sareeData
+              .filter((item) => data.includes(item._id))
+              .map((item) => (
+                <ProductCard data={item} type="favourite" key={item._id} />
+              ))
+          ) : (
+            <h1 className="text-2xl font-Montserrat">No Favourites</h1>
+          )}
         </div>
       </>
     </div>

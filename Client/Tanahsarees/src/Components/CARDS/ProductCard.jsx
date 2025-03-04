@@ -45,7 +45,7 @@ const ProductCard = (props) => {
   // const res = useHandleCart();
 
   return (
-    <div className="flex flex-col mt-6 lg:mt-0">
+    <div className="flex flex-col mt-6 ">
       <div
         className="flex relative flex-col gap-y-2 lg:gap-y-1"
         onMouseEnter={() => setIsQuickView(true)}
@@ -83,22 +83,51 @@ const ProductCard = (props) => {
         {/* Quick View Section with Transition */}
         {type === "favourite" && (
           <>
-            <div
-              className={`absolute w-[96%] lg:text-[1.85vmin] p-1 font-poppins bg-[#F58B75] text-amber-50 flex justify-center border-amber-50 bottom-[24.3%] right-[1.9%] 
+            {screen.width > 1000 && (
+              <Link
+                to="/product_descr"
+                onClick={() => {
+                  setActiveProduct(props.data);
+                  setActiveFilter(false);
+                  setFilteredData([]); // Reset filter data on click
+                  window.scrollTo(0, 0);
+                }}
+                className="block"
+              >
+                {" "}
+                <div
+                  className={`absolute  lg:mr-0 lg:w-[96%]  lg:text-[1.85vmin] p-1 font-poppins bg-[#F58B75] text-amber-50 flex justify-center border-amber-50 bottom-[24.3%] right-[1.9%] 
               transition-all duration-300 ease-in-out transform ${
                 isQuickView
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-5"
               }`}
-            >
-              Quick View
-            </div>
+                >
+                  Quick View
+                </div>
+              </Link>
+            )}
 
             {/* Favorite Heart */}
-            <div className="absolute bottom-[15.1%] right-[-5%] z-50 scale-60">
+            <div
+              id={_id}
+              className="absolute lg:bottom-[15.1%] bottom-[11%] right-[-5%] lg:right-[-5%] z-50 scale-60"
+            >
               <Heart
                 isClick={isFavorite}
-                onClick={() => setIsFavourite(!isFavorite)}
+                onClick={() => {
+                  if (authStatus.isAuthenticated) {
+                    setHeartItem(_id);
+                    setIsFavourite(!isFavorite);
+                    setHeartClick(true);
+                  } else {
+                    if (screen.width > 1000) {
+                      setLoginlargescreen(true);
+                    } else {
+                      setLoginOpen(true);
+                    }
+                  }
+                }}
               />
             </div>
           </>
@@ -135,7 +164,7 @@ const ProductCard = (props) => {
         </div>
       </div>
       <button
-        className="btn p-2 text-white bg-[#F58B75]"
+        className="btn p-1.5 mt-1 text-xs lg:p-2 text-white bg-[#F58B75]"
         onClick={() => {
           if (authStatus.isAuthenticated) {
             setactiveCartId(_id);
