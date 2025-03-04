@@ -1,12 +1,11 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       trim: true,
-      required: false,
       minlength: 3,
       maxlength: 60,
     },
@@ -14,47 +13,39 @@ const userSchema = mongoose.Schema(
     image: {
       type: String,
       trim: true,
-      required: false,
     },
 
     email: {
       type: String,
       unique: true,
-      required: false,
-      validate(value) {
-        if (!validator.isEmail(value)) {
-          throw new Error("Email is invalid");
-        }
+      validate: {
+        validator: (value) => validator.isEmail(value),
+        message: "Email is invalid",
       },
     },
+
     phone: {
       type: String,
       trim: true,
-      required: false,
       validate: {
-        validator: function (v) {
-          return /^\d{10}$/.test(v);
-        },
+        validator: (v) => /^\d{10}$/.test(v),
         message: "Please enter a valid phone number",
       },
     },
+
     password: {
       type: String,
-      required: false,
-      validate(value) {
-        if (!validator.isStrongPassword(value)) {
-          throw new Error("Password should be strong");
-        }
+      validate: {
+        validator: (value) => validator.isStrongPassword(value),
+        message: "Password should be strong",
       },
     },
+
     additionalNo: {
       type: String,
       trim: true,
-      required: false,
       validate: {
-        validator: function (v) {
-          return /^[0-9]{10}$/.test(v);
-        },
+        validator: (v) => /^[0-9]{10}$/.test(v),
         message: "Please enter a valid additional number",
       },
     },
@@ -63,28 +54,32 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
-    favourites: {
-      type: [String],
-      trim: true,
-    },
-    cart: {
-      type: [String],
-      trim: true,
-    },
-    orders: {
-      type: [String],
-      trim: true,
-    },
-    cancel: {
-      type: [String],
-      trim: true,
-    },
-    favourites: {
-      type: [String],
-      trim: true,
-    },
-  },
 
+    favourites: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+
+    cart: {
+      type: [{ type: Object }], // Allows storing objects dynamically
+    },
+
+    orders: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+
+    cancel: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
+  },
   {
     timestamps: true,
     collection: "users",

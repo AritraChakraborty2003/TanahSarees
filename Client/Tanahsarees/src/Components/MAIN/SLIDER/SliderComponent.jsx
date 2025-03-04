@@ -65,7 +65,8 @@ const SliderComponent = () => {
         style={{
           marginTop,
           zIndex: 10,
-          paddingBottom: 6,
+          paddingBottom: "4vmin",
+          paddingTop: "1.75vmin",
           // border: "1px solid black",
           display: "flex",
           justifyContent: "center",
