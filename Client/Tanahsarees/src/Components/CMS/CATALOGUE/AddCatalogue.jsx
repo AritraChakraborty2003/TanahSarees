@@ -8,6 +8,7 @@ const AddCatalogue = ({ onSubmit }) => {
 
   // Validation Schema
   const validationSchema = Yup.object({
+    sku: Yup.string().required("SKU is required"),
     sname: Yup.string().required("Product name is required"),
     type: Yup.string().required("Product type is required"),
     price: Yup.number()
@@ -48,6 +49,7 @@ const AddCatalogue = ({ onSubmit }) => {
     <div className="flex justify-center items-center p-4">
       <Formik
         initialValues={{
+          sku: "",
           sname: "",
           type: "",
           price: "",
@@ -75,7 +77,7 @@ const AddCatalogue = ({ onSubmit }) => {
         }}
       >
         {({ setFieldValue, values }) => (
-          <Form className="max-w-4xl w-full p-6 bg-white shadow-md rounded-lg">
+          <Form className="max-w-4xl w-full p-6 light darktxt shadow-md rounded-lg">
             <h2 className="text-xl font-semibold text-center mb-4">
               Add New Product
             </h2>
@@ -83,6 +85,15 @@ const AddCatalogue = ({ onSubmit }) => {
             {/* Grid Layout */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Name */}
+              <div>
+                <label className="block font-medium">SKU</label>
+                <Field name="sku" className="border p-2 w-full" />
+                <ErrorMessage
+                  name="sku"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
               <div>
                 <label className="block font-medium">Product Name</label>
                 <Field name="sname" className="border p-2 w-full" />
@@ -97,6 +108,7 @@ const AddCatalogue = ({ onSubmit }) => {
               <div>
                 <label className="block font-medium">Type</label>
                 <Field as="select" name="type" className="border p-2 w-full">
+                  <option value="">Select</option>
                   <option value="floral">Floral</option>
                   <option value="paestral">Paestral</option>
                   <option value="sequince">Sequince</option>
@@ -155,6 +167,7 @@ const AddCatalogue = ({ onSubmit }) => {
                   name="material"
                   className="border p-2 w-full"
                 >
+                  <option value="">Select</option>
                   <option value="silk">Silk</option>
                   <option value="orange">Orange</option>
                   <option value="mansoor">Mansoor Silk</option>
@@ -170,6 +183,7 @@ const AddCatalogue = ({ onSubmit }) => {
               <div>
                 <label className="block font-medium">Colour</label>
                 <Field as="select" name="colour" className="border p-2 w-full">
+                  <option value="">Select</option>
                   <option value="red">Red</option>
                   <option value="orange">Orange</option>
                   <option value="black">Black</option>
@@ -247,6 +261,7 @@ const AddCatalogue = ({ onSubmit }) => {
                     name="occasion"
                     className="border p-2 w-full"
                   >
+                    <option value="">Select</option>
                     <option value="Summer Collection">Summer Collection</option>
                     <option value="wedding">Wedding</option>
                     <option value="engagement">Engagement</option>
@@ -282,7 +297,7 @@ const AddCatalogue = ({ onSubmit }) => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-[#F58B74] text-white p-2 rounded-lg hover:bg-[#f19884] transition mt-6 cursor-pointer"
+              className="w-full dark lighttxt p-2 rounded-lg hover:bg-[#f19884] transition mt-6 cursor-pointer"
             >
               Submit
             </button>

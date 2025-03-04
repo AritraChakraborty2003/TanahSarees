@@ -84,7 +84,7 @@ const CMSordersCard = () => {
   };
 
   return (
-    <div className="w-full lg:w-[75vw] border-1 max-w-full mx-auto bg-white shadow-lg mt-[5vh] lg:mt-[30vh] mb-20 rounded-0 darktext font-Montserrat lg:rounded-2xl p-4">
+    <div className="w-full lg:w-[75vw] border-1 max-w-full mx-auto light shadow-lg mt-[5vh] lg:mt-[30vh] mb-20 rounded-0 darktxt font-Montserrat lg:rounded-2xl p-4">
       <div className="font-medium text-lg lg:text-3xl  text-center border-b-3 mb-4 p-5">
         Recent Orders
       </div>

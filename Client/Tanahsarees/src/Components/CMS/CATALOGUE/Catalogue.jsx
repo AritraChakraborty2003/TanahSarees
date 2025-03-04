@@ -98,15 +98,13 @@ const Catalogue = () => {
       </h1>
 
       {/* Navigation Tabs */}
-      <div className="relative flex justify-center space-x-5 lg:space-x-70 bg-[#F58B74] p-3 mt-5 w-[90vw] lg:rounded-lg">
+      <div className="relative flex justify-center space-x-5 lg:space-x-70 dark p-3 mt-5 w-[90vw] lg:rounded-lg">
         {["view", "update", "add"].map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`relative text-lg px-4 py-2 transition overflow-hidden ${
-              activeTab === tab
-                ? "bg-[#883022] rounded-2xl p-1 text-white"
-                : "text-white"
+              activeTab === tab ? "light rounded-2xl p-1 darktxt" : "text-white"
             }`}
           >
             {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -138,7 +136,7 @@ const Catalogue = () => {
               </div>
               <div
                 className={`flex flex-wrap p-1 gap-x-6 space-y-8 justify-center items-center mt-8 lg:mt-9 pt-6 ${
-                  data ? "bg-[#f7d9cb]" : "bg-white"
+                  data ? "light" : "bg-white"
                 }`}
               >
                 {data ? (

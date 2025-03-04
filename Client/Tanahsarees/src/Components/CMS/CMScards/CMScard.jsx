@@ -3,7 +3,7 @@ const CMScard = (props) => {
   const { title, icon, onClick } = props;
   return (
     <div
-      className="bg-[#F7D9CB] shadow-md rounded-lg p-2 w-[40vw]  lg:w-[15vw]  flex flex-weap flex-col items-center space-x-4 cursor-pointer hover:shadow-[#a52a2a9c] hover:shadow-lg transition"
+      className="light darktxt shadow-md rounded-lg p-2 w-[40vw]  lg:w-[15vw]  flex flex-weap flex-col items-center space-x-4 cursor-pointer hover:shadow-[#a52a2a9c] hover:shadow-lg transition"
       onClick={onClick}
     >
       <div className="text-sm lg:text-3xl lg:p-10 h-[15vmin] w-[15vmin] lg:h-[20vmin] lg:w-[20vmin]">
