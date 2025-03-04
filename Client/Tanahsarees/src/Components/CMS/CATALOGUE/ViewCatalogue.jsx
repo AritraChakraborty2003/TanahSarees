@@ -30,7 +30,7 @@ const ViewCatalogue = (props) => {
         </Tilt>
 
         <div
-          className={`absolute w-[96%] text-[3vmin] lg:text-[1.85vmin] p-1 font-poppins bg-[#F58B75] text-amber-50 flex justify-center border-amber-50 bottom-[26.5%] lg:bottom-[22.3%] right-[1.9%] 
+          className={`absolute w-[96%] text-[3vmin] lg:text-[1.85vmin] p-1 font-poppins dark text-amber-50 flex justify-center border-amber-50 bottom-[26.5%] lg:bottom-[22.3%] right-[1.9%] 
               transition-all duration-300 ease-in-out transform ${
                 isQuickView
                   ? "opacity-100 translate-y-0"
@@ -39,7 +39,7 @@ const ViewCatalogue = (props) => {
         >
           Quick View
         </div>
-        <div className="absolute ml-[84%] lg:ml-[83%] darktext text-lg lg:text-3xl 2xl:text-xl mt-1.5 ">
+        <div className="absolute ml-[84%] lg:ml-[83%] darktxt text-lg lg:text-3xl 2xl:text-xl mt-1.5 ">
           <p
             className="hover:shadow-lg hover:text-[red] transition-shadow duration-300"
             onClick={() => {
@@ -54,7 +54,7 @@ const ViewCatalogue = (props) => {
           <p>₹{price}</p>
         </div>
       </div>
-      <button className="btn p-2 text-amber-50 font-normal bg-[#F58B75] font-poppins text-[3.35vmin] lg:text-[2.10vmin] cursor-pointer">
+      <button className="btn p-2 lighttxt font-normal dark font-poppins text-[3.35vmin] lg:text-[2.10vmin] cursor-pointer">
         Buy Now
       </button>
     </div>

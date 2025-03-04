@@ -47,9 +47,7 @@ export const PaymentVerification = () => {
         .digest("hex");
 
       if (hmac !== razorpay_signature) {
-        return res
-          .status(400)
-          .json({ success: false, message: "Payment verification failed!" });
+        return res.json({ message: "Failure" });
       }
 
       // Update DB as needed
@@ -59,7 +57,9 @@ export const PaymentVerification = () => {
       //   { new: true }
       // );
 
-      res.json({ success: true, message: "Payment Successful!" });
+      res.redirect(
+        "http://localhost:5173/result?type=&ref=" + razorpay_order_id
+      );
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
     }
