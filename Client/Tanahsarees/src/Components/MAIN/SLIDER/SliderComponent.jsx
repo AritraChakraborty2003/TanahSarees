@@ -65,6 +65,7 @@ const SliderComponent = () => {
         style={{
           marginTop,
           zIndex: 10,
+          paddingBottom: 6,
           // border: "1px solid black",
           display: "flex",
           justifyContent: "center",
@@ -85,7 +86,7 @@ const SliderComponent = () => {
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
                     <Link to="/products">
                       <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] shadow-lg shadow-amber-100 border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] shadow-lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
                         style={{
                           backgroundImage: `url(${
                             import.meta.env.VITE_APP_API_URL + item.photo

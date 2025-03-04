@@ -34,7 +34,7 @@ const CardText = (props) => {
 
   return (
     <>
-      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-17 lg:gap-y-10 2xl:gap-y-3">
+      <div className="flex flex-wrap pb-4 justify-center items-center overflow-hidden cursor-pointer gap-x-5 gap-y-6 lg:gap-x-10 lg:gap-y-10 2xl:gap-y-3">
         {data.map((item) => (
           <Tilt
             tiltMaxAngleX={screen.width > 800 ? 15 : 0} // Tilt angle on X-axis

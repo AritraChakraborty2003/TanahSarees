@@ -58,7 +58,7 @@ export const PaymentVerification = () => {
       // );
 
       res.redirect(
-        "http://localhost:5173/result?type=&ref=" + razorpay_order_id
+        "http://localhost:5173/result?type=success&ref=" + razorpay_order_id
       );
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });

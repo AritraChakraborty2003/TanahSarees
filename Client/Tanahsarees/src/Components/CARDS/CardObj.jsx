@@ -11,7 +11,7 @@ const CardObj = (props) => {
   const { activeProduct, setActiveProduct } = useContext(AppContext);
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-6  lg:gap-x-17 2xl:gap-x-10">
+      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6  lg:gap-x-5 2xl:gap-x-10">
         {data.map((item) => (
           <div className="flex  flex-col gap-y-2 lg:gap-y-1 2xl:gap-y-5">
             <Tilt
