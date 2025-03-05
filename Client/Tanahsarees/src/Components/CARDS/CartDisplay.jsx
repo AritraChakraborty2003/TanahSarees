@@ -1,26 +1,49 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import Tilt from "react-parallax-tilt";
-const CartDisplay = (props) => {
+
+const CartDisplay = ({ data, chosen, setChosen }) => {
   const [isQuickView, setIsQuickView] = useState(false);
-  const { image, name, price } = props.data;
+  const { image, name, price, _id } = data;
+
+  const handleCheckboxChange = (e) => {
+    if (e.target.checked) {
+      setChosen((prev) => [...prev, _id]); // Add item ID
+    } else {
+      setChosen((prev) => prev.filter((id) => id !== _id)); // Remove if unchecked
+    }
+  };
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col border-1 border-gray-200 rounded-lg shadow-lg">
       <div
-        className="flex relative flex-col mb-4 w-[35vw] lg:w-[15vw] gap-y-2 lg:gap-y-1 cursor-pointer"
+        className="flex relative flex-col mb-4 w-[40vw] lg:w-[15vw] gap-y-2 lg:gap-y-1 cursor-pointer"
         onMouseEnter={() => setIsQuickView(true)}
         onMouseLeave={() => setIsQuickView(false)}
       >
+        {/* Checkbox */}
+        <div className="absolute z-50 top-2 left-2">
+          <input
+            type="checkbox"
+            value={_id}
+            checked={chosen.includes(_id)} // Check if ID exists in chosen
+            onChange={handleCheckboxChange}
+            className="w-5 h-5"
+          />
+        </div>
+
+        {/* Image */}
         <Tilt
-          tiltMaxAngleX={0} // Tilt angle on X-axis
-          tiltMaxAngleY={0} // Tilt angle on Y-axis
-          scale={1.03} // Image zoom on hover
-          transitionSpeed={500} // Smooth transition
+          tiltMaxAngleX={0}
+          tiltMaxAngleY={0}
+          scale={1.03}
+          transitionSpeed={500}
           className="rounded-lg"
         >
           <img src={image} alt={name} />
         </Tilt>
 
+        {/* Quick View */}
         <div
           className={`absolute w-[96%] text-[3vmin] lg:text-[1.85vmin] p-1 font-poppins bg-[#F58B75] text-amber-50 flex justify-center border-amber-50 bottom-[26.5%] lg:bottom-[22.3%] right-[1.9%] 
               transition-all duration-300 ease-in-out transform ${
@@ -31,19 +54,13 @@ const CartDisplay = (props) => {
         >
           Quick View
         </div>
-        <div className="absolute ml-[84%] lg:ml-[86%] darktext text-lg lg:text-3xl 2xl:text-xl mt-2 ">
-          <p className="hover:shadow-lg hover:text-[red] transition-shadow duration-300">
-            ⛌
-          </p>
-        </div>
+
+        {/* Name & Price */}
         <div className="flex flex-col text-center text-gray-600">
           <h2>{name}</h2>
           <p>₹{price}</p>
         </div>
       </div>
-      <button className="btn p-2 text-amber-50 font-normal bg-[#F58B75] font-poppins text-[3.35vmin] lg:text-[2.10vmin] cursor-pointer">
-        Buy Now
-      </button>
     </div>
   );
 };

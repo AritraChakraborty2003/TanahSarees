@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
@@ -19,6 +20,8 @@ const Header = (props) => {
     cartLength,
     setCartLength,
     setLoginOpen,
+    ReloadDrawer,
+    setReloadDrawer,
   } = useContext(AppContext);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [tigger, setTigger] = useState(false);
@@ -74,6 +77,12 @@ const Header = (props) => {
   const closeLoginLargeModal = () => {
     setLoginlargescreen(false);
   };
+  useEffect(() => {
+    if (ReloadDrawer) {
+      toggleDrawer();
+      setReloadDrawer(!ReloadDrawer);
+    }
+  }, [ReloadDrawer]);
 
   useEffect(() => {
     console.log("Search Data called");
@@ -158,7 +167,7 @@ const Header = (props) => {
                   {/* Heart Icon */}
 
                   <a
-                    className="mt-[-0.65vmin] darktxt text-[4.75vmin] font-extralight relative"
+                    className="mt-[-0.65vmin] darktxt text-[4.75vmin] font-extralight relative cursor-pointer"
                     onClick={() => {
                       if (!authStatus.user && !authStatus.isAuthenticated) {
                         openLoginLargeModal();
@@ -177,7 +186,7 @@ const Header = (props) => {
                   </div>
                 </div>
 
-                <a className="mt-[-1vmin] darktxt text-[4.75vmin] font-extralight">
+                <a className="mt-[-1vmin] darktxt text-[4.75vmin] font-extralight cursor-pointer">
                   <i
                     className="ri-user-line "
                     onClick={() => {
@@ -196,7 +205,13 @@ const Header = (props) => {
                   <a className="mt-[-1.35vmin] 2xl:mt-[-2vmin] darktxt text-[4.75vmin] font-extralight">
                     <i
                       className="ri-shopping-cart-line"
-                      onClick={toggleDrawer}
+                      onClick={() => {
+                        if (!authStatus.user && !authStatus.isAuthenticated) {
+                          openLoginLargeModal();
+                        } else {
+                          setReloadDrawer(!ReloadDrawer);
+                        }
+                      }}
                     ></i>
                   </a>
 
@@ -265,18 +280,21 @@ const Header = (props) => {
                     <a className="mt-[-0.65vmin] darktxt text-[9vmin] font-extralight relative">
                       <i
                         className="ri-shopping-cart-line"
-                        onClick={toggleDrawer}
+                        onClick={() => {
+                          if (!authStatus.user && !authStatus.isAuthenticated) {
+                            setLoginOpen(true);
+                          } else {
+                            setReloadDrawer(!ReloadDrawer);
+                          }
+                        }}
                       ></i>{" "}
                       {/* Heart Icon */}
-                      <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
-                        {favouriteLength}
-                      </div>
                     </a>
-
-                    {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
                       {cartLength}
                     </div>
+
+                    {/* Notification Circle (Positioned Over Heart) */}
                   </div>
                 </div>
               ) : (
