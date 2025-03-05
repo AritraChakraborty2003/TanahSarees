@@ -2,6 +2,7 @@ import express from "express";
 
 import {
   DecreaseCartPatch,
+  generalCartGet,
   generalCartPatch,
   IncreaseCartPatch,
   RemoveCartItem,
@@ -12,3 +13,4 @@ cartRouter.patch("/", generalCartPatch());
 cartRouter.patch("/increase", IncreaseCartPatch());
 cartRouter.patch("/decrease", DecreaseCartPatch());
 cartRouter.patch("/remove", RemoveCartItem());
+cartRouter.get("/", generalCartGet);

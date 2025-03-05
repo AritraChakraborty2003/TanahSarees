@@ -30,7 +30,7 @@ const Favourite = () => {
   const res = useHandleCart();
   return (
     <div
-      className=" pb-10  lg:pb-10 flex flex-col justify-center items-center"
+      className=" pb-10 lg:pl-10 lg:pr-10 lg:pb-10 flex flex-col justify-center items-center"
       style={{
         marginTop: `${
           !change

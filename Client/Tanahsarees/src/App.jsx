@@ -148,9 +148,11 @@ const router = createBrowserRouter([
     path: "/cart",
     element: (
       <>
-        <MainHeader scrollValue="30" />
-        <Carts />
-        <Footer />
+        <ProtectedRouteUser>
+          <MainHeader scrollValue="30" />
+          <Carts />
+          <Footer />
+        </ProtectedRouteUser>
       </>
     ),
   },
@@ -403,6 +405,9 @@ const App = () => {
   const [heartSave, setHeartSave] = useState(false);
 
   const [heartItem, setHeartItem] = useState("");
+  const [cartDrawerTigger, setCartDrawerTigger] = useState(false);
+  const [cartTotal, setCartTotal] = useState(0);
+  const [ReloadDrawer, setReloadDrawer] = useState(false);
 
   return (
     <>
@@ -479,6 +484,12 @@ const App = () => {
           setHeartSave,
           heartItem,
           setHeartItem,
+          cartDrawerTigger,
+          setCartDrawerTigger,
+          cartTotal,
+          setCartTotal,
+          ReloadDrawer,
+          setReloadDrawer,
         }}
       >
         <RouterProvider router={router} />

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
@@ -18,6 +17,7 @@ import { height } from "@mui/system";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useCheckAuth } from "../../../../Utils/useCheckAuth";
+import UseHTTPRequest from "../../../../Utils/useHTTPRequest";
 
 export default function MainHeader(props) {
   const {
@@ -29,6 +29,12 @@ export default function MainHeader(props) {
     setLoginOpen,
     setIsLoggedIn,
     setIsAdminLogin,
+    cartDrawerTigger,
+    setCartDrawerTigger,
+    cartTotal,
+    setCartTotal,
+    ReloadDrawer,
+    setReloadDrawer,
   } = useContext(AppContext);
   const { isLogin, setIsLogin } = useContext(AppContext);
 
@@ -43,45 +49,51 @@ export default function MainHeader(props) {
       setLoggedIn(true);
     }
   }, [authStatus]);
+  const [tiggerCart, settiggerCart] = useState(false);
+  const [cartdata, setCartData] = useState([]);
+  const [data, setData] = useState([]);
 
-  const data = [
-    {
-      image: "/Sarees/saree11.jpg",
-      name: "Silk raw mango raw pes pesus and hugs and currency",
-      price: "3000",
-      size: "xl",
-      type: "Raw mango",
-    },
-    {
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango raw pes pesus  and hugs and currency ",
-      price: "3000",
-      size: "xl",
-      type: "Raw mango",
-    },
-    {
-      image: "/Sarees/saree2.jpg",
-      name: "Silk raw mango raw pes pesus  and hugs and currency",
-      price: "3000",
-      size: "xl",
-      type: "Raw mango",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      name: "Silk raw mango raw pes pesus  and hugs and currency",
-      price: "3000",
-      size: "xl",
-      type: "Raw mango",
-    },
-    {
-      image: "/Sarees/saree4.jpg",
-      name: "Silk raw mango raw pes pesus ",
-      price: "3000",
-      size: "xl",
-      type: "Raw mango",
-    },
-  ];
-  setContentCart(data.length);
+  const sareeData = UseHTTPRequest(tiggerCart, "/sarees", "GET", "", "");
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/cart`,
+          { withCredentials: true }
+        );
+        const cartItems = response.data;
+        setCartData(cartItems);
+
+        // Ensure sareeData is available before filtering
+        if (!sareeData || sareeData.length === 0) return;
+
+        const updatedFilteredData = sareeData
+          .filter((saree) =>
+            cartItems.some((cartItem) => cartItem.pid === saree._id)
+          )
+          .map((saree) => ({
+            ...saree,
+            qty:
+              cartItems.find((cartItem) => cartItem.pid === saree._id)?.qty ||
+              1,
+          }));
+
+        const calculatedTotal = updatedFilteredData.reduce(
+          (acc, item) => acc + item.price * item.qty,
+          0
+        );
+        setCartTotal(calculatedTotal);
+
+        setData(updatedFilteredData);
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+
+    fetchCart();
+  }, [sareeData, tiggerCart, cartDrawerTigger, ReloadDrawer]); // Updated dependency array
+  // setContentCart(data.length);
   const {
     cartIsOpen,
     toggleDrawer,
@@ -388,21 +400,24 @@ export default function MainHeader(props) {
               >
                 <div className="flex flex-col gap-y-6 pb-1 mt-4  w-full">
                   {data.map((item, index) => (
-                    <CartsCard data={item} id={index} />
+                    <CartsCard data={item} key={item._id} id={item._id} />
                   ))}
+
+                  {/* {console.log("data:", data)}
+                  {data.length > 0 && console.log("hello cart")} */}
                 </div>
               </div>
             </div>
             <div
-              className={`absolute flex flex-col justify-center items-center ${
-                screen.width > 800
-                  ? contentCart <= 2
-                    ? "bottom-3"
-                    : ""
-                  : contentCart <= 2
-                  ? "bottom-[17vmin]"
-                  : ""
-              }`}
+            // className={`absolute flex flex-col justify-center items-center ${
+            //   // screen.width > 800
+            //   //   ? contentCart <= 2
+            //   //     ? "bottom-3"
+            //   //     : ""
+            //   //   : contentCart <= 2
+            //   //   ? "bottom-[17vmin]"
+            //   //   : ""
+            // }`}
             >
               <div className="TotalItems border-[#262424] border-t-[0.15px] w-[96%] flex flex-col pl-3 mt-3 ">
                 <div className="flex  subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
@@ -411,7 +426,7 @@ export default function MainHeader(props) {
                   </p>
                   <div className="flex subtotalArea  w-[50vw] lg:w-[26vw] p-1 justify-end mt-[-1.35vmin] lg:mt-[-1vmin] ">
                     <p className="text-end  darktxt font-Montserrat font-normal tracking-[2.35px] text-xs lg:text-sm">
-                      ₹2579
+                      ₹{cartTotal}
                     </p>
                   </div>
                 </div>

@@ -1,6 +1,30 @@
 import UserObj from "../../Models/User.js";
 import jwt from "jsonwebtoken";
 
+export const generalCartGet = async (req, res) => {
+  try {
+    const token = req.cookies.ecom_token;
+
+    if (!token) {
+      return res
+        .status(401)
+        .json({ message: "Not authorized", status: "Not Login" });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+
+    console.log("API Hit!!!");
+
+    const user = await UserObj.findById(decoded.id);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    return res.status(200).json(user.cart);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
 export const generalCartPatch = () => {
   return async (req, res) => {
     try {
@@ -54,6 +78,7 @@ export const IncreaseCartPatch = () => {
     try {
       const token = req.cookies.ecom_token;
       const pid = req.body.pid;
+      console.log(token, pid);
       if (!token) {
         return res
           .status(401)
