@@ -13,8 +13,13 @@ import { toast } from "react-toastify";
 
 import { useCheckAuth } from "../../../../Utils/useCheckAuth";
 const Header = (props) => {
-  const { favouriteLength, setFavouriteLength, cartLength, setCartLength } =
-    useContext(AppContext);
+  const {
+    favouriteLength,
+    setFavouriteLength,
+    cartLength,
+    setCartLength,
+    setLoginOpen,
+  } = useContext(AppContext);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [tigger, setTigger] = useState(false);
 
@@ -151,12 +156,19 @@ const Header = (props) => {
               <div className="relative purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
                 <div className="relative inline-block">
                   {/* Heart Icon */}
-                  <Link to={"/favourites"}>
-                    {" "}
-                    <a className="mt-[-0.65vmin] darktxt text-[4.75vmin] font-extralight relative">
-                      <i className="ri-heart-line"></i> {/* Heart Icon */}
-                    </a>
-                  </Link>
+
+                  <a
+                    className="mt-[-0.65vmin] darktxt text-[4.75vmin] font-extralight relative"
+                    onClick={() => {
+                      if (!authStatus.user && !authStatus.isAuthenticated) {
+                        openLoginLargeModal();
+                      } else {
+                        navigate("/favourites");
+                      }
+                    }}
+                  >
+                    <i className="ri-heart-line"></i> {/* Heart Icon */}
+                  </a>
 
                   {/* Notification Circle (Positioned Over Heart) */}
                   <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[2.8vmin] h-[2.8vmin] bg-[#FFA500] text-white text-[1.5vmin] font-medium rounded-full">
@@ -228,11 +240,19 @@ const Header = (props) => {
                 <div className="purchaseOptHolder w-[27%]  flex justify-end items-center  gap-x-5 pr-2 2xl:gap-x-20 mt-3">
                   <div className="relative inline-block">
                     {/* Heart Icon */}
-                    <Link to={"/favourites"}>
-                      <a className="mt-[-0.65vmin] darktxt text-[9vmin] font-extralight relative">
-                        <i className="ri-heart-line"></i> {/* Heart Icon */}
-                      </a>
-                    </Link>
+
+                    <a
+                      className="mt-[-0.65vmin] darktxt text-[9vmin] font-extralight relative"
+                      onClick={() => {
+                        if (!authStatus.user && !authStatus.isAuthenticated) {
+                          setLoginOpen(true);
+                        } else {
+                          navigate("/favourites");
+                        }
+                      }}
+                    >
+                      <i className="ri-heart-line"></i> {/* Heart Icon */}
+                    </a>
 
                     {/* Notification Circle (Positioned Over Heart) */}
                     <div className="absolute top-[1px] right-[0.35px] flex items-center justify-center w-[5vmin] h-[5vmin] bg-[#FFA500] text-white text-[2.45vmin] font-medium rounded-full">
