@@ -594,7 +594,7 @@ export default function MainHeader(props) {
             contentLabel="Small Login Modal"
             shouldCloseOnOverlayClick={false}
           >
-            <div className="bg-[#f7d9cb] w-[100%] h-[100%]">
+            <div className="light w-[100%] h-[100%]">
               <div className="iconHolder h-[6vmin] overflow-hidden">
                 <a className="flex justify-start text-3xl font-light font-Lato darktxt  mt-2 ml-2 p-2 ">
                   <i
@@ -603,8 +603,8 @@ export default function MainHeader(props) {
                   ></i>
                 </a>
               </div>
-              <div className="holder flex h-[calc(100%-6vmin)] w-[100%] pr-2 pb-2">
-                <div className="leftHolder w-[49%] mt-[-1.45vmin] h-full flex flex-col justify-center items-center">
+              <div className="holder flex light h-[calc(100%-6vmin)] w-[100%] pr-2 pb-2">
+                <div className="leftHolder w-[49%] light mt-[-1.45vmin] h-full flex flex-col justify-center items-center">
                   <img
                     src="logo_new.png"
                     height={280}

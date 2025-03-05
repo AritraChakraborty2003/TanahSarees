@@ -222,10 +222,7 @@ const AuthModal = ({ isOpen }) => {
             </p>
           )}
           {/* ✅ Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-[#883022] text-white p-2 rounded"
-          >
+          <button type="submit" className="w-full dark text-white p-2 rounded">
             {isLogin ? "Login" : "Signup"}
           </button>
           {/* ✅ Google Login Button */}
