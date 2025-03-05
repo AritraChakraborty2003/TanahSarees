@@ -44,6 +44,80 @@ const OptionsBar = () => {
   }, []);
 
   const navigate = useNavigate();
+
+  const options = {
+    SALE: {
+      header1: "",
+      options1: [],
+      header2: "",
+      options2: [],
+      header3: "",
+      options3: [],
+    },
+    OFFERS: {
+      header1: "By Discount",
+      options1: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
+      header2: "By Trendy Offers",
+      options2: ["Buy 2 Get 1", "Upto 25% off", "Under ₹4500"],
+      header3: "By Color",
+      options3: ["Exotic black", "Light pink", "Glamorous yellow"],
+    },
+    OCCASIONS: {
+      header1: "By Occasion",
+      options1: [
+        "Haldi",
+        "Sangeet",
+        "Summer Collection",
+        "Wedding",
+        "reception",
+        "Festive",
+        "party",
+      ],
+      header2: "By Category",
+      options2: [
+        "Floral",
+        "Paestal",
+        "Sequince",
+        "Printed",
+        "Mansoor Silk",
+        "Chinia Silk",
+      ],
+      header3: "By Colour",
+      options3: [
+        "Light Blue",
+        "Orange Fill",
+        "Artistic Silver",
+        "Dark Brown",
+        "Pretty Magenta",
+        "Golden",
+      ],
+    },
+    TYPE: {
+      header1: "Type",
+      options1: [],
+      header2: "Material",
+      options2: [],
+      header3: "Discount",
+      options3: [],
+    },
+    "NEW ARRIVALS": {
+      header1: "Latest Stock",
+      options1: ["New Arrivals", "By rating", "Festive Options"],
+      header2: "By Colour",
+      options2: ["red colour", "premium blue", "festive green"],
+      header3: "By Discount",
+      options3: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
+    },
+    OTHERS: {
+      header1: "By Rating",
+      options1: [],
+      header2: "By Material",
+      options2: [],
+      header3: "By Colour",
+      options3: [],
+    },
+  };
+
   return (
     <div>
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
@@ -77,21 +151,51 @@ const OptionsBar = () => {
                       transition={{ duration: 0.3 }}
                       className={`fixed  ${
                         screen.width <= 1919 ? "top-[258px]" : "top-[297px]"
-                      } left-0 w-screen bg-white shadow-lg border border-gray-200 z-50`}
+                      } left-0 w-screen bg-[#ede4da] shadow-lg border border-gray-200 z-50`}
                       onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
                       onMouseLeave={handleMouseLeave} // Close only if mouse leaves
                     >
                       <div>
-                        <ul className="p-6 gap-10 flex text-lg font-medium">
-                          <div>
-                            <li className="p-3 hover:underline">Category 1</li>
-                            <li className="p-3 hover:underline">Category 2</li>
-                            <li className="p-3 hover:underline">Category 3</li>
+                        <ul className="font-Montserrat p-6 gap-y-4 gapx-x-8 flex justify-evenly items-center text-lg font-medium">
+                          <div className="flex-col gap-y-8">
+                            <li className="p-1 text-sm font-bold">
+                              {options[menu].header1}
+                            </li>
+                            {options[menu].options1.map((option, index) => (
+                              <li
+                                key={index}
+                                className="p-1 mt-2 hover:underline text-xs"
+                              >
+                                {option}
+                              </li>
+                            ))}
                           </div>
-                          <div>
-                            <li className="p-3 hover:underline">Category 4</li>
-                            <li className="p-3 hover:underline">Category 5</li>
-                            <li className="p-3 hover:underline">Category 6</li>
+                          <div className="flex-col gap-y-8">
+                            <li className="p-1 text-sm font-bold">
+                              {options[menu].header2}
+                            </li>
+                            {options[menu].options2.map((option, index) => (
+                              <li
+                                key={index}
+                                className="p-1 mt-2 hover:underline text-xs"
+                              >
+                                {option}
+                              </li>
+                            ))}
+                          </div>
+
+                          <div className="flex-col gap-y-8">
+                            <li className="p-1 text-sm font-bold">
+                              {options[menu].header3}
+                            </li>
+                            {options[menu].options3.map((option, index) => (
+                              <li
+                                key={index}
+                                className="p-1 mt-2 hover:underline text-xs"
+                              >
+                                {option}
+                              </li>
+                            ))}
                           </div>
                         </ul>
                       </div>

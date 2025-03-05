@@ -30,7 +30,7 @@ const Favourite = () => {
   const res = useHandleCart();
   return (
     <div
-      className=" pb-10 lg:p-5 flex flex-col justify-center items-center"
+      className=" pb-10  lg:pb-10 flex flex-col justify-center items-center"
       style={{
         marginTop: `${
           !change
@@ -38,7 +38,7 @@ const Favourite = () => {
               ? "19%"
               : ""
             : screen.width > 1000
-            ? "14%"
+            ? "10%"
             : ""
         }`, // Adjust based on header height
         zIndex: 10, // Keep content below the header
