@@ -204,7 +204,7 @@ const Header = (props) => {
 
                   <a className="mt-[-1.35vmin] 2xl:mt-[-2vmin] darktxt text-[4.75vmin] font-extralight">
                     <i
-                      className="ri-shopping-cart-line"
+                      className="ri-shopping-cart-line cursor-pointer"
                       onClick={() => {
                         if (!authStatus.user && !authStatus.isAuthenticated) {
                           openLoginLargeModal();
