@@ -43,12 +43,12 @@ const CartsCard = (props) => {
             />
           </div>
           <div className="flex flex-col items-center h-[100%] w-[70%]">
-            <div className="info text-[3.35vmin] lg:text-[2.27vmin] w-[100%] h-[30%]  flex items-center font-Montserrat text-gray-500">
+            <div className="info text-[3.35vmin] lg:text-[2vmin] w-[100%] h-[30%]  flex items-center font-Montserrat text-gray-500">
               <p className="ml-2">{sname}</p>
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
               <p className="text-sm text-gray-500 ml-2 ">
-                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2.27vmin]">
+                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2vmin]">
                   discount&nbsp;:&nbsp;
                 </span>
                 {discount}% off
@@ -56,14 +56,14 @@ const CartsCard = (props) => {
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
               <p className="text-sm text-gray-500 ml-2 ">
-                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2.27vmin]">
+                <span className="font-bold darktxt text-[3.35vmin] lg:text-[2vmin]">
                   Type&nbsp;:&nbsp;
                 </span>
                 {type}
               </p>
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat justify-end">
-              <p className="text-sm text-gray-500 mr-3 lg:mr-10">
+              <p className="text-md text-gray-500 mr-3 lg:mr-10">
                 <span className="font-bold darktxt">price&nbsp;:&nbsp;</span>
                 ₹&nbsp;{price}
               </p>

@@ -35,6 +35,8 @@ export default function MainHeader(props) {
     setCartTotal,
     ReloadDrawer,
     setReloadDrawer,
+    newvar,
+    setnewvar,
   } = useContext(AppContext);
   const { isLogin, setIsLogin } = useContext(AppContext);
 
@@ -57,6 +59,7 @@ export default function MainHeader(props) {
 
   useEffect(() => {
     const fetchCart = async () => {
+      console.log(" caleed");
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/cart`,
@@ -92,8 +95,8 @@ export default function MainHeader(props) {
     };
 
     fetchCart();
-  }, [sareeData, tiggerCart, cartDrawerTigger, ReloadDrawer]); // Updated dependency array
-  // setContentCart(data.length);
+  }, [sareeData, tiggerCart, cartDrawerTigger, ReloadDrawer, newvar]); // Updated dependency array
+  setContentCart(data.length);
   const {
     cartIsOpen,
     toggleDrawer,
@@ -302,6 +305,27 @@ export default function MainHeader(props) {
     }
   };
 
+  const handlepayment = async () => {
+    const {
+      data: { order },
+    } = await axios.post("http://localhost:8040/api/v1/checkout", {
+      amount: cartTotal * 100,
+    });
+    if (!order) return; // ✅ Ensure order is available before proceeding
+
+    var options = {
+      key: `${import.meta.env.VITE_RAZORPAY_API_KEY}`,
+      amount: order.amount,
+      currency: "INR",
+      name: "Acme Corp",
+      callback_url: "http://localhost:8040/api/v1/checkout/verification",
+      description: "Test Transaction",
+      order_id: order.id,
+    };
+    var rzp1 = new window.Razorpay(options);
+    rzp1.open();
+  };
+
   return (
     <>
       <>
@@ -370,7 +394,7 @@ export default function MainHeader(props) {
                     Cart
                   </p>
                   <div className="">
-                    <button
+                    {/* <button
                       onClick={() => {
                         toggleDrawer();
                         navigate("/cart");
@@ -378,7 +402,7 @@ export default function MainHeader(props) {
                       className="h-8 w-[50%] text-sm  dark lighttxt text-Monteserrat cursor-pointer"
                     >
                       View Cart
-                    </button>
+                    </button> */}
                   </div>
                 </div>
 
@@ -409,15 +433,15 @@ export default function MainHeader(props) {
               </div>
             </div>
             <div
-            // className={`absolute flex flex-col justify-center items-center ${
-            //   // screen.width > 800
-            //   //   ? contentCart <= 2
-            //   //     ? "bottom-3"
-            //   //     : ""
-            //   //   : contentCart <= 2
-            //   //   ? "bottom-[17vmin]"
-            //   //   : ""
-            // }`}
+              className={`absolute flex flex-col justify-center items-center ${
+                screen.width > 800
+                  ? contentCart <= 2
+                    ? "bottom-3"
+                    : ""
+                  : contentCart <= 2
+                  ? "bottom-[17vmin]"
+                  : ""
+              }`}
             >
               <div className="TotalItems border-[#262424] border-t-[0.15px] w-[96%] flex flex-col pl-3 mt-3 ">
                 <div className="flex  subtotalArea w-[100%] p-3 pb-10 lg:pb-3 ">
@@ -449,6 +473,7 @@ export default function MainHeader(props) {
                         ".orderbtn"
                       ).style.backgroundColor = "#262424";
                     }}
+                    onClick={handlepayment}
                   >
                     PLACE ORDER
                   </button>

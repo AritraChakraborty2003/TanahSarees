@@ -38,8 +38,10 @@ import CMSReviews from "./Components/CMS/CMScards/CMSReviews";
 import ScrollToTop from "./Components/MAIN/Support/ScrollToTop";
 import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 
-import { TestPay } from "../TestPay/TestPay";
-import ResultPage from "../TestPay/ResultPage";
+// import { TestPay } from "../TestPay/TestPay";
+// import ResultPage from "../TestPay/ResultPage";
+import Testpay1 from "../TestPay/testpay1";
+import ResultPageFinal from "./Components/RESULTPAGE/ResultPageFinal";
 // import { useLocation } from "react-router-dom";
 
 // axios.defaults.withCredentials = true;
@@ -315,7 +317,7 @@ const router = createBrowserRouter([
     path: "/pay",
     element: (
       <>
-        <TestPay />
+        <Testpay1 />
       </>
     ),
   },
@@ -323,7 +325,7 @@ const router = createBrowserRouter([
     path: "/result",
     element: (
       <>
-        <ResultPage />
+        <ResultPageFinal />
       </>
     ),
   },
@@ -393,6 +395,7 @@ const App = () => {
   const [activeDeleteSaree, setActiveDeleteSaree] = useState("");
 
   const [clickDeleteAccount, setclickDeleteAccount] = useState(false);
+  const [newvar, setnewvar] = useState(false);
 
   //Patch Click
   const [PATCHClick, setPATCHClick] = useState(false);
@@ -490,6 +493,8 @@ const App = () => {
           setCartTotal,
           ReloadDrawer,
           setReloadDrawer,
+          newvar,
+          setnewvar,
         }}
       >
         <RouterProvider router={router} />

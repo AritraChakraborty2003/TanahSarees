@@ -1,36 +1,81 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import CartDisplay from "../CARDS/CartDisplay";
 import { useContext } from "react";
 import { AppContext } from "../../AppContext/AppContext";
-
-const data = [
-  {
-    _id: "1", // Add unique _id for each item
-    image: "/Sarees/saree1.jpg",
-    name: "Silk raw mango",
-    price: 3000,
-  },
-  {
-    _id: "2",
-    image: "/Sarees/saree2.jpg",
-    name: "Silk raw mango",
-    price: 3000,
-  },
-  {
-    _id: "3",
-    image: "/Sarees/saree8.jpg",
-    name: "Silk raw mango",
-    price: 3000,
-  },
-];
+import UseHTTPRequest from "../../Utils/useHTTPRequest";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Carts = () => {
   const { change } = useContext(AppContext);
   const [chosen, setChosen] = useState([]); // Move state to parent
+  const {
+    setChange,
+    contentCart,
+    setContentCart,
+    isLoggedIn,
+    loginOpen,
+    setLoginOpen,
+    setIsLoggedIn,
+    setIsAdminLogin,
+    cartDrawerTigger,
+    setCartDrawerTigger,
+    cartTotal,
+    setCartTotal,
+    ReloadDrawer,
+    setReloadDrawer,
+  } = useContext(AppContext);
+
+  const [tiggerCart, settiggerCart] = useState(false);
+  const [cartdata, setCartData] = useState([]);
+  const [data, setData] = useState([]);
+
+  const sareeData = UseHTTPRequest(tiggerCart, "/sarees", "GET", "", "");
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/cart`,
+          { withCredentials: true }
+        );
+        const cartItems = response.data;
+        setCartData(cartItems);
+
+        // Ensure sareeData is available before filtering
+        if (!sareeData || sareeData.length === 0) return;
+
+        const updatedFilteredData = sareeData
+          .filter((saree) =>
+            cartItems.some((cartItem) => cartItem.pid === saree._id)
+          )
+          .map((saree) => ({
+            ...saree,
+            qty:
+              cartItems.find((cartItem) => cartItem.pid === saree._id)?.qty ||
+              1,
+          }));
+
+        const calculatedTotal = updatedFilteredData.reduce(
+          (acc, item) => acc + item.price * item.qty,
+          0
+        );
+        setCartTotal(calculatedTotal);
+
+        setData(updatedFilteredData);
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+
+    fetchCart();
+  }, [sareeData, tiggerCart, cartDrawerTigger, ReloadDrawer]); // Updated dependency array
 
   return (
     <div
-      className="relative mt-5 pb-10 flex flex-col items-center"
+      className="relative mt-5 pb-10 h-[100%] flex flex-col items-center"
       style={{
         marginTop: `${
           !change
@@ -64,9 +109,9 @@ const Carts = () => {
 
       {/* Checkout Section - Show only if any item is selected */}
       {chosen.length > 0 && (
-        <div className="flex justify-evenly lg:mt-20  w-[70%]">
+        <div className="sticky bottom-0 bg-white  p-2 flex justify-evenly lg:mt-20 mt-10  w-[100%]">
           <div className="flex flex-col">
-            <p className="text-lg font-Montserrat font-medium">
+            <p className=" text-md  lg:text-lg font-Montserrat font-medium">
               Total: ₹&nbsp;
               {chosen.reduce((acc, id) => {
                 const item = data.find((i) => i._id === id);
@@ -75,8 +120,8 @@ const Carts = () => {
             </p>
             <p className="text-xs">Delivery Charges + GST:</p>
           </div>
-          <button className=" bg-blue-500  text-white p-2  rounded cursor-pointer">
-            Proceed to Checkout
+          <button className=" bg-blue-500  text-white p-3 lg:p-4 hover:bg-green-600 rounded cursor-pointer">
+            Checkout
           </button>
         </div>
       )}

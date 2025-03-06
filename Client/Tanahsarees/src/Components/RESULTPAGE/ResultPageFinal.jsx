@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-const ResultPage = () => {
+const ResultPageFinal = () => {
   const [searchParams] = useSearchParams();
   const type = searchParams.get("type") || "";
   const ref = searchParams.get("ref") || "";
@@ -17,4 +17,4 @@ const ResultPage = () => {
   );
 };
 
-export default ResultPage;
+export default ResultPageFinal;
