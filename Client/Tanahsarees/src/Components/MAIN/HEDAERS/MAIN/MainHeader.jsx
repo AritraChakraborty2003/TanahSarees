@@ -4,6 +4,7 @@
 import Marqueecomp from "../Marqueecomp";
 import Smallheader from "../Smallheader";
 import Header from "../Header/Header";
+import OrderModal from "./OrderModal";
 import OptionsBar from "../Header/OptionsBar";
 import { useEffect, useState } from "react";
 import Drawer from "react-modern-drawer";
@@ -39,7 +40,8 @@ export default function MainHeader(props) {
     setnewvar,
   } = useContext(AppContext);
   const { isLogin, setIsLogin } = useContext(AppContext);
-
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [Favourite, setFavourite] = useState(0);
   const [cart, setCart] = useState(0);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -49,6 +51,8 @@ export default function MainHeader(props) {
   useEffect(() => {
     if (authStatus.user) {
       setLoggedIn(true);
+      setPhone(authStatus.user?.message?.phone);
+      setAddress(authStatus.user?.message?.address);
     }
   }, [authStatus]);
   const [tiggerCart, settiggerCart] = useState(false);
@@ -121,6 +125,7 @@ export default function MainHeader(props) {
   const [showHi, setShowHi] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [scrollThreshold, setScrollThreshold] = useState(regularScroll);
+  const [checkOrder, setCheckOrder] = useState(false);
   const { category } = props;
 
   // const OpenLargeSearchBox = () => {
@@ -473,7 +478,9 @@ export default function MainHeader(props) {
                         ".orderbtn"
                       ).style.backgroundColor = "#262424";
                     }}
-                    onClick={handlepayment}
+                    onClick={() => {
+                      setCheckOrder(true);
+                    }}
                   >
                     PLACE ORDER
                   </button>
@@ -709,6 +716,15 @@ export default function MainHeader(props) {
           </div>
         </div>
       </Modal>
+
+      <OrderModal
+        checkOrder={checkOrder}
+        setCheckOrder={setCheckOrder}
+        total={cartTotal}
+        phone={phone}
+        address={address}
+        handlePayment={handlepayment}
+      />
     </>
   );
 }

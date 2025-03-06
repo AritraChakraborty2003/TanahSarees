@@ -412,6 +412,9 @@ const App = () => {
   const [cartTotal, setCartTotal] = useState(0);
   const [ReloadDrawer, setReloadDrawer] = useState(false);
 
+  //For Profile
+  const [isSet, setIsSet] = useState(false);
+
   return (
     <>
       <AppContext.Provider
@@ -495,6 +498,8 @@ const App = () => {
           setReloadDrawer,
           newvar,
           setnewvar,
+          isSet,
+          setIsSet,
         }}
       >
         <RouterProvider router={router} />

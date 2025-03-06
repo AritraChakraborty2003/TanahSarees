@@ -32,7 +32,7 @@ const Profile = () => {
 
   const [formData, setFormData] = useState({});
 
-  const { PATCHClick, setPATCHClick } = useContext(AppContext);
+  const { PATCHClick, setPATCHClick, isSet, setIsSet } = useContext(AppContext);
 
   useEffect(() => {
     if (authStatus.isAuthenticated) {
@@ -87,11 +87,13 @@ const Profile = () => {
   };
 
   const res3 = UseHTTPRequest(null, "/users", "PATCH", formData, "");
-  const [isSet, setIsSet] = useState();
+
   useEffect(() => {
-    setPATCHClick(true);
-    setIsSet(!isSet);
-  }, [formData, setPATCHClick, isSet]);
+    if (isSet) {
+      setPATCHClick(true);
+      setIsSet(!isSet);
+    }
+  }, [isSet, formData]);
 
   const handleSave = (e) => {
     e.preventDefault();
