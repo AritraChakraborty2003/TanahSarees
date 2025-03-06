@@ -325,7 +325,9 @@ const router = createBrowserRouter([
     path: "/result",
     element: (
       <>
+        <MainHeader scrollValue="30" />
         <ResultPageFinal />
+        <Footer />
       </>
     ),
   },
