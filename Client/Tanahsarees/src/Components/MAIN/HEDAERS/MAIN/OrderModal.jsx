@@ -73,7 +73,7 @@ const OrderModal = ({
           </p>
         </div>
       ) : (
-        <p className="text-red-500 mt-2">⚠ No personal details found</p>
+        <p className="text-red-500 mt-2">⚠ No address or phone found</p>
       )}
 
       {/* ✅ Buttons */}

@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import ProductCard from "../CARDS/ProductCard";
 import { useContext, useEffect, useState } from "react";
-import { useHandleCart } from "../../Utils/useHandleCart";
+import { useLocation } from "react-router-dom";
+import ProductCard from "../CARDS/ProductCard";
 import { AppContext } from "../../AppContext/AppContext";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
-import { useLocation } from "react-router-dom";
 import useHandleHeart from "../../Utils/usehandleHeart";
 
 const ProductDisplay = () => {
@@ -16,55 +15,34 @@ const ProductDisplay = () => {
     sareeData,
     setSareeData,
     activeFilter,
-    setActiveFilter,
     filteredData,
-    heartClick,
-    setHeartClick,
-    heartSave,
-    setHeartSave,
-    heartItem,
-    setHeartItem,
     setFilteredData,
   } = useContext(AppContext);
 
   const [Filter, setFilter] = useState(true);
-  const [visibleCount, setVisibleCount] = useState(12); // Controls items displayed
-  const [tigger, setTigger] = useState(false);
-  const authStatus = useCheckAuth(tigger, "auth");
+  const [visibleCount, setVisibleCount] = useState(12);
+  const authStatus = useCheckAuth(null, "auth"); // ✅ Fetch user authentication status
+  const location = useLocation();
   const heart = useHandleHeart();
 
-  const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
+  const data = UseHTTPRequest(null, "/sarees", "GET", "", ""); // ✅ Fetch saree products
 
-  const location = useLocation();
+  // ✅ Reload only if navigated to `/products` and user status is known
 
   useEffect(() => {
     window.addEventListener("popstate", (event) => {
       window.location.reload();
     });
   }, [location]);
-
+  // ✅ Update saree data when API call succeeds
   useEffect(() => {
     if (data && JSON.stringify(data) !== JSON.stringify(sareeData)) {
       setSareeData(data);
-      console.log("Method Called");
     }
-  }, [data, sareeData, setSareeData, activeFilter, filteredData]);
-
-  useEffect(() => {
-    window.innerWidth > 1000 ? setFilter(true) : setFilter(false);
-  }, []);
-  useEffect(() => {
-    setTigger(!tigger);
-  }, [heartSave]);
+  }, [data, sareeData]);
 
   const toggleFilter = () => setFilter(!Filter);
-  const loadMore = () => setVisibleCount((prev) => prev + 12); // Increase count by 12
-
-  const Prodname = activeFilter
-    ? "Filtered Data "
-    : "Complete Saree Collections";
-
-  const res = useHandleCart();
+  const loadMore = () => setVisibleCount((prev) => prev + 12);
 
   return (
     <div>
@@ -83,13 +61,11 @@ const ProductDisplay = () => {
           zIndex: 10,
         }}
       >
-        <p className="text-sm text-gray-500">Home/{Prodname}</p>
+        <p className="text-sm text-gray-500">Home / Products</p>
         <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
-          {Prodname}{" "}
-          {activeFilter ? (
+          Complete Saree Collections{" "}
+          {activeFilter && (
             <span className="text-lg lg:text-md">{`(Results: ${filteredData.length})`}</span>
-          ) : (
-            ""
           )}
         </h2>
       </div>
@@ -131,6 +107,7 @@ const ProductDisplay = () => {
           </div>
         )}
 
+        {/* ✅ Display Product Cards */}
         {activeFilter === false ? (
           <div
             className={`mt-6 lg:mt-10 ml-1 flex flex-wrap gap-x-3 gap-y-8 lg:gap-x-6 2xl:gap-x-3 justify-center items-center ${

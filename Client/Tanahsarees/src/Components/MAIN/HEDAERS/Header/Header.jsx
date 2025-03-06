@@ -156,10 +156,10 @@ const Header = (props) => {
               </div>
             </div>
             <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
-              <Link to="/">
-                {" "}
-                <img src="logo.png" height={180} width={220} />{" "}
-              </Link>
+              {/* <Link to="/"> */}{" "}
+              <a href="/">
+                <img src="logo.png" height={180} width={220} /> {/* </Link> */}
+              </a>
             </div>
             {props.category != "CMS" ? (
               <div className="relative purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">

@@ -51,7 +51,7 @@ const CartsCard = (props) => {
                 <span className="font-bold darktxt text-[3.35vmin] lg:text-[2vmin]">
                   discount&nbsp;:&nbsp;
                 </span>
-                {discount}% off
+                {discount ? discount : 0}% off
               </p>
             </div>
             <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">

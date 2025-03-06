@@ -116,7 +116,7 @@ const Productdescription = () => {
       heading: "RATE YOUR PRODUCT",
       details: (
         <>
-          <StarRating />
+          <StarRating sname={sname} />
         </>
       ),
     },
