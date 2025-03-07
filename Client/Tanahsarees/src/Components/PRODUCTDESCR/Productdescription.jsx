@@ -47,9 +47,7 @@ const Productdescription = () => {
   } = useContext(AppContext);
 
   const { photo, material, price, discount, sname, colour, type, _id, rating } =
-    activeProduct;
-
-  console.log(activeProduct);
+    JSON.parse(localStorage.getItem("activeProduct")) || activeProduct;
 
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);

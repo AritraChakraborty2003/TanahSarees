@@ -3,7 +3,7 @@
 import Tilt from "react-parallax-tilt";
 import Modal from "react-modal";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const CardText = (props) => {
   const { data } = props;
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ const CardText = (props) => {
     },
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <>
@@ -43,81 +43,79 @@ const CardText = (props) => {
             transitionSpeed={500} // Smooth transition
             className="relative  w-[45vw]  lg:w-64   rounded-lg shadow-lg overflow-hidden"
           >
-            <div className="flex flex-col  overflow-hidden gap-y-1">
-              {/* Image Section */}
+            <a href="/products" className="overflow-hidden">
+              <div className="flex flex-col  overflow-hidden gap-y-1">
+                {/* Image Section */}
 
-              <div
-                className="relative overflow-hidden w-full h-2/3"
-                onClick={() => {
-                  navigate("/products");
-                  window.scrollTo(0, 0);
-                }}
-              >
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
-                  alt="Tilted Image"
-                  className="w-full  h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-                {/* Black vignete */}
-                <div className="absolute inset-x-[-100px] bottom-0 h-1/1 bg-gradient-to-t from-black/100 via-transparent"></div>
-                {/* Text Content Section */}
-                <h2 className="absolute w-full  bottom-5 lg:bottom-10 text-3xl lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
-                  {props.type === "selling" &&
-                    item.material.charAt(0).toUpperCase() +
-                      item.material.slice(1) +
-                      " Silk"}
-                </h2>
-                <h2 className="absolute w-full  bottom-1 lg:bottom-3 text-lg lg:text-md flex pt-1 justify-center font-Montserrat lighttxt overflow-hidden">
-                  {props.type === "selling" && item.colour}
-                </h2>
-                {item.occasion && props.type === "occasion" ? (
-                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Montserrat flex pt-1 justify-center lighttxt overflow-hidden">
-                    {item.occasion}
-                  </h2>
-                ) : (
-                  ""
-                )}
+                <div className="relative overflow-hidden w-full h-2/3">
+                  <img
+                    src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
+                    alt="Tilted Image"
+                    className="w-full  h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
 
-                {props.type === "collection" ? (
-                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
-                    {item.type}
+                  {/* Black vignete */}
+                  <div className="absolute inset-x-[-100px] bottom-0 h-1/1 bg-gradient-to-t from-black/100 via-transparent"></div>
+                  {/* Text Content Section */}
+                  <h2 className="absolute w-full  bottom-5 lg:bottom-10 text-3xl lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
+                    {props.type === "selling" &&
+                      item.material.charAt(0).toUpperCase() +
+                        item.material.slice(1) +
+                        " Silk"}
                   </h2>
-                ) : (
-                  ""
-                )}
+                  <h2 className="absolute w-full  bottom-1 lg:bottom-3 text-lg lg:text-md flex pt-1 justify-center font-Montserrat lighttxt overflow-hidden">
+                    {props.type === "selling" && item.colour}
+                  </h2>
+                  {item.occasion && props.type === "occasion" ? (
+                    <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Montserrat flex pt-1 justify-center lighttxt overflow-hidden">
+                      {item.occasion}
+                    </h2>
+                  ) : (
+                    ""
+                  )}
 
-                {props.type === "material" ? (
-                  <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
-                    {item.material + " silk"}
-                  </h2>
-                ) : (
-                  ""
-                )}
-                <h3 className="absolute bottom-2   w-full  text-[#BCBBBC] text-Montserrat font-normal flex justify-center text-xl p-2 rounded text-[3.55vmin] lg:text-[2.45vmin]">
-                  {item.title}
-                </h3>
+                  {props.type === "collection" ? (
+                    <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
+                      {item.type}
+                    </h2>
+                  ) : (
+                    ""
+                  )}
+
+                  {props.type === "material" ? (
+                    <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
+                      {item.material + " silk"}
+                    </h2>
+                  ) : (
+                    ""
+                  )}
+                  <h3 className="absolute bottom-2   w-full  text-[#BCBBBC] text-Montserrat font-normal flex justify-center text-xl p-2 rounded text-[3.55vmin] lg:text-[2.45vmin]">
+                    {item.title}
+                  </h3>
+                </div>
+
+                {props.type === "testimonials" ? (
+                  <>
+                    <div>
+                      <p className="p-2 text-gray-500 text-lg">
+                        {item.material + "  silk"}
+                      </p>
+                      <p className="p-2 text-gray-500 text-sm">
+                        {screen.width > 900
+                          ? item.type.slice(0, 42) + "...."
+                          : item.type.slice(0, 32) + "...."}
+                      </p>
+                      <p
+                        className="p-2 text-gray-500 text-[2.45vmin] lg:text-sm font-medium font-Montserrat"
+                        onClick={modalOpen}
+                      >
+                        Read More
+                      </p>
+                    </div>
+                  </>
+                ) : null}
               </div>
-              {props.type === "testimonials" ? (
-                <>
-                  <div>
-                    <p className="p-2 text-gray-500 text-lg">
-                      {item.material + "  silk"}
-                    </p>
-                    <p className="p-2 text-gray-500 text-sm">
-                      {screen.width > 900
-                        ? item.type.slice(0, 42) + "...."
-                        : item.type.slice(0, 32) + "...."}
-                    </p>
-                    <p
-                      className="p-2 text-gray-500 text-[2.45vmin] lg:text-sm font-medium font-Montserrat"
-                      onClick={modalOpen}
-                    >
-                      Read More
-                    </p>
-                  </div>
-                </>
-              ) : null}
-            </div>
+            </a>
           </Tilt>
         ))}
       </div>
