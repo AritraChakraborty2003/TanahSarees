@@ -5,7 +5,12 @@ export const userPATCH = () => {
     // try {
     const { image, email, name, gender, address, additionalNo, phone } =
       req.body;
+
+    console.log(req.body);
     const token = req.cookies.ecom_token;
+
+    console.log(address);
+    console.log("token", token);
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
     const user = await UserObj.findByIdAndUpdate(

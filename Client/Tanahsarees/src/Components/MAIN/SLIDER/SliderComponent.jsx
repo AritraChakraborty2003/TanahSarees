@@ -85,7 +85,7 @@ const SliderComponent = () => {
               <>
                 <div className="zoom-div lg:ml-[-1vmin]">
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
-                    <Link to="/products">
+                    <a href="/products">
                       <div
                         className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] shadow-lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
                         style={{
@@ -95,20 +95,17 @@ const SliderComponent = () => {
                           backgroundPosition: "top",
                           // Assuming each item has an image property
                         }}
-                        onClick={() => {
-                          navigate("/products");
-                        }}
                       ></div>
-                      {screen.width > 1000 ? (
-                        <p className="font-Montserrat font-normal text-sm lg:text-md text-[#d5d5d5]-800 text-center mt-1">
-                          {item.sname.slice(0, 20) + "..."}
-                        </p>
-                      ) : (
-                        <p className="font-Montserrat font-normal text-sm lg:text-lg text-[#d5d5d5]-800 text-center mt-1">
-                          {item.sname.slice(0, 8) + "..."}
-                        </p>
-                      )}
-                    </Link>
+                    </a>
+                    {screen.width > 1000 ? (
+                      <p className="font-Montserrat font-normal text-sm lg:text-md text-[#d5d5d5]-800 text-center mt-1">
+                        {item.sname.slice(0, 20) + "..."}
+                      </p>
+                    ) : (
+                      <p className="font-Montserrat font-normal text-sm lg:text-lg text-[#d5d5d5]-800 text-center mt-1">
+                        {item.sname.slice(0, 8) + "..."}
+                      </p>
+                    )}
                   </div>
                 </div>
               </>

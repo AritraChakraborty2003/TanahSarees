@@ -8,13 +8,12 @@ export const TestimonialPOST = () => {
       const testimonial = new TestimonialsObj({
         name,
         sname,
-
         review,
         rating,
         photo,
       });
       await testimonial.save();
-      res.status(201).json(testimonial);
+      res.status(201).json({ message: "Success", testimonial });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }

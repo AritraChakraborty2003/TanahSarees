@@ -1,9 +1,21 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Rating } from "react-simple-star-rating";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
+import { useCheckAuth } from "../../Utils/useCheckAuth";
+import { AppContext } from "../../AppContext/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
+import NameModal from "../MAIN/HEDAERS/MAIN/NameModal";
 // import { AppContext } from "../../AppContext/AppContext";
 
-const StarRating = () => {
+const StarRating = (props) => {
+  const { sname } = props;
+  const { Loginlargescreen, setLoginlargescreen, loginOpen, setLoginOpen } =
+    useContext(AppContext);
+  const [checkState, setCheckState] = useState(false);
+  const authStatus = useCheckAuth(null, "auth");
   const [formData, setFormData] = useState({
     rating: 0,
     review: "",
@@ -28,8 +40,39 @@ const StarRating = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log(formData);
+  const handleSubmit = async () => {
+    if (!authStatus.isAuthenticated) {
+      if (screen.width > 1000) setLoginlargescreen(true);
+      else setLoginOpen(true);
+    } else if (!authStatus.user.message.name) {
+      <NameModal />;
+    } else {
+      if (formData.rating || formData.review) {
+        toast("Please fill all the fields");
+        return;
+      } else {
+        const data = new FormData();
+        data.append("rating", formData.rating);
+        data.append("name", authStatus.user.message.name);
+        data.append("sname", sname);
+        data.append("review", formData.review);
+        data.append("file", formData.file);
+        try {
+          const res = await axios.post(
+            `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/testimonials`,
+            data
+          );
+
+          if (res.data.message === "Success") {
+            toast("Review submitted successfully");
+          } else {
+            toast("Something went wrong...");
+          }
+        } catch (err) {
+          toast("Something went wrong...");
+        }
+      }
+    }
   };
 
   return (

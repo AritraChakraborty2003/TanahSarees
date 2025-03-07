@@ -18,27 +18,23 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       unique: true,
+      sparse: true, // ✅ Prevents indexing `null`
+      trim: true,
+      default: undefined, // ✅ Prevents storing `null`
       validate: {
-        validator: (value) => validator.isEmail(value),
-        message: "Email is invalid",
+        validator: function (value) {
+          return !value || validator.isEmail(value);
+        },
+        message: "Invalid email address",
       },
     },
 
     phone: {
       type: String,
+      unique: true, // ✅ Ensure uniqueness for phone
+      sparse: true, // ✅ Allows multiple users without phone numbers
       trim: true,
-      validate: {
-        validator: (v) => /^\d{10}$/.test(v),
-        message: "Please enter a valid phone number",
-      },
-    },
-
-    password: {
-      type: String,
-      validate: {
-        validator: (value) => validator.isStrongPassword(value),
-        message: "Password should be strong",
-      },
+      default: undefined,
     },
 
     additionalNo: {
@@ -55,6 +51,9 @@ const userSchema = new mongoose.Schema(
       trim: true,
     },
 
+    password: {
+      type: String,
+    },
     favourites: [
       {
         type: String,
@@ -63,22 +62,8 @@ const userSchema = new mongoose.Schema(
     ],
 
     cart: {
-      type: [{ type: Object }], // Allows storing objects dynamically
+      type: [{ type: Object }],
     },
-
-    orders: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
-    cancel: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
   },
   {
     timestamps: true,
@@ -86,6 +71,17 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const UserObj = mongoose.model("User", userSchema);
+// ✅ **Middleware to remove `null` before saving**
+userSchema.pre("save", function (next) {
+  if (!this.email) {
+    this.email = undefined;
+  }
+  if (!this.phone) {
+    this.phone = undefined;
+  }
 
+  next();
+});
+
+const UserObj = mongoose.model("User", userSchema);
 export default UserObj;
