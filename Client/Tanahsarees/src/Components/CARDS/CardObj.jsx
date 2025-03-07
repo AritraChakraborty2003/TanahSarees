@@ -11,7 +11,7 @@ const CardObj = (props) => {
   const { activeProduct, setActiveProduct } = useContext(AppContext);
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6  lg:gap-x-17 2xl:gap-x-10">
+      <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-6  lg:gap-x-17 2xl:gap-x-10 cursor-pointer">
         {data.map((item) => (
           <div className="flex  flex-col gap-y-2 lg:gap-y-1 2xl:gap-y-5">
             <Tilt
@@ -22,24 +22,34 @@ const CardObj = (props) => {
               className="relative lg:ml-0  w-[45vw]  lg:w-64  dark rounded-lg shadow-lg overflow-hidden"
             >
               {/* Image Section */}
-              <div
-                className="relative overflow-hidden w-full h-2/3"
-                onClick={() => {
-                  if (props.for === "like") {
+              {props.for === "like" ? (
+                <div
+                  className="relative overflow-hidden w-full h-2/3"
+                  onClick={() => {
                     setActiveProduct(item);
+                    localStorage.setItem("activeProduct", JSON.stringify(item));
                     navigate("/product_descr");
-                  } else {
-                    navigate("/products");
-                  }
-                  window.scrollTo(0, 0);
-                }}
-              >
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
-                  alt="Tilted Image"
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                />
-              </div>
+
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  <img
+                    src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
+                    alt="Tilted Image"
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                  />
+                </div>
+              ) : (
+                <a href="/products">
+                  <div className="relative overflow-hidden w-full h-2/3">
+                    <img
+                      src={`${import.meta.env.VITE_APP_API_URL}` + item.photo}
+                      alt="Tilted Image"
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                    />
+                  </div>
+                </a>
+              )}
             </Tilt>
             {/* Text Content Section */}
             <div className="lg:p-1 text-center">
