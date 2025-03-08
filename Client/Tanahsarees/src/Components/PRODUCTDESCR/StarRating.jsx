@@ -11,15 +11,17 @@ import NameModal from "../MAIN/HEDAERS/MAIN/NameModal";
 // import { AppContext } from "../../AppContext/AppContext";
 
 const StarRating = (props) => {
-  const { sname } = props;
+  const { sname, photo } = props;
   const { Loginlargescreen, setLoginlargescreen, loginOpen, setLoginOpen } =
     useContext(AppContext);
   const [checkState, setCheckState] = useState(false);
   const authStatus = useCheckAuth(null, "auth");
   const [formData, setFormData] = useState({
+    name: "",
     rating: 0,
     review: "",
     file: null,
+    photo: "",
   });
 
   // UseHTTPRequest automatically triggers when httpTrigger changes
@@ -40,38 +42,62 @@ const StarRating = (props) => {
     }
   };
 
-  const handleSubmit = async () => {
-    if (!authStatus.isAuthenticated) {
-      if (screen.width > 1000) setLoginlargescreen(true);
-      else setLoginOpen(true);
-    } else if (!authStatus.user.message.name) {
-      <NameModal />;
-    } else {
-      if (formData.rating || formData.review) {
-        toast("Please fill all the fields");
-        return;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (!authStatus.isAuthenticated) {
+        if (screen.width > 1000) setLoginlargescreen(true);
+        else setLoginOpen(true);
+      } else if (!authStatus.user.message.name) {
+        setCheckState(true);
       } else {
-        const data = new FormData();
-        data.append("rating", formData.rating);
-        data.append("name", authStatus.user.message.name);
-        data.append("sname", sname);
-        data.append("review", formData.review);
-        data.append("file", formData.file);
-        try {
-          const res = await axios.post(
-            `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/testimonials`,
-            data
-          );
+        if (!formData.rating || !formData.review) {
+          toast.error("Please fill all the fields");
+          return;
+        } else {
+          const data = new FormData();
 
-          if (res.data.message === "Success") {
-            toast("Review submitted successfully");
+          formData.name = authStatus.user.message.name; // To add name
+
+          if (formData.file) {
+            data.append("name", authStatus.user.message.name);
+            data.append("sname", sname);
+            data.append("review", formData.review);
+            data.append("rating", formData.rating);
+            data.append("file", formData.file);
+
+            const res = await axios.post(
+              `${import.meta.env.VITE_APP_API_URL}api/v1/testimonials`,
+              data
+            );
+            if (res.data.message === "Success") {
+              toast.success("Review Submitted Successfully");
+            } else {
+              toast.error("Something went wrong");
+            }
           } else {
-            toast("Something went wrong...");
+            // data.append("photo", photo);
+            formData.photo = photo;
+            const res = await axios.post(
+              `${import.meta.env.VITE_APP_API_URL}api/v1/testimonials/reviews`,
+              formData
+            );
+            if (res.data.message === "Success") {
+              toast.success("Review Submitted Successfully");
+            } else {
+              toast.error("Something went wrong");
+            }
           }
-        } catch (err) {
-          toast("Something went wrong...");
+
+          // console.log("FormData Contents:");
+          // for (let pair of data.entries()) {
+          //   console.log(pair[0], pair[1]); // Logs key-value pairs
+          // }
         }
       }
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong");
     }
   };
 
@@ -102,6 +128,9 @@ const StarRating = (props) => {
       </button>
 
       {apiResponse && <p>Response: {JSON.stringify(apiResponse)}</p>}
+
+      {/* ✅ Ensure modal is included in JSX */}
+      <NameModal checkState={checkState} setCheckState={setCheckState} />
     </div>
   );
 };

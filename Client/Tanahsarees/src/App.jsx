@@ -1,4 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { useEffect } from "react";
+// import { useLocation } from "react-router-dom";
 import Faqcomponent from "./Components/FAQ/Faqcomponent";
 // import axios from "axios";
 import { useState } from "react";
@@ -43,6 +45,16 @@ import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 import Testpay1 from "../TestPay/testpay1";
 import ResultPageFinal from "./Components/RESULTPAGE/ResultPageFinal";
 // import { useLocation } from "react-router-dom";
+
+// const ScrollToTopGlobal = () => {
+//   const { pathname } = useLocation();
+
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]); // Runs on route change
+
+//   return null;
+// };
 
 // axios.defaults.withCredentials = true;
 const router = createBrowserRouter([
@@ -188,6 +200,7 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" />
         <ScrollToTop />
+
         <Productdescription />
         <Footer />
       </>

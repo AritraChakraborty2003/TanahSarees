@@ -1,10 +1,11 @@
 import TestimonialsObj from "../../Models/Testimonials.js";
 
-export const TestimonialPOST = () => {
+export const ReviewPOST = () => {
   return async (req, res) => {
     try {
-      const { name, review, rating, sname } = req.body;
-      const photo = req.file.filename;
+      const { name, review, rating, sname, photo } = req.body;
+      //   const photo = req.file.filename;
+      console.log(req.body);
       const testimonial = new TestimonialsObj({
         name,
         sname,
@@ -15,7 +16,7 @@ export const TestimonialPOST = () => {
       await testimonial.save();
       res.status(201).json({ message: "Success", testimonial });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
       res.status(400).json({ message: error.message });
     }
   };

@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 Modal.setAppElement("#root"); // Required for accessibility
 
-const NameModal = (props) => {
+const NameModal = ({ checkState, setCheckState }) => {
   const navigate = useNavigate();
+
   const { toggleDrawer } = useContext(AppContext);
-  const [checkState, setCheckState] = useState(false);
+
   // ✅ Close Modal
   const closeState = () => setCheckState(false);
 
@@ -54,6 +55,7 @@ const NameModal = (props) => {
           onClick={() => {
             closeState();
             navigate("/profile");
+            window.scroll(0, 0);
           }}
         >
           Update
