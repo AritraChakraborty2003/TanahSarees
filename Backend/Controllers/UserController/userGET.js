@@ -8,3 +8,14 @@ export const UserGET = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const userGETbyID = async (req, res) => {
+  const { id } = req.query;
+  try {
+    const user = await UserObj.findById(id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+//

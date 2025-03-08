@@ -1,6 +1,22 @@
 /* eslint-disable react/prop-types */
 const UserCard = (props) => {
-  const { name, email, phone, address, image } = props.data;
+  let { name, email, phone, address, image } = props.data;
+  if (!image) {
+    image = "user.png";
+  }
+  if (!name) {
+    name = "not available";
+  }
+  if (!email) {
+    email = "not available";
+  }
+  if (!phone) {
+    phone = "not available";
+  }
+  if (!address) {
+    address = "not available";
+  }
+
   return (
     <div className=" flex  w-[70vw] bg-[#F7D9CB] rounded-2xl text-center font-Montserrat p-3">
       <div className="w-[10%] h-[10vh] bg-[#883022a7] rounded-r-2xl flex items-center justify-center ">
