@@ -1,51 +1,61 @@
 /* eslint-disable react/prop-types */
+import OrderStatusStepper from "../CARDS/OrderStatusStepper";
+import { useState } from "react";
 
-const OrderCard = (props) => {
-  const { data } = props;
+const OrderCard = ({ data }) => {
+  const [openStatusId, setOpenStatusId] = useState(null);
+
+  const toggleStatus = (id) => {
+    setOpenStatusId(openStatusId === id ? null : id);
+  };
+
   return (
-    <div className=" ">
-      <div className=" w-[100vw]   flex flex-col justify-center items-center ">
-        {data.map((item) => (
-          <div
-            className="w-[93vw] lg:w-[50vw] mb-5  border-[1px] border-[#ccc9c9] flex "
-            key={item.id}
-          >
+    <div className="w-full flex flex-col items-center">
+      {data.map((item) => (
+        <div
+          className="w-[93vw] lg:w-[50vw] mb-5 border-[1px] border-[#ccc9c9] flex flex-col items-center p-4"
+          key={item.id}
+        >
+          <div className="flex w-full">
             <div className="w-[25%]">
-              <img src={item.image} alt={item.name} />
+              <img src={item.image} alt={item.name} className="w-full" />
             </div>
-            <div className="w-[70%] text-xs lg:text-lg ml-3 mt-1 lg:mt-3 font-Montserrat ">
-              {" "}
+            <div className="w-[75%] text-xs lg:text-lg ml-3">
               <p>
-                <span className="text-gray-500">Name:</span>&nbsp;{item.name}
+                <span className="text-gray-500">Name:</span>&nbsp;
+                {item.name}
               </p>
               <p>
                 <span className="text-gray-500">Price:</span>&nbsp;₹&nbsp;
                 {item.price}
               </p>
               <p>
-                <span className="text-gray-500">Quantity:</span>&nbsp;
-                {item.quantity}
+                <span className="text-gray-500">Status:</span>&nbsp;
+                {item.status}
               </p>
-              <p>
-                <span className="text-gray-500">Ordered-At:</span>&nbsp;
-                {item.orderedAt}
-              </p>
-              <p>
-                <span className="text-gray-500">Order-id:</span>&nbsp;
-                {item.orderId}
-              </p>
-            </div>
-            <div className="w-[35%] lg:w-[50%] flex items-end ">
-              <button className="p-1.5 lg:p-2 text-xs lg:text-lg   bg-amber-600 text-white mb-5 mr-5 hover:bg-[#e18300]">
-                See status
-              </button>
-              <button className="p-1.5 lg:p-2 text-xs lg:text-lg   bg-amber-600 text-white mb-5 mr-5 hover:bg-[#e18300]">
-                Return Order
-              </button>
             </div>
           </div>
-        ))}
-      </div>
+
+          <div className="w-full flex justify-end mt-3">
+            <button
+              className="p-2 text-xs lg:text-lg bg-amber-600 text-white hover:bg-[#e18300] mr-2"
+              onClick={() => toggleStatus(item.id)}
+            >
+              {openStatusId === item.id ? "Close Status" : "See Status"}
+            </button>
+            <button className="p-2 text-xs lg:text-lg bg-amber-600 text-white hover:bg-[#e18300]">
+              Return Order
+            </button>
+          </div>
+
+          {/* OrderStatusStepper will slide down smoothly */}
+          {openStatusId === item.id && (
+            <div className="w-full mt-3 overflow-hidden transition-all duration-300">
+              <OrderStatusStepper status={item.status} />
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };
