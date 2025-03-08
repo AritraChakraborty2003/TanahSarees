@@ -90,6 +90,10 @@ const ProductCard = (props) => {
                 onClick={() => {
                   setActiveProduct(props.data);
                   setActiveFilter(false);
+                  localStorage.setItem(
+                    "activeProduct",
+                    JSON.stringify(props.data)
+                  );
                   setFilteredData([]); // Reset filter data on click
                   window.scrollTo(0, 0);
                 }}
