@@ -75,7 +75,7 @@ const SliderComponent = () => {
       >
         <button
           onClick={() => sliderRef.current.slickPrev()}
-          className=" absolute  left-1 lg:left-5  top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full shadow-md"
+          className=" absolute  left-1 lg:left-5  top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full md"
         >
           <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
         </button>
@@ -87,7 +87,7 @@ const SliderComponent = () => {
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
                     <a href="/products">
                       <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] shadow-lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
                         style={{
                           backgroundImage: `url(${
                             import.meta.env.VITE_APP_API_URL + item.photo
@@ -113,7 +113,7 @@ const SliderComponent = () => {
         </Slider>
         <button
           onClick={() => sliderRef.current.slickNext()}
-          className="absolute right-1 lg:right-7 top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full shadow-md"
+          className="absolute right-1 lg:right-7 top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full md"
         >
           <ChevronRight size={screen.width > 1000 ? 24 : 14} />
         </button>

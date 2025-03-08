@@ -10,11 +10,11 @@ const Collection = () => {
   return (
     <div className="mt-5 lg:mt-15 ">
       <div className="dark">
-        <p className="text-center dark font-Montserrat lighttxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+        <p className="pt-3 text-center dark font-Montserrat lighttxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
           Ultimate Collection
         </p>
 
-        <p className="text-center dark pb-2 text-sm lg:text-md  lighttxt">
+        <p className="text-center dark pb-3 text-sm lg:text-md  lighttxt">
           ( Shop by collection )
         </p>
       </div>

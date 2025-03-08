@@ -3,30 +3,27 @@ import OrderObj from "../../Models/Orders.js";
 export const OrderPOST = () => {
   return async (req, res) => {
     try {
-      const {
-        email,
-        phone,
-        item_name,
-        item_quantity,
+      const { products, uinfo, price, status, transaction_status, T_no } =
+        req.body;
+
+      const order = new OrderObj({
+        products,
+        uinfo,
         price,
-        additional_number,
-        address,
-        images,
-      } = req.body;
-      const newOrder = new OrderObj({
-        email,
-        phone,
-        item_name,
-        item_quantity,
-        price,
-        additional_number,
-        address,
-        images,
+        status,
+        transaction_status,
+        T_no,
       });
-      await newOrder.save();
-      res.status(201).json(newOrder);
-    } catch (error) {
-      res.status(400).json({ message: error.message });
+
+      const savedOrder = await order.save();
+
+      res.status(200).json({
+        message: "success",
+        order: savedOrder,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Server error" });
     }
   };
 };

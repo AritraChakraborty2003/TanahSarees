@@ -313,9 +313,15 @@ export default function MainHeader(props) {
   const handlepayment = async () => {
     const {
       data: { order },
-    } = await axios.post("http://localhost:8040/api/v1/checkout", {
-      amount: cartTotal * 100,
-    });
+    } = await axios.post(
+      "http://localhost:8040/api/v1/checkout",
+      {
+        amount: cartTotal * 100,
+      },
+      {
+        withCredentials: true,
+      }
+    );
     if (!order) return; // ✅ Ensure order is available before proceeding
 
     var options = {

@@ -8,10 +8,10 @@ const Footer = () => {
           screen.width <= 375 ? "h-[100vh]" : "h-[77vh]"
         } lg:h-[90vh] w-[100vw] 2xl:h-[80vh] dark`}
         style={{
-          backgroundImage: `url('pngwing.com (2).png'), url('pngwing.com.png')`,
-          backgroundSize: "100% 150%, cover", // First image full width, second covers the div
-          backgroundPosition: "top, bottom", // First image on top, second on bottom
-          backgroundRepeat: "no-repeat, no-repeat", // No tiling for both images
+          backgroundImage: `url('pngwing.com.png')`, // url('pngwing.com.png')
+          backgroundSize: "cover", // First image full width, second covers the div
+          backgroundPosition: "bottom", // First image on top, second on bottom
+          backgroundRepeat: "no-repeat", // No tiling for both images
         }}
       >
         <div className=" bottom-0 w-[100vw] absolute lg:justify-center z-5  flex flex-col  font-Poppins text-white">
