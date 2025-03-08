@@ -9,13 +9,15 @@ const Collection = () => {
   const data = dataExclusive.slice(26, 30);
   return (
     <div className="mt-5 lg:mt-15 ">
-      <p className="text-center dark font-Montserrat lighttxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
-        Ultimate Collection
-      </p>
+      <div className="dark">
+        <p className="text-center dark font-Montserrat lighttxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
+          Ultimate Collection
+        </p>
 
-      <p className="text-center dark pb-2 text-sm lg:text-md  lighttxt">
-        ( Shop by collection )
-      </p>
+        <p className="text-center dark pb-2 text-sm lg:text-md  lighttxt">
+          ( Shop by collection )
+        </p>
+      </div>
       <div className="mt-5 lg:mt-10">
         <CardText data={data} type="collection" />
       </div>

@@ -5,48 +5,54 @@ const Faqcomponent = (props) => {
   const data = {
     rows: [
       {
-        title: "What is the package version",
-        content: <p>current version is 1.2.1</p>,
+        title: "What types of silk sarees do you offer?",
+        content:
+          "We offer a wide range of Banarasi silk sarees, including Katan, Organza, Georgette, and Tussar silk, crafted by skilled artisans.",
       },
       {
-        title: "Introduction to JavaScript",
+        title: "Are the sarees handwoven or machine-made?",
         content:
-          "JavaScript is a versatile programming language used for web development.",
+          "Our sarees are traditionally handwoven by experienced weavers in Banaras, preserving the rich heritage of Indian craftsmanship.",
       },
       {
-        title: "React.js Basics",
+        title: "How can I check the authenticity of the silk saree?",
         content:
-          "React is a popular JavaScript library for building user interfaces.",
+          "All our sarees come with a Silk Mark certification to ensure authenticity. We also provide detailed descriptions and images for transparency.",
       },
       {
-        title: "Node.js Overview",
+        title: "Do you offer customization or personalized sarees?",
         content:
-          "Node.js allows JavaScript to run on the server-side, enabling backend development.",
+          "Yes, we provide custom saree designs, including personalized motifs and color variations. Contact our customer service for details.",
       },
       {
-        title: "MongoDB Fundamentals",
+        title: "How do I care for my Banarasi silk saree?",
         content:
-          "MongoDB is a NoSQL database that stores data in JSON-like documents.",
+          "Dry cleaning is recommended to maintain the shine and texture. Store in a muslin cloth and avoid direct sunlight to prevent fading.",
       },
       {
-        title: "TypeScript Advantages",
+        title: "Do you offer bulk orders for weddings or events?",
         content:
-          "TypeScript adds static typing to JavaScript, improving code quality and maintainability.",
+          "Yes, we accept bulk and wholesale orders for weddings, corporate events, and gifting. Special discounts are available for bulk purchases.",
       },
       {
-        title: "Understanding Redux",
+        title: "What payment methods do you accept?",
         content:
-          "Redux is a state management library often used with React applications.",
+          "We accept credit/debit cards, UPI, net banking, wallets, and cash on delivery (COD) for select locations.",
       },
       {
-        title: "AWS for Beginners",
+        title: "Do you provide blouse stitching services?",
         content:
-          "Amazon Web Services (AWS) provides scalable cloud computing solutions.",
+          "Yes, we offer blouse stitching services based on your measurements. You can select this option while placing an order.",
       },
       {
-        title: "Version Control with Git",
+        title: "Can I return or exchange my saree if I don’t like it?",
         content:
-          "Git is a distributed version control system for tracking changes in code.",
+          "Yes, returns and exchanges are allowed within 7 days of delivery, provided the saree is unused and in its original packaging.",
+      },
+      {
+        title: "How can I contact customer support?",
+        content:
+          "You can reach us via email at support@tanahsarees.com or call us at +91 XXXXX XXXXX between 10 AM - 7 PM (IST).",
       },
     ],
   };
@@ -78,10 +84,13 @@ const Faqcomponent = (props) => {
     // tabFocus: true,
   };
 
+  const faqData = props.type === "not_faq" ? { rows: props.data } : data;
+  console.log("pdata", props.data);
+
   return (
     <>
       <div
-        className="flex justify-center flex-col items-center p-[10vmin]"
+        className="flex justify-center flex-col items-center  p-[10vmin]"
         style={{
           marginTop: `${screen.width > 1000 ? "20%" : ""}`, // Adjust based on header height
           zIndex: 10, // Keep content below the header
@@ -100,7 +109,7 @@ const Faqcomponent = (props) => {
               </>
             )}
             <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-15  ">
-              <Faq data={data} styles={styles} config={config} />
+              <Faq data={faqData} styles={styles} config={config} />
             </div>
           </>
         )) || (
@@ -116,7 +125,7 @@ const Faqcomponent = (props) => {
               </>
             )}
             <div className="w-[90vw] lg:w-[65vw] 2xl:w-[55vw] mt-20  ">
-              <Faq data={data} styles={stylesLarge} config={config} />
+              <Faq data={faqData} styles={stylesLarge} config={config} />
             </div>
           </>
         )}
