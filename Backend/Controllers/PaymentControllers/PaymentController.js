@@ -115,6 +115,11 @@ export const PaymentVerification = () => {
       //   { paymentId: razorpay_payment_id, status: "paid" },
       //   { new: true }
       // );
+      const updatedUser1 = await User.findOneAndUpdate(
+        { email: email },
+        { $set: { orders: newOrders } }, // Replace entire array
+        { new: true, runValidators: true }
+      );
 
       res.redirect(
         "http://localhost:5173/result?type=success&ref=" + razorpay_order_id
