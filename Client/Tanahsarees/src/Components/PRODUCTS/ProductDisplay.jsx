@@ -6,6 +6,7 @@ import ProductCard from "../CARDS/ProductCard";
 import { AppContext } from "../../AppContext/AppContext";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
+import { useHandleCart } from "../../Utils/useHandleCart";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
 import useHandleHeart from "../../Utils/usehandleHeart";
 
@@ -43,6 +44,12 @@ const ProductDisplay = () => {
 
   const toggleFilter = () => setFilter(!Filter);
   const loadMore = () => setVisibleCount((prev) => prev + 12);
+
+  const Prodname = activeFilter
+    ? "Filtered Data "
+    : "Complete Saree Collections";
+
+  const res = useHandleCart();
 
   return (
     <div>
