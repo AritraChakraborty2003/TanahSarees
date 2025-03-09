@@ -9,6 +9,7 @@
 
 * {
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 :root {
   --new-dark: #262424;
