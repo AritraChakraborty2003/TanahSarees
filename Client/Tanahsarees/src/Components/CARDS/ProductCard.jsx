@@ -172,6 +172,7 @@ const ProductCard = (props) => {
         className="btn p-1.5 mt-1 text-xs lg:p-2 text-white bg-[#F58B75]"
         onClick={() => {
           if (authStatus.isAuthenticated) {
+            // console.log("Hello World");
             setactiveCartId(_id);
             setCartClick(!cartClick);
           } else {
