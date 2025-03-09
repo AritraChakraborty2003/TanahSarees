@@ -5,7 +5,7 @@ import ProductCard from "../CARDS/ProductCard";
 import { AppContext } from "../../AppContext/AppContext";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
 import UseHTTPRequest from "../../Utils/useHTTPRequest";
-import useHandleHeart from "../../Utils/usehandleHeart";
+import useHandleHeart from "../../Utils/useHandleHeart";
 import { useHandleCart } from "../../Utils/useHandleCart";
 
 const Favourite = () => {
