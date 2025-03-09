@@ -318,9 +318,11 @@ const router = createBrowserRouter([
     path: "/cmscancel",
     element: (
       <>
-        <MainHeader scrollValue="30" category="CMS" />
-        <CMSCancelCards />
-        <Footer />
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" category="CMS" />
+          <CMSCancelCards />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },

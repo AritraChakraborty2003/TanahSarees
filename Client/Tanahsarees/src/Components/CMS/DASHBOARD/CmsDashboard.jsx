@@ -37,8 +37,8 @@ const CmsDashboard = () => {
       icon: "/CMSIMG/catalogue.png",
     },
     {
-      title: "Transaction History",
-      path: "/transactionmanager",
+      title: "Cancel History ",
+      path: "/cmscancel",
       icon: "/CMSIMG/transaction.png",
     },
     {
