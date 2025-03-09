@@ -5,7 +5,7 @@ import { AppContext } from "../../../AppContext/AppContext";
 const Material = () => {
   const { sareeData } = useContext(AppContext);
   const dataExclusive = sareeData.filter((item) => item.discount != null);
-  const data = dataExclusive.slice(11, 15);
+  const data = dataExclusive.slice(0, 4);
   return (
     <div className="mt-10 lg:mt-20 light pt-8 lg:pt-10 lg:pb-10">
       <p className="text-center font-Montserrat darktxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">

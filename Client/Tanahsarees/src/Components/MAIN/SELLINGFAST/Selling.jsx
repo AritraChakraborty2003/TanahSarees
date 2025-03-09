@@ -5,7 +5,7 @@ import { AppContext } from "../../../AppContext/AppContext";
 
 const Selling = () => {
   const { sareeData } = useContext(AppContext);
-  const data = sareeData.slice(17, 21);
+  const data = sareeData.slice(0, 4);
 
   return (
     <div className="mt-10 lg:mt-15 lg:pt-15 pt-7 pb-8 lg:pb-5 light">

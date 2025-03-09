@@ -6,7 +6,7 @@ const Collection = () => {
   const { sareeData } = useContext(AppContext);
 
   const dataExclusive = sareeData.filter((item) => item.occasion != null);
-  const data = dataExclusive.slice(26, 30);
+  const data = dataExclusive.slice(0, 4);
   return (
     <div className="mt-5 lg:mt-15 ">
       <div className="dark">

@@ -7,7 +7,7 @@ const Exclusive = () => {
   const dataExclusive = sareeData.filter((item) => item.discount != null);
   console.log("dataExclusive:", dataExclusive);
 
-  const data = dataExclusive.reverse().slice(21, 25);
+  const data = dataExclusive.reverse().slice(0, 4);
 
   return (
     <>
