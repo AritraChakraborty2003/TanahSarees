@@ -45,9 +45,9 @@ export const OAuthLogin = () => {
 
       // ✅ Proper Cookie Settings for Cross-Origin Requests
       res.cookie("ecom_token", jwtToken, {
-        httpOnly: true, // 🔒 Prevents XSS attacks
-        // ❌ Set to true in production
-        sameSite: "Lax", // ✅ Required for cross-origin cookies
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
         maxAge: 3600000, // 1 hour
       });
 

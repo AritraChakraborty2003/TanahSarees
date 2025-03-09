@@ -45,8 +45,8 @@ export const Login = () => {
       // Set cookie
       res.cookie("ecom_token", jwtToken, {
         httpOnly: true,
-        secure: false,
-        sameSite: "Lax",
+        secure: true,
+        sameSite: "None",
         maxAge: 3600000, // 1 hour
       });
 
