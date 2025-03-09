@@ -2,23 +2,7 @@ import sareeObj from "../../Models/Saree.js";
 export const SareePOST = () => {
   return async (req, res) => {
     try {
-      console.log("Hi");
-      console.log(req.body);
-      const {
-        sku,
-        sname,
-        type,
-        price,
-        material,
-        colour,
-        discount,
-        occasion,
-        photo,
-        topSelling,
-        rating,
-      } = req.body;
-
-      // const photo = req.file.filename;
+      const photo = req.file.filename;
       const newSareeObj = new sareeObj({
         sku,
         sname,
