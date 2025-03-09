@@ -8,7 +8,7 @@ import UseHTTPRequest from "../../Utils/useHTTPRequest";
 import FilterAccordion from "../TESTComp/FilterAccordian";
 import { useHandleCart } from "../../Utils/useHandleCart";
 import { useCheckAuth } from "../../Utils/useCheckAuth";
-import useHandleHeart from "../../Utils/usehandleHeart";
+import useHandleHeart from "../../Utils/useHandleHeart";
 
 const ProductDisplay = () => {
   const {
