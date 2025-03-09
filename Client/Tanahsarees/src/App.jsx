@@ -42,7 +42,7 @@ import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 
 // import { TestPay } from "../TestPay/TestPay";
 // import ResultPage from "../TestPay/ResultPage";
-import Testpay1 from "../TestPay/testpay1";
+
 import ResultPageFinal from "./Components/RESULTPAGE/ResultPageFinal";
 import CMSCancelCards from "./Components/CMS/CMScards/CMSCancelCards";
 // import { useLocation } from "react-router-dom";
@@ -339,14 +339,6 @@ const router = createBrowserRouter([
     ),
   },
 
-  {
-    path: "/pay",
-    element: (
-      <>
-        <Testpay1 />
-      </>
-    ),
-  },
   {
     path: "/result",
     element: (
