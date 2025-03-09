@@ -51,6 +51,7 @@ const Catalogue = () => {
   // Handle Form Submission
   const handleFormSubmit = (values) => {
     const {
+      sku,
       sname,
       type,
       price,
@@ -63,7 +64,9 @@ const Catalogue = () => {
       rating,
     } = values;
 
+    console.log(file);
     const newFormData = new FormData();
+    newFormData.append("sku", sku);
     newFormData.append("sname", sname);
     newFormData.append("type", type);
     newFormData.append("price", price);

@@ -47,7 +47,7 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
       console.log("POST DATA Body Got :", data);
       if (category != "auth") {
         axios
-          .post(`${import.meta.env.VITE_APP_API_URL}api/v1` + route, data)
+          .post(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1` + route, data)
           .then((res) => {
             setData(res.data.message);
             setHttpClick(!httpClick);
