@@ -1,32 +1,41 @@
 import OrderCard from "../CARDS/OrderCard";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../AppContext/AppContext";
+import axios from "axios";
 
 const Order = () => {
   const { change } = useContext(AppContext);
-  const data = [
-    {
-      id: 1,
-      image: "/Sarees/saree1.jpg",
-      name: "Silk raw mango",
-      price: "3,000",
-      status: "Confirmed", // Status added
-    },
-    {
-      id: 2,
-      image: "/Sarees/saree2.jpg",
-      name: "Silk11 raw mango",
-      price: "3,000",
-      status: "Shipped",
-    },
-    {
-      id: 3,
-      image: "/Sarees/saree8.jpg",
-      name: "Silk raw mango",
-      price: "3,000",
-      status: "Delivered",
-    },
-  ];
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await axios.get("http://localhost:8040/api/v1/orders");
+        console.log("Fetched Orders:", response.data);
+
+        if (Array.isArray(response.data)) {
+          // Flatten orders, attaching order_id and status to each product
+          const allProducts = response.data.flatMap((order) =>
+            (order.products || []).map((product) => ({
+              ...product,
+              order_id: order.order_id, // Attach order_id to each product
+              status: order.status, // Attach order status
+            }))
+          );
+
+          setOrders(allProducts);
+        } else {
+          console.error("Unexpected data format:", response.data);
+          setOrders([]);
+        }
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+        setOrders([]);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   return (
     <div
@@ -44,7 +53,8 @@ const Order = () => {
         zIndex: 10,
       }}
     >
-      <div className="flex w-[85vw] lg:w-[50vw] ">
+      {/* Search Bar */}
+      <div className="flex w-[85vw] lg:w-[50vw]">
         <input
           className="w-[75%] p-[1%] border-b-1"
           type="text"
@@ -54,8 +64,14 @@ const Order = () => {
           Search
         </button>
       </div>
+
+      {/* Order Cards Carousel */}
       <div className="mt-10">
-        <OrderCard data={data} />
+        {orders.length > 0 ? (
+          <OrderCard data={orders} />
+        ) : (
+          <p>No orders found.</p>
+        )}
       </div>
     </div>
   );
