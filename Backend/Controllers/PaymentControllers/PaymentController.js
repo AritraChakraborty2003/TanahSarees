@@ -15,8 +15,6 @@ const RazorPayInstance = new Razorpay({
 export const Checkout = () => {
   return async (req, res) => {
     try {
-      //Get the body for items like [{pid:".....",price:"...",qty:"..."}]
-      //Calculate the process
       const token = req.cookies.ecom_token;
       console.log(token);
       if (!token) {
@@ -35,6 +33,8 @@ export const Checkout = () => {
       };
       const order = await RazorPayInstance.orders.create(options);
 
+      user.cart.item_status = "ordered";
+
       const OrderObjNew = new OrderObj({
         order_id: order.id,
         products: user.cart,
@@ -47,17 +47,11 @@ export const Checkout = () => {
 
       await OrderObjNew.save();
 
-      // Create a db entry for orders - {_id,
-      //                                  items:[pid1,pid2,pid3....pidn],
-      //                                  id:order.id,
-      //                                  "status":"created"}
-
       res.status(200).json({
         message: "success",
         order: order,
       });
     } catch (err) {
-      // res.status(500).json({ success: false, error: err.message });
       console.log(err);
       res.status(500).json({ message: "Server error" });
     }
@@ -67,6 +61,7 @@ export const Checkout = () => {
 export const PaymentVerification = () => {
   return async (req, res) => {
     try {
+      const { id } = req.query;
       const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
         req.body;
 
@@ -76,7 +71,7 @@ export const PaymentVerification = () => {
         .digest("hex");
 
       if (hmac !== razorpay_signature) {
-        const updatedUser = await OrderObj.findOneAndUpdate(
+        await OrderObj.findOneAndUpdate(
           {
             order_id: razorpay_order_id,
           },
@@ -94,7 +89,7 @@ export const PaymentVerification = () => {
         res.json({ success: false, message: "Invalid Signature" });
       }
 
-      const updatedUser = await OrderObj.findOneAndUpdate(
+      await OrderObj.findOneAndUpdate(
         {
           order_id: razorpay_order_id,
         },
@@ -109,15 +104,15 @@ export const PaymentVerification = () => {
         }
       );
 
-      // Update DB as needed
-      // const transaction = await Transaction.findOneAndUpdate(
-      //   { orderId: razorpay_order_id },
-      //   { paymentId: razorpay_payment_id, status: "paid" },
-      //   { new: true }
-      // );
-      const updatedUser1 = await User.findOneAndUpdate(
-        { email: email },
-        { $set: { orders: newOrders } }, // Replace entire array
+      await OrderObj.findOneAndUpdate(
+        { order_id: razorpay_order_id },
+        { $set: { "products.$[].item_status": "confirmed" } }, // Update all product items
+        { new: true, runValidators: true }
+      );
+
+      await UserObj.findByIdAndUpdate(
+        id,
+        { $push: { orders: razorpay_order_id } }, // Push a single value to the array
         { new: true, runValidators: true }
       );
 

@@ -64,6 +64,15 @@ const userSchema = new mongoose.Schema(
     cart: {
       type: [{ type: Object }],
     },
+
+    orders: {
+      type: [String],
+      default: [],
+    },
+    cancel: {
+      type: [Object],
+      default: [],
+    },
   },
   {
     timestamps: true,

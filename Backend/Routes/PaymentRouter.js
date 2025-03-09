@@ -7,4 +7,4 @@ import {
 export const PaymentRouter = express.Router();
 
 PaymentRouter.post("/", Checkout());
-PaymentRouter.post("/verification", PaymentVerification());
+PaymentRouter.post("/verification/:id", PaymentVerification());

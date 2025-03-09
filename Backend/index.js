@@ -50,7 +50,7 @@ app.use("/api/v1/admin", AdminRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/favourites", FavouriteRouter);
 app.use("/api/v1/checkout", PaymentRouter);
-
+app.use("/api/v1/cancel", CancelRouter);
 //To handle check Auth:
 app.get("/api/v1/check", verifyUser, (req, res) => {
   res.json({ isAuthenticated: true });

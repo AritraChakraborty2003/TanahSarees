@@ -44,6 +44,7 @@ import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 // import ResultPage from "../TestPay/ResultPage";
 import Testpay1 from "../TestPay/testpay1";
 import ResultPageFinal from "./Components/RESULTPAGE/ResultPageFinal";
+import CMSCancelCards from "./Components/CMS/CMScards/CMSCancelCards";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -309,6 +310,16 @@ const router = createBrowserRouter([
       <>
         <MainHeader scrollValue="30" category="CMS" />
         <CMSorderCard />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/cmscancel",
+    element: (
+      <>
+        <MainHeader scrollValue="30" category="CMS" />
+        <CMSCancelCards />
         <Footer />
       </>
     ),

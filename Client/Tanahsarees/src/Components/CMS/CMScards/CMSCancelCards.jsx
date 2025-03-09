@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const CMSordersCard = () => {
+const CMSCancelCards = () => {
   const [orders, setOrders] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [users, setUsers] = useState([]);
@@ -12,18 +12,15 @@ const CMSordersCard = () => {
       .get(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/orders`)
       .then((res) => {
         const ordersData = res.data.reverse();
-
-        // Filter out orders where all products are "Cancelled"
-        const validOrders = ordersData.filter((order) =>
-          order.products.some((product) => product.item_status !== "Cancelled")
+        const filteredOrders = ordersData.filter((order) =>
+          order.products.some((product) => product.item_status === "Cancelled")
         );
+        setOrders(filteredOrders);
 
-        setOrders(validOrders);
+        const userIds = [
+          ...new Set(filteredOrders.map((order) => order.uinfo)),
+        ];
 
-        // Extract unique user IDs from valid orders
-        const userIds = [...new Set(validOrders.map((order) => order.uinfo))];
-
-        // Fetch user data for each unique user ID
         Promise.all(
           userIds.map((id) =>
             axios.get(
@@ -39,52 +36,14 @@ const CMSordersCard = () => {
           })
           .catch((err) => console.log(err));
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => console.log(err));
   }, []);
-
-  const updateOrderStatus = (id, newStatus) => {
-    axios
-      .patch(
-        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/orders/data?id=${id}`,
-        {
-          status: newStatus,
-        }
-      )
-      .then(() => {
-        setOrders((prevOrders) =>
-          prevOrders.map((order) =>
-            order.order_id === id ? { ...order, status: newStatus } : order
-          )
-        );
-      })
-      .catch((err) => {
-        console.error("Failed to update order status", err);
-      });
-  };
-
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "Pending":
-        return "bg-yellow-200 text-yellow-800";
-      case "Shipped":
-        return "bg-blue-200 text-blue-800";
-      case "Confirmed":
-        return "bg-green-200 text-green-800";
-      case "Cancelled":
-        return "bg-red-200 text-red-800";
-      default:
-        return "bg-gray-200 text-gray-800";
-    }
-  };
 
   return (
     <div className="w-full lg:w-[75vw] border-1 max-w-full mx-auto light shadow-lg mt-[5vh] lg:mt-[30vh] mb-20 rounded-0 darktxt font-Montserrat lg:rounded-2xl p-4">
       <div className="font-medium text-lg lg:text-3xl text-center border-b-3 mb-4 p-5">
-        Recent Orders
+        Cancelled Orders
       </div>
-      {/* Table Header */}
       <div className="grid grid-cols-3 lg:grid-cols-[1.5fr_1fr_0.8fr_0.8fr_0.9fr] text-left bg-gray-100 p-3 rounded-md font-semibold">
         <div className="hidden lg:block">Customer</div>
         <div>Order ID</div>
@@ -94,7 +53,6 @@ const CMSordersCard = () => {
       <div className="space-y-4">
         {orders.map((order) => {
           const orderUser = users.find((u) => u._id === order.uinfo);
-
           return (
             <div
               key={order.order_id}
@@ -111,24 +69,8 @@ const CMSordersCard = () => {
                 {order.order_id}
               </div>
               <div className="text-sm font-medium">{order.price}</div>
-
-              <div>
-                <select
-                  value={order.status}
-                  onChange={(e) =>
-                    updateOrderStatus(order.order_id, e.target.value)
-                  }
-                  className={`p-2 rounded-md w-full ${getStatusColor(
-                    order.status
-                  )}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <option value="Delivered">Delivered</option>
-                  <option value="Shipped">Shipped</option>
-                  <option value="Confirmed">Confirmed</option>
-                  <option value="Cancelled">Cancelled</option>
-                  <option value="Aborted">Aborted</option>
-                </select>
+              <div className="p-2 rounded-md w-full bg-red-200 text-red-800">
+                Cancelled
               </div>
             </div>
           );
@@ -149,18 +91,15 @@ const CMSordersCard = () => {
               >
                 ✖
               </button>
-              <h3 className="text-lg font-bold border-t-2">
-                {selectedOrder.name}
-              </h3>
-
-              {selectedOrder.products
-                .filter((item) => item.item_status !== "Cancelled")
-                .map((item) => (
-                  <p key={item.pid}>
-                    SKU: {item.pid}, Quantity: {item.qty}
-                  </p>
-                ))}
-
+              <h3 className="text-lg font-bold border-t-2">Order Details</h3>
+              {selectedOrder.products.map(
+                (item, index) =>
+                  item.item_status === "Cancelled" && (
+                    <p key={index}>
+                      SKU: {item.pid}, Quantity: {item.qty}
+                    </p>
+                  )
+              )}
               <p className="text-sm font-semibold">
                 Total: {selectedOrder.price}
               </p>
@@ -171,7 +110,7 @@ const CMSordersCard = () => {
                 Contact: {orderUserSelected?.phone}
               </p>
               <p className="text-sm font-semibold">
-                Address: {orderUserSelected?.address.replaceAll(":", "  ,  ")}
+                Address: {orderUserSelected?.address?.replaceAll(":", "  ,  ")}
               </p>
             </div>
           </div>
@@ -181,4 +120,4 @@ const CMSordersCard = () => {
   );
 };
 
-export default CMSordersCard;
+export default CMSCancelCards;

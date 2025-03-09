@@ -69,7 +69,8 @@ const OrderModal = ({
         <div className="mt-2">
           <p className="text-gray-600">📞 Phone: {phone || "No data found"}</p>
           <p className="text-gray-600">
-            🏠 Address: {address.replaceAll(":", ",") || "No data found"}
+            🏠 Address:{" "}
+            {address ? address.replaceAll(":", ",") || "No data found" : ""}
           </p>
         </div>
       ) : (

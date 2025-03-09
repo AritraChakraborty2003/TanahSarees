@@ -63,7 +63,6 @@ export default function MainHeader(props) {
 
   useEffect(() => {
     const fetchCart = async () => {
-      console.log(" caleed");
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/cart`,
@@ -329,7 +328,7 @@ export default function MainHeader(props) {
       amount: order.amount,
       currency: "INR",
       name: "Acme Corp",
-      callback_url: "http://localhost:8040/api/v1/checkout/verification",
+      callback_url: `http://localhost:8040/api/v1/checkout/verification/data?id=${authStatus.user.message._id}`,
       description: "Test Transaction",
       order_id: order.id,
     };
