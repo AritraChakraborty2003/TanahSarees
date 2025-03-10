@@ -20,27 +20,42 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json());
-app.use(cookieParser());
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-    // Change this to your React frontend URL
-    credentials: true, // ✅ Allows sending cookies
-  })
-);
-app.use(express.urlencoded({ extended: true })); // ✅ Parses URL-encoded form data
+// ✅ Use `cors()` to handle CORS (Only once)
 
+if (process.env.ENV != "development") {
+  app.use(
+    cors({
+      origin: "https://tanahsarees.com", // ❌ Remove Array, Use Single String
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
+    })
+  );
+} else {
+  console.log("Hi");
+  app.use(
+    cors({
+      origin: "http://localhost:5173", // ❌ Remove Array, Use Single String
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+      credentials: true,
+    })
+  );
+}
+
+// ✅ Middleware
+app.use(express.json()); // Parse JSON body
+app.use(cookieParser()); // Parse cookies
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use(express.static("uploads")); // Serve static files
 
 // ✅ MongoDB Connection
 connectDB(process.env.MONGODB_URI);
 
-// ✅ Routes (MUST COME AFTER MIDDLEWARE)
+// ✅ Routes
 app.use("/", generalRouter);
 app.use("/api/v1", generalRouter);
 app.use("/api/v1/sarees", SareeRouter);
-app.use("/api/v1/saree", SareeRouter);
 app.use("/api/v1/orders", OrderRouter);
 app.use("/api/v1/cancel", CancelRouter);
 app.use("/api/v1/testimonials", TestimonialRouter);
@@ -50,13 +65,13 @@ app.use("/api/v1/admin", AdminRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/favourites", FavouriteRouter);
 app.use("/api/v1/checkout", PaymentRouter);
-app.use("/api/v1/cancel", CancelRouter);
-//To handle check Auth:
+
+// ✅ Authentication Check Route
 app.get("/api/v1/check", verifyUser, (req, res) => {
   res.json({ isAuthenticated: true });
 });
 
-// ✅ Start the Server
+// ✅ Start Server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);

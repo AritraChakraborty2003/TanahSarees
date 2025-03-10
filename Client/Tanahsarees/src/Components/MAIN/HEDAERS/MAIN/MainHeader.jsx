@@ -313,7 +313,7 @@ export default function MainHeader(props) {
     const {
       data: { order },
     } = await axios.post(
-      "http://localhost:8040/api/v1/checkout",
+      `${import.meta.env.VITE_APP_API_URL}api/v1/checkout`,
       {
         amount: cartTotal * 100,
       },
@@ -328,7 +328,9 @@ export default function MainHeader(props) {
       amount: order.amount,
       currency: "INR",
       name: "Acme Corp",
-      callback_url: `http://localhost:8040/api/v1/checkout/verification/data?id=${authStatus.user.message._id}`,
+      callback_url: `${
+        import.meta.env.VITE_APP_API_URL
+      }api/v1/checkout/verification/data?id=${authStatus.user.message._id}`,
       description: "Test Transaction",
       order_id: order.id,
     };

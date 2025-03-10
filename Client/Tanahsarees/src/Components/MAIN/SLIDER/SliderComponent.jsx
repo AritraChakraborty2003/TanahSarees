@@ -83,6 +83,7 @@ const SliderComponent = () => {
           {items &&
             [...items].map((item) => (
               <>
+                {console.log(import.meta.env.VITE_APP_API_URL + item.photo)}
                 <div className="zoom-div lg:ml-[-1vmin]">
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
                     <a href="/products">

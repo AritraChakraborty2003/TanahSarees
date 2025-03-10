@@ -55,6 +55,7 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
           })
           .catch((error) => {
             setData(error);
+            console.log(error);
             setHttpClick(!httpClick);
             toast.error("Something went wrong...");
           });
