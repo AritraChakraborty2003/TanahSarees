@@ -117,7 +117,7 @@ export const PaymentVerification = () => {
       );
 
       res.redirect(
-        "http://localhost:5173/result?type=success&ref=" + razorpay_order_id
+        "https://tanahsarees.com/result?type=success&ref=" + razorpay_order_id
       );
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
