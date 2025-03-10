@@ -1,7 +1,9 @@
 import axios from "axios";
 import UserObj from "../../Models/User.js";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
 export const OAuthLogin = () => {
   return async (req, res) => {
     try {
@@ -44,12 +46,21 @@ export const OAuthLogin = () => {
       );
 
       // ✅ Proper Cookie Settings for Cross-Origin Requests
-      res.cookie("ecom_token", jwtToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 3600000, // 1 hour
-      });
+      if (process.env.NODE_ENV === "production") {
+        res.cookie("ecom_token", jwtToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+          maxAge: 3600000, // 1 hour
+        });
+      } else {
+        res.cookie("ecom_token", jwtToken, {
+          httpOnly: true,
+          secure: false,
+          sameSite: "Lax", // For development, use "Lax" instead of "None" to allow cross-origin requests
+          maxAge: 3600000, // 1 hour
+        });
+      }
 
       res.status(200).json({ message: "Login successful" });
     } catch (error) {

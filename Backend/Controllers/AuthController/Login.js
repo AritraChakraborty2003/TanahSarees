@@ -1,7 +1,9 @@
 import UserObj from "../../Models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
 export const Login = () => {
   return async (req, res) => {
     try {
@@ -43,12 +45,21 @@ export const Login = () => {
       }
 
       // Set cookie
-      res.cookie("ecom_token", jwtToken, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "None",
-        maxAge: 3600000, // 1 hour
-      });
+      if (process.env.NODE_ENV === "production") {
+        res.cookie("ecom_token", jwtToken, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+          maxAge: 3600000, // 1 hour
+        });
+      } else {
+        res.cookie("ecom_token", jwtToken, {
+          httpOnly: true,
+          secure: false,
+          sameSite: "Lax", // For development, use "Lax" instead of "None" to allow cross-origin requests
+          maxAge: 3600000, // 1 hour
+        });
+      }
 
       return res
         .status(200)
