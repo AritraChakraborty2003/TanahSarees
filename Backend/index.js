@@ -20,30 +20,15 @@ dotenv.config();
 
 const app = express();
 
-// ✅ CORS Middleware (Fixed)
+// ✅ Use `cors()` to handle CORS (Only once)
 app.use(
   cors({
-    origin: ["https://tanahsarees.com", "https://www.tanahsarees.com"],
+    origin: "https://tanahsarees.com", // ❌ Remove Array, Use Single String
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // ✅ Necessary for cookies
+    credentials: true,
   })
 );
-
-// ✅ Custom Headers (Fix for Access-Control-Allow-Origin Issue)
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://tanahsarees.com");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-Credentials", "true"); // Allow cookies
-  if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
-  }
-  next();
-});
 
 // ✅ Middleware
 app.use(express.json()); // Parse JSON body
