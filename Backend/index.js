@@ -24,7 +24,7 @@ const app = express();
 app.use(
   cors({
     origin: "https://tanahsarees.com", // ❌ Remove Array, Use Single String
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })

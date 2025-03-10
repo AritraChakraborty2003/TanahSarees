@@ -20,7 +20,7 @@ const ProductDisplay = () => {
     setFilteredData,
   } = useContext(AppContext);
 
-  const [Filter, setFilter] = useState(true);
+  const [Filter, setFilter] = useState(screen.width > 1000 ? true : false);
   const [visibleCount, setVisibleCount] = useState(12);
   const authStatus = useCheckAuth(null, "auth"); // ✅ Fetch user authentication status
   const location = useLocation();
