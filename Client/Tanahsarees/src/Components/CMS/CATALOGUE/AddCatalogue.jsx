@@ -5,6 +5,7 @@ import * as Yup from "yup";
 
 const AddCatalogue = ({ onSubmit }) => {
   const [preview, setPreview] = useState(null);
+  const [additionalPreviews, setAdditionalPreviews] = useState([]);
 
   // Validation Schema
   const validationSchema = Yup.object({
@@ -15,6 +16,7 @@ const AddCatalogue = ({ onSubmit }) => {
       .positive("Price must be positive")
       .required("Price is required"),
     file: Yup.mixed().required("Product photo is required"),
+    additionalImages: Yup.array().max(4, "You can upload up to 4 images"),
     material: Yup.string().required("Material is required"),
     colour: Yup.string().required("Colour is required"),
     isOffer: Yup.string().required("Please select an offer status"),
@@ -54,6 +56,7 @@ const AddCatalogue = ({ onSubmit }) => {
           type: "",
           price: "",
           file: null,
+          additionalImages: [],
           material: "",
           colour: "",
           isOffer: "no",
@@ -65,15 +68,33 @@ const AddCatalogue = ({ onSubmit }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          // console.log("Form Submitted: ", values); // Debugging
           const formData = new FormData();
+
           for (let key in values) {
-            formData.append(key, values[key]);
+            if (key === "additionalImages") {
+              // formData.append(`files[]`, values.additionalImages);
+              // Append multiple images correctly
+              values.additionalImages.forEach((file) => {
+                formData.append(`files[]`, file);
+              });
+            } else {
+              formData.append(key, values[key]);
+            }
           }
+
+          // Debugging
           // console.log("Form Submitted: ", values);
-          onSubmit && onSubmit(values);
+          // console.log("FormData Entries:");
+          // for (let pair of formData.entries()) {
+          //   console.log(pair[0], pair[1]);
+          // }
+
+          // Submit form data
+          onSubmit && onSubmit(formData);
+
           resetForm();
           setPreview(null);
+          setAdditionalPreviews([]); // Clear additional image previews
         }}
       >
         {({ setFieldValue, values }) => (
@@ -154,6 +175,56 @@ const AddCatalogue = ({ onSubmit }) => {
                 )}
                 <ErrorMessage
                   name="file"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              {/* Additinozl images */}
+              <div>
+                <label className="block font-medium">
+                  Additional Images (Max 4)
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={(event) => {
+                    const selectedFiles = Array.from(event.currentTarget.files);
+                    const existingFiles = values.additionalImages || [];
+
+                    // Combine new and old images, ensuring max 4
+                    const updatedFiles = [
+                      ...existingFiles,
+                      ...selectedFiles,
+                    ].slice(0, 4);
+                    setFieldValue("additionalImages", updatedFiles);
+
+                    // Generate previews
+                    const updatedPreviews = updatedFiles.map((file) =>
+                      typeof file === "string"
+                        ? file
+                        : URL.createObjectURL(file)
+                    );
+                    setAdditionalPreviews(updatedPreviews);
+                  }}
+                  className="border p-2 w-full"
+                />
+
+                {/* Preview Section */}
+                <div className="flex mt-2 gap-2 flex-wrap">
+                  {additionalPreviews.map((src, index) => (
+                    <div key={index} className="relative">
+                      <img
+                        src={src}
+                        alt={`Preview ${index}`}
+                        className="w-20 h-20 object-cover border"
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <ErrorMessage
+                  name="additionalImages"
                   component="div"
                   className="text-red-500"
                 />

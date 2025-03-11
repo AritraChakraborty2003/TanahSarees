@@ -64,14 +64,11 @@ const userSchema = new mongoose.Schema(
     cart: {
       type: [{ type: Object }],
     },
-
     orders: {
       type: [String],
-      default: [],
     },
-    cancel: {
-      type: [Object],
-      default: [],
+    cancelOrders: {
+      type: [String],
     },
   },
   {

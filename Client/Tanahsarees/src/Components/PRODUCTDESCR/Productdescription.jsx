@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
+
+import React from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import Modal from "react-modal";
 import ControlledAccordions from "../TESTComp/ControlledAccordions";
@@ -33,7 +38,7 @@ const Productdescription = () => {
   console.log("Data:", sareeDataObj);
 
   const {
-    activeProduct,
+    // activeProduct,
     setActiveProduct,
     activeFilter,
     setActiveFilter,
@@ -46,37 +51,44 @@ const Productdescription = () => {
     setLoginlargescreen,
   } = useContext(AppContext);
 
-  const { photo, material, price, discount, sname, colour, type, _id, rating } =
-    JSON.parse(localStorage.getItem("activeProduct")) || activeProduct;
+  // Retrieve the existing activeProduct
+  const activeProduct = JSON.parse(localStorage.getItem("activeProduct")) || {};
+
+  // Dummy additional images
+  const dummyImages = [
+    "/Sarees/saree8.jpg",
+    "/Sarees/saree1.jpg",
+    "/Sarees/saree3.jpg",
+    "/Sarees/saree4.jpg",
+    "/Sarees/saree7.jpg",
+  ];
+
+  // Create an updated product object (without saving back to localStorage)
+  const updatedProduct = {
+    ...activeProduct,
+    additionalPhoto: dummyImages, // Update only additionalPhoto
+  };
+
+  // Destructure updatedProduct directly for usage
+  const {
+    photo,
+    additionalPhoto = [],
+    material,
+    price,
+    discount,
+    sname,
+    colour,
+    type,
+    _id,
+    rating,
+  } = updatedProduct; // No need to save back
+
+  const allPhotos = [photo, ...additionalPhoto];
 
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);
 
   const [expandedAccordion, setExpandedAccordion] = useState(null);
-
-  const data = [
-    {
-      image: "/Sarees/saree7.jpg",
-      title: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree3.jpg",
-      title: "Silk raw mango",
-      price: "3000",
-    },
-    {
-      image: "/Sarees/saree10.jpg",
-      title: "Silk raw mango",
-      price: "3000",
-    },
-
-    {
-      image: "/Sarees/saree9.jpg",
-      title: "Silk raw mango",
-      price: "3000",
-    },
-  ];
 
   const productDetails = [
     `- ${colour} Semi Stitched saree in ${type}`,
@@ -165,6 +177,26 @@ const Productdescription = () => {
     "favourite"
   );
 
+  const sliderRef = useRef(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+
+  // Update state on window resize
+  useEffect(() => {
+    const handleResize = () => setIsLargeScreen(window.innerWidth > 1024);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+  };
+
   return (
     <>
       <div className="flex flex-col gap-y-6 pb-15">
@@ -183,18 +215,56 @@ const Productdescription = () => {
             zIndex: 10, // Keep content below the header
           }}
         >
-          <div className="leftImageHolder w-[98vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
-            <div className="imageHolder mt-[-1.75vmin] lg:mt-0 w-[75%]  h-[88vmin] lg:w-[78%] lg:h-[95vmin]  flex justify-end items-center">
-              <img
-                src={`${import.meta.env.VITE_APP_API_URL + photo} `}
-                alt="Product Image"
-                className="max-w-full max-h-full object-contain"
-                onClick={() => {
-                  if (screen.width > 1000) {
-                    setOpenImage(!OpenImage);
-                  }
-                }}
-              />
+          <div className="leftImageHolder w-[98vw]  lg:w-[50vw] lg:h-[100vh] flex flex-col gap-y-2 justify-center items-center mt-10 overflow-hidden">
+            <div className="imageHolder relative mt-0  w-[75%] h-[88vmin] lg:w-[78%] lg:h-[95vmin] flex flex-col justify-end items-center overflow-hidden">
+              <Slider
+                ref={sliderRef}
+                {...settings}
+                className="w-full h-full overflow-hidden"
+              >
+                {allPhotos.map((img, index) => (
+                  <div key={index} className="w-full h-full">
+                    <img
+                      // src={`${import.meta.env.VITE_APP_API_URL + img}`}
+                      src={img}
+                      alt={`Product Image ${index + 1}`}
+                      className="max-w-full max-h-full object-contain "
+                      // onClick={() => {
+                      //   if (window.innerWidth > 1000) {
+                      //     setOpenImage((prev) => !prev);
+                      //   }
+                      // }}
+                    />
+                  </div>
+                ))}
+              </Slider>
+              {isLargeScreen ? (
+                <>
+                  <div className=" absolute z-10 flex top-[50%]  justify-evenly gap-x-5  items-center  w-[98vw] lg:w-[50vw] lg:h-[10vh]">
+                    <button
+                      onClick={() => sliderRef.current.slickPrev()}
+                      className="absolute  bg-[#262424] text-white p-3 left-[15%] rounded-[120%] z-10"
+                    >
+                      ←
+                    </button>
+
+                    <button
+                      onClick={() => sliderRef.current.slickNext()}
+                      className="  absolute   bg-[#262424] right-[15%] text-white p-3 rounded-[120%] z-10"
+                    >
+                      →
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className=" absolute flex gap-x-3 text-2xl text-white pb-2 font-extrabold">
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                </div>
+              )}
             </div>
           </div>
           <div className="rightTextHolder w-[98vw] lg:w-[50vw] darktxt">

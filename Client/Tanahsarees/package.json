@@ -56,6 +56,7 @@
     "remixicon": "^4.6.0",
     "rsuite": "^5.78.0",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.2.5",
     "tailwind-merge": "^3.0.1",
     "yup": "^1.6.1"
   },
