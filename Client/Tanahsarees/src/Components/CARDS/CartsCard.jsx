@@ -62,8 +62,8 @@ const CartsCard = (props) => {
                 {type}
               </p>
             </div>
-            <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat justify-end">
-              <p className="text-md text-gray-500 mr-3 lg:mr-10">
+            <div className="info  w-[100%] h-[15%] flex items-center font-Montserrat">
+              <p className="text-md text-gray-500 ml-2 ">
                 <span className="font-bold darktxt">price&nbsp;:&nbsp;</span>
                 ₹&nbsp;{price}
               </p>

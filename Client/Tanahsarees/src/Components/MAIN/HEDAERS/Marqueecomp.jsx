@@ -4,7 +4,7 @@ const Marqueecomp = () => {
     <Marquee
       className="dark p-[1.25vmin] font-medium font-Montserrat"
       pauseOnHover={true}
-      speed={120}
+      speed={50}
     >
       &nbsp;
       <p

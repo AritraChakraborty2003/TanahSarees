@@ -131,9 +131,15 @@ const AddCatalogue = ({ onSubmit }) => {
                 <Field as="select" name="type" className="border p-2 w-full">
                   <option value="">Select</option>
                   <option value="floral">Floral</option>
-                  <option value="paestral">Paestral</option>
-                  <option value="sequince">Sequince</option>
+                  <option value="paisley">Paisley</option>
+                  <option value="sequin">Sequin</option>
                   <option value="printed">Printed</option>
+                  <option value="embroidered">Embroidered</option>
+                  <option value="solid">Solid/Plain</option>
+                  <option value="striped">Striped</option>
+                  <option value="checkered">Checkered</option>
+                  <option value="polka-dot">Polka Dot</option>
+                  <option value="animal-print">Animal Print</option>
                 </Field>
               </div>
 
@@ -239,14 +245,34 @@ const AddCatalogue = ({ onSubmit }) => {
                   className="border p-2 w-full"
                 >
                   <option value="">Select</option>
-                  <option value="silk">Silk</option>
-                  <option value="orange">Orange</option>
-                  <option value="mansoor">Mansoor Silk</option>
-                  <option value="crepe">Crepe silk</option>
+                  <option value="banarasi">Banarasi Silk</option>
+                  <option value="kanjivaram">Kanjivaram Silk</option>
+                  <option value="mysore">Mysore Silk</option>
+                  <option value="tussar">Tussar Silk</option>
+                  <option value="chanderi">Chanderi Silk</option>
+                  <option value="baluchari">Baluchari Silk</option>
+                  <option value="patola">Patola Silk</option>
+                  <option value="ikkat">Ikkat Silk</option>
+                  <option value="paithani">Paithani Silk</option>
+                  <option value="muga">Muga Silk</option>
+                  <option value="katan">Katan Silk</option>
+                  <option value="crepe">Crepe Silk</option>
                   <option value="georgette">Georgette Silk</option>
-                  <option value="china">China silk</option>
                   <option value="tissue">Tissue Silk</option>
-                  <option value="rawmango">Raw Mango silk</option>
+                  <option value="raw_silk">Raw Silk (Paat)</option>
+                  <option value="dupion">Dupion Silk</option>
+                  <option value="organza">Organza Silk</option>
+                  <option value="ghicha">Ghicha Silk</option>
+                  <option value="mansoori">Mansoori Silk</option>
+                  <option value="matka">Matka Silk</option>
+
+                  {/* <!-- Bonus Silks --> */}
+                  <option value="bhagalpuri">Bhagalpuri Silk</option>
+                  <option value="eri">Eri Silk</option>
+                  <option value="noil">Noil Silk</option>
+                  <option value="china">China Silk</option>
+                  <option value="orange">Orange Silk</option>
+                  <option value="rawmango">Raw Mango Silk</option>
                 </Field>
               </div>
 
@@ -255,14 +281,56 @@ const AddCatalogue = ({ onSubmit }) => {
                 <label className="block font-medium">Colour</label>
                 <Field as="select" name="colour" className="border p-2 w-full">
                   <option value="">Select</option>
+                  <option value="">Select</option>
                   <option value="red">Red</option>
-                  <option value="orange">Orange</option>
-                  <option value="black">Black</option>
-                  <option value="yellow">Yellow</option>
-                  <option value="green">Green</option>
-                  <option value="white">White</option>
+                  <option value="crimson">Crimson</option>
                   <option value="maroon">Maroon</option>
+                  <option value="pink">Pink</option>
+                  <option value="blush_pink">Blush Pink</option>
+                  <option value="rose_gold">Rose Gold</option>
+                  <option value="peach">Peach</option>
+                  <option value="orange">Orange</option>
+                  <option value="coral">Coral</option>
+                  <option value="yellow">Yellow</option>
+                  <option value="mustard">Mustard</option>
+                  <option value="gold">Gold</option>
+                  <option value="green">Green</option>
+                  <option value="olive">Olive Green</option>
+                  <option value="parrot_green">Parrot Green</option>
+                  <option value="sea_green">Sea Green</option>
                   <option value="blue">Blue</option>
+                  <option value="navy">Navy Blue</option>
+                  <option value="turquoise">Turquoise</option>
+                  <option value="teal">Teal</option>
+                  <option value="purple">Purple</option>
+                  <option value="lavender">Lavender</option>
+                  <option value="violet">Violet</option>
+                  <option value="grey">Grey</option>
+                  <option value="elegant_grey">Elegant Grey</option>
+                  <option value="charcoal">Charcoal Grey</option>
+                  <option value="black">Black</option>
+                  <option value="white">White</option>
+                  <option value="ivory">Ivory</option>
+                  <option value="beige">Beige</option>
+                  <option value="cream">Cream</option>
+                  <option value="silver">Silver</option>
+
+                  {/* <!-- Additional 15 Colors --> */}
+                  <option value="wine">Wine</option>
+                  <option value="burgundy">Burgundy</option>
+                  <option value="chocolate">Chocolate Brown</option>
+                  <option value="rust">Rust</option>
+                  <option value="saffron">Saffron</option>
+                  <option value="amber">Amber</option>
+                  <option value="sky_blue">Sky Blue</option>
+                  <option value="baby_pink">Baby Pink</option>
+                  <option value="magenta">Magenta</option>
+                  <option value="fuchsia">Fuchsia</option>
+                  <option value="mint">Mint Green</option>
+                  <option value="jade">Jade Green</option>
+                  <option value="copper">Copper</option>
+                  <option value="bronze">Bronze</option>
+                  <option value="platinum">Platinum</option>
                 </Field>
                 <ErrorMessage
                   name="colour"
@@ -333,17 +401,44 @@ const AddCatalogue = ({ onSubmit }) => {
                     className="border p-2 w-full"
                   >
                     <option value="">Select</option>
-                    <option value="Summer Collection">Summer Collection</option>
+                    <option value="summer_collection">Summer Collection</option>
                     <option value="wedding">Wedding</option>
                     <option value="engagement">Engagement</option>
                     <option value="reception">Reception</option>
                     <option value="haldi">Haldi</option>
-                    <option value="festive">Festive</option>
-                    <option value="party">Party</option>
+                    <option value="mehendi">Mehendi</option>
+                    <option value="sangeet">Sangeet</option>
+                    <option value="festival">Festival</option>
+                    <option value="diwali">Diwali</option>
+                    <option value="navratri">Navratri</option>
+                    <option value="karva_chauth">Karva Chauth</option>
+                    <option value="raksha_bandhan">Raksha Bandhan</option>
+                    <option value="durga_puja">Durga Puja</option>
+                    <option value="bhai_dooj">Bhai Dooj</option>
+                    <option value="ganesh_chaturthi">Ganesh Chaturthi</option>
+                    <option value="onam">Onam</option>
+                    <option value="pongal">Pongal</option>
+                    <option value="bihu">Bihu</option>
+                    <option value="eid">Eid</option>
+                    <option value="christmas">Christmas</option>
+                    <option value="new_year">New Year</option>
+                    <option value="housewarming">Housewarming</option>
+                    <option value="anniversary">Anniversary</option>
+                    <option value="baby_shower">Baby Shower</option>
+                    <option value="graduation">Graduation</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="farewell">Farewell</option>
+                    <option value="casual">Casual Wear</option>
+                    <option value="office">Office/Work Wear</option>
+                    <option value="puja">Puja (Religious Ceremony)</option>
+                    <option value="bridal">Bridal Wear</option>
+                    <option value="bridesmaid">Bridesmaid Saree</option>
+                    <option value="reunion">Reunion</option>
+                    <option value="gifting">Gifting</option>
                   </Field>
 
                   <ErrorMessage
-                    name="discount"
+                    name="occasion"
                     component="div"
                     className="text-red-500"
                   />
