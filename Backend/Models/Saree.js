@@ -61,6 +61,10 @@ const sareeSchema = new mongoose.Schema(
       min: 0,
       max: 5, // Added min and max rating values
     },
+    images: {
+      type: [String], // Changed from Array to String
+      default: [], // Added default value
+    },
   },
   {
     collection: "Sarees", // Fixed incorrect syntax  this is collection name or table name

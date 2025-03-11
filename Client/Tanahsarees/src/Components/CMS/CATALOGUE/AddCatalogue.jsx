@@ -68,29 +68,13 @@ const AddCatalogue = ({ onSubmit }) => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          const formData = new FormData();
-
+          // const formData = new FormData();
+          const dataObj = {};
           for (let key in values) {
-            if (key === "additionalImages") {
-              // formData.append(`files[]`, values.additionalImages);
-              // Append multiple images correctly
-              values.additionalImages.forEach((file) => {
-                formData.append(`files[]`, file);
-              });
-            } else {
-              formData.append(key, values[key]);
-            }
+            dataObj[key] = values[key];
           }
 
-          // Debugging
-          // console.log("Form Submitted: ", values);
-          // console.log("FormData Entries:");
-          // for (let pair of formData.entries()) {
-          //   console.log(pair[0], pair[1]);
-          // }
-
-          // Submit form data
-          onSubmit && onSubmit(formData);
+          onSubmit && onSubmit(dataObj);
 
           resetForm();
           setPreview(null);

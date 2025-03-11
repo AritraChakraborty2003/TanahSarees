@@ -215,58 +215,6 @@ const Productdescription = () => {
             zIndex: 10, // Keep content below the header
           }}
         >
-<<<<<<< HEAD
-          <div className="leftImageHolder w-[98vw]  lg:w-[50vw] lg:h-[100vh] flex flex-col gap-y-2 justify-center items-center mt-10 overflow-hidden">
-            <div className="imageHolder relative mt-0  w-[75%] h-[88vmin] lg:w-[78%] lg:h-[95vmin] flex flex-col justify-end items-center overflow-hidden">
-              <Slider
-                ref={sliderRef}
-                {...settings}
-                className="w-full h-full overflow-hidden"
-              >
-                {allPhotos.map((img, index) => (
-                  <div key={index} className="w-full h-full">
-                    <img
-                      // src={`${import.meta.env.VITE_APP_API_URL + img}`}
-                      src={img}
-                      alt={`Product Image ${index + 1}`}
-                      className="max-w-full max-h-full object-contain "
-                      // onClick={() => {
-                      //   if (window.innerWidth > 1000) {
-                      //     setOpenImage((prev) => !prev);
-                      //   }
-                      // }}
-                    />
-                  </div>
-                ))}
-              </Slider>
-              {isLargeScreen ? (
-                <>
-                  <div className=" absolute z-10 flex top-[50%]  justify-evenly gap-x-5  items-center  w-[98vw] lg:w-[50vw] lg:h-[10vh]">
-                    <button
-                      onClick={() => sliderRef.current.slickPrev()}
-                      className="absolute  bg-[#262424] text-white p-3 left-[15%] rounded-[120%] z-10"
-                    >
-                      ←
-                    </button>
-
-                    <button
-                      onClick={() => sliderRef.current.slickNext()}
-                      className="  absolute   bg-[#262424] right-[15%] text-white p-3 rounded-[120%] z-10"
-                    >
-                      →
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <div className=" absolute flex gap-x-3 text-2xl text-white pb-2 font-extrabold">
-                  <span>.</span>
-                  <span>.</span>
-                  <span>.</span>
-                  <span>.</span>
-                  <span>.</span>
-                </div>
-              )}
-=======
           <div className="leftImageHolder w-[100vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
             <div className="imageHolder mt-[-1.75vmin] lg:mt-0 w-[80%]  h-[94vmin] lg:w-[78%] lg:h-[95vmin]  flex justify-center items-center">
               <img
@@ -279,7 +227,6 @@ const Productdescription = () => {
                   }
                 }}
               />
->>>>>>> 3fe704d (UPDATE:update in code)
             </div>
           </div>
           <div className="rightTextHolder w-[98vw] lg:w-[50vw] darktxt">
