@@ -62,9 +62,17 @@ const Catalogue = () => {
       occasion,
       topSelling,
       rating,
+      files,
     } = values;
 
+    console.log("values", values);
+    console.log("Form Submitted: ", values);
+
+    console.log(files);
+    console.log(files[0], files[1], files[2]);
+
     console.log(file);
+
     const newFormData = new FormData();
     newFormData.append("sku", sku);
     newFormData.append("sname", sname);
@@ -76,10 +84,19 @@ const Catalogue = () => {
     newFormData.append("occasion", occasion);
     newFormData.append("topSelling", topSelling === "yes");
     newFormData.append("rating", Number(rating));
-    newFormData.append("file", file);
+    newFormData.append("files", file);
 
-    setFormData(newFormData);
-    setHttpClick(true);
+    files.forEach((f, index) => {
+      newFormData.append("files[]", f); // Correct way to append multiple files
+    });
+
+    for (let pair of newFormData.entries()) {
+      console.log("ho"); // This will now print for each entry
+      console.log(pair[0], pair[1]);
+    }
+
+    // setFormData(newFormData);
+    // setHttpClick(true);
   };
 
   return (
