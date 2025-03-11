@@ -10,7 +10,7 @@ const Selling = () => {
   return (
     <div className="mt-10 lg:mt-15 lg:pt-15 pt-7 pb-8 lg:pb-5 light">
       <p className="text-center  font-Montserrat darktxt font-medium text-[6vmin] lg:text-[3.5vmin]">
-        SELLING FAST
+        IN-DEMAND
       </p>
       <div className="mt-1">
         <TimerComp days={10} />
