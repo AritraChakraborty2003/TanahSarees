@@ -46,7 +46,7 @@ const SliderComponent = () => {
     if (width >= 2048) return "19.5%";
     if (width >= 1920) return "15%";
     if (width >= 1700) return "19%";
-    if (width >= 1536) return "17%";
+    if (width >= 1536) return "19%";
     if (width >= 1280) return "20.5%";
     if (width >= 1000) return "16%";
   };
@@ -88,7 +88,7 @@ const SliderComponent = () => {
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
                     <a href="/products">
                       <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] lg:gap-x-2 bg-cover bg-center"
+                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] 2xl:rounded-[65%] lg:gap-x-2 bg-cover bg-center"
                         style={{
                           backgroundImage: `url(${
                             import.meta.env.VITE_APP_API_URL + item.photo

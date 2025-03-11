@@ -4,7 +4,16 @@ export const TestimonialPOST = () => {
   return async (req, res) => {
     try {
       const { name, review, rating, sname } = req.body;
-      const photo = req.file.filename;
+
+      // Function to sanitize filenames
+      const sanitizeFilename = (filename) => {
+        return filename
+          .replace(/[,"]/g, "") // Remove commas and quotes
+          .replace(/\s+/g, "_") // Replace spaces with underscores
+          .replace(/[^a-zA-Z0-9._-]/g, ""); // Remove unwanted characters
+      };
+
+      const photo = sanitizeFilename(req.file.filename);
       const testimonial = new TestimonialsObj({
         name,
         sname,

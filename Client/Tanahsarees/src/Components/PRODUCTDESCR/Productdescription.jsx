@@ -54,25 +54,10 @@ const Productdescription = () => {
   // Retrieve the existing activeProduct
   const activeProduct = JSON.parse(localStorage.getItem("activeProduct")) || {};
 
-  // Dummy additional images
-  const dummyImages = [
-    "/Sarees/saree8.jpg",
-    "/Sarees/saree1.jpg",
-    "/Sarees/saree3.jpg",
-    "/Sarees/saree4.jpg",
-    "/Sarees/saree7.jpg",
-  ];
-
-  // Create an updated product object (without saving back to localStorage)
-  const updatedProduct = {
-    ...activeProduct,
-    additionalPhoto: dummyImages, // Update only additionalPhoto
-  };
-
   // Destructure updatedProduct directly for usage
   const {
+    images,
     photo,
-    additionalPhoto = [],
     material,
     price,
     discount,
@@ -81,9 +66,12 @@ const Productdescription = () => {
     type,
     _id,
     rating,
-  } = updatedProduct; // No need to save back
+  } = activeProduct; // No need to save back
 
-  const allPhotos = [photo, ...additionalPhoto];
+  const allPhotos = [photo, ...images];
+  const [index, setIndex] = useState(0);
+  console.log("AllPhotos:", allPhotos);
+  console.log("Photo:", photo);
 
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);
@@ -195,8 +183,19 @@ const Productdescription = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
+    afterChange: (current) => setIndex(current),
   };
 
+  const [call, setCall] = useState(false);
+
+  useEffect(() => {
+    if (
+      sliderRef.current &&
+      typeof sliderRef.current.slickCurrentSlide === "function"
+    ) {
+      setIndex(sliderRef.current.slickCurrentSlide());
+    }
+  }, [call]);
   return (
     <>
       <div className="flex flex-col gap-y-6 pb-15">
@@ -216,25 +215,28 @@ const Productdescription = () => {
           }}
         >
           <div className="leftImageHolder w-[98vw]  lg:w-[50vw] lg:h-[100vh] flex flex-col gap-y-2 justify-center items-center mt-10 overflow-hidden">
-            <div className="imageHolder relative mt-0  w-[75%] h-[88vmin] lg:w-[78%] lg:h-[95vmin] flex flex-col justify-end items-center overflow-hidden">
+            <div className="imageHolder relative mt-0  w-[75%] h-[88vmin] lg:w-[72%] lg:h-[82vmin] flex flex-col justify-end items-center overflow-hidden">
               <Slider
                 ref={sliderRef}
                 {...settings}
                 className="w-full h-full overflow-hidden"
               >
-                {allPhotos.map((img, index) => (
-                  <div key={index} className="w-full h-full">
+                {allPhotos.map((img) => (
+                  <div
+                    key={index}
+                    className="w-full h-full"
+                    onClick={() => {
+                      if (window.innerWidth > 1000) {
+                        setCall(!call);
+                        setOpenImage(true);
+                      }
+                    }}
+                  >
                     <img
                       // src={`${import.meta.env.VITE_APP_API_URL + img}`}
-                      src={img}
-                      alt={`Product Image ${index + 1}`}
+                      src={`${import.meta.env.VITE_APP_API_URL}` + img}
+                      alt={`Product Image ${index}`}
                       className="max-w-full max-h-full object-contain "
-                      // onClick={() => {
-                      //   if (window.innerWidth > 1000) {
-                      //     setOpenImage((prev) => !prev);
-                      // hello
-                      //   }
-                      // }}
                     />
                   </div>
                 ))}
@@ -243,15 +245,19 @@ const Productdescription = () => {
                 <>
                   <div className=" absolute z-10 flex top-[50%]  justify-evenly gap-x-5  items-center  w-[98vw] lg:w-[50vw] lg:h-[10vh]">
                     <button
-                      onClick={() => sliderRef.current.slickPrev()}
-                      className="absolute  bg-[#262424] text-white p-3 left-[15%] rounded-[120%] z-10"
+                      onClick={() => {
+                        sliderRef.current.slickPrev();
+                      }}
+                      className="absolute  bg-transparent text-white text-extrabold p-3  border-1 left-[14.75%] rounded-[150%] z-10"
                     >
                       ←
                     </button>
 
                     <button
-                      onClick={() => sliderRef.current.slickNext()}
-                      className="  absolute   bg-[#262424] right-[15%] text-white p-3 rounded-[120%] z-10"
+                      onClick={() => {
+                        sliderRef.current.slickNext();
+                      }}
+                      className="  absolute   bg-transparent right-[15%] border-1 text-white text-extrabold  p-3 rounded-[150%] z-10"
                     >
                       →
                     </button>
@@ -456,7 +462,9 @@ const Productdescription = () => {
             <div className="w-[100%] flex justify-center items-center">
               <div className="imageHolder w-[78%] h-[75vmin]  flex justify-center items-center">
                 <img
-                  src={`${import.meta.env.VITE_APP_API_URL + photo} `}
+                  src={`${
+                    import.meta.env.VITE_APP_API_URL + allPhotos[index]
+                  } `}
                   alt="Product Image"
                   className="max-w-full max-h-full object-contain "
                 />
