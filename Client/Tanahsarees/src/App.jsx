@@ -523,7 +523,24 @@ const App = () => {
         }}
       >
         <RouterProvider router={router} />
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer
+          position="top-right"
+          autoClose={800} // Less time globally
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          toastStyle={{
+            maxWidth: window.innerWidth <= 1000 ? "280px" : "400px", // Reduce width for <=1000px
+            marginTop: window.innerWidth <= 1000 ? "1.5rem" : "0",
+            marginRight: window.innerWidth <= 1000 ? "0.45rem" : "0", // Apply mt-1 for <=1000px
+            fontSize: window.innerWidth <= 1000 ? "14px" : "16px", // Adjust font size
+            padding: "10px",
+          }}
+        />
       </AppContext.Provider>
     </>
   );

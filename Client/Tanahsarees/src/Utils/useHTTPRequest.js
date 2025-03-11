@@ -161,7 +161,12 @@ export const UseHTTPRequest = (tigger, route, type, data, category) => {
               setData(res.data.message);
               setPATCHClick(false);
               setHeartSave(!heartSave);
+
               toast.success("User updated successfully!");
+              setTimeout(() => {
+                window.location.reload();
+                window.scrollTo(0, 0);
+              }, 800);
             }
           })
           .catch((error) => {

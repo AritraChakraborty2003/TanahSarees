@@ -7,7 +7,9 @@ import { AppContext } from "../../../AppContext/AppContext";
 import UseHTTPRequest from "../../../Utils/useHTTPRequest";
 import SearchBar from "../CMS_Search/SearchBar";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useCheckAuth } from "../../../Utils/useCheckAuth";
+import { toast } from "react-toastify";
 
 const Catalogue = () => {
   const {
@@ -49,7 +51,7 @@ const Catalogue = () => {
   }, [activeDeleteSaree, setHttpClickDelete]);
 
   // Handle Form Submission
-  const handleFormSubmit = (values) => {
+  const handleFormSubmit = async (values) => {
     const {
       sku,
       sname,
@@ -62,16 +64,10 @@ const Catalogue = () => {
       occasion,
       topSelling,
       rating,
-      files,
+      additionalImages,
     } = values;
 
-    console.log("values", values);
-    console.log("Form Submitted: ", values);
-
-    console.log(files);
-    console.log(files[0], files[1], files[2]);
-
-    console.log(file);
+    const files = [file, ...additionalImages];
 
     const newFormData = new FormData();
     newFormData.append("sku", sku);
@@ -84,19 +80,28 @@ const Catalogue = () => {
     newFormData.append("occasion", occasion);
     newFormData.append("topSelling", topSelling === "yes");
     newFormData.append("rating", Number(rating));
-    newFormData.append("files", file);
-
-    files.forEach((f, index) => {
-      newFormData.append("files[]", f); // Correct way to append multiple files
+    files.forEach((file) => {
+      newFormData.append("files", file);
     });
 
-    for (let pair of newFormData.entries()) {
-      console.log("ho"); // This will now print for each entry
-      console.log(pair[0], pair[1]);
-    }
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/sarees`,
+        newFormData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
 
-    // setFormData(newFormData);
-    // setHttpClick(true);
+      if (response.data.message === "Saree added successfully!") {
+        toast.success("Saree added successfully!");
+      } else {
+        toast.error("Something went wrong...");
+      }
+    } catch (error) {
+      console.error("Upload Error:", error);
+      alert("Upload Failed!");
+    }
   };
 
   return (
