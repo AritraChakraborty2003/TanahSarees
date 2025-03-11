@@ -215,6 +215,7 @@ const Productdescription = () => {
             zIndex: 10, // Keep content below the header
           }}
         >
+<<<<<<< HEAD
           <div className="leftImageHolder w-[98vw]  lg:w-[50vw] lg:h-[100vh] flex flex-col gap-y-2 justify-center items-center mt-10 overflow-hidden">
             <div className="imageHolder relative mt-0  w-[75%] h-[88vmin] lg:w-[78%] lg:h-[95vmin] flex flex-col justify-end items-center overflow-hidden">
               <Slider
@@ -265,6 +266,20 @@ const Productdescription = () => {
                   <span>.</span>
                 </div>
               )}
+=======
+          <div className="leftImageHolder w-[100vw] lg:w-[50vw] lg:h-[100vh] flex justify-center items-center mt-10">
+            <div className="imageHolder mt-[-1.75vmin] lg:mt-0 w-[80%]  h-[94vmin] lg:w-[78%] lg:h-[95vmin]  flex justify-center items-center">
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL + photo} `}
+                alt="Product Image"
+                className="max-w-full max-h-full object-contain"
+                onClick={() => {
+                  if (screen.width > 1000) {
+                    setOpenImage(!OpenImage);
+                  }
+                }}
+              />
+>>>>>>> 3fe704d (UPDATE:update in code)
             </div>
           </div>
           <div className="rightTextHolder w-[98vw] lg:w-[50vw] darktxt">
