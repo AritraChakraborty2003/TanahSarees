@@ -130,10 +130,10 @@ const Footer = () => {
                     Tanhasaree is now at your fingertips. Download the
                     Tanhasaree app
                   </div>
-                  <div className="iconsHolder flex  items-center gap-x-6 ml-4">
+                  {/* <div className="iconsHolder flex  items-center gap-x-6 ml-4">
                     <img src="https://cdn.shopify.com/s/files/1/0049/3649/9315/files/g.p_1-01_150x.png?v=1671168364" />
                     <img src="https://cdn.shopify.com/s/files/1/0049/3649/9315/files/a.s_1-01-01_150x.png?v=1671168364" />
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="w-[100vw] flex gap-x-4  p-4 pl-1 mt-5 ml-4">
@@ -243,10 +243,10 @@ const Footer = () => {
                   Tanhasaree is now at your fingertips. Download the Tanhasaree
                   app
                 </div>
-                <div className="iconsHolder flex  items-center gap-x-6 ml-4">
+                {/* <div className="iconsHolder flex  items-center gap-x-6 ml-4">
                   <img src="https://cdn.shopify.com/s/files/1/0049/3649/9315/files/g.p_1-01_150x.png?v=1671168364" />
                   <img src="https://cdn.shopify.com/s/files/1/0049/3649/9315/files/a.s_1-01-01_150x.png?v=1671168364" />
-                </div>
+                </div> */}
 
                 <div className="FAQHolder"></div>
 
