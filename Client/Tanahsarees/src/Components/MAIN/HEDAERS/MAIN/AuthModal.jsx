@@ -55,8 +55,19 @@ const AuthModal = ({ isOpen }) => {
         );
         if (res.data.status === "success") {
           toast.success("Signup successful!");
-          navigate("/");
-          setLoginlargescreen(!Loginlargescreen);
+
+          if (screen.width > 1000) {
+            setLoginlargescreen(!Loginlargescreen);
+          }
+          if (window.location.pathname === "/") {
+            setTimeout(() => {
+              window.location.reload();
+            }, 800);
+          } else {
+            setTimeout(() => {
+              navigate("/");
+            }, 800);
+          }
         } else {
           toast.error("Signup failed. Please try again.");
         }
