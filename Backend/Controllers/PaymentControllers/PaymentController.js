@@ -16,43 +16,48 @@ export const Checkout = () => {
   return async (req, res) => {
     try {
       const token = req.cookies.ecom_token;
-      console.log(token);
       if (!token) {
         return res
           .status(401)
-          .json({ message: "Not authorized", status: "Not Login" });
+          .json({ message: "Not authorized", status: "Not Logged In" });
       }
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
       const user = await UserObj.findById(decoded.id);
       if (!user) return res.status(404).json({ message: "User not found" });
 
+      if (!user.cart || user.cart.length === 0) {
+        return res.status(400).json({ message: "Cart is empty" });
+      }
+
+      // Create a Razorpay order
       const options = {
-        amount: req.body.amount, // Amount in paise, e.g. 1000 = Rs. 10
+        amount: req.body.amount, // Amount in paise
         currency: "INR",
       };
-      const order = await RazorPayInstance.orders.create(options);
+      const paymentOrder = await RazorPayInstance.orders.create(options);
 
-      user.cart.item_status = "ordered";
+      // Create separate order entries for each cart item
+      const orderPromises = user.cart.map((cartItem) =>
+        new OrderObj({
+          order_id: paymentOrder.id,
+          pid: cartItem.pid, // Store product reference
+          uinfo: decoded.id, // Associate with the user
+          qty: cartItem.qty, // Store quantity
+          item_status: "pending",
+          T_no: "", // Empty transaction number initially
+        }).save()
+      );
 
-      const OrderObjNew = new OrderObj({
-        order_id: order.id,
-        products: user.cart,
-        uinfo: decoded.id,
-        price: req.body.amount / 100,
-        status: "pending",
-        transaction_status: "pending",
-        T_no: "", // Transaction number if available
-      });
-
-      await OrderObjNew.save();
+      // Wait for all orders to be saved
+      await Promise.all(orderPromises);
 
       res.status(200).json({
-        message: "success",
-        order: order,
+        message: "Success",
+        order: paymentOrder,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json({ message: "Server error" });
     }
   };
@@ -61,65 +66,51 @@ export const Checkout = () => {
 export const PaymentVerification = () => {
   return async (req, res) => {
     try {
-      const { id } = req.query;
+      const { id } = req.query; // User ID from query params
       const { razorpay_payment_id, razorpay_order_id, razorpay_signature } =
         req.body;
 
+      // ✅ Generate HMAC to verify payment signature
       const hmac = crypto
         .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
         .update(`${razorpay_order_id}|${razorpay_payment_id}`)
         .digest("hex");
 
       if (hmac !== razorpay_signature) {
-        await OrderObj.findOneAndUpdate(
+        // ❌ Payment verification failed -> Update all orders for this order_id
+        await OrderObj.updateMany(
+          { order_id: razorpay_order_id },
           {
-            order_id: razorpay_order_id,
-          },
-          {
-            status: "failed",
-            transaction_status: "failed",
-            T_no: razorpay_payment_id,
-          },
-          {
-            new: true,
-            runValidators: true,
+            item_status: "failed",
+            T_no: razorpay_payment_id, // ❌ Store transaction number even if failed
           }
         );
 
-        res.json({ success: false, message: "Invalid Signature" });
+        return res.json({ success: false, message: "Invalid Signature" });
       }
 
-      await OrderObj.findOneAndUpdate(
+      // ✅ Payment verified -> Update all matching orders
+      await OrderObj.updateMany(
+        { order_id: razorpay_order_id },
         {
-          order_id: razorpay_order_id,
-        },
-        {
-          status: "confirmed",
-          transaction_status: "confirmed",
-          T_no: razorpay_payment_id,
-        },
-        {
-          new: true,
-          runValidators: true,
+          item_status: "confirmed",
+          T_no: razorpay_payment_id, // ✅ Store transaction number
         }
       );
 
-      await OrderObj.findOneAndUpdate(
-        { order_id: razorpay_order_id },
-        { $set: { "products.$[].item_status": "confirmed" } }, // Update all product items
-        { new: true, runValidators: true }
-      );
-
+      // ✅ Update user's order history
       await UserObj.findByIdAndUpdate(
         id,
-        { $push: { orders: razorpay_order_id } }, // Push a single value to the array
+        { $push: { orders: razorpay_order_id } },
         { new: true, runValidators: true }
       );
 
+      // ✅ Redirect user after successful payment
       res.redirect(
-        "https://tanahsarees.com/result?type=success&ref=" + razorpay_order_id
+        `${process.env.CLIENT_URL}result?type=success&ref=${razorpay_order_id}`
       );
     } catch (error) {
+      console.error(error);
       res.status(500).json({ success: false, error: error.message });
     }
   };

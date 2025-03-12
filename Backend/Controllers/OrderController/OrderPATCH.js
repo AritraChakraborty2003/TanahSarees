@@ -2,19 +2,41 @@ import OrderObj from "../../Models/Orders.js";
 export const OrderPATCH = () => {
   return async (req, res) => {
     try {
-      const { id } = req.query;
-      const { status } = req.body;
-      const order = await OrderObj.findOne({ order_id: id });
-      console.log(order, id, status);
-      if (!order) {
-        return res.status(404).json({ message: "Order not found" });
+      const { order_id, pid } = req.params; // Extract order_id and pid._id from request parameters
+      const { item_status } = req.body;
+
+      // Validate item_status
+      const validStatuses = [
+        "confirmed",
+        "packed",
+        "shipped",
+        "delivered",
+        "cancelled",
+        "resolved",
+        "failed",
+        "pending",
+      ];
+      if (!validStatuses.includes(item_status)) {
+        return res.status(400).json({ message: "Invalid item status" });
       }
-      order.status = status;
-      await order.save();
-      res.status(200).json({ message: "Order updated successfully" });
+
+      // Update the `item_status` for the specific `pid._id` within the given `order_id`
+      const updatedOrder = await OrderObj.findOneAndUpdate(
+        { order_id, "pid._id": pid }, // Filtering by `order_id` and `pid._id`
+        { $set: { item_status } }, // Updating `item_status`
+        { new: true, runValidators: true }
+      );
+
+      if (!updatedOrder) {
+        return res.status(404).json({ message: "Order or Product not found" });
+      }
+
+      res.status(200).json({
+        message: "Item status updated successfully",
+        updatedOrder,
+      });
     } catch (error) {
-      console.error("Failed to update order status", error);
-      res.status(500).json({ message: "Failed to update order status" });
+      res.status(500).json({ message: "Server error", error: error.message });
     }
   };
 };

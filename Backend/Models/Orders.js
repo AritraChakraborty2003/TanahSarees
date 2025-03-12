@@ -6,23 +6,36 @@ const orderSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    products: {
-      type: [Object],
-    },
-    uinfo: {
-      type: String,
-    },
-    price: {
-      type: Number,
-    },
-    status: {
-      type: String,
-    },
-    transaction_status: {
-      type: String,
-    },
     T_no: {
       type: String,
+    },
+    uinfo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "users",
+      required: true,
+    }, // ✅ Fixed Reference
+    pid: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Sarees",
+      required: true,
+    }, // ✅ Fixed Reference
+    qty: {
+      type: Number,
+      required: true,
+    },
+    item_status: {
+      type: String,
+      enum: [
+        "confirmed",
+        "packed",
+        "shipped",
+        "delivered",
+        "cancelled",
+        "resolved",
+        "failed",
+        "pending",
+      ],
+      default: "pending", // ✅ Now this will work
     },
   },
   {
