@@ -4,13 +4,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Hardcoded images (Replace with API later)
 const images = [
-  "BANNERSIMG/03 chui - Made with PosterMyWall.jpg",
-  "BANNERSIMG/Bridal collection.png",
-  "BANNERSIMG/Katan Silk collection banner.png",
-  "BANNERSIMG/Untitled (1).png",
-  "BANNERSIMG/Untitled.png",
-  "BANNERSIMG/Katan Silk collection banner.png",
-  "BANNERSIMG/suit banner.png",
+  "BANNERSIMG/03chui-MadewithPosterMyWall.jpg",
+  "BANNERSIMG/Bridalcollectio.jpeg",
+  "BANNERSIMG/Festivecollectio.jpeg",
+
+  "BANNERSIMG/KatanSilkcollectionbanner.jpeg",
+  "BANNERSIMG/suitbanne.jpeg",
 ];
 
 const BannerSlider = () => {
