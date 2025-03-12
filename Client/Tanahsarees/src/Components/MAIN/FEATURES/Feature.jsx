@@ -83,7 +83,7 @@ const Feature = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className="imageHolder flex justify-center items-center w-[77vw] h-20 lg:h-42 mb-7 mt-6  bg-cover bg-center">
+      <div className="imageHolder flex justify-center items-center w-[95vw] lg:w-[77vw]  h-20 lg:h-42 mb-7 mt-6  bg-cover bg-center">
         {/* Content inside the div (optional) */}
         <img
           src="page.jpg"
