@@ -49,6 +49,8 @@ const Productdescription = () => {
     setactiveCartId,
     setLoginOpen,
     setLoginlargescreen,
+    index,
+    setIndex,
   } = useContext(AppContext);
 
   // Retrieve the existing activeProduct
@@ -69,7 +71,7 @@ const Productdescription = () => {
   } = activeProduct; // No need to save back
 
   const allPhotos = [photo, ...images];
-  const [index, setIndex] = useState(0);
+
   console.log("AllPhotos:", allPhotos);
   console.log("Photo:", photo);
 

@@ -115,9 +115,11 @@ const router = createBrowserRouter([
     path: "/orders",
     element: (
       <>
-        <MainHeader scrollValue="20" />
-        <Order />
-        <Footer />
+        <ProtectedRouteUser>
+          <MainHeader scrollValue="20" />
+          <Order />
+          <Footer />
+        </ProtectedRouteUser>
       </>
     ),
   },
@@ -435,6 +437,9 @@ const App = () => {
   //For Profile
   const [isSet, setIsSet] = useState(false);
 
+  //For Product Descr
+  const [index, setIndex] = useState(0);
+
   return (
     <>
       <AppContext.Provider
@@ -520,6 +525,8 @@ const App = () => {
           setnewvar,
           isSet,
           setIsSet,
+          index,
+          setIndex,
         }}
       >
         <RouterProvider router={router} />

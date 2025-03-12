@@ -55,8 +55,19 @@ const AuthModal = ({ isOpen }) => {
         );
         if (res.data.status === "success") {
           toast.success("Signup successful!");
-          navigate("/");
-          setLoginlargescreen(!Loginlargescreen);
+
+          if (screen.width > 1000) {
+            setLoginlargescreen(!Loginlargescreen);
+          }
+          if (window.location.pathname === "/") {
+            setTimeout(() => {
+              window.location.reload();
+            }, 800);
+          } else {
+            setTimeout(() => {
+              navigate("/");
+            }, 800);
+          }
         } else {
           toast.error("Signup failed. Please try again.");
         }
@@ -157,7 +168,7 @@ const AuthModal = ({ isOpen }) => {
   });
 
   return (
-    <div className="inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="inset-0 flex items-center justify-center bg-opacity-50">
       <div className="w-[90vw] max-w-md p-6 bg-white rounded-md shadow-lg">
         <h2 className="text-2xl font-bold text-center mb-2 mt-3">
           {isLogin ? "Login" : "Signup"}

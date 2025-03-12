@@ -1,45 +1,34 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../AppContext/AppContext";
-import { styled } from "@mui/material";
-import { useState, useEffect } from "react";
-// import Product from "../../PRODUCTS/Product";
-// import { Link, useNavigate } from "react-router-dom";
-// Sample Hardcoded Data (Replace with API later)
+import { capitalizeFirstLetter } from "../../../Utils/CapitalizeFirstLetter";
 
 const SliderComponent = () => {
   const { change, sareeData } = useContext(AppContext);
   const navigate = useNavigate();
-  const sliderRef = React.useRef(null);
-  // const navigate = useNavigate();
+  const sliderRef = useRef(null);
 
-  const items = sareeData.reverse().slice(0, 7);
+  // Fix: Use .slice().reverse() to avoid mutating the original array
+  const items = sareeData.slice().reverse().slice(0, 7);
 
-  // Slick Slider Settings
   const settings = {
     dots: false,
     infinite: true,
     speed: 100,
-    slidesToShow: 4, // Shows 4 cards at a time
-    slidesToScroll: 1, // Scrolls 1 at a time
+    slidesToShow: 4,
+    slidesToScroll: 1,
     responsive: [
-      {
-        breakpoint: 1024, // For tablets & smaller screens
-        settings: { slidesToShow: 3 },
-      },
-      {
-        breakpoint: 600, // For mobile
-        settings: { slidesToShow: 3 },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 3 } },
+      { breakpoint: 600, settings: { slidesToShow: 3 } },
     ],
   };
 
+  // Function to get margin-top dynamically based on screen width
   const getMarginTop = () => {
     const width = window.innerWidth;
     if (width <= 600) return "3%";
@@ -49,6 +38,7 @@ const SliderComponent = () => {
     if (width >= 1536) return "19%";
     if (width >= 1280) return "20.5%";
     if (width >= 1000) return "16%";
+    return "16%"; // Default margin
   };
 
   const [marginTop, setMarginTop] = useState(getMarginTop());
@@ -60,66 +50,65 @@ const SliderComponent = () => {
   }, []);
 
   return (
-    <>
-      <div
-        style={{
-          marginTop,
-          zIndex: 10,
-          paddingBottom: "4vmin",
-          paddingTop: "1.75vmin",
-          // border: "1px solid black",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+    <div
+      style={{
+        marginTop,
+        zIndex: 10,
+        paddingBottom: "4vmin",
+        paddingTop: "1.75vmin",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {/* Left Arrow Button (CSS unchanged) */}
+      <button
+        onClick={() => sliderRef.current.slickPrev()}
+        className="hidden lg:block  absolute left-1 lg:left-2 top-[40%] lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
       >
-        <button
-          onClick={() => sliderRef.current.slickPrev()}
-          className=" absolute  left-1 lg:left-5  top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full md"
-        >
-          <ChevronLeft size={screen.width > 1000 ? 24 : 14} />
-        </button>
-        <Slider ref={sliderRef} {...settings}>
-          {items &&
-            [...items].map((item) => (
-              <>
-                {console.log(import.meta.env.VITE_APP_API_URL + item.photo)}
-                <div className="zoom-div lg:ml-[-1vmin]">
-                  <div className="flex flex-col lg:gap-y-4 justify-center items-center">
-                    <a href="/products">
-                      <div
-                        className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] lg  border-[#EEE5DA] border-[4px] lg:rounded-[50%] 2xl:rounded-[65%] lg:gap-x-2 bg-cover bg-center"
-                        style={{
-                          backgroundImage: `url(${
-                            import.meta.env.VITE_APP_API_URL + item.photo
-                          })`,
-                          backgroundPosition: "top",
-                          // Assuming each item has an image property
-                        }}
-                      ></div>
-                    </a>
-                    {screen.width > 1000 ? (
-                      <p className="font-Montserrat font-normal text-sm lg:text-md text-[#d5d5d5]-800 text-center mt-1">
-                        {item.sname.slice(0, 20) + "..."}
-                      </p>
-                    ) : (
-                      <p className="font-Montserrat font-normal text-sm lg:text-lg text-[#d5d5d5]-800 text-center mt-1">
-                        {item.sname.slice(0, 8) + "..."}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </>
-            ))}
-        </Slider>
-        <button
-          onClick={() => sliderRef.current.slickNext()}
-          className="absolute right-1 lg:right-7 top-[40%] lg:top-[5.35%] dark transform -translate-y-1/2 z-10  lighttxt p-1 lg:p-3  rounded-full md"
-        >
-          <ChevronRight size={screen.width > 1000 ? 24 : 14} />
-        </button>
-      </div>
-    </>
+        <ChevronLeft className="w-[4rem] h-[4rem] rounded-[2rem]  bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
+      </button>
+
+      {/* Slick Slider */}
+      <Slider ref={sliderRef} {...settings}>
+        {items.map((item) => (
+          <div key={item.id} className="zoom-div lg:ml-[-1vmin]">
+            <div className="flex flex-col lg:gap-y-4 justify-center items-center">
+              <a href="/products">
+                <div
+                  className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${
+                      import.meta.env.VITE_APP_API_URL + item.photo
+                    }?v=1)`,
+                    backgroundPosition: "top",
+                  }}
+                ></div>
+              </a>
+
+              {/* Text Below Image */}
+              <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
+                {window.innerWidth > 1000
+                  ? capitalizeFirstLetter(
+                      item.sname.toLowerCase().slice(0, 20)
+                    ) + "..."
+                  : capitalizeFirstLetter(
+                      item.sname.toLowerCase().slice(0, 24)
+                    ) + "..."}
+              </p>
+            </div>
+          </div>
+        ))}
+      </Slider>
+
+      {/* Right Arrow Button (CSS unchanged) */}
+      <button
+        onClick={() => sliderRef.current.slickNext()}
+        className="hidden lg:block absolute right-1 lg:right-4 top-[40%]  lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
+      >
+        <ChevronRight className="w-[4rem] h-[4rem] rounded-[2rem]  bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
+      </button>
+    </div>
   );
 };
 

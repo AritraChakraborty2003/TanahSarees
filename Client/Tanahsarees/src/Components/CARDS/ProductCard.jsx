@@ -40,6 +40,8 @@ const ProductCard = (props) => {
     setCartClick,
     activeCartId,
     setactiveCartId,
+    index,
+    setIndex,
   } = useContext(AppContext);
 
   // const res = useHandleCart();
@@ -64,6 +66,7 @@ const ProductCard = (props) => {
             onClick={() => {
               setActiveProduct(props.data);
               localStorage.setItem("activeProduct", JSON.stringify(props.data));
+              setIndex(0);
               setActiveFilter(false);
               setFilteredData([]); // Reset filter data on click
               window.scrollTo(0, 0);

@@ -166,10 +166,11 @@ export default function MainHeader(props) {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      width: "96vw",
+      width: "90vw",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "transparent",
+      background: "white",
+
       border: "none",
       boxShadow: "none",
     },
@@ -190,7 +191,7 @@ export default function MainHeader(props) {
       width: "70vw",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "transparent",
+      background: "transparent",
       border: "none",
       boxShadow: "none",
     },
@@ -528,7 +529,7 @@ export default function MainHeader(props) {
                   onClick={toggleHam}
                   className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
-                  <Link to="/main"> SALE</Link>
+                  <Link to="/main">SALE</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
@@ -536,7 +537,7 @@ export default function MainHeader(props) {
                   onClick={toggleHam}
                   className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
-                  SAREES
+                  <Link to="/products">SAREES</Link>
                 </div>
               </div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
@@ -568,9 +569,22 @@ export default function MainHeader(props) {
                   onClick={toggleHam}
                   className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
                 >
-                  <Link to="/tackorder"> TRACK ORDER</Link>
+                  <Link to="/trackorder"> TRACK ORDER</Link>
                 </div>
               </div>
+
+              {loggedIn ? (
+                <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
+                  <div
+                    onClick={toggleHam}
+                    className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
+                  >
+                    <a href="/orders"> YOUR ORDERS</a>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
               {!loggedIn ? (
                 <div className="optionsHolder w-[75vw] flex justify-start items-center mt-9 pl-2">
                   <div
@@ -618,13 +632,13 @@ export default function MainHeader(props) {
             onRequestClose={modalClose}
             style={customStyles}
             contentLabel="Small Login Modal"
-            shouldCloseOnOverlayClick={false}
+            // shouldCloseOnOverlayClick={false}
           >
-            <div className="relative ">
-              <a className="absolute w-[80vw] flex justify-end text-3xl font-light font-Lato darktxt  mt-1 p-2">
+            <div className="relative">
+              <a className="absolute w-[95%]  text-3xl font-light font-Lato darktxt  mt-1 p-2">
                 <i className="ri-close-line" onClick={modalClose}></i>
               </a>
-              <div className="">
+              <div className="mt-3">
                 <AuthModal
                   isOpen={loginOpen}
                   isLogin={false}
@@ -710,7 +724,10 @@ export default function MainHeader(props) {
 
           <div
             className="profileHolder bg-yellow-500 text-white border-[0.15px] border-[#d5d5d5] p-2 mt-4 rounded-md cursor-pointer"
-            onClick={() => {}}
+            onClick={() => {
+              navigate("/orders");
+              profileCloseFunc();
+            }}
           >
             Orders
           </div>
