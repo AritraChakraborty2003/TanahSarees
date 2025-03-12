@@ -4,13 +4,12 @@ import "slick-carousel/slick/slick-theme.css";
 
 // Hardcoded images (Replace with API later)
 const images = [
-  "https://www.chinayabanaras.com/cdn/shop/articles/Blog_Banner_-260723-party-wear-saree-by-Chinaya-Banaras.jpg?v=1690366649",
-  "https://www.teejh.com/cdn/shop/files/teejh_Website_Banner_1_da1f15c2-6158-4781-92e9-aa68095e526e_1600x.png?v=1716983365",
-  "https://www.manyavar.com/on/demandware.static/-/Library-Sites-ManyavarSharedLibrary/default/dwe6547122/Ace_Your_Saree_Banner_D.jpg",
-  "https://banarasilooms.in/cdn/shop/files/saree_banner_02_2_1000x.jpg?v=1636694344",
-  "https://houseofelegance.in/cdn/shop/collections/G9A1724.jpg?v=1653133837",
-  "https://www.bollywoodtrends.com.au/images/products/FullImage/DESIGNER-INDIAN-SILK-SAREE-BT-SR-831222909-001-001-F.jpg",
-  "https://m.media-amazon.com/images/S/aplus-media-library-service-media/694370d9-2807-40b4-be13-104923745258.__CR0,0,970,600_PT0_SX970_V1___.png",
+  "BANNERSIMG/03chui-MadewithPosterMyWall.jpg",
+  "BANNERSIMG/Bridalcollectio.jpeg",
+  "BANNERSIMG/Festivecollectio.jpeg",
+
+  "BANNERSIMG/KatanSilkcollectionbanner.jpeg",
+  "BANNERSIMG/suitbanne.jpeg",
 ];
 
 const BannerSlider = () => {
