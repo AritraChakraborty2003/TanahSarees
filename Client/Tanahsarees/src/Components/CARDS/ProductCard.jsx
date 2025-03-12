@@ -116,7 +116,7 @@ const ProductCard = (props) => {
             {/* Favorite Heart */}
             <div
               id={_id}
-              className="absolute lg:bottom-[15.1%] bottom-[11%] right-[-5%] lg:right-[-5%] z-50 scale-60"
+              className="absolute lg:bottom-[15.1%] bottom-[11%] right-[-5%] lg:right-[-5%] z-50 scale-60 border-2"
             >
               <Heart
                 isClick={isFavorite}
@@ -140,7 +140,7 @@ const ProductCard = (props) => {
 
         {/* Default Heart */}
         {type !== "favourite" && (
-          <div className="absolute bottom-[15%] right-[-5%] z-50">
+          <div className="absolute bottom-[6%] lg:bottom-[8%] right-[-13%] lg:right-[-9%] z-50">
             <Heart
               isClick={isClick}
               onClick={() => {
