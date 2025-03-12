@@ -15,6 +15,7 @@ import { verifyUser } from "./utils/verifyUser.js";
 import { cartRouter } from "./Routes/CartRouter.js";
 import { FavouriteRouter } from "./Routes/FavouriteRouter.js";
 import { PaymentRouter } from "./Routes/PaymentRouter.js";
+import { SaleRouter } from "./Routes/SaleRouter.js";
 
 dotenv.config();
 
@@ -65,6 +66,7 @@ app.use("/api/v1/admin", AdminRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/favourites", FavouriteRouter);
 app.use("/api/v1/checkout", PaymentRouter);
+app.use("/api/v1/sales", SaleRouter);
 
 // ✅ Authentication Check Route
 app.get("/api/v1/check", verifyUser, (req, res) => {
