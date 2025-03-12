@@ -437,6 +437,9 @@ const App = () => {
   //For Profile
   const [isSet, setIsSet] = useState(false);
 
+  //For Product Descr
+  const [index, setIndex] = useState(0);
+
   return (
     <>
       <AppContext.Provider
@@ -522,6 +525,8 @@ const App = () => {
           setnewvar,
           isSet,
           setIsSet,
+          index,
+          setIndex,
         }}
       >
         <RouterProvider router={router} />

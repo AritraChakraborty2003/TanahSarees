@@ -1,11 +1,27 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { AppContext } from "../../AppContext/AppContext";
 
 /* eslint-disable react/prop-types */
 const CartsCard = (props) => {
-  const { photo, sname, price, discount, type, qty, _id } = props.data;
+  const {
+    photo,
+    sname,
+    price,
+    discount,
+    type,
+    qty,
+    _id,
+    index,
+    setIndex,
+    setActiveProduct,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+  } = props.data;
 
   const [count, setCount] = useState(qty);
   const { cartDrawerTigger, setCartDrawerTigger } = useContext(AppContext);
@@ -36,11 +52,27 @@ const CartsCard = (props) => {
           id={_id}
         >
           <div className=" p-1 w-[30%]">
-            <img
-              src={`${import.meta.env.VITE_APP_API_URL}` + photo}
-              alt="Tilted Image"
-              className="max-w-full max-h-full object-contain "
-            />
+            <Link
+              to="/product_descr"
+              onClick={() => {
+                setActiveProduct(props.data);
+                localStorage.setItem(
+                  "activeProduct",
+                  JSON.stringify(props.data)
+                );
+                setIndex(0);
+                setActiveFilter(false);
+                setFilteredData([]); // Reset filter data on click
+                window.scrollTo(0, 0);
+              }}
+              className="block"
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL}` + photo}
+                alt="Tilted Image"
+                className="max-w-full max-h-full object-contain "
+              />
+            </Link>
           </div>
           <div className="flex flex-col items-center h-[100%] w-[70%]">
             <div className="info text-[3.35vmin] lg:text-[2vmin] w-[100%] h-[30%]  flex items-center font-Montserrat text-gray-500">

@@ -8,7 +8,8 @@ import { AppContext } from "../../AppContext/AppContext";
 const CardObj = (props) => {
   const navigate = useNavigate();
   const { data } = props;
-  const { activeProduct, setActiveProduct } = useContext(AppContext);
+  const { activeProduct, setActiveProduct, index, setIndex } =
+    useContext(AppContext);
   return (
     <>
       <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-6  lg:gap-x-17 2xl:gap-x-10 cursor-pointer">
@@ -28,6 +29,7 @@ const CardObj = (props) => {
                   onClick={() => {
                     setActiveProduct(item);
                     localStorage.setItem("activeProduct", JSON.stringify(item));
+                    setIndex(0);
                     navigate("/product_descr");
 
                     window.scrollTo(0, 0);
