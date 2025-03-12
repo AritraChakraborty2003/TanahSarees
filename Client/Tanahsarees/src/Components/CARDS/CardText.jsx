@@ -57,14 +57,16 @@ const CardText = (props) => {
                   {/* Black vignete */}
                   <div className="absolute inset-x-[-100px] bottom-0 h-1/1 bg-gradient-to-t from-black/100 via-transparent"></div>
                   {/* Text Content Section */}
-                  <h2 className="absolute w-full  bottom-5 lg:bottom-10 text-3xl lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
+                  <h2 className="absolute w-full  bottom-5 lg:bottom-10 text-2xl lg:text-4xl flex pt-1 justify-center font-GreatVibes text-[#DFC08A] overflow-hidden">
                     {props.type === "selling" &&
                       item.material.charAt(0).toUpperCase() +
                         item.material.slice(1) +
                         " Silk"}
                   </h2>
                   <h2 className="absolute w-full  bottom-1 lg:bottom-3 text-lg lg:text-md flex pt-1 justify-center font-Montserrat lighttxt overflow-hidden">
-                    {props.type === "selling" && item.colour}
+                    {props.type === "selling" &&
+                      props.type != "selling" &&
+                      item.colour}
                   </h2>
                   {item.occasion && props.type === "occasion" ? (
                     <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Montserrat flex pt-1 justify-center lighttxt overflow-hidden">
@@ -83,7 +85,7 @@ const CardText = (props) => {
                   )}
 
                   {props.type === "material" ? (
-                    <h2 className="absolute w-full bottom-5 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
+                    <h2 className="absolute w-full bottom-3 lg:bottom-10 text-sm lg:text-lg font-Roboto flex pt-1 justify-center lighttxt overflow-hidden">
                       {item.material + " silk"}
                     </h2>
                   ) : (

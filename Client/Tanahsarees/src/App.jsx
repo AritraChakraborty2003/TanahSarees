@@ -115,9 +115,11 @@ const router = createBrowserRouter([
     path: "/orders",
     element: (
       <>
-        <MainHeader scrollValue="20" />
-        <Order />
-        <Footer />
+        <ProtectedRouteUser>
+          <MainHeader scrollValue="20" />
+          <Order />
+          <Footer />
+        </ProtectedRouteUser>
       </>
     ),
   },

@@ -22,7 +22,7 @@ const Loader = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsloading(false);
-    }, 3100);
+    }, 2000);
   });
 
   const message = useCheckAuth(tigger_auth, "auth");
