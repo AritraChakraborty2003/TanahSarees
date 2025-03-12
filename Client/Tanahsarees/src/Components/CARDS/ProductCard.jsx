@@ -70,7 +70,7 @@ const ProductCard = (props) => {
             }}
             className="block"
           >
-            <div className="relative overflow-hidden w-full h-2/3">
+            <div className="relative overflow-hidden w-full h-[37vh] lg:h-[50vh]">
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}` + photo}
                 alt="Tilted Image"
@@ -140,7 +140,7 @@ const ProductCard = (props) => {
 
         {/* Default Heart */}
         {type !== "favourite" && (
-          <div className="absolute bottom-[6%] lg:bottom-[8%] right-[-13%] lg:right-[-9%] z-50">
+          <div className="absolute bottom-[6%] lg:bottom-[8%]  rounded-full right-[-13%] scale-70 lg:right-[-9%] z-50">
             <Heart
               isClick={isClick}
               onClick={() => {

@@ -263,15 +263,15 @@ const FilterAccordion = () => {
       </div>
 
       {/* Filter & Reset Buttons */}
-      <div className="flex gap-3 mt-5">
+      <div className="flex gap-3 mt-5 justify-between">
         <button
-          className="bg-blue-600 text-white p-2 w-[40%] text-md font-Montserrat"
+          className="bg-blue-600 text-white p-2 rounded text-sm font-Montserrat "
           onClick={applyFilters}
         >
-          Apply Filter
+          Apply
         </button>
         <button
-          className="bg-gray-600 text-white p-2 w-[40%] text-md font-Montserrat"
+          className="bg-gray-600 text-white p-2 rounded text-sm font-Montserrat "
           onClick={() => {
             setFiltersValue({
               type: "",
@@ -284,7 +284,7 @@ const FilterAccordion = () => {
             setActiveFilter(false);
           }}
         >
-          Reset Filter
+          Reset
         </button>
       </div>
     </>

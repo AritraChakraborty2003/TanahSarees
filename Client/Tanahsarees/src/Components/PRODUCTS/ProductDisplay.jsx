@@ -91,7 +91,7 @@ const ProductDisplay = () => {
               src="filtericon.png"
               height={25}
               width={25}
-              className="ml-2 mt-6"
+              className="ml-4  mt-6"
               alt="Filter Icon"
             />
             <span className="ml-2 mt-6" onClick={toggleFilter}>
