@@ -87,7 +87,7 @@ const SliderComponent = () => {
               </a>
 
               {/* Text Below Image */}
-              <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-lg text-center mt-1">
+              <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
                 {window.innerWidth > 1000
                   ? capitalizeFirstLetter(
                       item.sname.toLowerCase().slice(0, 20)
