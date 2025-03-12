@@ -63,7 +63,7 @@ const SliderComponent = () => {
       {/* Left Arrow Button (CSS unchanged) */}
       <button
         onClick={() => sliderRef.current.slickPrev()}
-        className="absolute left-1 lg:left-2 top-[40%] lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
+        className="hidden lg:block  absolute left-1 lg:left-2 top-[40%] lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
       >
         <ChevronLeft className="w-[4rem] h-[4rem] rounded-[2rem]  bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
       </button>
@@ -99,7 +99,7 @@ const SliderComponent = () => {
       {/* Right Arrow Button (CSS unchanged) */}
       <button
         onClick={() => sliderRef.current.slickNext()}
-        className="absolute right-1 lg:right-4 top-[40%]  lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
+        className="hidden lg:block absolute right-1 lg:right-4 top-[40%]  lg:top-[5.35%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
       >
         <ChevronRight className="w-[4rem] h-[4rem] rounded-[2rem]  bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
       </button>
