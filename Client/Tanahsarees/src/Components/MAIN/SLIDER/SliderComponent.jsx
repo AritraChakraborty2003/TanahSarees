@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../AppContext/AppContext";
+import { capitalizeFirstLetter } from "../../../Utils/CapitalizeFirstLetter";
 
 const SliderComponent = () => {
   const { change, sareeData } = useContext(AppContext);
@@ -88,8 +89,12 @@ const SliderComponent = () => {
               {/* Text Below Image */}
               <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-lg text-center mt-1">
                 {window.innerWidth > 1000
-                  ? item.sname.toLowerCase().slice(0, 20) + "..."
-                  : item.sname.toLowerCase().slice(0, 24) + "..."}
+                  ? capitalizeFirstLetter(
+                      item.sname.toLowerCase().slice(0, 20)
+                    ) + "..."
+                  : capitalizeFirstLetter(
+                      item.sname.toLowerCase().slice(0, 24)
+                    ) + "..."}
               </p>
             </div>
           </div>
