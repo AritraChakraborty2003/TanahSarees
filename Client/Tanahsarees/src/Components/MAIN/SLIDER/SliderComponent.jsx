@@ -86,10 +86,10 @@ const SliderComponent = () => {
               </a>
 
               {/* Text Below Image */}
-              <p className="font-Montserrat font-normal text-sm lg:text-lg text-center mt-1">
+              <p className="font-Montserrat font-normal text-[2.7vmin] lg:text-lg text-center mt-1">
                 {window.innerWidth > 1000
-                  ? item.sname.slice(0, 20) + "..."
-                  : item.sname.slice(0, 8) + "..."}
+                  ? item.sname.toLowerCase().slice(0, 20) + "..."
+                  : item.sname.toLowerCase().slice(0, 27) + "..."}
               </p>
             </div>
           </div>
