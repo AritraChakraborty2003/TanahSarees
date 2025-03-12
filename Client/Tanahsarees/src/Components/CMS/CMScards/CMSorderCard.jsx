@@ -95,6 +95,8 @@ const CMSordersCard = () => {
         {orders.map((order) => {
           const orderUser = users.find((u) => u._id === order.uinfo);
 
+          console.log("orders:", orderUser);
+
           return (
             <div
               key={order.order_id}
