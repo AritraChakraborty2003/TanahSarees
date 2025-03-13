@@ -2,8 +2,10 @@ import OrderObj from "../../Models/Orders.js";
 export const OrderPATCH = () => {
   return async (req, res) => {
     try {
-      const { order_id, pid } = req.params; // Extract order_id and pid._id from request parameters
-      const { item_status } = req.body;
+      const order_id = req.query.id; // Extract order_id and pid._id from request parameters
+      const { item_status, pid } = req.body;
+
+      console.log(order_id, item_status, pid);
 
       // Validate item_status
       const validStatuses = [
@@ -20,20 +22,19 @@ export const OrderPATCH = () => {
         return res.status(400).json({ message: "Invalid item status" });
       }
 
-      // Update the `item_status` for the specific `pid._id` within the given `order_id`
-      const updatedOrder = await OrderObj.findOneAndUpdate(
-        { order_id, "pid._id": pid }, // Filtering by `order_id` and `pid._id`
-        { $set: { item_status } }, // Updating `item_status`
-        { new: true, runValidators: true }
-      );
+      const order = await OrderObj.findOne({ order_id, pid }).populate("pid");
 
-      if (!updatedOrder) {
-        return res.status(404).json({ message: "Order or Product not found" });
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
       }
+
+      // Now that `order.pid` is populated, update `item_status`
+      order.item_status = item_status;
+      await order.save();
 
       res.status(200).json({
         message: "Item status updated successfully",
-        updatedOrder,
+        order,
       });
     } catch (error) {
       res.status(500).json({ message: "Server error", error: error.message });
