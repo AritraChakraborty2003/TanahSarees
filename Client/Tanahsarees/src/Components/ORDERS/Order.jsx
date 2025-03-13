@@ -1,57 +1,34 @@
-import OrderCard from "../CARDS/OrderCard";
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect, useState } from "react";
+import OrderCard from "../CARDS/OrderCard";
 import { AppContext } from "../../AppContext/AppContext";
 import axios from "axios";
 
+const mockOrders = [
+  {
+    pid: "123",
+    name: "Saree A",
+    price: 2000,
+    status: "Confirmed",
+    image: "/images/saree1.jpg",
+    qty: 3,
+  },
+  {
+    pid: "456",
+    name: "Saree B",
+    price: 1500,
+    status: "Cancelled",
+    image: "/images/saree2.jpg",
+    qty: 2,
+  },
+];
+
 const Order = () => {
   const { change } = useContext(AppContext);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState(mockOrders); // Mock data directly in state for now
 
-  const [orderObj, setOrderObj] = useState([]);
-  // const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const orders = await axios.get(
-          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/users/user/orders`,
-          { withCredentials: true }
-        );
-
-        const responses = await Promise.all(
-          orders.data.map((order) =>
-            axios.get(
-              `${
-                import.meta.env.VITE_APP_API_URL_TEST
-              }api/v1/orders/data?id=${order}`
-            )
-          )
-        );
-
-        // Extract data from responses
-        const data = responses.map((res) => res.data);
-
-        setOrderObj(data);
-
-        // const products = await Promise.all(
-        //   orderObj.products.map((saree) =>
-        //     axios.get(
-        //       `${import.meta.env.VITE_APP_API_URL}api/v1/sarees/data?id=${
-        //         saree.pid
-        //       }`
-        //     )
-        //   )
-        // );
-
-        console.log("Products:", orderObj);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-        setOrders([]);
-      }
-    };
-
-    fetchOrders();
-  }, []);
+  // Log to ensure data is correct
+  console.log("Orders Data:", orders);
 
   return (
     <div
@@ -60,7 +37,7 @@ const Order = () => {
         marginTop: `${
           !change
             ? screen.width > 1000
-              ? "25%"
+              ? "23%"
               : ""
             : screen.width > 1000
             ? "12%"
@@ -69,9 +46,9 @@ const Order = () => {
         zIndex: 10,
       }}
     >
-      {/* Search Bar */}
-      <div className="flex w-[85vw] lg:w-[50vw]"></div>
-
+      <div className=" font-Montserrat font-medium text-3xl overflow-hidden">
+        Your Orders
+      </div>
       {/* Order Cards Carousel */}
       <div className="mt-10">
         {orders.length > 0 ? (
