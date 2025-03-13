@@ -33,7 +33,7 @@ export const OrderPATCH = () => {
       await order.save();
 
       res.status(200).json({
-        message: "Item status updated successfully",
+        message: "success",
         order,
       });
     } catch (error) {

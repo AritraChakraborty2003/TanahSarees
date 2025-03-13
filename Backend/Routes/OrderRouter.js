@@ -11,4 +11,4 @@ OrderRouter.get("/", OrderGET);
 OrderRouter.get("/details", OrderGETDetails);
 OrderRouter.get("/:id", searchOrders());
 // OrderRouter.post("/", ImageUploader(), OrderPOST);
-OrderRouter.patch("/:id", OrderPATCH());
+OrderRouter.patch("/order/:id", OrderPATCH());

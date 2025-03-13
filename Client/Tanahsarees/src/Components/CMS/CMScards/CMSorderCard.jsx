@@ -9,36 +9,26 @@ const CMSordersCard = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .get(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/orders`)
-    //   .then((res) => {
-    //     const validOrders = res.data
-    //       .reverse()
-    //       .filter((order) =>
-    //         order.products.some(
-    //           (product) => product.item_status !== "Cancelled"
-    //         )
-    //       );
-    //     setOrders(validOrders);
-    //     const userIds = [...new Set(validOrders.map((order) => order.uinfo))];
-    //     Promise.all(
-    //       userIds.map((id) =>
-    //         axios.get(
-    //           `${
-    //             import.meta.env.VITE_APP_API_URL_TEST
-    //           }api/v1/users/data?id=${id}`
-    //         )
-    //       )
-    //     )
-    //       .then((responses) => {
-    //         const usersData = responses.map((res) => res.data);
-    //         setUsers(usersData);
-    //       })
-    //       .catch((err) => console.log(err));
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    const fetchOrder = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL}api/v1/orders/details`
+        );
+
+        setOrders(
+          res.data.filter(
+            (item) =>
+              item.item_status !== "cancelled" &&
+              item.item_status !== "pending" &&
+              item.item_status !== "resolved"
+          )
+        );
+      } catch (err) {
+        console.error("Failed to fetch orders", err);
+      }
+    };
+
+    fetchOrder();
   }, []);
 
   const handleStatusUpdate = (id, newStatus) => {
@@ -69,12 +59,15 @@ const CMSordersCard = () => {
     //   });
   };
 
-  const handleSearch = () => {};
+  // const handleSearch = () => {};
+
+  // console.log(orders);
+
   return (
     <>
       <div className="flex flex-col justify-center items-center">
         {/* Search Bar */}
-        <div className="flex w-[85vw]  lg:w-[50vw] border-1 mt-10 lg:mt-70  border-gray-200">
+        {/* <div className="flex w-[85vw]  lg:w-[50vw] border-1 mt-10 lg:mt-70  border-gray-200">
           <input
             type="text"
             className="bg-[#ff95000d] w-[65vw]  lg:w-[40vw] h-10  p-3 "
@@ -86,9 +79,9 @@ const CMSordersCard = () => {
           >
             Search
           </button>
-        </div>
+        </div> */}
 
-        <div className="w-[95vw] lg:w-[75vw] border-1  mx-auto shadow-lg mt-10   mb-20 rounded-2xl p-4">
+        <div className="w-[95vw] lg:w-[75vw] border-1  mx-auto shadow-lg mt-10 lg:mt-70   mb-20 rounded-2xl p-4">
           <div className="font-medium text-lg lg:text-3xl text-center border-b-3 mb-4 p-5">
             Recent Orders
           </div>
@@ -101,25 +94,24 @@ const CMSordersCard = () => {
           </div>
 
           <div className="space-y-4">
-            {orders.map((order) => {
-              // const orderUser = users.find((u) => u._id === order.uinfo);
+            {orders.length > 0 &&
+              orders.map((order) => {
+                // const orderUser = users.find((u) => u._id === order.uinfo);
 
-              return (
-                <div
-                  key={order.order_id}
-                  className="grid grid-cols-[2.4fr_2.4fr_0.8fr]  lg:grid-cols-[1fr_1fr_1fr] items-center border-b justify-center p-3 cursor-pointer "
-                  onClick={() => setSelectedOrder(order)}
-                >
-                  <div className="text-xs text-gray-500 mr-3">
-                    {order.order_id}
+                return (
+                  <div
+                    key={order.order_id}
+                    className="grid grid-cols-[2.4fr_2.4fr_0.8fr]  lg:grid-cols-[1fr_1fr_1fr] items-center border-b justify-center p-3 cursor-pointer "
+                    onClick={() => setSelectedOrder(order)}
+                  >
+                    <div className="text-xs text-gray-500 mr-3">
+                      {order.order_id}
+                    </div>
+                    <div className="text-sm mr-3">{order.pid.sku || "N/A"}</div>
+                    <div className="text-sm font-medium">{order.pid.price}</div>
                   </div>
-                  <div className="text-sm mr-3">
-                    {order.products[0]?.pid || "N/A"}
-                  </div>
-                  <div className="text-sm font-medium">{order.price}</div>
-                </div>
-              );
-            })}
+                );
+              })}
 
             {/* Modal */}
             {selectedOrder && (
@@ -141,16 +133,16 @@ const CMSordersCard = () => {
                     {selectedOrder.name}
                   </h3>
 
-                  {selectedOrder.products.map((item) => (
-                    <>
-                      <p key={item.pid}>SKU: {item.pid}</p>
-                      <p> Quantity: {item.qty}</p>
-                      <p key={item.pid}>OrderId: {selectedOrder.order_id}</p>
-                    </>
-                  ))}
+                  <p key={selectedOrder.pid.sku}>
+                    SKU: {selectedOrder.pid.sku}
+                  </p>
+                  <p> Quantity: {selectedOrder.qty}</p>
+                  <p key={selectedOrder.pid.order_id}>
+                    OrderId: {selectedOrder.order_id}
+                  </p>
 
                   <p className="text-sm font-semibold">
-                    Total: {selectedOrder.price}
+                    Total: ₹{selectedOrder.pid.price}
                   </p>
 
                   <div className="mt-4">
@@ -162,7 +154,7 @@ const CMSordersCard = () => {
                     </label>
                     <select
                       id="status"
-                      value={selectedOrder.status}
+                      value={selectedOrder.item_status}
                       onChange={(e) =>
                         handleStatusUpdate(
                           selectedOrder.order_id,
@@ -171,27 +163,22 @@ const CMSordersCard = () => {
                       }
                       className="p-2 rounded-md w-full border"
                     >
-                      <option value="Delivered">Delivered</option>
-                      <option value="Shipped">Shipped</option>
-                      <option value="Confirmed">Confirmed</option>
-                      <option value="Cancelled">Cancelled</option>
-                      <option value="Aborted">Aborted</option>
+                      <option value="delivered">Delivered</option>
+                      <option value="shipped">Shipped</option>
+                      <option value="confirmed">Confirmed</option>
+                      <option value="cancelled">Cancelled</option>
+                      <option value="resolved">Resolved</option>
                     </select>
                   </div>
 
                   <p className="text-sm font-semibold mt-4">
-                    Name:{" "}
-                    {users.find((u) => u._id === selectedOrder.uinfo)?.name}
+                    Name: {selectedOrder.uinfo.name}
                   </p>
                   <p className="text-sm font-semibold">
-                    Contact:{" "}
-                    {users.find((u) => u._id === selectedOrder.uinfo)?.phone}
+                    Contact:{selectedOrder.uinfo.phone}
                   </p>
                   <p className="text-sm font-semibold">
-                    Address:{" "}
-                    {users
-                      .find((u) => u._id === selectedOrder.uinfo)
-                      ?.address.replaceAll(":", " , ")}
+                    Address: {selectedOrder.uinfo.address.replaceAll(":", ",")}
                   </p>
                 </div>
               </div>
