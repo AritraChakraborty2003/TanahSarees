@@ -129,7 +129,7 @@ const SliderComponent = () => {
           <Slider ref={sliderRef} {...settings}>
             {sareeData.map((item) => (
               <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
-                <div className="flex flex-col lg:gap-y-4 justify-center items-center">
+                <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
                   <a href="/products">
                     <div
                       className="w-[26vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
