@@ -30,33 +30,29 @@ const CMSordersCard = () => {
 
     fetchOrder();
   }, []);
+  const handleStatusUpdate = async (order_id, pid, newStatus) => {
+    try {
+      const res = await axios.patch(
+        `${
+          import.meta.env.VITE_APP_API_URL_TEST
+        }api/v1/orders/order/data?id=${order_id}`,
+        {
+          item_status: newStatus,
+          pid,
+        }
+      );
 
-  const handleStatusUpdate = (id, newStatus) => {
-    // axios
-    //   .patch(
-    //     `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/orders/data?id=${id}`,
-    //     { status: newStatus }
-    //   )
-    //   .then(() => {
-    //     setSelectedOrder(null);
-    //     toast.success("Order Updated!");
-    //     // Refetch the updated orders list
-    //     axios
-    //       .get(`${import.meta.env.VITE_APP_API_URL_TEST}api/v1/orders`)
-    //       .then((res) => {
-    //         const ordersData = res.data.reverse();
-    //         const validOrders = ordersData.filter((order) =>
-    //           order.products.some(
-    //             (product) => product.item_status !== "Cancelled"
-    //           )
-    //         );
-    //         setOrders(validOrders);
-    //       })
-    //       .catch((err) => console.error("Failed to fetch updated orders", err));
-    //   })
-    //   .catch((err) => {
-    //     console.error("Failed to update order status", err);
-    //   });
+      if (res.data.message === "success") {
+        toast.success("Order status updated successfully!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 800); // Refresh to show updated status
+      } else {
+        toast.error("Something went wrong...");
+      }
+    } catch (err) {
+      console.error("Failed to update order status", err);
+    }
   };
 
   // const handleSearch = () => {};
@@ -158,6 +154,7 @@ const CMSordersCard = () => {
                       onChange={(e) =>
                         handleStatusUpdate(
                           selectedOrder.order_id,
+                          selectedOrder.pid._id,
                           e.target.value
                         )
                       }
@@ -165,6 +162,7 @@ const CMSordersCard = () => {
                     >
                       <option value="delivered">Delivered</option>
                       <option value="shipped">Shipped</option>
+                      <option value="packed">Packed</option>
                       <option value="confirmed">Confirmed</option>
                       <option value="cancelled">Cancelled</option>
                       <option value="resolved">Resolved</option>
