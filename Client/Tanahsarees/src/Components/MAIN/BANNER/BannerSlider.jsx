@@ -89,7 +89,9 @@ const BannerSlider = () => {
             </div>
           ))
         ) : (
-          <p>Data Loading</p>
+          <>
+            <div className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center bg-grey-50"></div>
+          </>
         )}
       </Slider>
     </div>
