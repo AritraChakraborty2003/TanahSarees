@@ -6,15 +6,42 @@ import "slick-carousel/slick/slick-theme.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../../AppContext/AppContext";
+import axios from "axios";
 import { capitalizeFirstLetter } from "../../../Utils/CapitalizeFirstLetter";
+import UseHTTPRequest from "../../../Utils/useHTTPRequest";
+import { useCheckAuth } from "../../../Utils/useCheckAuth";
 
 const SliderComponent = () => {
-  const { change, sareeData } = useContext(AppContext);
+  const { change } = useContext(AppContext);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
+  const {
+    sareeData,
+    setSareeData,
+    setActiveFilter,
+    filteredData,
+    setFilteredData,
+  } = useContext(AppContext);
+  const [tigger, setTigger] = useState(false);
+  const [tigger_auth, set_tigger_auth] = useState(false);
+  const [item, setItem] = useState([]);
 
-  // Fix: Use .slice().reverse() to avoid mutating the original array
-  const items = sareeData.slice().reverse().slice(0, 7);
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        const res = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/sarees`
+        );
+
+        console.log(res.data);
+        setSareeData(res.data);
+        setItem(res.data);
+      } catch (error) {
+        console.log("Error in fetching data", error);
+      }
+    };
+    fetchOrder();
+  }, [setSareeData, sareeData]);
 
   const settings = {
     dots: false,
@@ -70,36 +97,116 @@ const SliderComponent = () => {
       </button>
 
       {/* Slick Slider */}
-      <Slider ref={sliderRef} {...settings}>
-        {items.map((item) => (
-          <div key={item.id} className="zoom-div lg:ml-[-1vmin]">
-            <div className="flex flex-col lg:gap-y-4 justify-center items-center">
-              <a href="/products">
-                <div
-                  className="w-[26vw] h-[15vh] rounded-[50%] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
-                  style={{
-                    backgroundImage: `url(${
-                      import.meta.env.VITE_APP_API_URL + item.photo
-                    }?v=1)`,
-                    backgroundPosition: "top",
-                  }}
-                ></div>
-              </a>
+      {/* <Slider ref={sliderRef} {...settings}>
+        {sareeData &&
+          sareeData.map((item, index) => {
+            return (
+              <>
+                <p>{item.sname}</p>
+              </>
+            );
+          })}
+      </Slider> */}
 
-              {/* Text Below Image */}
-              <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
-                {window.innerWidth > 1000
-                  ? capitalizeFirstLetter(
-                      item.sname.toLowerCase().slice(0, 20)
-                    ) + "..."
-                  : capitalizeFirstLetter(
-                      item.sname.toLowerCase().slice(0, 24)
-                    ) + "..."}
-              </p>
+      {/* {sareeData &&
+        sareeData.map((item, index) => {
+          return (
+            <>
+              <div
+                key={index}
+                className="w-[27vw] ml-[5vmin] flex flex-col justify-center items-center mt-[3vmin]"
+              >
+                <p>{item.sname}</p>
+              </div>
+
+              <img src={"http://localhost:8040/" + item.photo} />
+            </>
+          );
+        })} */}
+
+      {sareeData.length > 0 ? (
+        <Slider ref={sliderRef} {...settings}>
+          {sareeData.map((item) => (
+            <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
+              <div className="flex flex-col lg:gap-y-4 justify-center items-center">
+                <a href="/products">
+                  <div
+                    className="w-[26vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
+                    style={{
+                      backgroundImage: `url(${
+                        import.meta.env.VITE_APP_API_URL_TEST + item.photo
+                      })`,
+                      backgroundPosition: "top",
+                    }}
+                  ></div>
+                </a>
+
+                {/* Text Below Image */}
+                <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
+                  {window.innerWidth > 1000
+                    ? capitalizeFirstLetter(
+                        item.sname.toLowerCase().slice(0, 20)
+                      ) + "..."
+                    : capitalizeFirstLetter(
+                        item.sname.toLowerCase().slice(0, 24)
+                      ) + "..."}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        // Shimmer UI with 4 placeholders
+        <div className="flex gap-4 gap-x-8 justify-center items-center">
+          {sareeData.length > 0 ? (
+            <Slider ref={sliderRef} {...settings}>
+              {sareeData.map((item) => (
+                <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
+                  <div className="flex flex-col lg:gap-y-4 justify-center items-center">
+                    <a href="/products">
+                      <div
+                        className="w-[26vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url(${
+                            import.meta.env.VITE_APP_API_URL_TEST + item.photo
+                          })`,
+                          backgroundPosition: "top",
+                        }}
+                      ></div>
+                    </a>
+
+                    {/* Text Below Image */}
+                    <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
+                      {window.innerWidth > 1000
+                        ? capitalizeFirstLetter(
+                            item.sname.toLowerCase().slice(0, 20)
+                          ) + "..."
+                        : capitalizeFirstLetter(
+                            item.sname.toLowerCase().slice(0, 24)
+                          ) + "..."}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          ) : (
+            // Shimmer UI - Show 3 on mobile, 4 on large screens
+            <div className="flex gap-4 justify-center items-center">
+              {Array.from({ length: window.innerWidth >= 1024 ? 4 : 3 }).map(
+                (_, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center animate-pulse"
+                  >
+                    <div className="w-[26vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full bg-gray-300"></div>
+                    <div className="w-32 h-4 mt-3 bg-gray-300 rounded"></div>
+                  </div>
+                )
+              )}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Right Arrow Button (CSS unchanged) */}
       <button
