@@ -90,7 +90,7 @@ const BannerSlider = () => {
           ))
         ) : (
           <>
-            <div className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center bg-grey-50"></div>
+            <div className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center bg-amber-50"></div>
           </>
         )}
       </Slider>
