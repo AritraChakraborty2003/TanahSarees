@@ -1,18 +1,25 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-// Hardcoded images (Replace with API later)
-const images = [
-  "BANNERSIMG/03chui-MadewithPosterMyWall.jpg",
-  "BANNERSIMG/Bridalcollectio.jpeg",
-  "BANNERSIMG/Festivecollectio.jpeg",
-
-  "BANNERSIMG/KatanSilkcollectionbanner.jpeg",
-  "BANNERSIMG/suitbanne.jpeg",
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const BannerSlider = () => {
+  // Hardcoded images (Replace with API later)
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    const fetchBanner = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/banners`
+        );
+        setImages(response.data.reverse().slice(1, 4));
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+    fetchBanner();
+  }, []);
   const settings = {
     dots: true, // Show navigation dots
     infinite: true, // Infinite loop
@@ -58,6 +65,8 @@ const BannerSlider = () => {
     ),
   };
 
+  console.log(images);
+
   return (
     <div
       className="w-full mt-[-1vmin] 2xl:mt-4 relative overflow-hidden"
@@ -66,18 +75,22 @@ const BannerSlider = () => {
       }}
     >
       <Slider {...settings} className="h-full overflow-hidden">
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center"
-          >
-            <img
-              src={img}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover pointer-events-none"
-            />
-          </div>
-        ))}
+        {images.length > 0 ? (
+          images.map((img, index) => (
+            <div
+              key={index}
+              className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center"
+            >
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL_TEST}` + img.image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover pointer-events-none"
+              />
+            </div>
+          ))
+        ) : (
+          <p>Data Loading</p>
+        )}
       </Slider>
     </div>
   );

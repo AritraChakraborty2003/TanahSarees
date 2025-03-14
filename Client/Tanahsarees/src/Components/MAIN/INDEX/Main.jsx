@@ -102,7 +102,7 @@ const Main = () => {
         )}
 
         {/* </div> */}
-        <Feature />
+        {/* <Feature /> */}
         <Exclusive />
         <Selling />
         <div className="mt-10 lg:mt-10">
