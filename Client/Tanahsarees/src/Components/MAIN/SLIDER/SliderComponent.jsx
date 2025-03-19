@@ -132,7 +132,7 @@ const SliderComponent = () => {
                 <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
                   <a href="/products">
                     <div
-                      className="w-[26vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
+                      className="w-[25vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
                       style={{
                         backgroundImage: `url(${
                           import.meta.env.VITE_APP_API_URL_TEST + item.photo
