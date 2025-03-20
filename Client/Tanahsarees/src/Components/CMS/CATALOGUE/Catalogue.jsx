@@ -64,6 +64,7 @@ const Catalogue = () => {
       occasion,
       topSelling,
       rating,
+      description,
       additionalImages,
     } = values;
 
@@ -78,6 +79,7 @@ const Catalogue = () => {
     newFormData.append("colour", colour);
     newFormData.append("discount", discount);
     newFormData.append("occasion", occasion);
+    newFormData.append("description", description);
     newFormData.append("topSelling", topSelling === "yes");
     newFormData.append("rating", Number(rating));
     files.forEach((file) => {

@@ -65,6 +65,11 @@ const sareeSchema = new mongoose.Schema(
       type: [String], // Changed from Array to String
       default: [], // Added default value
     },
+    description: {
+      type: String,
+      required: false,
+      trim: true,
+    },
   },
   {
     collection: "Sarees", // Fixed incorrect syntax  this is collection name or table name

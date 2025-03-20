@@ -13,6 +13,7 @@ export const SareePOST = () => {
         occasion,
         topSelling,
         rating,
+        description,
       } = req.body;
 
       // Function to sanitize filenames
@@ -41,6 +42,7 @@ export const SareePOST = () => {
         topSelling,
         rating,
         photo,
+        description,
         images: imageFilenames.slice(1), // Store only sanitized filenames
       });
 

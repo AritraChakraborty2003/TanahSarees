@@ -39,6 +39,7 @@ const AddCatalogue = ({ onSubmit }) => {
         otherwise: (schema) => schema.notRequired().nullable(),
       }),
     topSelling: Yup.string().required("Please select if it's top-selling"),
+    description: Yup.string().required("Please add the description"),
     rating: Yup.number()
 
       .positive("rating must be positive")
@@ -65,6 +66,7 @@ const AddCatalogue = ({ onSubmit }) => {
           topSelling: "no",
           ocassion: "",
           rating: "",
+          description: "",
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
@@ -137,6 +139,18 @@ const AddCatalogue = ({ onSubmit }) => {
                 />
                 <ErrorMessage
                   name="price"
+                  component="div"
+                  className="text-red-500"
+                />
+
+                <label className="block font-medium">Description</label>
+                <Field
+                  name="description"
+                  type="text"
+                  className="border p-2 w-full"
+                />
+                <ErrorMessage
+                  name="description"
                   component="div"
                   className="text-red-500"
                 />
