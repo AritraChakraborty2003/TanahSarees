@@ -9,6 +9,7 @@ import Main from "./Components/MAIN/INDEX/Main";
 import MainHeader from "./Components/MAIN/HEDAERS/MAIN/MainHeader";
 import TrackOrder from "./Components/TRACKORDER/TrackOrder";
 import Shipping from "./Components/SHIPPING&DELIVERY/Shipping";
+
 import ContactForm from "./Components/CONTACTUS/ContactForm";
 // import Main from "./Components/MAIN/INDEX/Main";
 import Footer from "./Components/FOOTER/Footer";
@@ -47,6 +48,12 @@ import ProtectedRouteUser from "./Components/MAIN/ProtectedRouteUser";
 import ResultPageFinal from "./Components/RESULTPAGE/ResultPageFinal";
 import CMSCancelCards from "./Components/CMS/CMScards/CMSCancelCards";
 import BannerForm from "./Components/CMS/BANNER/BannerForm";
+
+import PrivacyPolicy from "./Components/PRIVACYPOLICY/PrivacyPolicy";
+import ShippingPolicy from "./Components/SHIPPINGPOLICY/shippingPolicy";
+import RefundPolicy from "./Components/REFUNDPOLICY/RefundPolicy";
+import ReturnPolicy from "./Components/RETURNPOLICY/ReturnPolicy";
+import Terms from "./Components/TERMS/Terms";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -104,7 +111,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/shipping",
+    path: "/shipping_info",
     element: (
       <>
         <MainHeader scrollValue="30" />
@@ -364,6 +371,56 @@ const router = createBrowserRouter([
           <BannerForm />
           <Footer />
         </ProtectedRoute>
+      </>
+    ),
+  },
+  {
+    path: "/privacy",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <PrivacyPolicy />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/shipping",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <ShippingPolicy />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/refund",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <RefundPolicy />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/return",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <ReturnPolicy />
+        <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/terms",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <Terms />
+        <Footer />
       </>
     ),
   },

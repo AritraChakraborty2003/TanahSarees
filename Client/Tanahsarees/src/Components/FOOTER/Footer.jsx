@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -23,7 +24,7 @@ const Footer = () => {
                     <p className="text-[2vmin] font-normal font-Poppins text-white">
                       CUSTOMER SERVICE
                     </p>
-                    <p className="text-xs  text-white mt-4">DOWNLOAD THE APP</p>
+
                     <Link to="/sizechart">
                       <p className="text-xs font-Poppins text-white cursor-pointer">
                         SIZE CHART
@@ -39,12 +40,12 @@ const Footer = () => {
                         TRACK YOUR ORDER
                       </p>
                     </Link>
-                    <Link to="/customerreviews">
+                    <Link to="/reviews">
                       <p className="text-xs font-Poppins text-white">
                         CUSTOMER REVIEWS
                       </p>
                     </Link>
-                    <Link to="/returns">
+                    <Link to="/return">
                       <p className="text-xs font-Poppins text-white">RETURNS</p>
                     </Link>
                     <Link to="/contactus">
@@ -110,18 +111,30 @@ const Footer = () => {
                   <div className="4 ml-4">
                     {" "}
                     <div className="w-[35%] pt-[1.5px] mt-3 flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
-                      <a className="mt-[-0.65vmin] ">
+                      <a
+                        className="mt-[-0.65vmin] "
+                        href=" https://www.instagram.com/tanahsarees?igsh=bGRmOW4wamVobXpo&utm_source=qr"
+                      >
                         <i className="ri-instagram-line text-white text-[3.75vmin]"></i>
                       </a>
-                      <a className="mt-[-0.65vmin] text-white text-[3.75vmin]">
+                      <a
+                        className="mt-[-0.65vmin] text-white text-[3.75vmin]"
+                        href="https://www.facebook.com/share/1EELi25ZRw/"
+                      >
                         <i className="ri-facebook-circle-fill"></i>
                       </a>
 
-                      <a className="mt-[-0.65vmin]  text-white text-[3.75vmin]">
+                      <a
+                        className="mt-[-0.65vmin]  text-white text-[3.75vmin]"
+                        href="https://www.youtube.com/channel/UC9Z-9sqp4jPHl7hrY65EPkg"
+                      >
                         <i className="ri-youtube-fill"></i>
                       </a>
 
-                      <a className="mt-[-0.65vmin]  text-white text-[3.75vmin]">
+                      <a
+                        href="https://www.pinterest.com/anup91700/"
+                        className="mt-[-0.65vmin]  text-white text-[3.75vmin]"
+                      >
                         <i className="ri-pinterest-fill"></i>
                       </a>
                     </div>
@@ -153,12 +166,14 @@ const Footer = () => {
                       "Brocade Sarees  ",
                       "Floral saree  ",
                     ].map((item, index) => (
-                      <p
-                        key={index}
-                        className="text-xs font-Montserrat text-white px-3 py-1 rounded-md underline underline-offset-3"
-                      >
-                        {item}
-                      </p>
+                      <Link to="/products">
+                        <p
+                          key={index}
+                          className="text-xs font-Montserrat text-white px-3 py-1 rounded-md underline underline-offset-3"
+                        >
+                          {item}
+                        </p>
+                      </Link>
                     ))}
                   </div>
                 </div>
@@ -166,24 +181,25 @@ const Footer = () => {
               <div className="w-[100vw] flex gap-x-4  p-4  pl-3 mt-5 ">
                 <div className="w-full ">
                   <p className="text-sm  font-Montserrat text-white font-medium mb-3 ">
-                    Explore Trending Articles:
+                    Our Rules and Regulations:
                   </p>
                   <div className="flex flex-wrap gap-x-7 pl-3">
                     {[
-                      "How To Drape A Saree?",
-                      "Blouse Designs",
-                      "Fashion Tips",
-                      "Types Of Sarees",
-                      "New Trend Sarees",
-                      "Saree with Jacket",
-                      "Types of Lehenga",
+                      "Privacy Policy",
+                      "Shipping & Delivery",
+                      "Return Policy",
+
+                      "Terms & Conditions",
+                      "refund policy",
                     ].map((item, index) => (
-                      <p
-                        key={index}
-                        className="text-white mt-3 text-xs font-Montserrat  underline underline-offset-3 cursor-pointer hover:text-white transition"
-                      >
-                        {item}
-                      </p>
+                      <a href={`/${item?.split(" ")[0]}`}>
+                        <p
+                          key={index}
+                          className="text-xs font-Montserrat text-white gap-x-5  rounded-md underline underline-offset-3"
+                        >
+                          {item}
+                        </p>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -222,18 +238,30 @@ const Footer = () => {
                 <div className="4 ml-4">
                   {" "}
                   <div className="w-[96%] pt-[1.5px] flex gap-x-6">
-                    <a className="">
+                    <a
+                      className=""
+                      href=" https://www.instagram.com/tanahsarees?igsh=bGRmOW4wamVobXpo&utm_source=qr"
+                    >
                       <i className="ri-instagram-line text-white text-[7vmin]"></i>
                     </a>
-                    <a className=" text-white text-[7vmin]">
+                    <a
+                      className=" text-white text-[7vmin]"
+                      href="https://www.facebook.com/share/1EELi25ZRw/"
+                    >
                       <i className="ri-facebook-circle-fill"></i>
                     </a>
 
-                    <a className="  text-white text-[7vmin]">
+                    <a
+                      className="text-white text-[7vmin]"
+                      href="https://www.youtube.com/channel/UC9Z-9sqp4jPHl7hrY65EPkg"
+                    >
                       <i className="ri-youtube-fill"></i>
                     </a>
 
-                    <a className="  text-white text-[7vmin]">
+                    <a
+                      className="  text-white text-[7vmin]"
+                      href="https://www.pinterest.com/anup91700/"
+                    >
                       <i className="ri-pinterest-fill"></i>
                     </a>
                   </div>
@@ -272,7 +300,7 @@ const Footer = () => {
                           key={index}
                           className="text-xs font-Montserrat  gap-x-5  rounded-md underline underline-offset-3"
                         >
-                          {item}
+                          <a href="/products">{item}</a>
                         </p>
                       ))}
                     </div>
@@ -282,24 +310,25 @@ const Footer = () => {
                 <div className="w-[100vw] flex gap-x-4  p-4  pl-3 mt-1 ">
                   <div className="w-full ">
                     <p className="text-sm  font-Montserrat text-white  font-medium mb-3 ">
-                      Explore Trending Articles:
+                      Our Rules and Regulations:
                     </p>
                     <div className="flex flex-wrap gap-x-3 gap-y-1 text-white justify-center items-center p-1">
                       {[
-                        "How To Drape A Saree?",
-                        "Blouse Designs",
-                        "Fashion Tips",
-                        "Types Of Sarees",
-                        "New Trend Sarees",
-                        "Saree with Jacket",
-                        "Types of Lehenga",
+                        "Privacy Policy",
+                        "Shipping & Delivery",
+                        "Return Policy",
+
+                        "Terms & Conditions",
+                        "refund policy",
                       ].map((item, index) => (
-                        <p
-                          key={index}
-                          className="text-xs font-Montserrat text-white gap-x-5  rounded-md underline underline-offset-3"
-                        >
-                          {item}
-                        </p>
+                        <a href={`/${item?.split(" ")[0]}`}>
+                          <p
+                            key={index}
+                            className="text-xs font-Montserrat text-white gap-x-5  rounded-md underline underline-offset-3"
+                          >
+                            {item}
+                          </p>
+                        </a>
                       ))}
                     </div>
                   </div>

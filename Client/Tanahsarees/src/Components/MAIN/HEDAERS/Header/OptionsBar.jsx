@@ -124,85 +124,80 @@ const OptionsBar = () => {
         <nav className="relative w-full dark  shadow-md border-t border-gray-300">
           <div className="flex justify-center darktxt items-center px-3 py-4">
             <ul className="flex  gap-x-24 lg:text-[1.75vmin] ">
-              {[
-                "SALE",
-                "OFFERS",
-                "OCCASIONS",
-                "TYPE",
-                "NEW ARRIVALS",
-                "OTHERS",
-              ].map((menu, index) => (
-                <li
-                  key={index}
-                  className="relative group cursor-pointer "
-                  onMouseEnter={() => handleMouseEnter(menu)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <span className="hover:underline lighttxt text-md font-Montserrat underline-offset-5 font-medium">
-                    {menu}
-                  </span>
+              {["OFFERS", "OCCASIONS", "TYPE", "NEW ARRIVALS", "OTHERS"].map(
+                (menu, index) => (
+                  <li
+                    key={index}
+                    className="relative group cursor-pointer "
+                    onMouseEnter={() => handleMouseEnter(menu)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <span className="hover:underline lighttxt text-md font-Montserrat underline-offset-5 font-medium">
+                      {menu}
+                    </span>
 
-                  {/* Full-width dropdown */}
-                  {openMenu === menu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className={`fixed  ${
-                        screen.width <= 1919 ? "top-[258px]" : "top-[297px]"
-                      } left-0 w-screen bg-[#ede4da] shadow-lg border border-gray-200 z-50`}
-                      onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
-                      onMouseLeave={handleMouseLeave} // Close only if mouse leaves
-                    >
-                      <div>
-                        <ul className="font-Montserrat p-6 gap-y-4 gapx-x-8 flex justify-evenly items-center text-lg font-medium">
-                          <div className="flex-col gap-y-8">
-                            <li className="p-1 text-sm font-bold">
-                              {options[menu].header1}
-                            </li>
-                            {options[menu].options1.map((option, index) => (
-                              <li
-                                key={index}
-                                className="p-1 mt-2 hover:underline text-xs"
-                              >
-                                {option}
+                    {/* Full-width dropdown */}
+                    {openMenu === menu && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                        className={`fixed  ${
+                          screen.width <= 1919 ? "top-[258px]" : "top-[297px]"
+                        } left-0 w-screen bg-[#ede4da] shadow-lg border border-gray-200 z-50`}
+                        onMouseEnter={() => handleMouseEnter(menu)} // Keep it open
+                        onMouseLeave={handleMouseLeave} // Close only if mouse leaves
+                      >
+                        <div>
+                          <ul className="font-Montserrat p-6 gap-y-4 gapx-x-8 flex justify-evenly items-center text-lg font-medium">
+                            <div className="flex-col gap-y-8">
+                              <li className="p-1 text-sm font-bold">
+                                {options[menu].header1}
                               </li>
-                            ))}
-                          </div>
-                          <div className="flex-col gap-y-8">
-                            <li className="p-1 text-sm font-bold">
-                              {options[menu].header2}
-                            </li>
-                            {options[menu].options2.map((option, index) => (
-                              <li
-                                key={index}
-                                className="p-1 mt-2 hover:underline text-xs"
-                              >
-                                {option}
+                              {options[menu].options1.map((option, index) => (
+                                <li
+                                  key={index}
+                                  className="p-1 mt-2 hover:underline text-xs"
+                                >
+                                  {option}
+                                </li>
+                              ))}
+                            </div>
+                            <div className="flex-col gap-y-8">
+                              <li className="p-1 text-sm font-bold">
+                                {options[menu].header2}
                               </li>
-                            ))}
-                          </div>
+                              {options[menu].options2.map((option, index) => (
+                                <li
+                                  key={index}
+                                  className="p-1 mt-2 hover:underline text-xs"
+                                >
+                                  {option}
+                                </li>
+                              ))}
+                            </div>
 
-                          <div className="flex-col gap-y-8">
-                            <li className="p-1 text-sm font-bold">
-                              {options[menu].header3}
-                            </li>
-                            {options[menu].options3.map((option, index) => (
-                              <li
-                                key={index}
-                                className="p-1 mt-2 hover:underline text-xs"
-                              >
-                                {option}
+                            <div className="flex-col gap-y-8">
+                              <li className="p-1 text-sm font-bold">
+                                {options[menu].header3}
                               </li>
-                            ))}
-                          </div>
-                        </ul>
-                      </div>
-                    </motion.div>
-                  )}
-                </li>
-              ))}
+                              {options[menu].options3.map((option, index) => (
+                                <li
+                                  key={index}
+                                  className="p-1 mt-2 hover:underline text-xs"
+                                >
+                                  {option}
+                                </li>
+                              ))}
+                            </div>
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </li>
+                )
+              )}
             </ul>
           </div>
         </nav>

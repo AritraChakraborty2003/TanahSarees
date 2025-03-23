@@ -15,7 +15,7 @@ const Smallheader = (props) => {
               <Link to="/sizechart">SIZE CHART</Link>
             </p>
             <p>
-              <Link to="/shipping">SHIPPING & DELIVERY</Link>
+              <Link to="/shipping_info">SHIPPING & DELIVERY</Link>
             </p>
             <p>
               <Link to="/trackorder">TRACK YOUR ORDER</Link>
