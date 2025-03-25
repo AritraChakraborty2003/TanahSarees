@@ -53,18 +53,34 @@ const Smallheader = (props) => {
         )}
       </div>
       <div className="w-[30%] pt-[1.5px] flex justify-end   gap-x-5 2xl:gap-x-7 pr-3">
-        <a className="mt-[-0.65vmin] ">
+        <a
+          className="mt-[-0.65vmin] "
+          href="https://www.instagram.com/tanahsarees?igsh=bGRmOW4wamVobXpo&utm_source=qr"
+          target="_blank"
+        >
           <i className="ri-instagram-line darktxt text-[3vmin]"></i>
         </a>
-        <a className="mt-[-1vmin] darktxt text-[3.15vmin]">
+        <a
+          className="mt-[-1vmin] darktxt text-[3.15vmin]"
+          href="https://www.facebook.com/share/1EELi25ZRw/"
+          target="_blank"
+        >
           <i className="ri-facebook-circle-fill"></i>
         </a>
 
-        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.75vmin]">
+        <a
+          className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.75vmin]"
+          href="https://www.youtube.com/channel/UC9Z-9sqp4jPHl7hrY65EPkg"
+          target="_blank"
+        >
           <i className="ri-youtube-fill"></i>
         </a>
 
-        <a className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.55vmin] mr-[2vmin]">
+        <a
+          className="mt-[-1.35vmin] 2xl:mt-[-1.5vmin] darktxt text-[3.55vmin] mr-[2vmin]"
+          href="https://www.pinterest.com/anup91700/"
+          target="_blank"
+        >
           <i className="ri-pinterest-fill"></i>
         </a>
       </div>

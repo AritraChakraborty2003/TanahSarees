@@ -10,7 +10,9 @@
 * {
   overflow-x: hidden;
   box-sizing: border-box;
+  background: "#efe4da" !important;
 }
+
 :root {
   --new-dark: #262424;
   --new-light: #eee5da;

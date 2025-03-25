@@ -240,7 +240,7 @@ const Footer = () => {
                   <div className="w-[96%] pt-[1.5px] flex gap-x-6">
                     <a
                       className=""
-                      href=" https://www.instagram.com/tanahsarees?igsh=bGRmOW4wamVobXpo&utm_source=qr"
+                      href="https://www.instagram.com/tanahsarees?igsh=bGRmOW4wamVobXpo&utm_source=qr"
                     >
                       <i className="ri-instagram-line text-white text-[7vmin]"></i>
                     </a>

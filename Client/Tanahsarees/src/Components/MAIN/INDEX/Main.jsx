@@ -105,15 +105,16 @@ const Main = () => {
         {/* <Feature /> */}
         <Exclusive />
         <Selling />
-        <div className="mt-10 lg:mt-10">
+        {/* <div className="mt-10 lg:mt-10">
           <BannerSlider />
-        </div>
-        {screen.width > 1024 && <VideoCard />}
+        </div> */}
+        <VideoCard />
+
         <Occasion />
-        <div className="mt-10 lg:mt-10">
+        {/* <div className="mt-10 lg:mt-10">
           <BannerSlider />
-        </div>
-        <Collection />
+        </div> */}
+        {/* <Collection /> */}
         <Material />
         <Testimonial />
         <div className="mt-5 lg:mt-10">
