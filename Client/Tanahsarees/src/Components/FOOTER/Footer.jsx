@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="relative">
-      <div className="absolute  inset-x-[-100px] top-0 h-1/1 bg-gradient-to-b from-black/100 via-transparent"></div>
+      <div className="absolute  inset-x-[-100px]  top-0 h-1/1 bg-gradient-to-b from-black/100 via-transparent"></div>
       <div
         className={`${
           screen.width <= 375 ? "h-[100vh]" : "h-[77vh]"
-        } lg:h-[90vh] w-[100vw] 2xl:h-[80vh] dark`}
+        } lg:h-[90vh] w-[100vw] 2xl:h-[80vh] dark b `}
         style={{
           backgroundImage: `url('pngwing.com.png')`, // url('pngwing.com.png')
           backgroundSize: "cover", // First image full width, second covers the div
@@ -214,7 +214,7 @@ const Footer = () => {
           )) || (
             <>
               <div
-                className="w-[100vw] p-5 flex flex-col gap-y-3  items-center"
+                className="w-[100vw]    flex flex-col gap-y-3  items-center"
                 style={{ marginBottom: "0vmin" }}
               >
                 <div className="1 ml-4">

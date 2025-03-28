@@ -8,12 +8,12 @@ const Material = () => {
   const data = dataExclusive.slice(0, 4);
   return (
     <div className="mt-10 bg-[#efe4da]  lg:mt-20 light pt-8 lg:pt-10 lg:pb-10">
-      <p className="text-center font-Montserrat darktxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
-        Shop By Material
+      <p className="text-center font-Montserrat darktxt border-b-1 ml-6 mr-6  darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
+        FIND YOUR FABRIC FIT
       </p>
-      <p className="text-center text-sm lg:text-md  darktxt">
+      {/* <p className="text-center text-sm lg:text-md  darktxt">
         ( Shop your saree by Material )
-      </p>
+      </p> */}
       <div className="mt-5 lg:mt-10">
         <CardText data={data} type="material" />
       </div>

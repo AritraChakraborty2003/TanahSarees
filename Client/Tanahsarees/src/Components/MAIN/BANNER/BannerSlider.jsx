@@ -5,95 +5,92 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const BannerSlider = () => {
-  // Hardcoded images (Replace with API later)
   const [images, setImages] = useState([]);
+
   useEffect(() => {
     const fetchBanner = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/banners`
         );
-        setImages(response.data.reverse().slice(1, 4));
+        setImages(response.data);
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Error fetching banners:", error);
       }
     };
     fetchBanner();
   }, []);
+
+  // Separate banners based on type
+  const mobileBanners = images.filter((img) => img.bannerType === "mobile");
+  const laptopBanners = images.filter((img) => img.bannerType === "laptop");
+
   const settings = {
-    dots: true, // Show navigation dots
-    infinite: true, // Infinite loop
-    speed: 1000, // Transition speed
-    slidesToShow: 1, // Show only one image at a time
-    slidesToScroll: 1, // Scroll one at a time
-    autoplay: true, // Auto-slide
-    autoplaySpeed: 3000, // Slide every 3 seconds
-    arrows: false, // Hide arrows
-    appendDots: (dots) => (
-      <div
-        style={{
-          position: "absolute",
-          bottom: "20px",
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        <ul
-          style={{
-            margin: "0",
-            padding: "0",
-            display: "inline-flex",
-            gap: "8px",
-          }}
-        >
-          {dots}
-        </ul>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div
-        key={i} // just to ignore ESLint warning
-        style={{
-          width: "10px",
-          height: "10px",
-          borderRadius: "50%",
-          backgroundColor: "white",
-          opacity: 0.7,
-          cursor: "pointer",
-        }}
-      ></div>
-    ),
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: false,
   };
 
-  console.log(images);
-
   return (
-    <div
-      className="w-full mt-[-1vmin] 2xl:mt-4 relative overflow-hidden"
-      style={{
-        zIndex: 10,
-      }}
-    >
-      <Slider {...settings} className="h-full overflow-hidden">
-        {images.length > 0 ? (
-          images.map((img, index) => (
-            <div
-              key={index}
-              className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center"
-            >
-              <img
-                src={`${import.meta.env.VITE_APP_API_URL_TEST}` + img.image}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover pointer-events-none"
-              />
+    <div className="w-full">
+      {/* Mobile Banner Slider */}
+      <div className="block md:hidden">
+        {" "}
+        <Slider {...settings} className="h-full relative overflow-hidden">
+          {mobileBanners.length > 0 ? (
+            mobileBanners.map((img, index) => (
+              <div
+                key={index}
+                className="w-full h-[70vh] flex justify-center items-center relative" // Add relative here
+              >
+                <img
+                  src={`${import.meta.env.VITE_APP_API_URL_TEST}${img.image}`}
+                  alt={`Mobile Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <p className="absolute bottom-5 text-center w-full text-white text-5xl font-bold z-10">
+                  . . . .
+                </p>
+              </div>
+            ))
+          ) : (
+            <div className="w-full h-[40vh] flex justify-center items-center bg-gray-200">
+              No Mobile Banners Available
             </div>
-          ))
-        ) : (
-          <>
-            <div className="w-full h-[50vh] sm:h-[65vh] lg:h-[90vh] flex justify-center items-center bg-amber-50"></div>
-          </>
-        )}
-      </Slider>
+          )}
+        </Slider>
+      </div>
+
+      {/* Laptop Banner Slider */}
+      <div className="hidden md:block">
+        {" "}
+        {/* Visible only on larger screens */}
+        <Slider {...settings} className="h-full overflow-hidden">
+          {laptopBanners.length > 0 ? (
+            laptopBanners.map((img, index) => (
+              <div
+                key={index}
+                className="w-full h-[65vh] lg:h-full flex justify-center items-center"
+              >
+                <img
+                  src={`${import.meta.env.VITE_APP_API_URL_TEST}${img.image}`}
+                  alt={`Laptop Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))
+          ) : (
+            <div className="w-full h-[65vh] lg:h-[90vh] flex justify-center items-center bg-gray-200">
+              No Laptop Banners Available
+            </div>
+          )}
+        </Slider>
+      </div>
     </div>
   );
 };

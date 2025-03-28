@@ -158,7 +158,7 @@ const Header = (props) => {
             <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
               {/* <Link to="/"> */}{" "}
               <a href="/">
-                <img src="logo.png" height={180} width={220} /> {/* </Link> */}
+                <img src="logo.png" height={100} width={110} /> {/* </Link> */}
               </a>
             </div>
             {props.category != "CMS" ? (

@@ -7,6 +7,12 @@ const bannerSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
+    bannerType: {
+      type: String,
+      required: true,
+      enum: ["mobile", "laptop"], // Ensures only valid types
+      trim: true,
+    },
     image: {
       type: String,
       required: true,

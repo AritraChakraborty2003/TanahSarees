@@ -61,6 +61,11 @@ const CmsDashboard = () => {
       path: "/bannerManagement",
       icon: "/CMSIMG/bannermgmt.jpeg",
     },
+    {
+      title: "Reciept",
+      path: "/reciept",
+      icon: "/CMSIMG/transaction.png",
+    },
     { title: "Users", path: "/CMSusers", icon: "/CMSIMG/users.png" },
   ];
 

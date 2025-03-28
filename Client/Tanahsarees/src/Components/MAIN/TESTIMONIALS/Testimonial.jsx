@@ -48,9 +48,9 @@ const Testimonial = () => {
       <p className="text-center font-Montserrat darktxt font-medium text-[6.35vmin] lg:text-[4.75vmin]">
         Our happy customers
       </p>
-      <p className="text-center text-sm lg:text-md darktxt mt-1">
+      {/* <p className="text-center text-sm lg:text-md darktxt mt-1">
         ( Our Testimonials from clients )
-      </p>
+      </p> */}
       <div className=" mt-5 lg:mt-10 lg:ml-6">
         {data && data.length > 4 ? (
           <Slider className="overflow-hidden" {...settings}>
