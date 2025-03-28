@@ -9,7 +9,7 @@ const Footer = () => {
           screen.width <= 375 ? "h-[100vh]" : "h-[77vh]"
         } lg:h-[90vh] w-[100vw] 2xl:h-[80vh] dark b `}
         style={{
-          backgroundImage: `url('pngwing.com.png')`, // url('pngwing.com.png')
+          backgroundImage: `url('pngwing.com.jpeg')`, // url('pngwing.com.png')
           backgroundSize: "cover", // First image full width, second covers the div
           backgroundPosition: "bottom", // First image on top, second on bottom
           backgroundRepeat: "no-repeat", // No tiling for both images
@@ -346,6 +346,7 @@ const Footer = () => {
           )}
         </div>
       </div>
+      <div className="absolute bottom-0 w-screen h-[60%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
     </div>
   );
 };
