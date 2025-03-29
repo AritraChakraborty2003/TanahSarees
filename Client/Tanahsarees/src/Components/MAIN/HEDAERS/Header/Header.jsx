@@ -155,14 +155,14 @@ const Header = (props) => {
                 )}
               </div>
             </div>
-            <div className="logoHolder flex justify-center items-center w-[33.34%]  mt-3 ml-12">
+            <div className="logoHolder flex justify-center items-center   lg:w-30     mt-3 ml-50">
               {/* <Link to="/"> */}{" "}
               <a href="/">
-                <img src="logo.png" height={180} width={220} /> {/* </Link> */}
+                <img src="logo.png" className="" /> {/* </Link> */}
               </a>
             </div>
             {props.category != "CMS" ? (
-              <div className="relative purchaseOptHolder w-[33.33%]  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
+              <div className="relative purchaseOptHolder w-[33.33%]  ml-40  flex justify-end items-center  gap-x-9 2xl:gap-x-8 pr-12 mt-6">
                 <div className="relative inline-block">
                   {/* Heart Icon */}
 
@@ -248,7 +248,7 @@ const Header = (props) => {
               <div className="logoHolder  flex justify-center items-center w-[49.5%]  mt-3 ml-[-0.35vmin] ">
                 <Link to="/">
                   {" "}
-                  <img src="logo.png" height={120} width={180} />
+                  <img src="logo.png" height={100} width={80} />
                 </Link>
               </div>
               {props.category != "CMS" ? (

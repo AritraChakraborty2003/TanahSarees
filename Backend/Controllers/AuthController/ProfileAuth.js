@@ -11,7 +11,7 @@ export const ProfileAuth = async (req, res) => {
         .status(401)
         .json({ message: "Not authorized", status: "Not Login" });
     }
-
+    console.log("jwt", process.env.JWT_SECRET_KEY);
     // Verify JWT token
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
     // 🔍 Debugging

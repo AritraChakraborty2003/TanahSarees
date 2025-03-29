@@ -54,6 +54,8 @@ import ShippingPolicy from "./Components/SHIPPINGPOLICY/shippingPolicy";
 import RefundPolicy from "./Components/REFUNDPOLICY/RefundPolicy";
 import ReturnPolicy from "./Components/RETURNPOLICY/ReturnPolicy";
 import Terms from "./Components/TERMS/Terms";
+
+import CmsReciept from "./Components/CMS/RECIEPT/reciept";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -421,6 +423,18 @@ const router = createBrowserRouter([
         <MainHeader scrollValue="30" />
         <Terms />
         <Footer />
+      </>
+    ),
+  },
+  {
+    path: "/reciept",
+    element: (
+      <>
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" />
+          <CmsReciept />
+          <Footer />
+        </ProtectedRoute>
       </>
     ),
   },

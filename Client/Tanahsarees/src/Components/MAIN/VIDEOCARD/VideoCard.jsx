@@ -63,13 +63,13 @@ const VideoCard = () => {
 
   return (
     <>
-      <div className="flex pl-6 pr-2 mt-7  lg:mt-20">
+      <div className="flex pl-1 lg:pl-13 pr-2 mt-7  lg:mt-20">
         <Slider {...settings} className="w-full overflow-hidden">
           {data.map((item, index) => (
             <div key={index} className="px-2">
               {" "}
               {/* Add padding for spacing */}
-              <div className="light border-[1px] border-gray-300 relative flex flex-col p-4 mb-4 rounded-md shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
+              <div className="light border-[1px] border-gray-300 relative flex flex-col p-4 mb-4  shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
                 <video
                   className="border-[1px] border-gray-300 w-full h-full object-cover"
                   autoPlay

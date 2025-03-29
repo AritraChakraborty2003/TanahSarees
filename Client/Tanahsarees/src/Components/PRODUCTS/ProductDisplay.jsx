@@ -54,7 +54,7 @@ const ProductDisplay = () => {
   return (
     <div>
       <div
-        className="flex flex-col text-center mt-6 lg:mt-0"
+        className="flex flex-col text-center   mt-6 lg:mt-0"
         style={{
           marginTop: `${
             !change
