@@ -56,7 +56,7 @@ import ReturnPolicy from "./Components/RETURNPOLICY/ReturnPolicy";
 import Terms from "./Components/TERMS/Terms";
 
 import CmsReciept from "./Components/CMS/RECIEPT/reciept";
-import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/cmsTrackOrder";
+import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/CmsTrackOrder";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
