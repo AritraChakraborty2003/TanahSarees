@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable react/jsx-key */
+import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -13,6 +14,47 @@ const validationSchema = Yup.object().shape({
 const BannerForm = () => {
   const [preview, setPreview] = useState(null);
   const [addbanner, setAddBanner] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [refresh, setRefresh] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          // "https://apis.tanahsarees.com/api/v1/banners"
+          `${import.meta.env.VITE_APP_API_URL_TEST}api/v1/banners`
+        );
+
+        console.log(response);
+        setData(response.data); // Axios already parses JSON
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [refresh]);
+  const handleRemove = async (itemTitle) => {
+    try {
+      const response = await axios.delete(
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }api/v1/banners?title=${encodeURIComponent(itemTitle)}`
+      );
+
+      if (response.status === 200) {
+        toast.success("Banner deleted successfully!");
+        setRefresh((prev) => !prev); // ✅ Toggle refresh state to trigger useEffect
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("Something went wrong...");
+    }
+  };
 
   return (
     <>
@@ -49,6 +91,7 @@ const BannerForm = () => {
                   );
                   if (response.data.message === "success") {
                     toast.success("Banner added successfully!");
+                    setRefresh((prev) => !prev);
                     resetForm();
                     setPreview(null); // Reset preview on success
                   }
@@ -150,7 +193,36 @@ const BannerForm = () => {
               Add Banner
             </button>
           </div>
-          <div className="mt-10">hello </div>
+          {loading && <p>Loading...</p>}
+          {error && <p>Error: {error}</p>}
+          <div className="mt-10">
+            {data &&
+              data.map((item, index) => (
+                <div className="border-b-2 flex justify-between">
+                  <div key={index} className="ml-2 p-2">
+                    <img
+                      src={`${import.meta.env.VITE_APP_API_URL}${item.image}`}
+                      alt={item.title}
+                      className="w-30 h-30 object-cover"
+                    />
+                    <p className=" flex justify-center">Title: {item.title}</p>
+                    <p className="flex justify-center">
+                      Device: {item.bannerType ? item.bannerType : "NA"}
+                    </p>
+                  </div>
+                  <div className=" flex justify-center items-center">
+                    <button
+                      className="bg-red-500 p-2 mr-4 rounded"
+                      onClick={() => {
+                        handleRemove(item.title);
+                      }}
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              ))}
+          </div>
         </>
       )}
     </>
