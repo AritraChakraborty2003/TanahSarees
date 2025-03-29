@@ -346,7 +346,7 @@ const Footer = () => {
           )}
         </div>
       </div>
-      <div className="absolute bottom-0 w-screen h-[60%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
+      <div className="absolute bottom-0 w-screen h-[100%] bg-gradient-to-t from-black via-transparent to-transparent"></div>
     </div>
   );
 };

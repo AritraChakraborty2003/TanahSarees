@@ -79,7 +79,7 @@ const ProductCard = (props) => {
             tiltMaxAngleY={0} // Tilt angle on Y-axis
             scale={1.03} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
-            className="relative lg:ml-0 w-[45vw] lg:w-63 bg-white  shadow-lg overflow-hidden"
+            className="relative lg:ml-0 w-[40vw] lg:w-63 bg-white  shadow-lg overflow-hidden"
           >
             {/* Instead of using navigate, wrap the image in a Link */}
             <Link

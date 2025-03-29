@@ -56,6 +56,7 @@ import ReturnPolicy from "./Components/RETURNPOLICY/ReturnPolicy";
 import Terms from "./Components/TERMS/Terms";
 
 import CmsReciept from "./Components/CMS/RECIEPT/reciept";
+import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/cmsTrackOrder";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -433,6 +434,18 @@ const router = createBrowserRouter([
         <ProtectedRoute>
           <MainHeader scrollValue="30" />
           <CmsReciept />
+          <Footer />
+        </ProtectedRoute>
+      </>
+    ),
+  },
+  {
+    path: "/CmsTrackOrder",
+    element: (
+      <>
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" />
+          <CmsTrackOrder />
           <Footer />
         </ProtectedRoute>
       </>
