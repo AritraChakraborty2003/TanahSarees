@@ -57,6 +57,8 @@ import Terms from "./Components/TERMS/Terms";
 
 import CmsReciept from "./Components/CMS/RECIEPT/reciept";
 import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/CmsTrackOrder";
+
+import CmsVideoCard from "./Components/CMS/VIDEOS/CmsVideoCrad";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -446,6 +448,18 @@ const router = createBrowserRouter([
         <ProtectedRoute>
           <MainHeader scrollValue="30" />
           <CmsTrackOrder />
+          <Footer />
+        </ProtectedRoute>
+      </>
+    ),
+  },
+  {
+    path: "/videos",
+    element: (
+      <>
+        <ProtectedRoute>
+          <MainHeader scrollValue="30" />
+          <CmsVideoCard />
           <Footer />
         </ProtectedRoute>
       </>
