@@ -64,12 +64,17 @@ const CmsDashboard = () => {
     {
       title: "Reciept",
       path: "/reciept",
-      icon: "/CMSIMG/transaction.png",
+      icon: "/reciept.png",
     },
     {
       title: "Track Order",
       path: "/CmsTrackOrder",
-      icon: "/CMSIMG/transaction.png",
+      icon: "/parcel.png",
+    },
+    {
+      title: "Videos",
+      path: "/videos",
+      icon: "/multimedia.png",
     },
     { title: "Users", path: "/CMSusers", icon: "/CMSIMG/users.png" },
   ];

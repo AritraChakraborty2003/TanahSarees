@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import connectDB from "./Connection/DbConnect.js";
@@ -17,6 +18,7 @@ import { FavouriteRouter } from "./Routes/FavouriteRouter.js";
 import { PaymentRouter } from "./Routes/PaymentRouter.js";
 import { SaleRouter } from "./Routes/SaleRouter.js";
 import { BannerRouter } from "./Routes/BannerRouter.js";
+import { VideoRouter } from "./Routes/VideoRouter.js";
 
 dotenv.config();
 
@@ -69,6 +71,10 @@ app.use("/api/v1/favourites", FavouriteRouter);
 app.use("/api/v1/checkout", PaymentRouter);
 app.use("/api/v1/sales", SaleRouter);
 app.use("/api/v1/banners", BannerRouter);
+app.use("/api/v1/videos", VideoRouter);
+
+// Serve static files from the 'uploads' directory
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 // ✅ Authentication Check Route
 app.get("/api/v1/check", verifyUser, (req, res) => {
