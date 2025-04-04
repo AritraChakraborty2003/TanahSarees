@@ -5,7 +5,7 @@ const Exclusive = () => {
   const { sareeData } = useContext(AppContext);
 
   const dataExclusive = sareeData.filter((item) => item.discount != null);
-  console.log("dataExclusive:", dataExclusive);
+  // console.log("dataExclusive:", dataExclusive);
 
   const data = dataExclusive.reverse().slice(0, 4);
 

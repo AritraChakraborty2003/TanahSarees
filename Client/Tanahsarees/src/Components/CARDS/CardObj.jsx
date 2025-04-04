@@ -54,13 +54,9 @@ const CardObj = (props) => {
               )}
             </Tilt>
             {/* Text Content Section */}
-            <div className="lg:p-1 text-center">
-              <p className="text-sm lg:text-md 2xl:text-[2vmin] darktxt">
-                {item.sname
-                  ? screen.width > 1000
-                    ? item.sname.slice(0, 20) + "..."
-                    : item.sname.slice(0, 10) + "..."
-                  : ""}
+            <div className="lg:p-1  w-[45vw]  lg:w-64 h-15 lg:h-20">
+              <p className="text-sm lg:text-[2vmin] 2xl:text-[2vmin] darktxt">
+                {item.sname}
               </p>
             </div>
           </div>

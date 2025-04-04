@@ -25,7 +25,7 @@ const VideoCard = () => {
     };
     fetchGifs();
   }, []);
-  console.log("maindata", data);
+  // console.log("maindata", data);
   const settings = {
     dots: true,
     infinite: true,
@@ -64,14 +64,10 @@ const VideoCard = () => {
                     alt={title}
                   />
                   <div className="">
-                    <p className="flex justify-center mt-4 lg:mt-8 darktxt text-md font-Montserrat">
-                      <span className="hidden lg:inline">
-                        {title.slice(0, 20).trim()}
-                      </span>{" "}
+                    <p className="flex justify-center mt-4 h-13 lg:h-15 lg:mt-2 darktxt text-md font-Montserrat">
+                      <span className="hidden lg:inline">{title}</span>{" "}
                       {/* Large Screens */}
-                      <span className="lg:hidden">
-                        {title.slice(0, 15).trim()}
-                      </span>{" "}
+                      <span className="lg:hidden">{title}</span>{" "}
                       {/* Small Screens */}
                     </p>
 
