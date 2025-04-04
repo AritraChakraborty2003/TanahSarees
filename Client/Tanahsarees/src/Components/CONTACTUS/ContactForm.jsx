@@ -27,7 +27,7 @@ export default function ContactForm() {
 
   return (
     <div
-      className="pb-15"
+      className="pb-15 flex flex-col justify-center items-center"
       style={{
         marginTop: `${
           !change
@@ -41,7 +41,25 @@ export default function ContactForm() {
         zIndex: 10, // Keep content below the header
       }}
     >
-      <div className="w-[96vw] lg:max-w-lg mx-auto p-6 light shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15 font-Montserrat">
+      <div className="border-[1px] border-gray-200 p-5 w-[96vw] lg:max-w-lg gap-y-5 flex flex-col justify-center rounded-lg shadow-md">
+        <a
+          href="mailto:Anup91700@gmail.com"
+          className="text-sm font-semibold darktxt hover:text-blue-600 transition-all"
+        >
+          📧 Email: Anup91700@gmail.com
+        </a>
+        <a
+          href="tel:+919170021128"
+          className="text-sm font-semibold darktxt hover:text-blue-600 transition-all"
+        >
+          📞 Phone: +91 91700 21128
+        </a>
+        <p className="text-sm font-semibold darktxt">
+          🏢 Business: Silk Of Banaras
+        </p>
+      </div>
+
+      <div className="w-[96vw] lg:max-w-lg mx-auto p-6  shadow-xl border-gray-300 border-[0.15px]  rounded-lg mt-15 font-Montserrat">
         <h2 className="text-4xl lg:text-5xl font-medium text-center darktxt overflow-hidden">
           Contact Us
         </h2>

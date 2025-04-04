@@ -60,6 +60,7 @@ import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/CmsTrackOrder";
 
 import CmsVideoCard from "./Components/CMS/VIDEOS/CmsVideoCrad";
 import ProductFilter from "./Components/PRODUCTS/ProductFilter";
+import Header from "./Components/MAIN/HEDAERS/Header/Header";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -384,7 +385,8 @@ const router = createBrowserRouter([
     path: "/privacy",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        {/* <MainHeader scrollValue="30" /> */}
+        <Header />
         <PrivacyPolicy />
         <Footer />
       </>
@@ -394,7 +396,8 @@ const router = createBrowserRouter([
     path: "/shipping",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        {/* <MainHeader scrollValue="30" /> */}
+        <Header />
         <ShippingPolicy />
         <Footer />
       </>
@@ -404,7 +407,8 @@ const router = createBrowserRouter([
     path: "/refund",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        {/* <MainHeader scrollValue="30" /> */}
+        <Header />
         <RefundPolicy />
         <Footer />
       </>
@@ -424,7 +428,8 @@ const router = createBrowserRouter([
     path: "/terms",
     element: (
       <>
-        <MainHeader scrollValue="30" />
+        {/* <MainHeader scrollValue="30" /> */}
+        <Header />
         <Terms />
         <Footer />
       </>

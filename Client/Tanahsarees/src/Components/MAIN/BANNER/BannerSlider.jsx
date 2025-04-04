@@ -42,27 +42,30 @@ const BannerSlider = () => {
       <div className="block md:hidden">
         {" "}
         <Slider {...settings} className="h-full relative overflow-hidden">
-          {mobileBanners.length > 0 ? (
-            mobileBanners.map((img, index) => (
-              <div
-                key={index}
-                className="w-full h-[70vh] flex justify-center items-center relative" // Add relative here
-              >
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL_TEST}${img.image}`}
-                  alt={`Mobile Slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-                <p className="absolute bottom-5 text-center w-full text-white text-5xl font-bold z-10">
-                  . . . .
-                </p>
-              </div>
-            ))
-          ) : (
-            <div className="w-full h-[40vh] flex justify-center items-center bg-gray-200">
-              No Mobile Banners Available
-            </div>
-          )}
+          {
+            mobileBanners.length > 0
+              ? mobileBanners.map((img, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-[70vh] flex justify-center items-center relative" // Add relative here
+                  >
+                    <img
+                      src={`${import.meta.env.VITE_APP_API_URL_TEST}${
+                        img.image
+                      }`}
+                      alt={`Mobile Slide ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <p className="absolute bottom-5 text-center w-full text-white text-5xl font-bold z-10">
+                      . . . .
+                    </p>
+                  </div>
+                ))
+              : ""
+            // <div className="w-full h-[40vh] flex justify-center items-center bg-gray-200">
+            //   Loading...
+            // </div>
+          }
         </Slider>
       </div>
 
@@ -71,24 +74,27 @@ const BannerSlider = () => {
         {" "}
         {/* Visible only on larger screens */}
         <Slider {...settings} className="h-full overflow-hidden">
-          {laptopBanners.length > 0 ? (
-            laptopBanners.map((img, index) => (
-              <div
-                key={index}
-                className="w-full h-[65vh] lg:h-full flex justify-center items-center"
-              >
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL_TEST}${img.image}`}
-                  alt={`Laptop Slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))
-          ) : (
-            <div className="w-full h-[65vh] lg:h-[90vh] flex justify-center items-center bg-gray-200">
-              No Laptop Banners Available
-            </div>
-          )}
+          {
+            laptopBanners.length > 0
+              ? laptopBanners.map((img, index) => (
+                  <div
+                    key={index}
+                    className="w-full h-[65vh] lg:h-full flex justify-center items-center"
+                  >
+                    <img
+                      src={`${import.meta.env.VITE_APP_API_URL_TEST}${
+                        img.image
+                      }`}
+                      alt={`Laptop Slide ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))
+              : ""
+            // <div className="w-full h-[65vh] lg:h-[90vh] flex text-center justify-center items-center bg-gray-200">
+            //   Loading.....
+            // </div>
+          }
         </Slider>
       </div>
     </div>
