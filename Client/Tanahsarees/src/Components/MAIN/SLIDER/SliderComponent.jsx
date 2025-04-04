@@ -41,7 +41,6 @@ const SliderComponent = () => {
     ],
   };
 
-  // Keeping the exact marginTop logic you had before
   const getMarginTop = () => {
     const width = window.innerWidth;
     if (width <= 600) return "3%";
@@ -85,39 +84,43 @@ const SliderComponent = () => {
           </button>
 
           <Slider ref={sliderRef} {...settings}>
-            {sareeData.map((item) => (
-              <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
-                <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
-                  <a
-                    href="/product-filter"
-                    onClick={() => {
-                      navigate("/product-filter", {
-                        state: {
-                          data: {
-                            title: "material",
-                            material: item.material,
+            {[...sareeData].reverse().map(
+              (
+                item // Reverse without mutating original state
+              ) => (
+                <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
+                  <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
+                    <a
+                      href="/product-filter"
+                      onClick={() => {
+                        navigate("/product-filter", {
+                          state: {
+                            data: {
+                              title: "material",
+                              material: item.material,
+                            },
                           },
-                        },
-                      });
-                    }}
-                  >
-                    <div
-                      className="w-[25vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${
-                          import.meta.env.VITE_APP_API_URL_TEST + item.photo
-                        })`,
-                        backgroundPosition: "top",
+                        });
                       }}
-                    ></div>
-                  </a>
+                    >
+                      <div
+                        className="w-[25vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
+                        style={{
+                          backgroundImage: `url(${
+                            import.meta.env.VITE_APP_API_URL_TEST + item.photo
+                          })`,
+                          backgroundPosition: "top",
+                        }}
+                      ></div>
+                    </a>
 
-                  <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
-                    {capitalizeFirstLetter(item.material + " silk")}
-                  </p>
+                    <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
+                      {capitalizeFirstLetter(item.material + " silk")}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            )}
           </Slider>
 
           <button
