@@ -62,14 +62,14 @@ const ProductCard = (props) => {
     <>
       <div className="flex  flex-col mt-6 ">
         <div
-          className="flex relative flex-col gap-y-2 lg:gap-y-1"
+          className="flex relative flex-col gap-y-2   lg:gap-y-1"
           onMouseEnter={() => setIsQuickView(true)}
           onMouseLeave={() => setIsQuickView(false)}
         >
           {discount && (
-            <div className="absolute z-50 ml-[70%] lg:ml-[80%] -top-5">
-              <img className="h-20 w-15" src="discount.png" alt="" />
-              <p className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-[3vmin]   lg:text-xs">
+            <div className="absolute z-50 ml-[80%] lg:ml-[85%] ">
+              <img className="h-8 w-8" src="discount1.png" alt="" />
+              <p className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-[2.5vmin]   lg:text-[1.5vmin]">
                 {discount}%
               </p>
             </div>
