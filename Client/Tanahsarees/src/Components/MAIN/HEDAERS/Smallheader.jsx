@@ -14,16 +14,14 @@ const Smallheader = (props) => {
             <p>
               <Link to="/sizechart">SIZE CHART</Link>
             </p>
-            <p>
-              <Link to="/shipping_info">SHIPPING & DELIVERY</Link>
-            </p>
+            {/* <p><Link to="/shipping_info">SHIPPING & DELIVERY</Link></p> */}
             <p>
               <Link to="/trackorder">TRACK YOUR ORDER</Link>
             </p>
             <p>
               <Link to="/reviews">CUSTOMER REVIEWS</Link>
             </p>
-            <p>RETURNS</p>
+            {/* <p>RETURNS</p> */}
             <p>
               <Link to="/contactus">CONTACT US</Link>
             </p>
