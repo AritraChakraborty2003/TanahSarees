@@ -16,6 +16,7 @@ const Selling = () => {
         <TimerComp days={10} />
       </div>
       <div className="mt-5 lg:mt-10">
+        {}
         <CardText data={data} type="selling" />
       </div>
     </div>

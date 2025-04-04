@@ -68,11 +68,11 @@ const TestinomialsCard = (props) => {
             className="w-full h-36 lg:h-80 object-contain rounded-lg mb-3"
           />
           <div className="flex gap-x-4 mt-3">
-            <h3 className="text-sm lg:text-lg font-bold">
+            <h3 className="text-sm  lg:text-lg font-bold">
               {screen.width > 1000 ? review.name : review.name.split(" ")[0]}
             </h3>
 
-            <p className="mt-[1px] text-xs lg:text-lg">
+            <p className="mt-[1px]  text-xs lg:text-lg">
               {Array.from({ length: review.rating }, (_, index) => (
                 <span key={index} className="text-yellow-500">
                   ⭐
@@ -81,8 +81,8 @@ const TestinomialsCard = (props) => {
             </p>
           </div>
         </div>
-        <p className="text-gray-700 mt-2  text-xs lg:text-[2.15vmin]">
-          {review.review.slice(0, 40) + "..."}
+        <p className="text-gray-700 mt-2 h-15 lg:h-20 text-xs lg:text-lg">
+          {review.review}
         </p>
         <p
           className="text-end pr-3 text-xs lg:text-md text-[#00000] mt-3 lg:mt-1"
@@ -159,8 +159,8 @@ const TestinomialsCard = (props) => {
                     alt={review.name}
                     className="w-full h-72 lg:h-80 object-contain rounded-lg mb-3"
                   />
-                  <div className="flex gap-x-4 mt-3">
-                    <h3 className="text-lg font-bold">{review.name}</h3>
+                  <div className="flex  gap-x-4 mt-3">
+                    <h3 className="text-lg  font-bold">{review.name}</h3>
 
                     <p className="mt-[1px]">
                       {Array.from({ length: review.rating }, (_, index) => (
