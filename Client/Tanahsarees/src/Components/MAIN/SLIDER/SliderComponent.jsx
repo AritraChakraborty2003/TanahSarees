@@ -127,7 +127,7 @@ const SliderComponent = () => {
             <ChevronLeft className="w-[4rem] h-[4rem] rounded-[2rem]  bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
           </button>
           <Slider ref={sliderRef} {...settings}>
-            {sareeData.map((item) => (
+            {sareeData.reverse().map((item) => (
               <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
                 <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
                   <a
@@ -176,7 +176,7 @@ const SliderComponent = () => {
         <div className="flex gap-4 gap-x-8 justify-center items-center">
           {sareeData.length > 0 ? (
             <Slider ref={sliderRef} {...settings}>
-              {sareeData.map((item) => (
+              {sareeData.reverse().map((item) => (
                 <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
                   <div className="flex flex-col lg:gap-y-4 justify-center items-center">
                     <div
