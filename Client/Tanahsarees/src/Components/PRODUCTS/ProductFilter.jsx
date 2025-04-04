@@ -87,7 +87,7 @@ const ProductFilter = () => {
 
       <div className="lg:mt-5 flex flex-col lg:flex-row pb-20">
         {/* Saree Display Section */}
-        <div className="w-full lg:w-[73vw] flex flex-col lg:flex-row flex-wrap gap-4 justify-center">
+        <div className="w-full  lg:w-[100vw] flex flex-col lg:flex-row flex-wrap gap-4 justify-center">
           {filteredSarees.length > 0 ? (
             filteredSarees
               .slice(0, visibleCount)
