@@ -59,6 +59,7 @@ import CmsReciept from "./Components/CMS/RECIEPT/reciept";
 import CmsTrackOrder from "./Components/CMS/CMSTRACKORDER/CmsTrackOrder";
 
 import CmsVideoCard from "./Components/CMS/VIDEOS/CmsVideoCrad";
+import ProductFilter from "./Components/PRODUCTS/ProductFilter";
 // import { useLocation } from "react-router-dom";
 
 // const ScrollToTopGlobal = () => {
@@ -465,6 +466,16 @@ const router = createBrowserRouter([
       </>
     ),
   },
+  {
+    path: "/product-filter",
+    element: (
+      <>
+        <MainHeader scrollValue="30" />
+        <ProductFilter />
+        <Footer />
+      </>
+    ),
+  },
 ]);
 
 const App = () => {
@@ -554,6 +565,9 @@ const App = () => {
   //For Product Descr
   const [index, setIndex] = useState(0);
 
+  //For slider click product filter
+  const [filterItem, setFilterItem] = useState(null);
+
   return (
     <>
       <AppContext.Provider
@@ -641,6 +655,8 @@ const App = () => {
           setIsSet,
           index,
           setIndex,
+          filterItem,
+          setFilterItem,
         }}
       >
         <RouterProvider router={router} />
