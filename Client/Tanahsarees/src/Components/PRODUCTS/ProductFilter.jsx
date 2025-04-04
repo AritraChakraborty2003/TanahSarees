@@ -86,36 +86,6 @@ const ProductFilter = () => {
       )}
 
       <div className="lg:mt-5 flex flex-col lg:flex-row pb-20">
-        {!Filter && !activeFilter ? (
-          <p className="flex cursor-pointer" onClick={toggleFilter}>
-            <img
-              src="filtericon.png"
-              height={25}
-              width={25}
-              className="ml-4 mt-6"
-              alt="Filter Icon"
-            />
-            <span className="ml-2 mt-6" onClick={toggleFilter}>
-              Show Filters
-            </span>
-          </p>
-        ) : null}
-
-        {/* Filter Section */}
-        {Filter && (
-          <div className="mt-5 lg:mt-1 w-full lg:w-[27vw] border-[#d5d5d5] border-r">
-            <a className="w-[90%] flex text-3xl font-light font-Lato darktext mr-3 ml-4 lg:mt-12">
-              <i
-                className="ri-close-line cursor-pointer"
-                onClick={toggleFilter}
-              ></i>
-            </a>
-            <div className="w-[90%] mt-3 ml-3">
-              <FilterAccordion />
-            </div>
-          </div>
-        )}
-
         {/* Saree Display Section */}
         <div className="w-full lg:w-[73vw] flex flex-col lg:flex-row flex-wrap gap-4 justify-center">
           {filteredSarees.length > 0 ? (
