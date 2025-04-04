@@ -7,7 +7,6 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 const VideoCard = () => {
   const [data, setData] = useState([]);
 
@@ -55,7 +54,7 @@ const VideoCard = () => {
       <div className="flex pl-1 lg:pl-13 pr-2 mt-7   lg:mt-20">
         <Slider {...settings} className="w-full overflow-hidden">
           {data.map(({ url: gif, title }, index) => (
-            <Link to="/products">
+            <a href="/products">
               <div key={index} className="px-2">
                 <div className="light border-[1px] border-gray-300 relative flex flex-col p-4  shadow-gray-350 w-[45vw] lg:w-[30vmin] shadow-lg">
                   <img
@@ -79,7 +78,7 @@ const VideoCard = () => {
                   </div>
                 </div>
               </div>
-            </Link>
+            </a>
           ))}
         </Slider>
       </div>
