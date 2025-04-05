@@ -42,6 +42,8 @@ const SliderComponent = () => {
     speed: 100,
     slidesToShow: 4,
     slidesToScroll: 1,
+    swipeToSlide: true, // Allows users to swipe smoothly
+    // variableWidth: true, // Allows free scrolling instead of fixed slides
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 3 } },
       { breakpoint: 600, settings: { slidesToShow: 3 } },
@@ -70,11 +72,11 @@ const SliderComponent = () => {
 
   return (
     <div
-      className="mt"
+      className="relative"
       style={{
         marginTop,
         zIndex: 10,
-        paddingBottom: "4vmin",
+        paddingBottom: "2vmin",
         paddingTop: "1.75vmin",
         display: "flex",
         justifyContent: "center",
@@ -83,9 +85,10 @@ const SliderComponent = () => {
     >
       {sareeData.length > 0 ? (
         <>
+          {/* Left Chevron */}
           <button
             onClick={() => sliderRef.current.slickPrev()}
-            className="hidden lg:block absolute left-1 lg:left-2 top-[40%] lg:top-[8%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
+            className="hidden lg:flex items-center justify-center absolute left-1 lg:left-4 top-1/2 transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
           >
             <ChevronLeft className="w-[4rem] h-[4rem] rounded-[2rem] bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
           </button>
@@ -115,7 +118,7 @@ const SliderComponent = () => {
                       }}
                     >
                       <div
-                        className="w-[25vw] h-[15vh] lg:w-[20vw] lg:h-[34vh] border-[#EEE5DA] border-[4px] rounded-full lg:rounded-[50%] 2xl:rounded-[65%] bg-cover bg-center"
+                        className="aspect-square w-[30vw] lg:w-[20vw] border-[#EEE5DA] border-[4px] rounded-full bg-cover bg-center"
                         style={{
                           backgroundImage: `url(${
                             import.meta.env.VITE_APP_API_URL_TEST + item.photo
@@ -136,7 +139,7 @@ const SliderComponent = () => {
 
           <button
             onClick={() => sliderRef.current.slickNext()}
-            className="hidden lg:block absolute right-1 lg:right-4 top-[40%] lg:top-[8%] transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
+            className="hidden lg:flex items-center justify-center absolute right-1 lg:right-4 top-1/2 transform -translate-y-1/2 z-10 p-1 lg:p-3 rounded-full"
           >
             <ChevronRight className="w-[4rem] h-[4rem] rounded-[2rem] bg-black text-white lg:w-[2rem] lg:h-[2rem] lg:rounded-[1rem]" />
           </button>

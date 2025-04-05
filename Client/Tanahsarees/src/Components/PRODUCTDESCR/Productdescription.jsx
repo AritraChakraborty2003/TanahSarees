@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { AppContext } from "../../AppContext/AppContext";
 import { useContext, useState, useEffect, useRef } from "react";
@@ -35,7 +36,7 @@ const Productdescription = () => {
     }
   }, [dataObj, sareeDataObj]);
 
-  console.log("Data:", sareeDataObj);
+  // console.log("Data:", sareeDataObj);
 
   const {
     // activeProduct,
@@ -67,13 +68,14 @@ const Productdescription = () => {
     colour,
     type,
     _id,
+    sku,
     rating,
   } = activeProduct; // No need to save back
 
   const allPhotos = [photo, ...images];
 
-  console.log("AllPhotos:", allPhotos);
-  console.log("Photo:", photo);
+  // console.log("AllPhotos:", allPhotos);
+  // console.log("Photo:", photo);
 
   const { change } = useContext(AppContext);
   const [OpenImage, setOpenImage] = useState(false);
@@ -123,7 +125,7 @@ const Productdescription = () => {
   ];
 
   const IdDetails = [
-    `Product Id:${_id}`,
+    `SKU Id: ${sku}`,
 
     "-Note: Product color may slightly vary due to photographic lighting sources or your monitor settings",
   ];
@@ -390,12 +392,12 @@ const Productdescription = () => {
             </div>
             <div className="ProductIdArea mt-3 ml-5">
               <p className="font-normal darktxt text-sm font-Montserrat darktxt">
-                Product Id
+                Product
               </p>
               {IdDetails.map((id, index) => (
                 <p
                   key={index}
-                  className="mt-1  text-[3vmin] lg:text-xs font-Montserrat darktxt font-light"
+                  className="mt-1 text-[3vmin] lg:text-xs font-Montserrat darktxt font-light"
                 >
                   {id}
                 </p>

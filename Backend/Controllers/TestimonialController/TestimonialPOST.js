@@ -1,6 +1,7 @@
 import TestimonialsObj from "../../Models/Testimonials.js";
 
 export const TestimonialPOST = () => {
+  console.log("TestimonialPOST");
   return async (req, res) => {
     try {
       const { name, review, rating, sname } = req.body;
