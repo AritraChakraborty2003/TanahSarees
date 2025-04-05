@@ -10,7 +10,14 @@ import axios from "axios";
 import { capitalizeFirstLetter } from "../../../Utils/CapitalizeFirstLetter";
 
 const SliderComponent = () => {
-  const { sareeData, setSareeData } = useContext(AppContext);
+  const {
+    sareeData,
+    setSareeData,
+    setActiveFilter,
+    setFilteredData,
+    filterText,
+    setFilterText,
+  } = useContext(AppContext);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
 
@@ -93,17 +100,21 @@ const SliderComponent = () => {
               ) => (
                 <div key={item._id} className="zoom-div lg:ml-[-1vmin]">
                   <div className="flex flex-col gap-x-8 lg:gap-y-4 justify-center items-center">
-                    <a
-                      href="/product-filter"
+                    <div
                       onClick={() => {
-                        navigate("/product-filter", {
-                          state: {
-                            data: {
-                              title: "material",
-                              material: item.material,
-                            },
-                          },
-                        });
+                        setActiveFilter(true);
+                        setFilteredData(
+                          sareeData.filter(
+                            (item1) =>
+                              item1.material.toLowerCase() ===
+                              item.material.toLowerCase()
+                          )
+                        );
+                        setFilterText(
+                          capitalizeFirstLetter(item.material + " silk")
+                        );
+                        window.scrollTo(0, 0);
+                        navigate("/products");
                       }}
                     >
                       <div
@@ -115,7 +126,7 @@ const SliderComponent = () => {
                           backgroundPosition: "top",
                         }}
                       ></div>
-                    </a>
+                    </div>
 
                     <p className="font-Montserrat w-[70%] font-normal text-[2.6vmin] lg:text-sm text-center mt-1 lg:mt-[-1vmin]">
                       {capitalizeFirstLetter(item.material + " silk")}

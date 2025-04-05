@@ -4,8 +4,9 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Search from "./Search";
+import UseHTTPRequest from "../../../../Utils/useHTTPRequest";
 import { AppContext } from "../../../../AppContext/AppContext";
-
+import { capitalizeFirstLetter } from "../../../../Utils/CapitalizeFirstLetter";
 const OptionsBar = () => {
   const {
     searchDataValue,
@@ -16,6 +17,8 @@ const OptionsBar = () => {
     smallSearchBox,
     setSmallSearchBox,
     setSearchDataValue,
+    filterText,
+    setFilterText,
   } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
@@ -43,24 +46,17 @@ const OptionsBar = () => {
     };
   }, []);
 
+  const data = UseHTTPRequest(null, "/sarees", "GET", "", "");
   const navigate = useNavigate();
 
   const options = {
-    SALE: {
-      header1: "",
-      options1: [],
-      header2: "",
-      options2: [],
-      header3: "",
-      options3: [],
-    },
     OFFERS: {
       header1: "By Discount",
       options1: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
       header2: "By Trendy Offers",
       options2: ["Buy 2 Get 1", "Upto 25% off", "Under ₹4500"],
       header3: "By Color",
-      options3: ["Exotic black", "Light pink", "Glamorous yellow"],
+      options3: ["Black", "Pink", "Magenta"],
     },
     OCCASIONS: {
       header1: "By Occasion",
@@ -83,41 +79,112 @@ const OptionsBar = () => {
         "Chinia Silk",
       ],
       header3: "By Colour",
-      options3: [
-        "Light Blue",
-        "Orange Fill",
-        "Artistic Silver",
-        "Dark Brown",
-        "Pretty Magenta",
-        "Golden",
-      ],
+      options3: ["Blue", "Orange", "Red", "Pink", "Green"],
     },
     TYPE: {
-      header1: "Type",
-      options1: [],
-      header2: "Material",
-      options2: [],
-      header3: "Discount",
-      options3: [],
+      header1: "By Category",
+      options1: [
+        "Floral",
+        "Paestal",
+        "Sequince",
+        "Printed",
+        "Mansoor Silk",
+        "Chinia Silk",
+      ],
+      header2: "By Material",
+      options2: [
+        "Katan Silk",
+        "Georgette Silk",
+        "Tissue Silk",
+        "Masharoo Silk",
+        "Organza Silk",
+        "Raw Mango Silk",
+      ],
+      header3: "By Discount",
+      options3: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
     },
     "NEW ARRIVALS": {
       header1: "Latest Stock",
       options1: ["New Arrivals", "By rating", "Festive Options"],
       header2: "By Colour",
-      options2: ["red colour", "premium blue", "festive green"],
+      options2: ["Orange", "Red", "Pink", "Green"],
       header3: "By Discount",
       options3: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
     },
     OTHERS: {
       header1: "By Rating",
-      options1: [],
+      options1: [
+        "By 5 star",
+        "By 4 star",
+        "By 3 star",
+        "By 2 star",
+        "By 1 star",
+      ],
       header2: "By Material",
-      options2: [],
+      options2: [
+        "Katan Silk",
+        "Georgette Silk",
+        "Tissue Silk",
+        "Masharoo Silk",
+        "Organza Silk",
+        "Raw Mango Silk",
+      ],
       header3: "By Colour",
-      options3: [],
+      options3: ["Red", "Blue", "Green", "Yellow", "Pink", "Golden"],
     },
   };
 
+  const handleClick = (header, option) => () => {
+    if (header === "By Occasion") {
+      setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
+      setFilteredData(
+        data.filter(
+          (item) => item.occasion.toLowerCase() === option.toLowerCase()
+        )
+      );
+      navigate("/products");
+    } else if (header === "By Category") {
+      setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
+      setFilteredData(
+        data.filter(
+          (item) => item.category.toLowerCase() === option.toLowerCase()
+        )
+      );
+      navigate("/products");
+    } else if (header === "By Material") {
+      setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
+      setFilteredData(
+        data.filter(
+          (item) =>
+            item.material.toLowerCase() === option.split(" ")[0].toLowerCase()
+        )
+      );
+      navigate("/products");
+    }
+    // Add more conditions for other headers and options as needed
+    else if (header === "By Colour") {
+      setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
+      setFilteredData(
+        data.filter(
+          (item) => item.colour.toLowerCase() === option.toLowerCase()
+        )
+      );
+      navigate("/products");
+    } else if (header === "By Discount") {
+      alert("Discount");
+      setActiveFilter(true);
+    } else {
+      setActiveFilter(true);
+      setFilteredData(
+        data.filter((item) => item.sname.toLowerCase() === option.toLowerCase())
+      );
+      navigate("/products");
+    }
+  };
   return (
     <div>
       {typeof window !== "undefined" && window.innerWidth > 1000 ? (
@@ -159,6 +226,10 @@ const OptionsBar = () => {
                                 <li
                                   key={index}
                                   className="p-1 mt-2 hover:underline text-xs"
+                                  onClick={handleClick(
+                                    options[menu].header1,
+                                    option
+                                  )}
                                 >
                                   {option}
                                 </li>
@@ -172,6 +243,10 @@ const OptionsBar = () => {
                                 <li
                                   key={index}
                                   className="p-1 mt-2 hover:underline text-xs"
+                                  onClick={handleClick(
+                                    options[menu].header2,
+                                    option
+                                  )}
                                 >
                                   {option}
                                 </li>
@@ -186,6 +261,10 @@ const OptionsBar = () => {
                                 <li
                                   key={index}
                                   className="p-1 mt-2 hover:underline text-xs"
+                                  onClick={handleClick(
+                                    options[menu].header3,
+                                    option
+                                  )}
                                 >
                                   {option}
                                 </li>

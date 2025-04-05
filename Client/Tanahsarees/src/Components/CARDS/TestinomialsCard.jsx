@@ -103,14 +103,14 @@ const TestinomialsCard = (props) => {
           <div className="pb-5">
             <div className="flex flex-col  justify-center items-center mt-2">
               <div>
-                <a className="w-[30vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 p-1">
+                <a className="w-[25vw] flex justify-end text-3xl font-light font-Lato darktext mr-3 p-1">
                   <i
                     className="ri-close-line"
                     onClick={toggleTestinomialModal}
                   ></i>
                 </a>
               </div>
-              <div className="h-fit w-[30vw] border-[1px] border-[#d5d5d5] p-2 rounded-lg shadow-md bg-white pb-4">
+              <div className="h-fit w-[25vw] border-[1px] border-[#d5d5d5] p-2 rounded-lg shadow-md bg-white pb-4">
                 <div key={review.id} className="">
                   <img
                     src={`${import.meta.env.VITE_APP_API_URL}` + review.photo}

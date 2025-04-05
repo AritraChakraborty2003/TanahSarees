@@ -10,8 +10,21 @@ import { useCheckAuth } from "../../Utils/useCheckAuth";
 import useHandleHeart from "../../Utils/useHandleHeart";
 
 const ProductDisplay = () => {
+
   const { change, sareeData, setSareeData, activeFilter, filteredData } =
     useContext(AppContext);
+
+  const {
+    change,
+    sareeData,
+    setSareeData,
+    activeFilter,
+    filteredData,
+    setFilteredData,
+    filterText,
+    setFilterText,
+  } = useContext(AppContext);
+
 
   const [filterVisible, setFilterVisible] = useState(window.innerWidth > 1000);
   const [visibleCount, setVisibleCount] = useState(12);
@@ -68,11 +81,14 @@ const ProductDisplay = () => {
       >
         <p className="text-sm text-gray-500">Home / Products</p>
         <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
-          Complete Saree Collections{" "}
-          {activeFilter && (
-            <span className="text-lg lg:text-md">
-              (Results: {filteredData.length})
-            </span>
+
+          {activeFilter ? (
+            <>
+              <p>{`${filterText} Saree Collections`}</p>
+            </>
+          ) : (
+            <p> Complete Saree Collections </p>
+
           )}
         </h2>
       </div>
