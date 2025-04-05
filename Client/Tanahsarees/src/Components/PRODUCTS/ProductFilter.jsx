@@ -71,7 +71,7 @@ const ProductFilter = () => {
       >
         <p className="text-sm text-gray-500">Home / Products</p>
         <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
-          Complete Saree Collections{" "}
+          Filtered Saree Collections{" "}
           {activeFilter && (
             <span className="text-lg lg:text-md">{`(Results: ${filteredSarees.length})`}</span>
           )}
