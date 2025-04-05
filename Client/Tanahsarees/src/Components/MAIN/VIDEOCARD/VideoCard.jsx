@@ -63,7 +63,7 @@ const VideoCard = () => {
                     alt={title}
                   />
                   <div className="">
-                    <p className="flex justify-center mt-4 h-13 lg:h-15 lg:mt-2 darktxt text-md font-Montserrat">
+                    <p className="flex justify-center mt-4 h-13 lg:h-15 lg:mt-2 darktxt text-xs font-Montserrat">
                       <span className="hidden lg:inline">{title}</span>{" "}
                       {/* Large Screens */}
                       <span className="lg:hidden">{title}</span>{" "}
