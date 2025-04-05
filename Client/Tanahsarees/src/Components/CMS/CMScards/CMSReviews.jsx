@@ -74,7 +74,7 @@ const CMSReviews = () => {
   const data = UseHTTPRequest(null, "/testimonials", "GET", "");
   useEffect(() => {
     setReviews(data);
-    console.log("fetched");
+    // console.log("fetched");
   }, [setHttpClick, reviews, data]);
 
   return (

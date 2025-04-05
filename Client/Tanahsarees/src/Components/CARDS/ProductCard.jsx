@@ -60,7 +60,7 @@ const ProductCard = (props) => {
 
   return (
     <>
-      <div className="flex  flex-col mt-6 ">
+      <div className="flex w-[45%]  h-[30%] lg:h-[69vh] lg:w-[20vw]  flex-col mt-6 ">
         <div
           className="flex relative flex-col gap-y-2   lg:gap-y-1"
           onMouseEnter={() => setIsQuickView(true)}
@@ -79,7 +79,7 @@ const ProductCard = (props) => {
             tiltMaxAngleY={0} // Tilt angle on Y-axis
             scale={1.03} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
-            className="relative lg:ml-0 w-[45vw] lg:w-63 bg-white  shadow-lg overflow-hidden"
+            className="relative lg:ml-0 w-[45vw] lg:w-73 bg-white  shadow-lg overflow-hidden"
           >
             {/* Instead of using navigate, wrap the image in a Link */}
             <Link
@@ -97,13 +97,13 @@ const ProductCard = (props) => {
               }}
               className="block"
             >
-              <div className="relative overflow-hidden w-full h-[37vh] lg:h-[50vh]">
+              <div className="relative overflow-hidden w-full  h-[37vh] lg:h-[50vh]">
                 <img
                   src={`${import.meta.env.VITE_APP_API_URL}` + photo}
                   alt="Tilted Image"
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
-                <div className="absolute inset-x-[-100px] bottom-0 h-full bg-gradient-to-t from-black/80 via-transparent"></div>
+                {/* <div className="absolute inset-x-[-100px] bottom-0 h-full bg-gradient-to-t from-black/80 via-transparent"></div> */}
               </div>
             </Link>
           </Tilt>
@@ -167,7 +167,7 @@ const ProductCard = (props) => {
 
           {/* Default Heart */}
           {type !== "favourite" && (
-            <div className="absolute bottom-[6%] lg:bottom-[8%]   rounded-full right-[-13%] scale-70 lg:right-[-9%] z-50">
+            <div className="absolute bottom-[9%] lg:bottom-[8%]   rounded-full right-[-20%] scale-50 lg:scale-70 lg:right-[-9%] z-50">
               <div className="absolute -z-1 mt-6 ml-6.5 rounded-full  h-12   w-12 bg-amber-50"></div>
               <Heart
                 isClick={isClick}
@@ -189,19 +189,19 @@ const ProductCard = (props) => {
           )}
 
           {/* Text Content Section */}
-          <div className="lg:p-2 text-center">
-            <p className="text-sm lg:text-md text-gray-600">
-              {sname.slice(0, 19) + "..."}
+          <div className=" overflow-hidden  text-center">
+            <p className="text-sm h-10 overflow-hidden  lg:text-md text-gray-600">
+              {sname}
             </p>
             <p className="text-sm lg:text-md text-gray-600">Rs. {price}</p>
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center overflow-hidden">
           {" "}
           <RatingStars rating={rating} />
         </div>
         <button
-          className="btn p-1.5 mt-1 text-xs lg:p-2 text-white bg-[#F58B75]"
+          className="btn p-1.5 mt-1 text-xs lg:p-2 overflow-hidden text-white bg-[#F58B75]"
           onClick={() => {
             if (authStatus.isAuthenticated) {
               // console.log("Hello World");
