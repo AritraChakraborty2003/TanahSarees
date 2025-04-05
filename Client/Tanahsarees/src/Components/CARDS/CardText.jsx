@@ -115,7 +115,7 @@ const CardText = (props) => {
                 </div>
               </a>
             </Tilt>
-            <h2 className=" w-[45vw] mt-1  lg:w-64 h-20 lg:h-30 font-Montserrat text-center pr-1 pl-1 bottom-5 lg:bottom-10 text-[3vmin] lg:text-[1.35vmin] 2xl:text-[1.35vmin] font-light flex pt-1 justify-center   overflow-hidden">
+            <h2 className=" w-[45vw] mt-1  lg:w-64 h-20 lg:h-30 font-Montserrat text-center pr-1 pl-1 bottom-5 lg:bottom-10 text-[3vmin] lg:text-[1.65vmin] 2xl:text-[1.35vmin] font-light flex pt-1 justify-center   overflow-hidden">
               {props.type === "selling" && item.sname}
               {props.type === "occasion" && item.sname}
               {props.type === "material" && item.sname}
