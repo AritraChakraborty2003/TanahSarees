@@ -18,6 +18,8 @@ const ProductDisplay = () => {
     activeFilter,
     filteredData,
     setFilteredData,
+    filterText,
+    setFilterText,
   } = useContext(AppContext);
 
   const [Filter, setFilter] = useState(screen.width > 1000 ? true : false);
@@ -70,9 +72,13 @@ const ProductDisplay = () => {
       >
         <p className="text-sm text-gray-500">Home / Products</p>
         <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
-          Complete Saree Collections{" "}
-          {activeFilter && (
-            <span className="text-lg lg:text-md">{`(Results: ${filteredData.length})`}</span>
+          {activeFilter ? (
+            <>
+              <p>{`${filterText} Saree Collections`}</p>
+              {/* <span className="text-lg lg:text-md">{`(Results: ${filteredData.length})`}</span> */}
+            </>
+          ) : (
+            <p> Complete Saree Collections </p>
           )}
         </h2>
       </div>

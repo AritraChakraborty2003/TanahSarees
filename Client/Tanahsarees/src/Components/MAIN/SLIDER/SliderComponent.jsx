@@ -10,8 +10,14 @@ import axios from "axios";
 import { capitalizeFirstLetter } from "../../../Utils/CapitalizeFirstLetter";
 
 const SliderComponent = () => {
-  const { sareeData, setSareeData, setActiveFilter, setFilteredData } =
-    useContext(AppContext);
+  const {
+    sareeData,
+    setSareeData,
+    setActiveFilter,
+    setFilteredData,
+    filterText,
+    setFilterText,
+  } = useContext(AppContext);
   const navigate = useNavigate();
   const sliderRef = useRef(null);
 
@@ -101,6 +107,10 @@ const SliderComponent = () => {
                               item.material.toLowerCase()
                           )
                         );
+                        setFilterText(
+                          capitalizeFirstLetter(item.material + " silk")
+                        );
+                        window.scrollTo(0, 0);
                         navigate("/products");
                       }}
                     >

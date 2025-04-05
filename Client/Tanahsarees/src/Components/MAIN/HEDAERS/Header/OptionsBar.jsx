@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Search from "./Search";
 import UseHTTPRequest from "../../../../Utils/useHTTPRequest";
 import { AppContext } from "../../../../AppContext/AppContext";
-
+import { capitalizeFirstLetter } from "../../../../Utils/CapitalizeFirstLetter";
 const OptionsBar = () => {
   const {
     searchDataValue,
@@ -17,6 +17,8 @@ const OptionsBar = () => {
     smallSearchBox,
     setSmallSearchBox,
     setSearchDataValue,
+    filterText,
+    setFilterText,
   } = useContext(AppContext);
   const [openMenu, setOpenMenu] = useState(null);
   const timeoutRef = useRef(null);
@@ -54,7 +56,7 @@ const OptionsBar = () => {
       header2: "By Trendy Offers",
       options2: ["Buy 2 Get 1", "Upto 25% off", "Under ₹4500"],
       header3: "By Color",
-      options3: ["black", "pink", "yellow", "orange"],
+      options3: ["Black", "Pink", "Magenta"],
     },
     OCCASIONS: {
       header1: "By Occasion",
@@ -77,16 +79,7 @@ const OptionsBar = () => {
         "Chinia Silk",
       ],
       header3: "By Colour",
-      options3: [
-        "Blue",
-        "Orange",
-        "Silver",
-        "Brown",
-        "Magenta",
-        "Golden",
-        "Red",
-        "Pink",
-      ],
+      options3: ["Blue", "Orange", "Red", "Pink", "Green"],
     },
     TYPE: {
       header1: "By Category",
@@ -99,7 +92,14 @@ const OptionsBar = () => {
         "Chinia Silk",
       ],
       header2: "By Material",
-      options2: [],
+      options2: [
+        "Katan Silk",
+        "Georgette Silk",
+        "Tissue Silk",
+        "Masharoo Silk",
+        "Organza Silk",
+        "Raw Mango Silk",
+      ],
       header3: "By Discount",
       options3: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
     },
@@ -107,25 +107,37 @@ const OptionsBar = () => {
       header1: "Latest Stock",
       options1: ["New Arrivals", "By rating", "Festive Options"],
       header2: "By Colour",
-      options2: ["red", "blue", "green", "yellow", "pink"],
+      options2: ["Orange", "Red", "Pink", "Green"],
       header3: "By Discount",
       options3: ["Upto 10% off", "Upto 20% off", "Upto 30% off"],
     },
     OTHERS: {
       header1: "By Rating",
-      options1: [5, 4, 3, 1],
+      options1: [
+        "By 5 star",
+        "By 4 star",
+        "By 3 star",
+        "By 2 star",
+        "By 1 star",
+      ],
       header2: "By Material",
-      options2: [],
+      options2: [
+        "Katan Silk",
+        "Georgette Silk",
+        "Tissue Silk",
+        "Masharoo Silk",
+        "Organza Silk",
+        "Raw Mango Silk",
+      ],
       header3: "By Colour",
-      options3: ["red", "blue", "green", "yellow", "pink"],
+      options3: ["Red", "Blue", "Green", "Yellow", "Pink", "Golden"],
     },
   };
 
   const handleClick = (header, option) => () => {
-    alert(`${header} - ${option}`);
-
     if (header === "By Occasion") {
       setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
       setFilteredData(
         data.filter(
           (item) => item.occasion.toLowerCase() === option.toLowerCase()
@@ -134,6 +146,7 @@ const OptionsBar = () => {
       navigate("/products");
     } else if (header === "By Category") {
       setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
       setFilteredData(
         data.filter(
           (item) => item.category.toLowerCase() === option.toLowerCase()
@@ -142,9 +155,11 @@ const OptionsBar = () => {
       navigate("/products");
     } else if (header === "By Material") {
       setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
       setFilteredData(
         data.filter(
-          (item) => item.material.toLowerCase() === option.toLowerCase()
+          (item) =>
+            item.material.toLowerCase() === option.split(" ")[0].toLowerCase()
         )
       );
       navigate("/products");
@@ -152,6 +167,7 @@ const OptionsBar = () => {
     // Add more conditions for other headers and options as needed
     else if (header === "By Colour") {
       setActiveFilter(true);
+      setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
       setFilteredData(
         data.filter(
           (item) => item.colour.toLowerCase() === option.toLowerCase()

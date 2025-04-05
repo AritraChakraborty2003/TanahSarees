@@ -572,7 +572,7 @@ const App = () => {
 
   //For slider click product filter
   const [filterItem, setFilterItem] = useState(null);
-
+  const [filterText, setFilterText] = useState("");
   return (
     <>
       <AppContext.Provider
@@ -662,6 +662,8 @@ const App = () => {
           setIndex,
           filterItem,
           setFilterItem,
+          filterText,
+          setFilterText,
         }}
       >
         <RouterProvider router={router} />
