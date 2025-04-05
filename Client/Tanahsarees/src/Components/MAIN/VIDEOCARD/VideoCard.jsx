@@ -70,7 +70,7 @@ const VideoCard = () => {
                       {/* Small Screens */}
                     </p>
 
-                    <button className="bg-black text-white text-xs ml-8">
+                    <button className="bg-[#262424] text-white text-xs flex justify-center items-center">
                       <p className="text-center p-2 text-xs text-white">
                         Shop Now
                       </p>
