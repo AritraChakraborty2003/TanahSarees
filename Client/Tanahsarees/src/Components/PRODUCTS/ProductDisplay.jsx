@@ -121,7 +121,7 @@ const ProductDisplay = () => {
         )}
 
         <div
-          className={`mt-6 lg:mt-10  flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-4 ${
+          className={`mt-6 lg:mt-10  flex flex-wrap justify-center items-center gap-2 sm:gap-3 md:gap-9 ${
             window.innerWidth > 1000
               ? filterVisible
                 ? "w-[70vw]"
