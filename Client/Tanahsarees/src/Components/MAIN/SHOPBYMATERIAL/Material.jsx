@@ -8,7 +8,7 @@ const Material = () => {
   const data = dataExclusive.slice(0, 4);
   return (
     <div className="mt-10 bg-[#efe4da]  lg:mt-20 light pt-8 lg:pt-10 lg:pb-10">
-      <p className="text-center font-Montserrat darktxt border-b-1 ml-6 mr-6  darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
+      <p className="text-center font-Montserrat darktxt border-b-1 pb-2 ml-6 mr-6  darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
         FIND YOUR FABRIC FIT
       </p>
       {/* <p className="text-center text-sm lg:text-md  darktxt">

@@ -9,7 +9,7 @@ const Selling = () => {
 
   return (
     <div className="mt-10 lg:mt-15 lg:pt-15 pt-7 pb-8 lg:pb-5 light">
-      <p className="text-center border-b-1 ml-6 mr-6 font-Montserrat darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
+      <p className="text-center border-b-1 pb-2 ml-6 mr-6 font-Montserrat darktxt font-medium text-[4.65vmin] md:text-[3.5vmin]">
         IN-DEMAND
       </p>
       <div className="mt-1">
