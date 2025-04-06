@@ -12,7 +12,7 @@ const CardObj = (props) => {
     useContext(AppContext);
   return (
     <>
-      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-6  lg:gap-x-17 2xl:gap-x-10 cursor-pointer">
+      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-6  lg:gap-x-17 2xl:gap-x-17 cursor-pointer">
         {data.map((item) => (
           <div className="flex  flex-col gap-y-2 lg:gap-y-1 2xl:gap-y-5">
             <Tilt
@@ -55,7 +55,7 @@ const CardObj = (props) => {
             </Tilt>
             {/* Text Content Section */}
             <div className="lg:p-1  w-[45vw] font-Montserrat text-center  lg:w-64 h-15 lg:h-20">
-              <p className="text-sm pl-1 pr-1 mt-1 pt-2 text-[3vmin] lg:text-[1.65vmin] 2xl:text-[1.95vmin] darktxt">
+              <p className="text-sm mt-4 pl-1 pr-1  pt-2 text-[3vmin] lg:text-[1.65vmin] 2xl:text-[1.95vmin] darktxt">
                 {item.sname}
               </p>
             </div>
