@@ -60,7 +60,7 @@ const ProductCard = (props) => {
 
   return (
     <>
-      <div className="main flex w-[45%]  h-[30%]  lg:h-[69vh] lg:w-[20vw]  flex-col mt-6 ">
+      <div className="main flex w-[45%]  h-[30%]  lg:h-[80vh] lg:w-[20vw]  flex-col mt-6 ">
         <div
           className="flex relative flex-col gap-y-2   lg:gap-y-1"
           onMouseEnter={() => setIsQuickView(true)}
