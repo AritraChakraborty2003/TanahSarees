@@ -60,7 +60,7 @@ const ProductCard = (props) => {
 
   return (
     <>
-      <div className="flex w-[45%]  h-[30%] lg:h-[69vh] lg:w-[20vw]  flex-col mt-6 ">
+      <div className="main flex w-[45%]  h-[30%]  lg:h-[69vh] lg:w-[20vw]  flex-col mt-6 ">
         <div
           className="flex relative flex-col gap-y-2   lg:gap-y-1"
           onMouseEnter={() => setIsQuickView(true)}
@@ -79,7 +79,7 @@ const ProductCard = (props) => {
             tiltMaxAngleY={0} // Tilt angle on Y-axis
             scale={1.03} // Image zoom on hover
             transitionSpeed={500} // Smooth transition
-            className="relative lg:ml-0 w-[45vw] lg:w-73 bg-white  shadow-lg overflow-hidden"
+            className="relative lg:ml-0 w-full lg:w-full bg-white  shadow-lg overflow-hidden"
           >
             {/* Instead of using navigate, wrap the image in a Link */}
             <Link
@@ -95,15 +95,14 @@ const ProductCard = (props) => {
                 setFilteredData([]); // Reset filter data on click
                 window.scrollTo(0, 0);
               }}
-              className="block"
+              className="block  w-full"
             >
-              <div className="relative overflow-hidden w-full  h-[37vh] lg:h-[50vh]">
+              <div className="relative overflow-hidden w-full h-[37vh] lg:h-[50vh]">
                 <img
-                  src={`${import.meta.env.VITE_APP_API_URL}` + photo}
-                  alt="Tilted Image"
+                  src={import.meta.env.VITE_APP_API_URL + photo}
+                  alt={sname}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                 />
-                {/* <div className="absolute inset-x-[-100px] bottom-0 h-full bg-gradient-to-t from-black/80 via-transparent"></div> */}
               </div>
             </Link>
           </Tilt>

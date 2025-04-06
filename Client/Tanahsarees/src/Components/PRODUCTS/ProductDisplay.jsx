@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -10,10 +11,6 @@ import { useCheckAuth } from "../../Utils/useCheckAuth";
 import useHandleHeart from "../../Utils/useHandleHeart";
 
 const ProductDisplay = () => {
-
-  const { change, sareeData, setSareeData, activeFilter, filteredData } =
-    useContext(AppContext);
-
   const {
     change,
     sareeData,
@@ -24,7 +21,6 @@ const ProductDisplay = () => {
     filterText,
     setFilterText,
   } = useContext(AppContext);
-
 
   const [filterVisible, setFilterVisible] = useState(window.innerWidth > 1000);
   const [visibleCount, setVisibleCount] = useState(12);
@@ -81,14 +77,12 @@ const ProductDisplay = () => {
       >
         <p className="text-sm text-gray-500">Home / Products</p>
         <h2 className="text-3xl text-gray-500 font-Montserrat font-medium">
-
           {activeFilter ? (
             <>
               <p>{`${filterText} Saree Collections`}</p>
             </>
           ) : (
             <p> Complete Saree Collections </p>
-
           )}
         </h2>
       </div>
