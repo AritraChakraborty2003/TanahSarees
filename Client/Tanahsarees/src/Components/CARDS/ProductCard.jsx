@@ -68,7 +68,7 @@ const ProductCard = (props) => {
         >
           {discount && (
             <div className="absolute z-50 ml-[70%] lg:ml-[70%] ">
-              <img className="h-14 w-30" src="discount1.png" alt="" />
+              <img className="h-14 w-20" src="discount1.png" alt="" />
               <p className="absolute text-md top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-[2.5vmin]   lg:text-[1.5vmin]">
                 {discount}%
               </p>
