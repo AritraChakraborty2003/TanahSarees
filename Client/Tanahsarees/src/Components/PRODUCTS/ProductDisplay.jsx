@@ -17,9 +17,7 @@ const ProductDisplay = () => {
     setSareeData,
     activeFilter,
     filteredData,
-    setFilteredData,
     filterText,
-    setFilterText,
   } = useContext(AppContext);
 
   const [filterVisible, setFilterVisible] = useState(window.innerWidth > 1000);

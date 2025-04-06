@@ -175,8 +175,15 @@ const OptionsBar = () => {
       );
       navigate("/products");
     } else if (header === "By Discount") {
-      alert("Discount");
       setActiveFilter(true);
+      setFilteredData(
+        data.filter(
+          (item) =>
+            item.discount ===
+            Number(option.split(" ")[1].toLowerCase().split("%")[0])
+        )
+      );
+      navigate("/products");
     } else {
       setActiveFilter(true);
       setFilteredData(
