@@ -524,14 +524,7 @@ export default function MainHeader(props) {
               </div>
             </div>
             <div>
-              <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
-                <div
-                  onClick={toggleHam}
-                  className="optionsHolder h-full w-[94%]  border-[#d5d5d5] border-b-[0.15px] flex items-center darktxt font-Montserrat font-medium"
-                >
-                  <Link to="/main">SALE</Link>
-                </div>
-              </div>
+              <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6"></div>
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}

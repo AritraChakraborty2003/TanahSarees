@@ -67,7 +67,7 @@ const ProductCard = (props) => {
           onMouseLeave={() => setIsQuickView(false)}
         >
           {discount && (
-            <div className="absolute z-50 ml-[80%] lg:ml-[80%] ">
+            <div className="absolute z-50 ml-[70%] lg:ml-[80%] ">
               <img className="h-14 w-30" src="discount1.png" alt="" />
               <p className="absolute text-md top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-[2.5vmin]   lg:text-[1.5vmin]">
                 {discount}%
@@ -142,7 +142,7 @@ const ProductCard = (props) => {
               {/* Favorite Heart */}
               <div
                 id={_id}
-                className="absolute lg:bottom-[15.1%] bottom-[11%] right-[-5%] lg:right-[-5%] z-50 scale-60 border-2"
+                className="absolute lg:bottom-[15.1%] bottom-[11%] right-[-10%] lg:right-[-5%] z-50 scale-60 border-2"
               >
                 <Heart
                   isClick={isFavorite}
