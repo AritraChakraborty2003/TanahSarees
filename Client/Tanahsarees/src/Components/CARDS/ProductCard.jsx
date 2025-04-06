@@ -97,7 +97,7 @@ const ProductCard = (props) => {
               }}
               className="block  w-full"
             >
-              <div className="relative overflow-hidden w-full h-[37vh] lg:h-[58vh]">
+              <div className="relative overflow-hidden w-full h-[37vh] lg:h-[63vh]">
                 <img
                   src={import.meta.env.VITE_APP_API_URL + photo}
                   alt={sname}
