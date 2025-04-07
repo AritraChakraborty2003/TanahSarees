@@ -189,7 +189,7 @@ const ProductCard = (props) => {
 
           {/* Text Content Section */}
           <div className=" overflow-hidden  text-center">
-            <p className="text-sm h-10 overflow-hidden  lg:text-md text-gray-600">
+            <p className="text-sm h-10 overflow-hidden mt-4  lg:text-md text-gray-600">
               {sname}
             </p>
             <p className="text-sm lg:text-md text-gray-600">Rs. {price}</p>
