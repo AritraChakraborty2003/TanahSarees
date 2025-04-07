@@ -148,9 +148,7 @@ const OptionsBar = () => {
       setActiveFilter(true);
       setFilterText(capitalizeFirstLetter(option) + " Saree Collections");
       setFilteredData(
-        data.filter(
-          (item) => item.category.toLowerCase() === option.toLowerCase()
-        )
+        data.filter((item) => item.type.toLowerCase() === option.toLowerCase())
       );
       navigate("/products");
     } else if (header === "By Material") {
