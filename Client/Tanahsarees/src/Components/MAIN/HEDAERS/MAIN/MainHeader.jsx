@@ -631,9 +631,9 @@ export default function MainHeader(props) {
             // shouldCloseOnOverlayClick={false}
           >
             <div className="relative">
-              <p className="absolute w-[95%]  text-3xl  mt-1 p-1 z-[100]">
+              <p className="absolute w-[95%]  text-md  mt-1 p-1 z-[100]">
                 <p onClick={modalClose} className="text-md font-bold">
-                  close
+                  X
                 </p>
               </p>
               <div className="mt-3">
