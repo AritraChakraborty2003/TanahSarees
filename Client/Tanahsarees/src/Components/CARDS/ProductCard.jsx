@@ -62,7 +62,7 @@ const ProductCard = (props) => {
     <>
       <div className="main flex w-[45%]  lg:h-[80vh] lg:w-[20vw]  flex-col mt-6 ">
         <div
-          className="flex relative flex-col gap-y-2   lg:gap-y-1"
+          className="flex relative flex-col gap-y-2   lg:gap-y-1 -top-[1.75vmin]"
           onMouseEnter={() => setIsQuickView(true)}
           onMouseLeave={() => setIsQuickView(false)}
         >
@@ -166,7 +166,7 @@ const ProductCard = (props) => {
 
           {/* Default Heart */}
           {type !== "favourite" && (
-            <div className="absolute bottom-[9%] lg:bottom-[8%]   rounded-full right-[-20%] scale-50 lg:scale-70 lg:right-[-9%] z-50">
+            <div className="absolute bottom-[9%] lg:bottom-[8%]   rounded-full right-[-18%] scale-50 lg:scale-70 lg:right-[-9%] z-50">
               <div className="absolute -z-1 mt-6 ml-6.5 rounded-full  h-12   w-12 bg-amber-50"></div>
               <Heart
                 isClick={isClick}
@@ -189,7 +189,7 @@ const ProductCard = (props) => {
 
           {/* Text Content Section */}
           <div className=" overflow-hidden  text-center">
-            <p className="text-sm h-10 overflow-hidden mt-4  lg:text-md text-gray-600">
+            <p className="text-sm h-[6vmin] overflow-hidden mt-2  lg:text-md text-gray-600">
               {sname}
             </p>
             <p className="text-sm lg:text-md text-gray-600">Rs. {price}</p>
@@ -200,7 +200,7 @@ const ProductCard = (props) => {
           <RatingStars rating={rating} />
         </div>
         <button
-          className="btn p-1.5 mt-1 text-xs lg:p-2 overflow-hidden text-white bg-[#F58B75]"
+          className="btn p-1.5 mt-3 text-xs lg:p-2 overflow-hidden text-white bg-[#F58B75]"
           onClick={() => {
             if (authStatus.isAuthenticated) {
               // console.log("Hello World");
