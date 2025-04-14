@@ -40,7 +40,7 @@ const AddCatalogue = ({ onSubmit }) => {
       }),
     topSelling: Yup.string().required("Please select if it's top-selling"),
     description: Yup.string().required("Please add the description"),
-    rating: Yup.number().max(5).min(1),
+    rating: Yup.number(),
   });
 
   return (
