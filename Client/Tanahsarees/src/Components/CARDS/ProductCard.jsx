@@ -142,7 +142,7 @@ const ProductCard = (props) => {
               {/* Favorite Heart */}
               <div
                 id={_id}
-                className="absolute lg:bottom-[10%] bottom-[10%] right-[-10%] lg:right-[-10%] z-50 scale-60 "
+                className="absolute lg:bottom-[20%] bottom-[10%] right-[-10%] lg:right-[-10%] z-50 scale-60 "
               >
                 <Heart
                   isClick={isFavorite}
