@@ -19,6 +19,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useCheckAuth } from "../../../../Utils/useCheckAuth";
 import UseHTTPRequest from "../../../../Utils/useHTTPRequest";
+import NavSideOptions from "./NavSideOptions";
 
 export default function MainHeader(props) {
   const {
@@ -524,7 +525,8 @@ export default function MainHeader(props) {
               </div>
             </div>
             <div>
-              <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6"></div>
+              <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-2"></div>
+              <NavSideOptions />
               <div className="optionsHolder w-[75vw] h-[10vmin] flex justify-center items-center mt-6">
                 <div
                   onClick={toggleHam}
