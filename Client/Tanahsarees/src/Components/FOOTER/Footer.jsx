@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Footer = () => {
   const popularSearches = [
@@ -46,11 +47,31 @@ const Footer = () => {
           <div className="flex border-b border-black w-full max-w-sm">
             <input
               placeholder="Enter your email"
+              id="email"
               className="flex-grow p-2 text-sm bg-transparent focus:outline-none"
             />
-            <a href="" className="text-2xl">
-              <i className="ri-mail-line"></i>
-            </a>
+
+            <i
+              className="ri-mail-line"
+              style={{ fontSize: "1.5rem", cursor: "pointer" }}
+              onClick={() => {
+                const email = document.getElementById("email").value;
+
+                if (!email) {
+                  toast.error("Please enter an email");
+                } else {
+                  const isValidEmail = (email) =>
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                  if (!isValidEmail(email)) {
+                    toast.error("Please enter a valid email");
+                    document.getElementById("email").value = "";
+                    return;
+                  }
+                  document.getElementById("email").value = "";
+                  toast.success("Subscribed Successfully");
+                }
+              }}
+            ></i>
           </div>
 
           <div className="flex gap-4 mt-4">
