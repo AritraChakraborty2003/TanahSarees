@@ -631,11 +631,11 @@ export default function MainHeader(props) {
             // shouldCloseOnOverlayClick={false}
           >
             <div className="relative">
-              <a className="absolute w-[95%]  text-3xl font-light font-Lato darktxt  mt-1 p-1">
+              <p className="absolute w-[95%]  text-3xl font-light font-Lato darktxt  mt-1 p-1">
                 <p onClick={modalClose} className="text-xl font-bold">
                   close
                 </p>
-              </a>
+              </p>
               <div className="mt-3">
                 <AuthModal
                   isOpen={loginOpen}
