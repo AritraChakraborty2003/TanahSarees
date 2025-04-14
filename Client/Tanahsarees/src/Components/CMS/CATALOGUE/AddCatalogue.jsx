@@ -11,7 +11,7 @@ const AddCatalogue = ({ onSubmit }) => {
   const validationSchema = Yup.object({
     sku: Yup.string().required("SKU is required"),
     sname: Yup.string().required("Product name is required"),
-    type: Yup.string().required("Product type is required"),
+    type: Yup.string(),
     price: Yup.number()
       .positive("Price must be positive")
       .required("Price is required"),
