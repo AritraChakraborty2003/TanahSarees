@@ -629,7 +629,9 @@ export default function MainHeader(props) {
           >
             <div className="relative">
               <a className="absolute w-[95%]  text-3xl font-light font-Lato darktxt  mt-1 p-2">
-                <i className="ri-close-line" onClick={modalClose}></i>
+                <a onClick={modalClose} className="text-xl">
+                  X
+                </a>
               </a>
               <div className="mt-3">
                 <AuthModal
