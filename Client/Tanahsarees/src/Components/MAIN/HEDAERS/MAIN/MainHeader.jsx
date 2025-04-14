@@ -513,6 +513,7 @@ export default function MainHeader(props) {
               backgroundColor: "#fff",
               boxShadow: "0px 0px 15px rgba(0,0,0,0.1)",
               transition: "transform 0.3s ease-in-out",
+              paddingBottom: "10vmin",
             }}
             duration={0.3}
             lockBackgroundScroll
