@@ -632,9 +632,9 @@ export default function MainHeader(props) {
           >
             <div className="relative">
               <a className="absolute w-[95%]  text-3xl font-light font-Lato darktxt  mt-1 p-1">
-                <a onClick={modalClose} className="text-xl font-bold">
-                  X
-                </a>
+                <p onClick={modalClose} className="text-xl font-bold">
+                  close
+                </p>
               </a>
               <div className="mt-3">
                 <AuthModal
