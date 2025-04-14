@@ -137,7 +137,7 @@ const NavSideOptions = () => {
   };
 
   return (
-    <div>
+    <div className="mt-[-4vmin]">
       {Object.entries(options).map(([title, content], index) => (
         <div
           key={title}
