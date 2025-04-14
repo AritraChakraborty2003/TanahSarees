@@ -81,7 +81,9 @@ const Catalogue = () => {
     newFormData.append("occasion", occasion);
     newFormData.append("description", description);
     newFormData.append("topSelling", topSelling === "yes");
-    newFormData.append("rating", Number(rating));
+    if (rating != "") {
+      newFormData.append("rating", Number(rating));
+    }
     files.forEach((file) => {
       newFormData.append("files", file);
     });

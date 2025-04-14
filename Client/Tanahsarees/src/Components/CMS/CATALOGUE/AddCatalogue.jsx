@@ -40,7 +40,7 @@ const AddCatalogue = ({ onSubmit }) => {
       }),
     topSelling: Yup.string().required("Please select if it's top-selling"),
     description: Yup.string().required("Please add the description"),
-    rating: Yup.number(),
+    rating: Yup.number().max(5).min(1),
   });
 
   return (
@@ -445,6 +445,7 @@ const AddCatalogue = ({ onSubmit }) => {
               <div>
                 <label className="block font-medium">Rating</label>
                 <Field as="select" name="rating" className="border p-2 w-full">
+                  <option value="">Select</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
