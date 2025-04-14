@@ -57,7 +57,7 @@ const sareeSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      default: 0, // Added default rating to 0
+      // Added default rating to 0
       min: 0,
       max: 5, // Added min and max rating values
     },
