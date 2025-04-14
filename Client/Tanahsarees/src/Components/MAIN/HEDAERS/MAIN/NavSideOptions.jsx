@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useState, useContext, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../AppContext/AppContext";
 import { capitalizeFirstLetter } from "../../../../Utils/CapitalizeFirstLetter";
 import UseHTTPRequest from "../../../../Utils/useHTTPRequest";
@@ -85,8 +86,8 @@ const options = {
 
 const NavSideOptions = () => {
   const [openIndex, setOpenIndex] = useState(null);
-  //   const navigate = useNavigate();
-  const { setActiveFilter, setFilteredData, setFilterText } =
+  const navigate = useNavigate();
+  const { setActiveFilter, setFilteredData, setFilterText, toggleHam } =
     useContext(AppContext);
 
   const [data, setData] = useState([]);
@@ -131,8 +132,8 @@ const NavSideOptions = () => {
     setActiveFilter(true);
     setFilteredData(filtered);
     setFilterText(`${capitalizeFirstLetter(option)} Saree Collections`);
-    window.location.href = "/products";
-    window.scroll(0, 0);
+    toggleHam();
+    navigate("/products");
   };
 
   return (
