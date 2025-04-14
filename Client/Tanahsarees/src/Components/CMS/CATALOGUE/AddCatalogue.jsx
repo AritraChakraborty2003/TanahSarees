@@ -40,12 +40,7 @@ const AddCatalogue = ({ onSubmit }) => {
       }),
     topSelling: Yup.string().required("Please select if it's top-selling"),
     description: Yup.string().required("Please add the description"),
-    rating: Yup.number()
-
-      .positive("rating must be positive")
-      .max(5, "Discount cannot be more than 5")
-      .min(1, "rating must not be less than 1")
-      .required("Discount is required when offer is Yes"),
+    rating: Yup.number().max(5).min(1),
   });
 
   return (
